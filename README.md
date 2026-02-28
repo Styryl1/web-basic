@@ -1,57 +1,63 @@
-# Astro Starter Kit: Minimal
+# English Plumber Astro Site
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Astro site with TinaCMS wired for Git-backed content editing.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
 /
+├── content/
+│   └── tina/
+│       └── site-content.json
 ├── public/
+│   └── images/
 ├── src/
+│   ├── data/
+│   │   └── siteContent.ts
 │   └── pages/
 │       └── index.astro
-└── package.json
+└── tina/
+    └── config.ts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+`content/tina/site-content.json` is the source of truth edited by Tina.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Commands
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command | Action |
+| :-- | :-- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start Astro + Tina local editing mode |
+| `npm run dev:astro` | Start plain Astro dev server |
+| `npm run build` | Auto Tina build (Cloud mode when env vars exist, otherwise local mode) + Astro build |
+| `npm run build:cloud` | Force Tina Cloud build + Astro build |
+| `npm run build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
+| `npm run preview` | Preview `dist/` |
 
-## 🧞 Commands
+## TinaCMS Setup (Online Editing)
 
-All commands are run from the root of the project, from a terminal:
+1. Create a Tina Cloud project at `https://app.tina.io/`.
+2. Connect it to this GitHub repo (`Styryl1/web-basic`) and branch (`main`).
+3. In Tina Cloud, copy:
+   - `Client ID`
+   - `Read Only Token`
+4. Add these env vars in Cloudflare Pages project settings:
+   - `NEXT_PUBLIC_TINA_CLIENT_ID`
+   - `TINA_TOKEN`
+   - Optional: `CF_PAGES_BRANCH` is already provided by Cloudflare.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+After deploy, open:
+
+- `https://<your-site>/admin/index.html`
+
+and sign in with Tina to edit content online.
 
 ## Cloudflare Pages (GitHub Method)
 
-1. Push this repo to GitHub.
-2. In Cloudflare Dashboard, go to `Workers & Pages` -> `Create` -> `Pages` -> `Connect to Git`.
-3. Select this repository (`Styryl1/web-basic`) and branch (`main`).
-4. Use build settings:
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-5. Save and Deploy.
+Use these build settings in Cloudflare Pages:
 
-Every push to `main` will then auto-deploy.
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Root directory: `/`
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-# web-basic
-# web-basic
+Every push to `main` triggers a new deploy.

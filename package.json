@@ -3,12 +3,19 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
+    "dev:astro": "astro dev",
+    "build": "node scripts/tina-build.mjs && astro build",
+    "build:cloud": "tinacms build && astro build",
+    "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.17.1"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^2.1.7",
+    "tinacms": "^3.5.1"
   }
 }
