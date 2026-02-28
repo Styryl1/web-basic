@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="420" viewBox="0 0 620 420" role="img" aria-label="Tap Repairs">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c3553"/>
+      <stop offset="100%" stop-color="#2f6ea2"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.8" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="#87d8ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#87d8ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="620" height="420" fill="url(#g)" rx="13"/>
+  <rect width="620" height="420" fill="url(#r)" rx="13"/>
+  <g opacity="0.28">
+    <circle cx="105" cy="92" r="42" fill="#ffffff"/>
+    <circle cx="484" cy="302" r="71" fill="#ffffff"/>
+    <rect x="335" y="76" width="186" height="34" rx="8" fill="#ffffff"/>
+  </g>
+  <g fill="#ffffff" opacity="0.94">
+    <text x="43" y="302" font-family="'Segoe UI', Arial, sans-serif" font-size="46" font-weight="700">Tap Repairs</text>
+    <text x="43" y="353" font-family="'Segoe UI', Arial, sans-serif" font-size="23" font-weight="500" opacity="0.9">Clear advice first</text>
+  </g>
+</svg>

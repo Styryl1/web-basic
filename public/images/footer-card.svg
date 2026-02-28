@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="382" height="467" viewBox="0 0 382 467" role="img" aria-label="WhatsApp First">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16365a"/>
+      <stop offset="100%" stop-color="#2e78ab"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.8" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="#98dfff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#98dfff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="382" height="467" fill="url(#g)" rx="11"/>
+  <rect width="382" height="467" fill="url(#r)" rx="11"/>
+  <g opacity="0.28">
+    <circle cx="65" cy="103" r="38" fill="#ffffff"/>
+    <circle cx="298" cy="336" r="65" fill="#ffffff"/>
+    <rect x="206" y="84" width="115" height="37" rx="8" fill="#ffffff"/>
+  </g>
+  <g fill="#ffffff" opacity="0.94">
+    <text x="27" y="336" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700">WhatsApp First</text>
+    <text x="27" y="392" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="500" opacity="0.9">Best way to reach me</text>
+  </g>
+</svg>

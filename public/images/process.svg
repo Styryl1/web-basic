@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="600" viewBox="0 0 580 600" role="img" aria-label="How It Works">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#183a60"/>
+      <stop offset="100%" stop-color="#4f93c6"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.8" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="#a3e4ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#a3e4ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="580" height="600" fill="url(#g)" rx="17"/>
+  <rect width="580" height="600" fill="url(#r)" rx="17"/>
+  <g opacity="0.28">
+    <circle cx="99" cy="132" r="58" fill="#ffffff"/>
+    <circle cx="452" cy="432" r="99" fill="#ffffff"/>
+    <rect x="313" y="108" width="174" height="48" rx="12" fill="#ffffff"/>
+  </g>
+  <g fill="#ffffff" opacity="0.94">
+    <text x="41" y="432" font-family="'Segoe UI', Arial, sans-serif" font-size="64" font-weight="700">How It Works</text>
+    <text x="41" y="504" font-family="'Segoe UI', Arial, sans-serif" font-size="32" font-weight="500" opacity="0.9">Photos, quote, visit</text>
+  </g>
+</svg>

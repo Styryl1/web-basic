@@ -38,6 +38,18 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Cloudflare Pages (GitHub Method)
+
+1. Push this repo to GitHub.
+2. In Cloudflare Dashboard, go to `Workers & Pages` -> `Create` -> `Pages` -> `Connect to Git`.
+3. Select this repository (`Styryl1/web-basic`) and branch (`main`).
+4. Use build settings:
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+5. Save and Deploy.
+
+Every push to `main` will then auto-deploy.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

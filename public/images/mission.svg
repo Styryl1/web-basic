@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="620" viewBox="0 0 520 620" role="img" aria-label="Local Mission">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a5f"/>
+      <stop offset="100%" stop-color="#63a5cf"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.8" cy="0.2" r="0.9">
+      <stop offset="0%" stop-color="#c7efff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#c7efff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="520" height="620" fill="url(#g)" rx="16"/>
+  <rect width="520" height="620" fill="url(#r)" rx="16"/>
+  <g opacity="0.28">
+    <circle cx="88" cy="136" r="52" fill="#ffffff"/>
+    <circle cx="406" cy="446" r="88" fill="#ffffff"/>
+    <rect x="281" y="112" width="156" height="50" rx="10" fill="#ffffff"/>
+  </g>
+  <g fill="#ffffff" opacity="0.94">
+    <text x="36" y="446" font-family="'Segoe UI', Arial, sans-serif" font-size="57" font-weight="700">Local Mission</text>
+    <text x="36" y="521" font-family="'Segoe UI', Arial, sans-serif" font-size="29" font-weight="500" opacity="0.9">Clear communication &amp; fair pricing</text>
+  </g>
+</svg>
