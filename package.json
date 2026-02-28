@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "dev:astro": "astro dev",
-    "build": "node scripts/tina-build.mjs && astro build",
-    "build:cloud": "tinacms build && astro build",
+    "build": "tinacms build && astro build",
     "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && astro build",
     "preview": "astro preview",
     "astro": "astro"

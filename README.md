@@ -29,8 +29,7 @@ Astro site with TinaCMS wired for Git-backed content editing.
 | `npm install` | Install dependencies |
 | `npm run dev` | Start Astro + Tina local editing mode |
 | `npm run dev:astro` | Start plain Astro dev server |
-| `npm run build` | Auto Tina build (Cloud mode when env vars exist, otherwise local mode) + Astro build |
-| `npm run build:cloud` | Force Tina Cloud build + Astro build |
+| `npm run build` | Tina Cloud build + Astro build (requires Tina env vars) |
 | `npm run build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
 | `npm run preview` | Preview `dist/` |
 
@@ -45,6 +44,7 @@ Astro site with TinaCMS wired for Git-backed content editing.
    - `NEXT_PUBLIC_TINA_CLIENT_ID`
    - `TINA_TOKEN`
    - Optional: `CF_PAGES_BRANCH` is already provided by Cloudflare.
+5. Trigger a new Cloudflare deploy.
 
 After deploy, open:
 
