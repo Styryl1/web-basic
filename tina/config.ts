@@ -5,13 +5,16 @@ import { defineConfig } from 'tinacms';
 type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
 
-const branch =
+const envBranch =
   process.env.CF_PAGES_BRANCH ||
   process.env.HEAD ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.GITHUB_REF_NAME ||
-  process.env.GITHUB_HEAD_REF ||
-  'main';
+  process.env.GITHUB_HEAD_REF;
+
+const branch = (envBranch || 'main').trim();
+const clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID?.trim() || null;
+const token = process.env.TINA_TOKEN?.trim() || null;
 
 const siteContentPath = path.join(process.cwd(), 'content', 'tina', 'site-content.json');
 const siteContentSource = fs.readFileSync(siteContentPath, 'utf8');
@@ -129,8 +132,8 @@ const buildField = (name: string, value: JsonValue): Record<string, unknown> => 
 
 export default defineConfig({
   branch,
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || null,
-  token: process.env.TINA_TOKEN || null,
+  clientId,
+  token,
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
