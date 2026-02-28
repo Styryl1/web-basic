@@ -8,17 +8,21 @@
     "dev:astro": "astro dev",
     "build": "tinacms build && astro build",
     "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "wrangler dev",
+    "astro": "astro",
+    "deploy": "wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "astro": "^5.17.1"
   },
   "devDependencies": {
     "@tinacms/cli": "^2.1.7",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "tinacms": "^3.5.1"
+    "tinacms": "^3.5.1",
+    "wrangler": "^4.69.0"
   },
   "pnpm": {
     "overrides": {

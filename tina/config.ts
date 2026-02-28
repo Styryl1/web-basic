@@ -1,6 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { defineConfig } from 'tinacms';
+import siteContentJson from '../content/tina/site-content.json';
 
 type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
@@ -16,9 +15,7 @@ const branch = (envBranch || 'main').trim();
 const clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID?.trim() || null;
 const token = process.env.TINA_TOKEN?.trim() || null;
 
-const siteContentPath = path.join(process.cwd(), 'content', 'tina', 'site-content.json');
-const siteContentSource = fs.readFileSync(siteContentPath, 'utf8');
-const siteContent = JSON.parse(siteContentSource) as Record<string, JsonValue>;
+const siteContent = siteContentJson as Record<string, JsonValue>;
 
 const toLabel = (name: string) =>
   name
