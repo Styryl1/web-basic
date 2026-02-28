@@ -2,6 +2,7 @@
   "name": "bob6",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "dev:astro": "astro dev",
@@ -15,6 +16,14 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^2.1.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "tinacms": "^3.5.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    }
   }
 }

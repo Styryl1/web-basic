@@ -26,12 +26,12 @@ Astro site with TinaCMS wired for Git-backed content editing.
 
 | Command | Action |
 | :-- | :-- |
-| `npm install` | Install dependencies |
-| `npm run dev` | Start Astro + Tina local editing mode |
-| `npm run dev:astro` | Start plain Astro dev server |
-| `npm run build` | Tina Cloud build + Astro build (requires Tina env vars) |
-| `npm run build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
-| `npm run preview` | Preview `dist/` |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start Astro + Tina local editing mode |
+| `pnpm dev:astro` | Start plain Astro dev server |
+| `pnpm build` | Tina Cloud build + Astro build (requires Tina env vars) |
+| `pnpm build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
+| `pnpm preview` | Preview `dist/` |
 
 ## TinaCMS Setup (Online Editing)
 
@@ -56,7 +56,7 @@ and sign in with Tina to edit content online.
 
 Use these build settings in Cloudflare Pages:
 
-- Build command: `npm run build`
+- Build command: `pnpm build`
 - Build output directory: `dist`
 - Root directory: `/`
 
