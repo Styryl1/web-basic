@@ -14,6 +14,14 @@ const envBranch =
 const branch = (envBranch || 'main').trim();
 const clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID?.trim() || null;
 const token = process.env.TINA_TOKEN?.trim() || null;
+const isLocalTina = process.env.TINA_PUBLIC_IS_LOCAL === 'true';
+const previewOriginEnv =
+  process.env.TINA_PREVIEW_ORIGIN?.trim() ||
+  process.env.CF_PAGES_URL?.trim() ||
+  process.env.PUBLIC_SITE_URL?.trim() ||
+  process.env.SITE_URL?.trim() ||
+  '';
+const previewOrigin = isLocalTina ? 'http://localhost:4321' : previewOriginEnv;
 
 const siteContent = siteContentJson as Record<string, JsonValue>;
 
@@ -131,6 +139,11 @@ export default defineConfig({
   branch,
   clientId,
   token,
+  ui: previewOrigin
+    ? {
+        previewUrl: () => ({ url: previewOrigin }),
+      }
+    : undefined,
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
@@ -152,6 +165,7 @@ export default defineConfig({
           include: 'site-content',
         },
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,

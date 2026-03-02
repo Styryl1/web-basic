@@ -43,8 +43,14 @@ Astro site with TinaCMS wired for Git-backed content editing.
 4. Add these env vars in Cloudflare Pages project settings:
    - `NEXT_PUBLIC_TINA_CLIENT_ID`
    - `TINA_TOKEN`
+   - `TINA_PREVIEW_ORIGIN` (set to your site URL, e.g. `https://englishplumber.nl`)
    - Optional: `CF_PAGES_BRANCH` is already provided by Cloudflare.
+   - Optional: `CF_PAGES_URL` is auto-provided on Cloudflare preview deploys and is used as fallback for visual preview URL.
 5. Trigger a new Cloudflare deploy.
+
+Also set the Tina Cloud project Site URL / Allowed Origins to include:
+
+- `https://englishplumber.nl`
 
 After deploy, open:
 

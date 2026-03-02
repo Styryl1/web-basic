@@ -1,5 +1,12 @@
 ---
-import { siteContent } from '../data/siteContent';
+import client from '../../tina/__generated__/client';
+import TinaInlineBridge from '../components/react/TinaInlineBridge.tsx';
+import { addMetadata, hashFromQuery, tinaField } from 'tinacms/dist/react';
+
+const tinaPayload = await client.queries.siteContent({ relativePath: 'site-content.json' });
+const queryIdentity = JSON.stringify({ query: tinaPayload.query, variables: tinaPayload.variables });
+const siteContentResponse = addMetadata(hashFromQuery(queryIdentity), structuredClone(tinaPayload.data), []);
+const siteContent = (siteContentResponse as { siteContent: Record<string, unknown> }).siteContent as any;
 
 const {
   seoTitle,
@@ -18,6 +25,12 @@ const {
   newsletterSection,
   footerSection,
 } = siteContent;
+
+const tinaBridgeProps = {
+  query: tinaPayload.query,
+  variables: tinaPayload.variables as Record<string, unknown>,
+  data: tinaPayload.data as unknown as Record<string, unknown>,
+};
 
 const serviceCards = [
   ...featurePanel.cards,
@@ -64,7 +77,9 @@ const externalSocials = [
     <title>{seoTitle}</title>
   </head>
   <body>
-    <header class="ep-header" data-ep-header>
+    <TinaInlineBridge {...tinaBridgeProps} client:tina />
+
+    <header class="ep-header" data-ep-header data-tina-field={tinaField(siteContent, 'header')}>
       <div class="container ep-header__container">
         <div class="ep-header__shell">
           <div class="ep-header__ring ep-header__ring--outer" aria-hidden="true"></div>
@@ -77,9 +92,9 @@ const externalSocials = [
 
             <nav class="ep-header__nav" aria-label="Main">
               <ul class="ep-header__nav-list">
-                {header.navItems.map((item) => (
+                {header.navItems.map((item, index) => (
                   <li>
-                    <a href={item.href} class="ep-header__nav-link">
+                    <a href={item.href} class="ep-header__nav-link" data-tina-field={tinaField(header, 'navItems', index)}>
                       <span>{item.label}</span>
                     </a>
                   </li>
@@ -144,7 +159,12 @@ const externalSocials = [
               <ul class="ep-mobile-panel__list">
                 {header.navItems.map((item, index) => (
                   <li class:list={['ep-mobile-panel__item', { 'is-first': index === 0 }]}>
-                    <a href={item.href} class="ep-mobile-panel__link" data-ep-menu-link>
+                    <a
+                      href={item.href}
+                      class="ep-mobile-panel__link"
+                      data-ep-menu-link
+                      data-tina-field={tinaField(header, 'navItems', index)}
+                    >
                       <span>{item.label.replace('\n', ' ')}</span>
                     </a>
                   </li>
@@ -176,7 +196,7 @@ const externalSocials = [
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero" data-tina-field={tinaField(siteContent, 'hero')}>
         <img src={imageMap.hero} alt="English Plumber hero image" class="hero-bg" loading="eager" />
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -194,7 +214,7 @@ const externalSocials = [
       <span id="tap-repairs" class="anchor-offset" aria-hidden="true"></span>
       <span id="plumbing-handyman" class="anchor-offset" aria-hidden="true"></span>
 
-      <section class="section section-services">
+      <section class="section section-services" data-tina-field={tinaField(siteContent, 'biomarkerPanel')}>
         <div class="container two-col">
           <div>
             <h2>
@@ -216,7 +236,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-feature">
+      <section class="section section-feature" data-tina-field={tinaField(siteContent, 'featurePanel')}>
         <div class="container">
           <div class="feature-cards-grid">
             <article class="image-card">
@@ -294,7 +314,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-trust">
+      <section class="section section-trust" data-tina-field={tinaField(siteContent, 'trustSection')}>
         <div class="container">
           <h2>
             <span>{trustSection.headingLine1}</span>
@@ -333,7 +353,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-command">
+      <section class="section section-command" data-tina-field={tinaField(siteContent, 'commandCenterSection')}>
         <div class="container command-layout">
           <div>
             <h2>
@@ -350,7 +370,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-process" id="service-area">
+      <section class="section section-process" id="service-area" data-tina-field={tinaField(siteContent, 'ourProcessSection')}>
         <div class="container process-layout">
           <img src={imageMap.process} alt={ourProcessSection.imageAlt} width="580" height="600" loading="lazy" />
           <div>
@@ -370,7 +390,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-pricing" id="pricing">
+      <section class="section section-pricing" id="pricing" data-tina-field={tinaField(siteContent, 'choosePathSection')}>
         <div class="container">
           <h2>{choosePathSection.title}</h2>
           <p class="section-subtitle">{choosePathSection.subtitle}</p>
@@ -423,7 +443,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-faq">
+      <section class="section section-faq" data-tina-field={tinaField(siteContent, 'faqSection')}>
         <div class="container faq-layout">
           <div>
             <h2>
@@ -452,7 +472,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-mission">
+      <section class="section section-mission" data-tina-field={tinaField(siteContent, 'missionSection')}>
         <div class="container mission-layout">
           <article class="mission-card">
             <img src={imageMap.mission} alt={missionSection.mission.imageAlt} width="520" height="620" loading="lazy" />
@@ -488,7 +508,7 @@ const externalSocials = [
         </div>
       </section>
 
-      <section class="section section-newsletter">
+      <section class="section section-newsletter" data-tina-field={tinaField(siteContent, 'newsletterSection')}>
         <img src={imageMap.newsletter} alt={newsletterSection.backgroundImageAlt} class="newsletter-bg" loading="lazy" />
         <div class="newsletter-overlay"></div>
         <div class="container newsletter-content">
@@ -504,7 +524,7 @@ const externalSocials = [
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" data-tina-field={tinaField(siteContent, 'footerSection')}>
       <div class="container footer-shell">
         <div class="footer-main">
           <section class="footer-left">
