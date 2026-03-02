@@ -1,0 +1,64 @@
+name: Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (local)
+        run: pnpm build:local
+
+      - name: Type/content check
+        run: pnpm check
+
+      - name: Start static preview server
+        run: |
+          python3 -m http.server 4321 --directory dist >/tmp/preview.log 2>&1 &
+          echo $! >/tmp/astro-preview.pid
+
+      - name: Wait for preview server
+        run: |
+          for i in {1..45}; do
+            if curl -fsS http://127.0.0.1:4321/ >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Preview server did not start in time."
+          exit 1
+
+      - name: Lighthouse median gate
+        env:
+          LIGHTHOUSE_URL: http://127.0.0.1:4321/
+        run: pnpm lighthouse:ci
+
+      - name: Stop preview server
+        if: always()
+        run: |
+          if [ -f /tmp/astro-preview.pid ]; then
+            kill "$(cat /tmp/astro-preview.pid)" || true
+          fi
+          echo "--- preview log ---"
+          tail -n 200 /tmp/preview.log || true

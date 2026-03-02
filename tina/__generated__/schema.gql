@@ -390,6 +390,13 @@ input StringFilter {
   in: [String]
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -404,7 +411,7 @@ input SiteContentHeroFilter {
 
 input SiteContentBiomarkerPanelItemsFilter {
   label: StringFilter
-  imagePath: StringFilter
+  imagePath: ImageFilter
 }
 
 input SiteContentBiomarkerPanelFilter {
@@ -419,7 +426,7 @@ input SiteContentFeaturePanelCardsFilter {
   titleLine1: StringFilter
   titleLine2: StringFilter
   href: StringFilter
-  imagePath: StringFilter
+  imagePath: ImageFilter
 }
 
 input SiteContentFeaturePanelStat1Filter {
@@ -439,7 +446,7 @@ input SiteContentFeaturePanelPrescriptionCardFilter {
   titleLine1: StringFilter
   titleLine2: StringFilter
   href: StringFilter
-  imagePath: StringFilter
+  imagePath: ImageFilter
   ctaLabel: StringFilter
 }
 
@@ -570,7 +577,7 @@ input SiteContentFaqSectionFilter {
 
 input SiteContentMissionSectionMissionFilter {
   imageAlt: StringFilter
-  imagePath: StringFilter
+  imagePath: ImageFilter
   name: StringFilter
   role: StringFilter
   headingLine1: StringFilter
@@ -582,7 +589,7 @@ input SiteContentMissionSectionMissionFilter {
 
 input SiteContentMissionSectionGalleryImagesFilter {
   alt: StringFilter
-  imagePath: StringFilter
+  imagePath: ImageFilter
 }
 
 input SiteContentMissionSectionGalleryFilter {
@@ -599,7 +606,7 @@ input SiteContentMissionSectionFilter {
 }
 
 input SiteContentNewsletterSectionFilter {
-  backgroundImagePath: StringFilter
+  backgroundImagePath: ImageFilter
   backgroundImageAlt: StringFilter
   headingLine1: StringFilter
   headingLine2: StringFilter
@@ -630,15 +637,15 @@ input SiteContentFooterSectionFilter {
   aboutLinks: SiteContentFooterSectionAboutLinksFilter
   legalDisclaimer: StringFilter
   cardImageAlt: StringFilter
-  cardDesktopImagePath: StringFilter
-  cardMobileImagePath: StringFilter
+  cardDesktopImagePath: ImageFilter
+  cardMobileImagePath: ImageFilter
   appPrompt: StringFilter
   appStoreAlt: StringFilter
   appStoreHref: StringFilter
-  appStoreImagePath: StringFilter
+  appStoreImagePath: ImageFilter
   googlePlayAlt: StringFilter
   googlePlayHref: StringFilter
-  googlePlayImagePath: StringFilter
+  googlePlayImagePath: ImageFilter
   copyrightText: StringFilter
 }
 
@@ -661,12 +668,12 @@ input SiteContentFilter {
   baseCity: StringFilter
   whatsappNumber: StringFilter
   primaryArea: StringFilter
-  heroImagePath: StringFilter
+  heroImagePath: ImageFilter
   canonicalOrigin: StringFilter
   homepageUrl: StringFilter
   seoTitle: StringFilter
   seoDescription: StringFilter
-  ogImage: StringFilter
+  ogImage: ImageFilter
   enableRuntimeCopyRewrite: BooleanFilter
   enableServerCopyRewrite: BooleanFilter
   enableServerHeaderSlotRewrite: BooleanFilter

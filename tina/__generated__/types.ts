@@ -503,6 +503,13 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type BooleanFilter = {
   eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -517,7 +524,7 @@ export type SiteContentHeroFilter = {
 
 export type SiteContentBiomarkerPanelItemsFilter = {
   label?: InputMaybe<StringFilter>;
-  imagePath?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
 };
 
 export type SiteContentBiomarkerPanelFilter = {
@@ -532,7 +539,7 @@ export type SiteContentFeaturePanelCardsFilter = {
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
-  imagePath?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
 };
 
 export type SiteContentFeaturePanelStat1Filter = {
@@ -552,7 +559,7 @@ export type SiteContentFeaturePanelPrescriptionCardFilter = {
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
-  imagePath?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
 };
 
@@ -683,7 +690,7 @@ export type SiteContentFaqSectionFilter = {
 
 export type SiteContentMissionSectionMissionFilter = {
   imageAlt?: InputMaybe<StringFilter>;
-  imagePath?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   role?: InputMaybe<StringFilter>;
   headingLine1?: InputMaybe<StringFilter>;
@@ -695,7 +702,7 @@ export type SiteContentMissionSectionMissionFilter = {
 
 export type SiteContentMissionSectionGalleryImagesFilter = {
   alt?: InputMaybe<StringFilter>;
-  imagePath?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
 };
 
 export type SiteContentMissionSectionGalleryFilter = {
@@ -712,7 +719,7 @@ export type SiteContentMissionSectionFilter = {
 };
 
 export type SiteContentNewsletterSectionFilter = {
-  backgroundImagePath?: InputMaybe<StringFilter>;
+  backgroundImagePath?: InputMaybe<ImageFilter>;
   backgroundImageAlt?: InputMaybe<StringFilter>;
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
@@ -743,15 +750,15 @@ export type SiteContentFooterSectionFilter = {
   aboutLinks?: InputMaybe<SiteContentFooterSectionAboutLinksFilter>;
   legalDisclaimer?: InputMaybe<StringFilter>;
   cardImageAlt?: InputMaybe<StringFilter>;
-  cardDesktopImagePath?: InputMaybe<StringFilter>;
-  cardMobileImagePath?: InputMaybe<StringFilter>;
+  cardDesktopImagePath?: InputMaybe<ImageFilter>;
+  cardMobileImagePath?: InputMaybe<ImageFilter>;
   appPrompt?: InputMaybe<StringFilter>;
   appStoreAlt?: InputMaybe<StringFilter>;
   appStoreHref?: InputMaybe<StringFilter>;
-  appStoreImagePath?: InputMaybe<StringFilter>;
+  appStoreImagePath?: InputMaybe<ImageFilter>;
   googlePlayAlt?: InputMaybe<StringFilter>;
   googlePlayHref?: InputMaybe<StringFilter>;
-  googlePlayImagePath?: InputMaybe<StringFilter>;
+  googlePlayImagePath?: InputMaybe<ImageFilter>;
   copyrightText?: InputMaybe<StringFilter>;
 };
 
@@ -774,12 +781,12 @@ export type SiteContentFilter = {
   baseCity?: InputMaybe<StringFilter>;
   whatsappNumber?: InputMaybe<StringFilter>;
   primaryArea?: InputMaybe<StringFilter>;
-  heroImagePath?: InputMaybe<StringFilter>;
+  heroImagePath?: InputMaybe<ImageFilter>;
   canonicalOrigin?: InputMaybe<StringFilter>;
   homepageUrl?: InputMaybe<StringFilter>;
   seoTitle?: InputMaybe<StringFilter>;
   seoDescription?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<StringFilter>;
+  ogImage?: InputMaybe<ImageFilter>;
   enableRuntimeCopyRewrite?: InputMaybe<BooleanFilter>;
   enableServerCopyRewrite?: InputMaybe<BooleanFilter>;
   enableServerHeaderSlotRewrite?: InputMaybe<BooleanFilter>;

@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  siteName?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = '',
+  canonical,
+  ogImage,
+  siteName,
+  type = 'website',
+  noIndex = false,
+} = Astro.props as Props;
+
+const resolveUrl = (value?: string): string | undefined => {
+  if (!value) return undefined;
+
+  try {
+    return new URL(value).toString();
+  } catch {
+    // Continue to resolve against site/url.
+  }
+
+  const base = Astro.site ?? Astro.url;
+
+  try {
+    return new URL(value, base).toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const canonicalUrl = resolveUrl(canonical ?? Astro.url.pathname);
+const ogImageUrl = resolveUrl(ogImage);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+{siteName && <meta property="og:site_name" content={siteName} />}
+{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+<meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+{description && <meta name="twitter:description" content={description} />}
+{ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+
+{noIndex && <meta name="robots" content="noindex, nofollow" />}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://englishplumber.nl/sitemap-index.xml

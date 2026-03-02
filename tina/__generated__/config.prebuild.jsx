@@ -549,24 +549,106 @@ var branch = (envBranch || "main").trim();
 var clientId = process.env.NEXT_PUBLIC_TINA_CLIENT_ID?.trim() || null;
 var token = process.env.TINA_TOKEN?.trim() || null;
 var isLocalTina = process.env.TINA_PUBLIC_IS_LOCAL === "true";
-var previewOriginEnv = process.env.TINA_PREVIEW_ORIGIN?.trim() || process.env.PUBLIC_SITE_URL?.trim() || process.env.SITE_URL?.trim() || "";
+var previewOriginEnv = process.env.TINA_PREVIEW_ORIGIN?.trim() || process.env.CF_PAGES_URL?.trim() || process.env.PUBLIC_SITE_URL?.trim() || process.env.SITE_URL?.trim() || "";
 var previewOrigin = isLocalTina ? "http://localhost:4321" : previewOriginEnv;
 var siteContent = site_content_default;
 var toLabel = (name) => name.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[-_]/g, " ").replace(/\s+/g, " ").trim().replace(/^./, (char) => char.toUpperCase());
-var createStringField = (name, value) => {
-  const baseField = {
+var isUrlValue = (value) => {
+  if (value.startsWith("#")) return true;
+  if (value.startsWith("/")) return true;
+  if (value.startsWith("./") || value.startsWith("../")) return true;
+  if (/^(https?:\/\/|mailto:|tel:)/i.test(value)) return true;
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
+var isLikelyUrlField = (name) => /(?:href|url|origin)$/i.test(name);
+var isLikelyImageField = (name) => {
+  const lower = name.toLowerCase();
+  if (lower.endsWith("imagealt") || lower.endsWith("alt")) return false;
+  return lower === "ogimage" || lower === "heroimagepath" || lower.endsWith("image") || lower.endsWith("imagepath");
+};
+var isAltField = (name) => /alt$/i.test(name);
+var stringValidator = (label, required = false) => (value) => {
+  const text = typeof value === "string" ? value.trim() : "";
+  if (required && !text) {
+    return `${label} is required.`;
+  }
+};
+var urlValidator = (label, required = true) => (value) => {
+  const text = typeof value === "string" ? value.trim() : "";
+  if (!text) {
+    if (required) return `${label} is required.`;
+    return;
+  }
+  if (!isUrlValue(text)) {
+    return `${label} must be an absolute URL, relative path, or hash anchor.`;
+  }
+};
+var imageValidator = (label, required = true) => (value) => {
+  const text = typeof value === "string" ? value.trim() : "";
+  if (!text && required) {
+    return `${label} is required.`;
+  }
+};
+var createStringField = (name, value, options = {}) => {
+  const label = toLabel(name);
+  const isTextarea = options.isTextarea ?? (value.includes("\n") || value.length > 140);
+  return {
     type: "string",
     name,
-    label: toLabel(name)
+    label,
+    ui: {
+      ...isTextarea ? { component: "textarea" } : {},
+      validate: stringValidator(label, options.required ?? false)
+    }
   };
-  if (value.includes("\n") || value.length > 140) {
-    baseField.ui = { component: "textarea" };
-  }
-  return baseField;
 };
-var buildObjectFields = (value) => Object.entries(value).map(([name, fieldValue]) => buildField(name, fieldValue));
-var buildField = (name, value) => {
+var createUrlField = (name, required = true) => {
+  const label = toLabel(name);
+  return {
+    type: "string",
+    name,
+    label,
+    ui: {
+      component: "text",
+      validate: urlValidator(label, required)
+    }
+  };
+};
+var createImageField = (name, required = true) => {
+  const label = toLabel(name);
+  return {
+    type: "image",
+    name,
+    label,
+    ui: {
+      validate: imageValidator(label, required)
+    }
+  };
+};
+var createAltField = (name, value) => createStringField(name, value, {
+  required: true,
+  isTextarea: false
+});
+var withList = (field) => ({
+  ...field,
+  list: true
+});
+var buildExplicitField = (name, value) => {
   if (typeof value === "string") {
+    if (isLikelyImageField(name)) {
+      return createImageField(name, true);
+    }
+    if (isLikelyUrlField(name)) {
+      return createUrlField(name, true);
+    }
+    if (isAltField(name)) {
+      return createAltField(name, value);
+    }
     return createStringField(name, value);
   }
   if (typeof value === "number") {
@@ -586,12 +668,16 @@ var buildField = (name, value) => {
   if (Array.isArray(value)) {
     const first = value.find((entry) => entry !== null && entry !== void 0);
     if (typeof first === "string") {
-      return {
-        type: "string",
-        name,
-        label: toLabel(name),
-        list: true
-      };
+      if (isLikelyImageField(name)) {
+        return withList(createImageField(name, true));
+      }
+      if (isLikelyUrlField(name)) {
+        return withList(createUrlField(name, true));
+      }
+      if (isAltField(name)) {
+        return withList(createAltField(name, first));
+      }
+      return withList(createStringField(name, first));
     }
     if (typeof first === "number") {
       return {
@@ -633,12 +719,9 @@ var buildField = (name, value) => {
       fields: buildObjectFields(value)
     };
   }
-  return {
-    type: "string",
-    name,
-    label: toLabel(name)
-  };
+  return createStringField(name, "");
 };
+var buildObjectFields = (value) => Object.entries(value).map(([name, fieldValue]) => buildExplicitField(name, fieldValue));
 var config_default = defineConfig({
   branch,
   clientId,

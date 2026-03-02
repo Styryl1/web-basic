@@ -7,22 +7,29 @@
     "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "dev:astro": "astro dev",
     "build": "tinacms build && astro build",
-    "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && astro build",
+    "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && TINA_PUBLIC_IS_LOCAL=true astro build",
+    "check": "astro check",
     "preview": "wrangler dev",
     "astro": "astro",
+    "lighthouse:ci": "node scripts/lighthouse-ci.mjs",
+    "quality:ci": "pnpm build:local && pnpm check && pnpm lighthouse:ci",
     "deploy": "wrangler deploy",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.0",
     "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@tinacms/cli": "^2.1.7",
+    "lighthouse": "^13.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tinacms": "^3.5.1",
+    "typescript": "^5.9.3",
     "wrangler": "^4.69.0"
   },
   "pnpm": {

@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'aspekta';
+  src: url('/fonts/aspekta-300.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aspekta';
+  src: url('/fonts/aspekta-400.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aspekta';
+  src: url('/fonts/aspekta-500.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aspekta';
+  src: url('/fonts/aspekta-600.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aspekta';
+  src: url('/fonts/aspekta-700.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'aspekta Fallback';
+  src: local('Arial');
+  ascent-override: 109.13%;
+  descent-override: 32.74%;
+  line-gap-override: 0%;
+  size-adjust: 100.79%;
+}
+
+:root {
+  --bg: #f9f8f6;
+  --ink: #0b2a4b;
+  --muted: #4c5b7d;
+  --soft: #d5efff;
+  --soft-deep: #8cd6fe;
+  --dark: #06284b;
+  --card: #ffffff;
+  --shadow: 0 24px 44px rgba(7, 44, 78, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Avenir Next', 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.45;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  width: min(1280px, calc(100% - 64px));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 112px;
+}
+
+.script-line {
+  display: block;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--soft-deep);
+}
+
+.script-line.small {
+  font-size: 0.95em;
+}
+
+.anchor-offset {
+  display: block;
+  position: relative;
+  top: -140px;
+  visibility: hidden;
+}
+

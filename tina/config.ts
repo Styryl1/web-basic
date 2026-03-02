@@ -4,6 +4,13 @@ import siteContentJson from '../content/tina/site-content.json';
 type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
 
+type TinaField = Record<string, unknown>;
+
+type StringFieldOptions = {
+  required?: boolean;
+  isTextarea?: boolean;
+};
+
 const envBranch =
   process.env.CF_PAGES_BRANCH ||
   process.env.HEAD ||
@@ -33,25 +40,125 @@ const toLabel = (name: string) =>
     .trim()
     .replace(/^./, (char) => char.toUpperCase());
 
-const createStringField = (name: string, value: string) => {
-  const baseField: Record<string, unknown> = {
-    type: 'string',
-    name,
-    label: toLabel(name),
-  };
+const isUrlValue = (value: string): boolean => {
+  if (value.startsWith('#')) return true;
+  if (value.startsWith('/')) return true;
+  if (value.startsWith('./') || value.startsWith('../')) return true;
+  if (/^(https?:\/\/|mailto:|tel:)/i.test(value)) return true;
 
-  if (value.includes('\n') || value.length > 140) {
-    baseField.ui = { component: 'textarea' };
+  try {
+    // Allow valid absolute URLs without explicit protocol in regex branch.
+    // eslint-disable-next-line no-new
+    new URL(value);
+    return true;
+  } catch {
+    return false;
   }
-
-  return baseField;
 };
 
-const buildObjectFields = (value: Record<string, JsonValue>): Record<string, unknown>[] =>
-  Object.entries(value).map(([name, fieldValue]) => buildField(name, fieldValue));
+const isLikelyUrlField = (name: string): boolean => /(?:href|url|origin)$/i.test(name);
 
-const buildField = (name: string, value: JsonValue): Record<string, unknown> => {
+const isLikelyImageField = (name: string): boolean => {
+  const lower = name.toLowerCase();
+  if (lower.endsWith('imagealt') || lower.endsWith('alt')) return false;
+  return lower === 'ogimage' || lower === 'heroimagepath' || lower.endsWith('image') || lower.endsWith('imagepath');
+};
+
+const isAltField = (name: string): boolean => /alt$/i.test(name);
+
+const stringValidator = (label: string, required = false) => (value: unknown): string | void => {
+  const text = typeof value === 'string' ? value.trim() : '';
+  if (required && !text) {
+    return `${label} is required.`;
+  }
+};
+
+const urlValidator = (label: string, required = true) => (value: unknown): string | void => {
+  const text = typeof value === 'string' ? value.trim() : '';
+  if (!text) {
+    if (required) return `${label} is required.`;
+    return;
+  }
+
+  if (!isUrlValue(text)) {
+    return `${label} must be an absolute URL, relative path, or hash anchor.`;
+  }
+};
+
+const imageValidator = (label: string, required = true) => (value: unknown): string | void => {
+  const text = typeof value === 'string' ? value.trim() : '';
+  if (!text && required) {
+    return `${label} is required.`;
+  }
+};
+
+const createStringField = (name: string, value: string, options: StringFieldOptions = {}): TinaField => {
+  const label = toLabel(name);
+  const isTextarea = options.isTextarea ?? (value.includes('\n') || value.length > 140);
+
+  return {
+    type: 'string',
+    name,
+    label,
+    ui: {
+      ...(isTextarea ? { component: 'textarea' } : {}),
+      validate: stringValidator(label, options.required ?? false),
+    },
+  };
+};
+
+const createUrlField = (name: string, required = true): TinaField => {
+  const label = toLabel(name);
+
+  return {
+    type: 'string',
+    name,
+    label,
+    ui: {
+      component: 'text',
+      validate: urlValidator(label, required),
+    },
+  };
+};
+
+const createImageField = (name: string, required = true): TinaField => {
+  const label = toLabel(name);
+
+  return {
+    type: 'image',
+    name,
+    label,
+    ui: {
+      validate: imageValidator(label, required),
+    },
+  };
+};
+
+const createAltField = (name: string, value: string): TinaField =>
+  createStringField(name, value, {
+    required: true,
+    isTextarea: false,
+  });
+
+const withList = (field: TinaField): TinaField => ({
+  ...field,
+  list: true,
+});
+
+const buildExplicitField = (name: string, value: JsonValue): TinaField => {
   if (typeof value === 'string') {
+    if (isLikelyImageField(name)) {
+      return createImageField(name, true);
+    }
+
+    if (isLikelyUrlField(name)) {
+      return createUrlField(name, true);
+    }
+
+    if (isAltField(name)) {
+      return createAltField(name, value);
+    }
+
     return createStringField(name, value);
   }
 
@@ -75,12 +182,19 @@ const buildField = (name: string, value: JsonValue): Record<string, unknown> => 
     const first = value.find((entry) => entry !== null && entry !== undefined);
 
     if (typeof first === 'string') {
-      return {
-        type: 'string',
-        name,
-        label: toLabel(name),
-        list: true,
-      };
+      if (isLikelyImageField(name)) {
+        return withList(createImageField(name, true));
+      }
+
+      if (isLikelyUrlField(name)) {
+        return withList(createUrlField(name, true));
+      }
+
+      if (isAltField(name)) {
+        return withList(createAltField(name, first));
+      }
+
+      return withList(createStringField(name, first));
     }
 
     if (typeof first === 'number') {
@@ -128,12 +242,11 @@ const buildField = (name: string, value: JsonValue): Record<string, unknown> => 
     };
   }
 
-  return {
-    type: 'string',
-    name,
-    label: toLabel(name),
-  };
+  return createStringField(name, '');
 };
+
+const buildObjectFields = (value: Record<string, JsonValue>): TinaField[] =>
+  Object.entries(value).map(([name, fieldValue]) => buildExplicitField(name, fieldValue));
 
 export default defineConfig({
   branch,
@@ -171,7 +284,7 @@ export default defineConfig({
             delete: false,
           },
         },
-        fields: buildObjectFields(siteContent),
+        fields: buildObjectFields(siteContent) as any,
       },
     ],
   },
