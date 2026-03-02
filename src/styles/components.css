@@ -162,6 +162,8 @@
   justify-content: center;
   gap: 4px;
   padding: 6px 16px;
+  border-radius: 9999px;
+  background: transparent;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -178,16 +180,18 @@
   line-height: 20px;
 }
 
-.ep-header__nav-link:hover {
+.ep-header__nav-link:hover,
+.ep-header__nav-link:focus-visible {
   background: rgba(213, 239, 255, 0.16);
-  border-radius: 9999px;
+  outline: none;
 }
 
 .ep-header.is-scrolled .ep-header__nav-link {
   color: #6b7684;
 }
 
-.ep-header.is-scrolled .ep-header__nav-link:hover {
+.ep-header.is-scrolled .ep-header__nav-link:hover,
+.ep-header.is-scrolled .ep-header__nav-link:focus-visible {
   color: #2a4b70;
   background: rgba(47, 145, 202, 0.12);
 }
@@ -648,4 +652,3 @@
 .ep-mobile-cta-btn {
   width: 100%;
 }
-
