@@ -75,6 +75,15 @@ const externalSocials = [
   { label: 'WhatsApp', href: header?.whatsAppHref ?? '/' },
 ];
 
+const trustReviews = (trustSection.videoCards ?? [])
+  .slice(0, 4)
+  .map((videoCard, index) => ({
+    videoCard,
+    textCard: trustSection.textCards?.[index],
+    index,
+  }))
+  .filter((entry) => Boolean(entry.videoCard && entry.textCard));
+
 const biomarkerItems = (biomarkerPanel.items ?? []).filter((item) => Boolean(item));
 const biomarkerRows = [biomarkerItems.slice(0, 3), biomarkerItems.slice(3, 7), biomarkerItems.slice(7, 10)];
 const biomarkerRowStarts = [0, 3, 7];
@@ -459,29 +468,43 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
           </h2>
 
           <div class="trust-grid">
-            {trustSection.videoCards.map((item, index) => (
-              <article class="trust-card media-card">
-                <img src={avatarMap[index % avatarMap.length]} alt={item.thumbnailAlt} class="trust-visual" width="460" height="280" loading="lazy" />
-                <div class="trust-meta">
-                  <span class="handle">{item.handle}</span>
-                  <span class="member-pill">{trustSection.memberLabel}</span>
-                  <span class="meta-copy">{item.meta}</span>
-                </div>
-              </article>
-            ))}
+            {trustReviews.map(({ videoCard, textCard, index }) => {
+              const isTextFirst = index % 2 === 1;
 
-            {trustSection.textCards.map((item, index) => (
-              <article class="trust-card quote-card">
-                <div class="quote-head">
-                  <img src={avatarMap[index % avatarMap.length]} alt={item.profileAlt} width="48" height="48" loading="lazy" />
-                  <div>
-                    <strong>{item.name}</strong>
-                    <span>{trustSection.memberLabel}</span>
+              return (
+              <article class:list={['trust-review', { 'trust-review--text-first': isTextFirst }]}>
+                <div class="trust-review__media" data-tina-field={tinaField(trustSection, 'videoCards', index)}>
+                  <img
+                    src={avatarMap[index % avatarMap.length]}
+                    alt={videoCard.thumbnailAlt}
+                    class="trust-review__image"
+                    width="460"
+                    height="620"
+                    loading="lazy"
+                  />
+                  <div class="trust-review__media-gradient" aria-hidden="true"></div>
+                  <div class="trust-review__media-head">
+                    <img src={avatarMap[index % avatarMap.length]} alt={textCard.profileAlt} class="trust-review__avatar" width="44" height="44" loading="lazy" />
+                    <div>
+                      <strong class="trust-review__media-handle">{videoCard.handle}</strong>
+                      <span class="trust-review__media-meta">{videoCard.meta}</span>
+                    </div>
                   </div>
                 </div>
-                <p>{item.quote}</p>
+
+                <div class="trust-review__body" data-tina-field={tinaField(trustSection, 'textCards', index)}>
+                  <div class="trust-review__body-head">
+                    <img src={avatarMap[index % avatarMap.length]} alt={textCard.profileAlt} class="trust-review__avatar trust-review__avatar--body" width="40" height="40" loading="lazy" />
+                    <div class="trust-review__body-meta">
+                      <p class="trust-review__name">{textCard.name}</p>
+                      <p class="trust-review__member">{trustSection.memberLabel}</p>
+                    </div>
+                  </div>
+                  <p class="trust-review__quote">{textCard.quote}</p>
+                </div>
               </article>
-            ))}
+              );
+            })}
           </div>
 
           <div class="trust-footer-link">
@@ -626,45 +649,33 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
 
       <section class="section section-mission" data-tina-field={tinaField(siteContent, 'missionSection')}>
         <div class="container mission-layout">
-          <article class="mission-card">
-            <img src={imageMap.mission} alt={missionSection.mission.imageAlt} width="520" height="620" loading="lazy" />
-            <div class="mission-copy">
-              <p class="eyebrow">{missionSection.mission.name}</p>
-              <p class="role">{missionSection.mission.role}</p>
-              <h2>
-                <span>{missionSection.mission.headingLine1}</span>
-                <span class="script-line">{missionSection.mission.headingLine2}</span>
-              </h2>
-              <p>{missionSection.mission.description}</p>
-              <div class="ep-soft-liquid">
-                <div class="ep-soft-liquid__frame">
-                  <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
-                  <a href={missionSection.mission.ctaHref} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
-                    {missionSection.mission.ctaLabel}
-                  </a>
-                </div>
+          <figure class="mission-media" data-tina-field={tinaField(missionSection, 'mission')}>
+            <div class="mission-media-frame">
+              <div class="mission-media-inner">
+                <img src={imageMap.mission} alt={missionSection.mission.imageAlt} class="mission-media-image" width="519" height="544" loading="lazy" />
               </div>
             </div>
-          </article>
+            <figcaption class="mission-caption">
+              <p class="mission-name" data-tina-field={tinaField(missionSection.mission, 'name')}>{missionSection.mission.name}</p>
+              <p class="mission-role" data-tina-field={tinaField(missionSection.mission, 'role')}>{missionSection.mission.role}</p>
+            </figcaption>
+          </figure>
 
-          <article class="gallery-card">
-            <div class="gallery-head">
-              <h2>
-                <span>{missionSection.gallery.headingLine1}</span>
-                <span class="script-line">{missionSection.gallery.headingLine2}</span>
-              </h2>
-              <div class="ep-soft-liquid">
-                <div class="ep-soft-liquid__frame">
-                  <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
-                  <a href={missionSection.gallery.ctaHref} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
-                    {missionSection.gallery.ctaLabel}
-                  </a>
-                </div>
+          <article class="mission-content" data-tina-field={tinaField(missionSection, 'mission')}>
+            <h2>
+              <span data-tina-field={tinaField(missionSection.mission, 'headingLine1')}>{missionSection.mission.headingLine1}</span>
+              <span class="script-line" data-tina-field={tinaField(missionSection.mission, 'headingLine2')}>
+                {missionSection.mission.headingLine2}
+              </span>
+            </h2>
+            <p class="mission-description" data-tina-field={tinaField(missionSection.mission, 'description')}>{missionSection.mission.description}</p>
+            <div class="ep-soft-liquid">
+              <div class="ep-soft-liquid__frame">
+                <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                <a href={missionSection.mission.ctaHref} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                  {missionSection.mission.ctaLabel}
+                </a>
               </div>
-            </div>
-            <div class="gallery-grid">
-              <img src={imageMap.gallery1} alt={missionSection.gallery.images[0].alt} width="620" height="420" loading="lazy" />
-              <img src={imageMap.gallery2} alt={missionSection.gallery.images[1].alt} width="620" height="420" loading="lazy" />
             </div>
           </article>
         </div>
