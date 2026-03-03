@@ -26,15 +26,15 @@
     "items": [
       {
         "label": "Boiler Servicing",
-        "imagePath": "/api/media/file/Metabolic%20Health.png"
+        "imagePath": "/boiler emoji.png"
       },
       {
         "label": "Radiator Installation",
         "imagePath": "/radiator emoji.png"
       },
       {
-        "label": "Radiator Repairs",
-        "imagePath": "/api/media/file/Cardiovascular%20Health.png"
+        "label": "Pipe Repairs",
+        "imagePath": "/pipe repair emoji.png"
       },
       {
         "label": "Tap Repair",
@@ -46,23 +46,23 @@
       },
       {
         "label": "Small Leak Fixes",
-        "imagePath": "/api/media/file/Inflammation%20Markers.png"
+        "imagePath": "/pipe emoji.png"
       },
       {
         "label": "General Plumbing Handyman",
         "imagePath": "/api/media/file/Immunity%20Markers.png"
       },
       {
-        "label": "Homeowner Support",
-        "imagePath": "/api/media/file/Biological%20Aging%20Rate.png"
+        "label": "Friendly Support",
+        "imagePath": "/friendly emoji.png"
       },
       {
-        "label": "Expat-Friendly Service",
-        "imagePath": "/api/media/file/Autoimmune%20Indicators.png"
+        "label": "Gas Saving Advice",
+        "imagePath": "/gas saving emojio.png"
       },
       {
         "label": "Dutch + English Help",
-        "imagePath": "/api/media/file/Immunity%20Markers.png"
+        "imagePath": "/dutch + english emoji.png"
       }
     ]
   },
