@@ -629,8 +629,8 @@
 }
 
 .ep-mobile-panel__link span {
-  white-space: nowrap;
-  text-wrap: nowrap;
+  white-space: normal;
+  text-wrap: balance;
   font-size: 20px;
   font-weight: 450;
   line-height: 28px;
@@ -651,4 +651,18 @@
 
 .ep-mobile-cta-btn {
   width: 100%;
+}
+
+@media (max-width: 540px) {
+  .ep-btn,
+  .ep-soft-liquid__link,
+  .ep-dark-liquid__link {
+    white-space: normal;
+    text-wrap: balance;
+    text-align: center;
+    height: auto;
+    min-height: 51px;
+    max-width: 100%;
+    padding-inline: 24px;
+  }
 }

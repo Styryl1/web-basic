@@ -15,6 +15,8 @@ const siteContentResponse = tinaPayload
 const siteContent = (siteContentResponse as { siteContent: Record<string, unknown> }).siteContent as any;
 
 const {
+  mediaOrigin,
+  heroImagePath,
   seoTitle,
   seoDescription,
   canonicalOrigin,
@@ -50,6 +52,7 @@ const serviceCards = [
     titleLine1: featurePanel.prescriptionCard.titleLine1,
     titleLine2: featurePanel.prescriptionCard.titleLine2,
     href: featurePanel.prescriptionCard.href,
+    imagePath: featurePanel.prescriptionCard.imagePath,
   },
 ];
 
@@ -67,8 +70,8 @@ const imageMap = {
   newsletter: '/images/newsletter-bg.svg',
   footer: '/images/footer-card.svg',
 };
-
-const avatarMap = ['/images/avatar-1.svg', '/images/avatar-2.svg', '/images/avatar-3.svg', '/images/avatar-4.svg'];
+const trustThumbnailFallbacks = [imageMap.gallery1, imageMap.gallery2, imageMap.gallery1, imageMap.gallery2];
+const trustAvatarFallbacks = ['/images/avatar-1.svg', '/images/avatar-2.svg', '/images/avatar-3.svg', '/images/avatar-4.svg'];
 
 const externalSocials = [
   { label: 'Website', href: homepageUrl ?? '/' },
@@ -90,10 +93,41 @@ const biomarkerRowStarts = [0, 3, 7];
 const biomarkerMobileSpeeds = [34, 41, 37];
 const biomarkerMobileOffsets = [102.083, 728.5, 652.667];
 
-const resolveBiomarkerImage = (imagePath: string | undefined) => {
-  if (!imagePath) return '/images/hero.svg';
+const resolveContentImage = (imagePath: string | undefined, fallbackPath: string) => {
+  if (!imagePath) return fallbackPath;
+  if (/^https?:\/\//i.test(imagePath)) return imagePath;
+  if (imagePath.startsWith('/api/media/file/')) {
+    try {
+      return new URL(imagePath, mediaOrigin).toString();
+    } catch {
+      return imagePath;
+    }
+  }
   return imagePath;
 };
+
+const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
+const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
+const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
+const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
+const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
+const commandImage = resolveContentImage(commandCenterSection.appImagePath, imageMap.command);
+const processImage = resolveContentImage(ourProcessSection.imagePath, imageMap.process);
+const faqImage = resolveContentImage(faqSection.cardImagePath, imageMap.faq);
+const missionImage = resolveContentImage(missionSection.mission.imagePath, imageMap.mission);
+const newsletterImage = resolveContentImage(newsletterSection.backgroundImagePath, imageMap.newsletter);
+const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-big.svg');
+const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
+const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
+
+const getTrustThumbnailImage = (videoCard: Record<string, unknown>, index: number) =>
+  resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]);
+
+const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Record<string, unknown>, index: number) =>
+  resolveContentImage(
+    (textCard.profileImagePath as string | undefined) ?? (videoCard.profileImagePath as string | undefined),
+    trustAvatarFallbacks[index % trustAvatarFallbacks.length],
+  );
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription} canonical={canonicalOrigin} ogImage={ogImage} siteName={businessName}>
@@ -114,7 +148,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
 
           <div class="ep-header__inner">
             <a href="#top" class="ep-header__logo-link" aria-label={`${businessName} home`}>
-              <img src="/images/logo-blue.svg" alt="Logo" width="85" height="22" class="ep-header__logo" />
+              <img
+                src={headerLogoImage}
+                alt="Logo"
+                width="85"
+                height="22"
+                class="ep-header__logo"
+                data-tina-field={tinaField(header, 'logoImagePath')}
+              />
             </a>
 
             <nav class="ep-header__nav" aria-label="Main">
@@ -175,7 +216,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
         <div class="ep-mobile-panel" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation" hidden>
           <div class="ep-mobile-panel__head">
             <a href="#top" class="ep-mobile-panel__logo-link" aria-label={`${businessName} home`}>
-              <img src="/images/logo-blue.svg" alt="Logo" width="85" height="22" class="ep-mobile-panel__logo" />
+              <img
+                src={headerLogoImage}
+                alt="Logo"
+                width="85"
+                height="22"
+                class="ep-mobile-panel__logo"
+                data-tina-field={tinaField(header, 'logoImagePath')}
+              />
             </a>
 
             <button
@@ -249,7 +297,13 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
 
     <main id="top">
       <section class="hero" data-tina-field={tinaField(siteContent, 'hero')}>
-        <img src={imageMap.hero} alt="English Plumber hero image" class="hero-bg" loading="eager" />
+        <img
+          src={heroBackgroundImage}
+          alt="English Plumber hero image"
+          class="hero-bg"
+          loading="eager"
+          data-tina-field={tinaField(siteContent, 'heroImagePath')}
+        />
         <div class="hero-overlay"></div>
         <div class="container hero-content">
           <h1>
@@ -371,7 +425,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
         <div class="container">
           <div class="feature-cards-grid">
             <article class="image-card">
-              <img src={imageMap.card1} alt={serviceCards[0].alt} width="620" height="420" loading="lazy" />
+              <img
+                src={featureCardImages[0]}
+                alt={serviceCards[0].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'cards', 0)}
+              />
               <div class="card-caption">
                 <h3>
                   <span>{serviceCards[0].titleLine1}</span>
@@ -409,7 +470,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
             </article>
 
             <article class="image-card">
-              <img src={imageMap.card2} alt={serviceCards[1].alt} width="620" height="420" loading="lazy" />
+              <img
+                src={featureCardImages[1]}
+                alt={serviceCards[1].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'cards', 1)}
+              />
               <div class="card-caption">
                 <h3>
                   <span>{serviceCards[1].titleLine1}</span>
@@ -427,7 +495,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
             </article>
 
             <article class="image-card">
-              <img src={imageMap.card3} alt={serviceCards[2].alt} width="620" height="420" loading="lazy" />
+              <img
+                src={featureCardImages[2]}
+                alt={serviceCards[2].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'prescriptionCard')}
+              />
               <div class="card-caption">
                 <h3>
                   <span>{serviceCards[2].titleLine1}</span>
@@ -475,7 +550,7 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
               <article class:list={['trust-review', { 'trust-review--text-first': isTextFirst }]}>
                 <div class="trust-review__media" data-tina-field={tinaField(trustSection, 'videoCards', index)}>
                   <img
-                    src={avatarMap[index % avatarMap.length]}
+                    src={getTrustThumbnailImage(videoCard, index)}
                     alt={videoCard.thumbnailAlt}
                     class="trust-review__image"
                     width="460"
@@ -484,7 +559,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
                   />
                   <div class="trust-review__media-gradient" aria-hidden="true"></div>
                   <div class="trust-review__media-head">
-                    <img src={avatarMap[index % avatarMap.length]} alt={textCard.profileAlt} class="trust-review__avatar" width="44" height="44" loading="lazy" />
+                    <img
+                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      alt={textCard.profileAlt}
+                      class="trust-review__avatar"
+                      width="44"
+                      height="44"
+                      loading="lazy"
+                    />
                     <div>
                       <strong class="trust-review__media-handle">{videoCard.handle}</strong>
                       <span class="trust-review__media-meta">{videoCard.meta}</span>
@@ -494,7 +576,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
 
                 <div class="trust-review__body" data-tina-field={tinaField(trustSection, 'textCards', index)}>
                   <div class="trust-review__body-head">
-                    <img src={avatarMap[index % avatarMap.length]} alt={textCard.profileAlt} class="trust-review__avatar trust-review__avatar--body" width="40" height="40" loading="lazy" />
+                    <img
+                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      alt={textCard.profileAlt}
+                      class="trust-review__avatar trust-review__avatar--body"
+                      width="40"
+                      height="40"
+                      loading="lazy"
+                    />
                     <div class="trust-review__body-meta">
                       <p class="trust-review__name">{textCard.name}</p>
                       <p class="trust-review__member">{trustSection.memberLabel}</p>
@@ -529,7 +618,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
             </div>
           </div>
           <div class="command-image-wrap">
-            <img src={imageMap.command} alt={commandCenterSection.appImageAlt} width="660" height="760" loading="lazy" />
+            <img
+              src={commandImage}
+              alt={commandCenterSection.appImageAlt}
+              width="660"
+              height="760"
+              loading="lazy"
+              data-tina-field={tinaField(commandCenterSection, 'appImagePath')}
+            />
             <p class="loading-copy">{commandCenterSection.loadingAnimationLabel}</p>
           </div>
         </div>
@@ -537,7 +633,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
 
       <section class="section section-process" id="service-area" data-tina-field={tinaField(siteContent, 'ourProcessSection')}>
         <div class="container process-layout">
-          <img src={imageMap.process} alt={ourProcessSection.imageAlt} width="580" height="600" loading="lazy" />
+          <img
+            src={processImage}
+            alt={ourProcessSection.imageAlt}
+            width="580"
+            height="600"
+            loading="lazy"
+            data-tina-field={tinaField(ourProcessSection, 'imagePath')}
+          />
           <div>
             <h2>
               <span>{ourProcessSection.headingLine1}</span>
@@ -643,7 +746,14 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
               </div>
             </div>
           </div>
-          <img src={imageMap.faq} alt={faqSection.cardImageAlt} width="520" height="540" loading="lazy" />
+          <img
+            src={faqImage}
+            alt={faqSection.cardImageAlt}
+            width="520"
+            height="540"
+            loading="lazy"
+            data-tina-field={tinaField(faqSection, 'cardImagePath')}
+          />
         </div>
       </section>
 
@@ -652,7 +762,15 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
           <figure class="mission-media" data-tina-field={tinaField(missionSection, 'mission')}>
             <div class="mission-media-frame">
               <div class="mission-media-inner">
-                <img src={imageMap.mission} alt={missionSection.mission.imageAlt} class="mission-media-image" width="519" height="544" loading="lazy" />
+                <img
+                  src={missionImage}
+                  alt={missionSection.mission.imageAlt}
+                  class="mission-media-image"
+                  width="519"
+                  height="544"
+                  loading="lazy"
+                  data-tina-field={tinaField(missionSection.mission, 'imagePath')}
+                />
               </div>
             </div>
             <figcaption class="mission-caption">
@@ -682,7 +800,13 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
       </section>
 
       <section class="section section-newsletter" data-tina-field={tinaField(siteContent, 'newsletterSection')}>
-        <img src={imageMap.newsletter} alt={newsletterSection.backgroundImageAlt} class="newsletter-bg" loading="lazy" />
+        <img
+          src={newsletterImage}
+          alt={newsletterSection.backgroundImageAlt}
+          class="newsletter-bg"
+          loading="lazy"
+          data-tina-field={tinaField(newsletterSection, 'backgroundImagePath')}
+        />
         <div class="newsletter-overlay"></div>
         <div class="container newsletter-content">
           <h2>
@@ -706,7 +830,15 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
       <div class="container footer-shell">
         <div class="footer-main">
           <section class="footer-left">
-            <img src="/images/logo-big.svg" alt={footerSection.logoAlt} class="footer-logo" width="900" height="220" loading="lazy" />
+            <img
+              src={footerLogoImage}
+              alt={footerSection.logoAlt}
+              class="footer-logo"
+              width="900"
+              height="220"
+              loading="lazy"
+              data-tina-field={tinaField(footerSection, 'logoImagePath')}
+            />
 
             <p class="subscription-text">{footerSection.subscriptionText}</p>
             <form class="newsletter-form" action="#" method="post">
@@ -751,7 +883,18 @@ const resolveBiomarkerImage = (imagePath: string | undefined) => {
           </section>
 
           <section class="footer-card-col">
-            <img src={imageMap.footer} alt={footerSection.cardImageAlt} class="footer-card-image" width="382" height="467" loading="lazy" />
+            <picture>
+              <source media="(max-width: 860px)" srcset={footerMobileCardImage} data-tina-field={tinaField(footerSection, 'cardMobileImagePath')} />
+              <img
+                src={footerDesktopCardImage}
+                alt={footerSection.cardImageAlt}
+                class="footer-card-image"
+                width="382"
+                height="467"
+                loading="lazy"
+                data-tina-field={tinaField(footerSection, 'cardDesktopImagePath')}
+              />
+            </picture>
             <p>{footerSection.appPrompt}</p>
             <div class="store-links">
               <a href={footerSection.appStoreHref} target="_blank" rel="noopener noreferrer">{footerSection.appStoreAlt}</a>

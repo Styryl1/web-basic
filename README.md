@@ -27,7 +27,9 @@ Astro site with TinaCMS wired for Git-backed content editing.
 | Command | Action |
 | :-- | :-- |
 | `pnpm install` | Install dependencies |
-| `pnpm dev` | Start Astro + Tina local editing mode |
+| `pnpm dev` | Start Astro + Tina local editing mode (`tinacms dev`) |
+| `pnpm dev:cloud` | Build TinaCloud client then run Astro dev (for cloud-content preview) |
+| `pnpm dev:local` | Start Astro + Tina local file-based editing mode |
 | `pnpm dev:astro` | Start plain Astro dev server |
 | `pnpm build` | Tina Cloud build + Astro build (requires Tina env vars) |
 | `pnpm build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
@@ -47,6 +49,11 @@ Astro site with TinaCMS wired for Git-backed content editing.
    - Optional: `CF_PAGES_BRANCH` is already provided by Cloudflare.
    - Optional: `CF_PAGES_URL` is auto-provided on Cloudflare preview deploys and is used as fallback for visual preview URL.
 5. Trigger a new Cloudflare deploy.
+
+For TinaCloud-backed preview/deploy, create a local `.env` file (not committed) with the same values, then run:
+
+- `pnpm dev:cloud` (preview cloud-backed content in Astro dev)
+- `pnpm build` (production build path)
 
 Also set the Tina Cloud project Site URL / Allowed Origins to include:
 

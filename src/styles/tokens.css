@@ -66,11 +66,20 @@ html,
 body {
   margin: 0;
   padding: 0;
+  max-width: 100%;
   background: var(--bg);
   color: var(--ink);
   font-family: 'Avenir Next', 'Segoe UI', Tahoma, sans-serif;
   line-height: 1.45;
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 
 h1,
@@ -125,4 +134,3 @@ ol {
   top: -140px;
   visibility: hidden;
 }
-

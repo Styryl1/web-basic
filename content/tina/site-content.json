@@ -10,9 +10,6 @@
   "seoTitle": "English Plumber | Boiler Service & Plumbing in Medemblik",
   "seoDescription": "Friendly local plumber for expats and Dutch homeowners in Medemblik and nearby towns. Boiler servicing from €145, general plumbing at €95/hour. Send photos on WhatsApp +31 6 428 699 31.",
   "ogImage": "/family%20photo.PNG",
-  "enableRuntimeCopyRewrite": false,
-  "enableServerCopyRewrite": false,
-  "enableServerHeaderSlotRewrite": true,
   "hero": {
     "titleLine1": "Friendly Local Plumber",
     "titleLine2": "For Expats & Locals",
@@ -121,24 +118,32 @@
       {
         "thumbnailAlt": "Boiler service in Medemblik",
         "profileAlt": "Client in Medemblik",
+        "thumbnailImagePath": "/images/gallery-1.svg",
+        "profileImagePath": "/images/avatar-1.svg",
         "handle": "@medemblikhome",
         "meta": "Boiler service completed"
       },
       {
         "thumbnailAlt": "Radiator work in Hoorn",
         "profileAlt": "Client in Hoorn",
+        "thumbnailImagePath": "/images/gallery-2.svg",
+        "profileImagePath": "/images/avatar-2.svg",
         "handle": "@hoornhome",
         "meta": "Radiator upgrade completed"
       },
       {
         "thumbnailAlt": "Tap repair in Purmerend",
         "profileAlt": "Client in Purmerend",
+        "thumbnailImagePath": "/images/gallery-1.svg",
+        "profileImagePath": "/images/avatar-3.svg",
         "handle": "@purmerendhome",
         "meta": "Tap repair completed"
       },
       {
         "thumbnailAlt": "Plumbing handyman in Alkmaar",
         "profileAlt": "Client in Alkmaar",
+        "thumbnailImagePath": "/images/gallery-2.svg",
+        "profileImagePath": "/images/avatar-4.svg",
         "handle": "@alkmaarhome",
         "meta": "Small plumbing job completed"
       }
@@ -146,21 +151,25 @@
     "textCards": [
       {
         "profileAlt": "Profile Local Homeowner",
+        "profileImagePath": "/images/avatar-1.svg",
         "name": "Local Homeowner",
         "quote": "Review section is being updated with real customer feedback. For now, send photos on WhatsApp and I will reply with clear next steps."
       },
       {
         "profileAlt": "Profile Expat Client",
+        "profileImagePath": "/images/avatar-2.svg",
         "name": "Expat Client",
         "quote": "I work photo-first on WhatsApp, so you can explain the problem quickly in English and get a straightforward quote."
       },
       {
         "profileAlt": "Profile Dutch Homeowner",
+        "profileImagePath": "/images/avatar-3.svg",
         "name": "Dutch Homeowner",
         "quote": "Rates are transparent: €95 per hour for general work, boiler servicing from €145."
       },
       {
         "profileAlt": "Profile Service Area Client",
+        "profileImagePath": "/images/avatar-4.svg",
         "name": "Service Area Client",
         "quote": "Main area is Medemblik and nearby towns including Hoorn, Heerhugowaard, Purmerend, and Alkmaar."
       }
@@ -172,9 +181,11 @@
     "loadingAnimationLabel": "WhatsApp workflow preview...",
     "description": "Share photos, explain the issue, and get practical advice, pricing guidance, and booking confirmation in one WhatsApp conversation.",
     "ctaLabel": "View Services",
+    "appImagePath": "/images/command-center.svg",
     "appImageAlt": "English Plumber WhatsApp workflow"
   },
   "ourProcessSection": {
+    "imagePath": "/images/process.svg",
     "imageAlt": "English Plumber process",
     "headingLine1": "How It",
     "headingLine2": "Works",
@@ -361,6 +372,7 @@
   "faqSection": {
     "headingLine1": "Frequently Asked",
     "headingLine2": "Questions",
+    "cardImagePath": "/images/faq-card.svg",
     "items": [
       {
         "question": "Do you offer 24/7 emergency callouts?",
@@ -425,6 +437,7 @@
   },
   "footerSection": {
     "logoAlt": "English Plumber logo",
+    "logoImagePath": "/images/logo-big.svg",
     "subscriptionText": "Need help fast? Send photos and your postcode on WhatsApp for a clear first response.",
     "emailPlaceholder": "Email (optional)",
     "subscribeLabel": "Get Updates",
@@ -485,6 +498,7 @@
     "copyrightText": "© 2026 English Plumber | All Rights Reserved"
   },
   "header": {
+    "logoImagePath": "/images/logo-blue.svg",
     "whatsAppHref": "https://wa.me/31642869931",
     "primaryCtaLabel": "WhatsApp",
     "secondaryCtaLabel": "Free Quote",
