@@ -8,15 +8,12 @@ var site_content_default = {
   baseCity: "Medemblik",
   whatsappNumber: "+31 6 428 699 31",
   primaryArea: "Medemblik + 40km: Hoorn, Heerhugowaard, Purmerend, Alkmaar (not Amsterdam/Almere)",
-  heroImagePath: "/image?url=%2FIMG_8233.PNG&w=1920&q=75",
+  heroImagePath: "/family photo.PNG",
   canonicalOrigin: "https://englishplumber.nl/",
   homepageUrl: "https://englishplumber.nl/",
   seoTitle: "English Plumber | Boiler Service & Plumbing in Medemblik",
   seoDescription: "Friendly local plumber for expats and Dutch homeowners in Medemblik and nearby towns. Boiler servicing from \u20AC145, general plumbing at \u20AC95/hour. Send photos on WhatsApp +31 6 428 699 31.",
-  ogImage: "/IMG_8233.PNG",
-  enableRuntimeCopyRewrite: false,
-  enableServerCopyRewrite: false,
-  enableServerHeaderSlotRewrite: true,
+  ogImage: "/family%20photo.PNG",
   hero: {
     titleLine1: "Friendly Local Plumber",
     titleLine2: "For Expats & Locals",
@@ -30,43 +27,43 @@ var site_content_default = {
     items: [
       {
         label: "Boiler Servicing",
-        imagePath: "/api/media/file/Metabolic%20Health.png"
+        imagePath: "/boiler emoji.png"
       },
       {
         label: "Radiator Installation",
-        imagePath: "/api/media/file/Kidney%20and%20Liver%20Function.png"
+        imagePath: "/radiator emoji.png"
       },
       {
-        label: "Radiator Repairs",
-        imagePath: "/api/media/file/Cardiovascular%20Health.png"
+        label: "Pipe Repairs",
+        imagePath: "/pipe repair emoji.png"
       },
       {
         label: "Tap Repair",
-        imagePath: "/api/media/file/Hormone%20Levels.png"
+        imagePath: "/tap emoji.png"
       },
       {
         label: "Tap Replacement",
-        imagePath: "/api/media/file/Nutrient%20Levels.png"
+        imagePath: "/tap repair emoji.png"
       },
       {
         label: "Small Leak Fixes",
-        imagePath: "/api/media/file/Inflammation%20Markers.png"
+        imagePath: "/pipe emoji.png"
       },
       {
         label: "General Plumbing Handyman",
-        imagePath: "/api/media/file/Immunity%20Markers.png"
+        imagePath: "/plumbing emoji.png"
       },
       {
-        label: "Homeowner Support",
-        imagePath: "/api/media/file/Biological%20Aging%20Rate.png"
+        label: "Friendly Support",
+        imagePath: "/friendly emoji.png"
       },
       {
-        label: "Expat-Friendly Service",
-        imagePath: "/api/media/file/Autoimmune%20Indicators.png"
+        label: "Gas Saving Advice",
+        imagePath: "/gas saving emojio.png"
       },
       {
         label: "Dutch + English Help",
-        imagePath: "/api/media/file/Immunity%20Markers.png"
+        imagePath: "/dutch english emoji.png"
       }
     ]
   },
@@ -125,24 +122,32 @@ var site_content_default = {
       {
         thumbnailAlt: "Boiler service in Medemblik",
         profileAlt: "Client in Medemblik",
+        thumbnailImagePath: "/images/gallery-1.svg",
+        profileImagePath: "/images/avatar-1.svg",
         handle: "@medemblikhome",
         meta: "Boiler service completed"
       },
       {
         thumbnailAlt: "Radiator work in Hoorn",
         profileAlt: "Client in Hoorn",
+        thumbnailImagePath: "/images/gallery-2.svg",
+        profileImagePath: "/images/avatar-2.svg",
         handle: "@hoornhome",
         meta: "Radiator upgrade completed"
       },
       {
         thumbnailAlt: "Tap repair in Purmerend",
         profileAlt: "Client in Purmerend",
+        thumbnailImagePath: "/images/gallery-1.svg",
+        profileImagePath: "/images/avatar-3.svg",
         handle: "@purmerendhome",
         meta: "Tap repair completed"
       },
       {
         thumbnailAlt: "Plumbing handyman in Alkmaar",
         profileAlt: "Client in Alkmaar",
+        thumbnailImagePath: "/images/gallery-2.svg",
+        profileImagePath: "/images/avatar-4.svg",
         handle: "@alkmaarhome",
         meta: "Small plumbing job completed"
       }
@@ -150,21 +155,25 @@ var site_content_default = {
     textCards: [
       {
         profileAlt: "Profile Local Homeowner",
+        profileImagePath: "/images/avatar-1.svg",
         name: "Local Homeowner",
         quote: "Review section is being updated with real customer feedback. For now, send photos on WhatsApp and I will reply with clear next steps."
       },
       {
         profileAlt: "Profile Expat Client",
+        profileImagePath: "/images/avatar-2.svg",
         name: "Expat Client",
         quote: "I work photo-first on WhatsApp, so you can explain the problem quickly in English and get a straightforward quote."
       },
       {
         profileAlt: "Profile Dutch Homeowner",
+        profileImagePath: "/images/avatar-3.svg",
         name: "Dutch Homeowner",
         quote: "Rates are transparent: \u20AC95 per hour for general work, boiler servicing from \u20AC145."
       },
       {
         profileAlt: "Profile Service Area Client",
+        profileImagePath: "/images/avatar-4.svg",
         name: "Service Area Client",
         quote: "Main area is Medemblik and nearby towns including Hoorn, Heerhugowaard, Purmerend, and Alkmaar."
       }
@@ -176,9 +185,11 @@ var site_content_default = {
     loadingAnimationLabel: "WhatsApp workflow preview...",
     description: "Share photos, explain the issue, and get practical advice, pricing guidance, and booking confirmation in one WhatsApp conversation.",
     ctaLabel: "View Services",
+    appImagePath: "/images/command-center.svg",
     appImageAlt: "English Plumber WhatsApp workflow"
   },
   ourProcessSection: {
+    imagePath: "/images/process.svg",
     imageAlt: "English Plumber process",
     headingLine1: "How It",
     headingLine2: "Works",
@@ -365,6 +376,7 @@ var site_content_default = {
   faqSection: {
     headingLine1: "Frequently Asked",
     headingLine2: "Questions",
+    cardImagePath: "/images/faq-card.svg",
     items: [
       {
         question: "Do you offer 24/7 emergency callouts?",
@@ -429,6 +441,7 @@ var site_content_default = {
   },
   footerSection: {
     logoAlt: "English Plumber logo",
+    logoImagePath: "/images/logo-big.svg",
     subscriptionText: "Need help fast? Send photos and your postcode on WhatsApp for a clear first response.",
     emailPlaceholder: "Email (optional)",
     subscribeLabel: "Get Updates",
@@ -489,6 +502,7 @@ var site_content_default = {
     copyrightText: "\xA9 2026 English Plumber | All Rights Reserved"
   },
   header: {
+    logoImagePath: "/images/logo-blue.svg",
     whatsAppHref: "https://wa.me/31642869931",
     primaryCtaLabel: "WhatsApp",
     secondaryCtaLabel: "Free Quote",

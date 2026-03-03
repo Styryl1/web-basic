@@ -242,6 +242,8 @@ export type SiteContentTrustSectionVideoCards = {
   __typename?: 'SiteContentTrustSectionVideoCards';
   thumbnailAlt?: Maybe<Scalars['String']['output']>;
   profileAlt?: Maybe<Scalars['String']['output']>;
+  thumbnailImagePath?: Maybe<Scalars['String']['output']>;
+  profileImagePath?: Maybe<Scalars['String']['output']>;
   handle?: Maybe<Scalars['String']['output']>;
   meta?: Maybe<Scalars['String']['output']>;
 };
@@ -249,6 +251,7 @@ export type SiteContentTrustSectionVideoCards = {
 export type SiteContentTrustSectionTextCards = {
   __typename?: 'SiteContentTrustSectionTextCards';
   profileAlt?: Maybe<Scalars['String']['output']>;
+  profileImagePath?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   quote?: Maybe<Scalars['String']['output']>;
 };
@@ -270,6 +273,7 @@ export type SiteContentCommandCenterSection = {
   loadingAnimationLabel?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
+  appImagePath?: Maybe<Scalars['String']['output']>;
   appImageAlt?: Maybe<Scalars['String']['output']>;
 };
 
@@ -281,6 +285,7 @@ export type SiteContentOurProcessSectionSteps = {
 
 export type SiteContentOurProcessSection = {
   __typename?: 'SiteContentOurProcessSection';
+  imagePath?: Maybe<Scalars['String']['output']>;
   imageAlt?: Maybe<Scalars['String']['output']>;
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
@@ -354,6 +359,7 @@ export type SiteContentFaqSection = {
   __typename?: 'SiteContentFaqSection';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
+  cardImagePath?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<Maybe<SiteContentFaqSectionItems>>>;
   cardImageAlt?: Maybe<Scalars['String']['output']>;
   supportTitle?: Maybe<Scalars['String']['output']>;
@@ -422,6 +428,7 @@ export type SiteContentFooterSectionAboutLinks = {
 export type SiteContentFooterSection = {
   __typename?: 'SiteContentFooterSection';
   logoAlt?: Maybe<Scalars['String']['output']>;
+  logoImagePath?: Maybe<Scalars['String']['output']>;
   subscriptionText?: Maybe<Scalars['String']['output']>;
   emailPlaceholder?: Maybe<Scalars['String']['output']>;
   subscribeLabel?: Maybe<Scalars['String']['output']>;
@@ -452,6 +459,7 @@ export type SiteContentHeaderNavItems = {
 
 export type SiteContentHeader = {
   __typename?: 'SiteContentHeader';
+  logoImagePath?: Maybe<Scalars['String']['output']>;
   whatsAppHref?: Maybe<Scalars['String']['output']>;
   primaryCtaLabel?: Maybe<Scalars['String']['output']>;
   secondaryCtaLabel?: Maybe<Scalars['String']['output']>;
@@ -472,9 +480,6 @@ export type SiteContent = Node & Document & {
   seoTitle?: Maybe<Scalars['String']['output']>;
   seoDescription?: Maybe<Scalars['String']['output']>;
   ogImage?: Maybe<Scalars['String']['output']>;
-  enableRuntimeCopyRewrite?: Maybe<Scalars['Boolean']['output']>;
-  enableServerCopyRewrite?: Maybe<Scalars['Boolean']['output']>;
-  enableServerHeaderSlotRewrite?: Maybe<Scalars['Boolean']['output']>;
   hero?: Maybe<SiteContentHero>;
   biomarkerPanel?: Maybe<SiteContentBiomarkerPanel>;
   featurePanel?: Maybe<SiteContentFeaturePanel>;
@@ -508,11 +513,6 @@ export type ImageFilter = {
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type SiteContentHeroFilter = {
@@ -583,12 +583,15 @@ export type SiteContentFeaturePanelFilter = {
 export type SiteContentTrustSectionVideoCardsFilter = {
   thumbnailAlt?: InputMaybe<StringFilter>;
   profileAlt?: InputMaybe<StringFilter>;
+  thumbnailImagePath?: InputMaybe<ImageFilter>;
+  profileImagePath?: InputMaybe<ImageFilter>;
   handle?: InputMaybe<StringFilter>;
   meta?: InputMaybe<StringFilter>;
 };
 
 export type SiteContentTrustSectionTextCardsFilter = {
   profileAlt?: InputMaybe<StringFilter>;
+  profileImagePath?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   quote?: InputMaybe<StringFilter>;
 };
@@ -608,6 +611,7 @@ export type SiteContentCommandCenterSectionFilter = {
   loadingAnimationLabel?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
+  appImagePath?: InputMaybe<ImageFilter>;
   appImageAlt?: InputMaybe<StringFilter>;
 };
 
@@ -617,10 +621,16 @@ export type SiteContentOurProcessSectionStepsFilter = {
 };
 
 export type SiteContentOurProcessSectionFilter = {
+  imagePath?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   steps?: InputMaybe<SiteContentOurProcessSectionStepsFilter>;
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type SiteContentChoosePathSectionPlansPricingFilter = {
@@ -680,6 +690,7 @@ export type SiteContentFaqSectionItemsFilter = {
 export type SiteContentFaqSectionFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
+  cardImagePath?: InputMaybe<ImageFilter>;
   items?: InputMaybe<SiteContentFaqSectionItemsFilter>;
   cardImageAlt?: InputMaybe<StringFilter>;
   supportTitle?: InputMaybe<StringFilter>;
@@ -740,6 +751,7 @@ export type SiteContentFooterSectionAboutLinksFilter = {
 
 export type SiteContentFooterSectionFilter = {
   logoAlt?: InputMaybe<StringFilter>;
+  logoImagePath?: InputMaybe<ImageFilter>;
   subscriptionText?: InputMaybe<StringFilter>;
   emailPlaceholder?: InputMaybe<StringFilter>;
   subscribeLabel?: InputMaybe<StringFilter>;
@@ -768,6 +780,7 @@ export type SiteContentHeaderNavItemsFilter = {
 };
 
 export type SiteContentHeaderFilter = {
+  logoImagePath?: InputMaybe<ImageFilter>;
   whatsAppHref?: InputMaybe<StringFilter>;
   primaryCtaLabel?: InputMaybe<StringFilter>;
   secondaryCtaLabel?: InputMaybe<StringFilter>;
@@ -787,9 +800,6 @@ export type SiteContentFilter = {
   seoTitle?: InputMaybe<StringFilter>;
   seoDescription?: InputMaybe<StringFilter>;
   ogImage?: InputMaybe<ImageFilter>;
-  enableRuntimeCopyRewrite?: InputMaybe<BooleanFilter>;
-  enableServerCopyRewrite?: InputMaybe<BooleanFilter>;
-  enableServerHeaderSlotRewrite?: InputMaybe<BooleanFilter>;
   hero?: InputMaybe<SiteContentHeroFilter>;
   biomarkerPanel?: InputMaybe<SiteContentBiomarkerPanelFilter>;
   featurePanel?: InputMaybe<SiteContentFeaturePanelFilter>;
@@ -954,12 +964,15 @@ export type SiteContentFeaturePanelMutation = {
 export type SiteContentTrustSectionVideoCardsMutation = {
   thumbnailAlt?: InputMaybe<Scalars['String']['input']>;
   profileAlt?: InputMaybe<Scalars['String']['input']>;
+  thumbnailImagePath?: InputMaybe<Scalars['String']['input']>;
+  profileImagePath?: InputMaybe<Scalars['String']['input']>;
   handle?: InputMaybe<Scalars['String']['input']>;
   meta?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SiteContentTrustSectionTextCardsMutation = {
   profileAlt?: InputMaybe<Scalars['String']['input']>;
+  profileImagePath?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   quote?: InputMaybe<Scalars['String']['input']>;
 };
@@ -979,6 +992,7 @@ export type SiteContentCommandCenterSectionMutation = {
   loadingAnimationLabel?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  appImagePath?: InputMaybe<Scalars['String']['input']>;
   appImageAlt?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -988,6 +1002,7 @@ export type SiteContentOurProcessSectionStepsMutation = {
 };
 
 export type SiteContentOurProcessSectionMutation = {
+  imagePath?: InputMaybe<Scalars['String']['input']>;
   imageAlt?: InputMaybe<Scalars['String']['input']>;
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
@@ -1051,6 +1066,7 @@ export type SiteContentFaqSectionItemsMutation = {
 export type SiteContentFaqSectionMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
+  cardImagePath?: InputMaybe<Scalars['String']['input']>;
   items?: InputMaybe<Array<InputMaybe<SiteContentFaqSectionItemsMutation>>>;
   cardImageAlt?: InputMaybe<Scalars['String']['input']>;
   supportTitle?: InputMaybe<Scalars['String']['input']>;
@@ -1111,6 +1127,7 @@ export type SiteContentFooterSectionAboutLinksMutation = {
 
 export type SiteContentFooterSectionMutation = {
   logoAlt?: InputMaybe<Scalars['String']['input']>;
+  logoImagePath?: InputMaybe<Scalars['String']['input']>;
   subscriptionText?: InputMaybe<Scalars['String']['input']>;
   emailPlaceholder?: InputMaybe<Scalars['String']['input']>;
   subscribeLabel?: InputMaybe<Scalars['String']['input']>;
@@ -1139,6 +1156,7 @@ export type SiteContentHeaderNavItemsMutation = {
 };
 
 export type SiteContentHeaderMutation = {
+  logoImagePath?: InputMaybe<Scalars['String']['input']>;
   whatsAppHref?: InputMaybe<Scalars['String']['input']>;
   primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
   secondaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
@@ -1158,9 +1176,6 @@ export type SiteContentMutation = {
   seoTitle?: InputMaybe<Scalars['String']['input']>;
   seoDescription?: InputMaybe<Scalars['String']['input']>;
   ogImage?: InputMaybe<Scalars['String']['input']>;
-  enableRuntimeCopyRewrite?: InputMaybe<Scalars['Boolean']['input']>;
-  enableServerCopyRewrite?: InputMaybe<Scalars['Boolean']['input']>;
-  enableServerHeaderSlotRewrite?: InputMaybe<Scalars['Boolean']['input']>;
   hero?: InputMaybe<SiteContentHeroMutation>;
   biomarkerPanel?: InputMaybe<SiteContentBiomarkerPanelMutation>;
   featurePanel?: InputMaybe<SiteContentFeaturePanelMutation>;
@@ -1179,14 +1194,14 @@ export type SiteContentMutation = {
   regexTextReplacements?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type SiteContentPartsFragment = { __typename: 'SiteContent', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, enableRuntimeCopyRewrite?: boolean | null, enableServerCopyRewrite?: boolean | null, enableServerHeaderSlotRewrite?: boolean | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null };
+export type SiteContentPartsFragment = { __typename: 'SiteContent', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null };
 
 export type SiteContentQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type SiteContentQuery = { __typename?: 'Query', siteContent: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, enableRuntimeCopyRewrite?: boolean | null, enableServerCopyRewrite?: boolean | null, enableServerHeaderSlotRewrite?: boolean | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } };
+export type SiteContentQuery = { __typename?: 'Query', siteContent: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } };
 
 export type SiteContentConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1198,7 +1213,7 @@ export type SiteContentConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteContentConnectionQuery = { __typename?: 'Query', siteContentConnection: { __typename?: 'SiteContentConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteContentConnectionEdges', cursor: string, node?: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, enableRuntimeCopyRewrite?: boolean | null, enableServerCopyRewrite?: boolean | null, enableServerHeaderSlotRewrite?: boolean | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null> | null } };
+export type SiteContentConnectionQuery = { __typename?: 'Query', siteContentConnection: { __typename?: 'SiteContentConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteContentConnectionEdges', cursor: string, node?: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, emailPlaceholder?: string | null, subscribeLabel?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null> | null } };
 
 export const SiteContentPartsFragmentDoc = gql`
     fragment SiteContentParts on SiteContent {
@@ -1214,9 +1229,6 @@ export const SiteContentPartsFragmentDoc = gql`
   seoTitle
   seoDescription
   ogImage
-  enableRuntimeCopyRewrite
-  enableServerCopyRewrite
-  enableServerHeaderSlotRewrite
   hero {
     __typename
     titleLine1
@@ -1287,12 +1299,15 @@ export const SiteContentPartsFragmentDoc = gql`
       __typename
       thumbnailAlt
       profileAlt
+      thumbnailImagePath
+      profileImagePath
       handle
       meta
     }
     textCards {
       __typename
       profileAlt
+      profileImagePath
       name
       quote
     }
@@ -1304,10 +1319,12 @@ export const SiteContentPartsFragmentDoc = gql`
     loadingAnimationLabel
     description
     ctaLabel
+    appImagePath
     appImageAlt
   }
   ourProcessSection {
     __typename
+    imagePath
     imageAlt
     headingLine1
     headingLine2
@@ -1363,6 +1380,7 @@ export const SiteContentPartsFragmentDoc = gql`
     __typename
     headingLine1
     headingLine2
+    cardImagePath
     items {
       __typename
       question
@@ -1414,6 +1432,7 @@ export const SiteContentPartsFragmentDoc = gql`
   footerSection {
     __typename
     logoAlt
+    logoImagePath
     subscriptionText
     emailPlaceholder
     subscribeLabel
@@ -1445,6 +1464,7 @@ export const SiteContentPartsFragmentDoc = gql`
   }
   header {
     __typename
+    logoImagePath
     whatsAppHref
     primaryCtaLabel
     secondaryCtaLabel

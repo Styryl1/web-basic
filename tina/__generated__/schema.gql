@@ -155,12 +155,15 @@ type SiteContentFeaturePanel {
 type SiteContentTrustSectionVideoCards {
   thumbnailAlt: String
   profileAlt: String
+  thumbnailImagePath: String
+  profileImagePath: String
   handle: String
   meta: String
 }
 
 type SiteContentTrustSectionTextCards {
   profileAlt: String
+  profileImagePath: String
   name: String
   quote: String
 }
@@ -180,6 +183,7 @@ type SiteContentCommandCenterSection {
   loadingAnimationLabel: String
   description: String
   ctaLabel: String
+  appImagePath: String
   appImageAlt: String
 }
 
@@ -189,6 +193,7 @@ type SiteContentOurProcessSectionSteps {
 }
 
 type SiteContentOurProcessSection {
+  imagePath: String
   imageAlt: String
   headingLine1: String
   headingLine2: String
@@ -252,6 +257,7 @@ type SiteContentFaqSectionItems {
 type SiteContentFaqSection {
   headingLine1: String
   headingLine2: String
+  cardImagePath: String
   items: [SiteContentFaqSectionItems]
   cardImageAlt: String
   supportTitle: String
@@ -312,6 +318,7 @@ type SiteContentFooterSectionAboutLinks {
 
 type SiteContentFooterSection {
   logoAlt: String
+  logoImagePath: String
   subscriptionText: String
   emailPlaceholder: String
   subscribeLabel: String
@@ -340,6 +347,7 @@ type SiteContentHeaderNavItems {
 }
 
 type SiteContentHeader {
+  logoImagePath: String
   whatsAppHref: String
   primaryCtaLabel: String
   secondaryCtaLabel: String
@@ -359,9 +367,6 @@ type SiteContent implements Node & Document {
   seoTitle: String
   seoDescription: String
   ogImage: String
-  enableRuntimeCopyRewrite: Boolean
-  enableServerCopyRewrite: Boolean
-  enableServerHeaderSlotRewrite: Boolean
   hero: SiteContentHero
   biomarkerPanel: SiteContentBiomarkerPanel
   featurePanel: SiteContentFeaturePanel
@@ -395,11 +400,6 @@ input ImageFilter {
   eq: String
   exists: Boolean
   in: [String]
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
 }
 
 input SiteContentHeroFilter {
@@ -470,12 +470,15 @@ input SiteContentFeaturePanelFilter {
 input SiteContentTrustSectionVideoCardsFilter {
   thumbnailAlt: StringFilter
   profileAlt: StringFilter
+  thumbnailImagePath: ImageFilter
+  profileImagePath: ImageFilter
   handle: StringFilter
   meta: StringFilter
 }
 
 input SiteContentTrustSectionTextCardsFilter {
   profileAlt: StringFilter
+  profileImagePath: ImageFilter
   name: StringFilter
   quote: StringFilter
 }
@@ -495,6 +498,7 @@ input SiteContentCommandCenterSectionFilter {
   loadingAnimationLabel: StringFilter
   description: StringFilter
   ctaLabel: StringFilter
+  appImagePath: ImageFilter
   appImageAlt: StringFilter
 }
 
@@ -504,10 +508,16 @@ input SiteContentOurProcessSectionStepsFilter {
 }
 
 input SiteContentOurProcessSectionFilter {
+  imagePath: ImageFilter
   imageAlt: StringFilter
   headingLine1: StringFilter
   headingLine2: StringFilter
   steps: SiteContentOurProcessSectionStepsFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
 }
 
 input SiteContentChoosePathSectionPlansPricingFilter {
@@ -567,6 +577,7 @@ input SiteContentFaqSectionItemsFilter {
 input SiteContentFaqSectionFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
+  cardImagePath: ImageFilter
   items: SiteContentFaqSectionItemsFilter
   cardImageAlt: StringFilter
   supportTitle: StringFilter
@@ -627,6 +638,7 @@ input SiteContentFooterSectionAboutLinksFilter {
 
 input SiteContentFooterSectionFilter {
   logoAlt: StringFilter
+  logoImagePath: ImageFilter
   subscriptionText: StringFilter
   emailPlaceholder: StringFilter
   subscribeLabel: StringFilter
@@ -655,6 +667,7 @@ input SiteContentHeaderNavItemsFilter {
 }
 
 input SiteContentHeaderFilter {
+  logoImagePath: ImageFilter
   whatsAppHref: StringFilter
   primaryCtaLabel: StringFilter
   secondaryCtaLabel: StringFilter
@@ -674,9 +687,6 @@ input SiteContentFilter {
   seoTitle: StringFilter
   seoDescription: StringFilter
   ogImage: ImageFilter
-  enableRuntimeCopyRewrite: BooleanFilter
-  enableServerCopyRewrite: BooleanFilter
-  enableServerHeaderSlotRewrite: BooleanFilter
   hero: SiteContentHeroFilter
   biomarkerPanel: SiteContentBiomarkerPanelFilter
   featurePanel: SiteContentFeaturePanelFilter
@@ -793,12 +803,15 @@ input SiteContentFeaturePanelMutation {
 input SiteContentTrustSectionVideoCardsMutation {
   thumbnailAlt: String
   profileAlt: String
+  thumbnailImagePath: String
+  profileImagePath: String
   handle: String
   meta: String
 }
 
 input SiteContentTrustSectionTextCardsMutation {
   profileAlt: String
+  profileImagePath: String
   name: String
   quote: String
 }
@@ -818,6 +831,7 @@ input SiteContentCommandCenterSectionMutation {
   loadingAnimationLabel: String
   description: String
   ctaLabel: String
+  appImagePath: String
   appImageAlt: String
 }
 
@@ -827,6 +841,7 @@ input SiteContentOurProcessSectionStepsMutation {
 }
 
 input SiteContentOurProcessSectionMutation {
+  imagePath: String
   imageAlt: String
   headingLine1: String
   headingLine2: String
@@ -890,6 +905,7 @@ input SiteContentFaqSectionItemsMutation {
 input SiteContentFaqSectionMutation {
   headingLine1: String
   headingLine2: String
+  cardImagePath: String
   items: [SiteContentFaqSectionItemsMutation]
   cardImageAlt: String
   supportTitle: String
@@ -950,6 +966,7 @@ input SiteContentFooterSectionAboutLinksMutation {
 
 input SiteContentFooterSectionMutation {
   logoAlt: String
+  logoImagePath: String
   subscriptionText: String
   emailPlaceholder: String
   subscribeLabel: String
@@ -978,6 +995,7 @@ input SiteContentHeaderNavItemsMutation {
 }
 
 input SiteContentHeaderMutation {
+  logoImagePath: String
   whatsAppHref: String
   primaryCtaLabel: String
   secondaryCtaLabel: String
@@ -997,9 +1015,6 @@ input SiteContentMutation {
   seoTitle: String
   seoDescription: String
   ogImage: String
-  enableRuntimeCopyRewrite: Boolean
-  enableServerCopyRewrite: Boolean
-  enableServerHeaderSlotRewrite: Boolean
   hero: SiteContentHeroMutation
   biomarkerPanel: SiteContentBiomarkerPanelMutation
   featurePanel: SiteContentFeaturePanelMutation

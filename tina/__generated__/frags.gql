@@ -11,9 +11,6 @@ fragment SiteContentParts on SiteContent {
   seoTitle
   seoDescription
   ogImage
-  enableRuntimeCopyRewrite
-  enableServerCopyRewrite
-  enableServerHeaderSlotRewrite
   hero {
     __typename
     titleLine1
@@ -84,12 +81,15 @@ fragment SiteContentParts on SiteContent {
       __typename
       thumbnailAlt
       profileAlt
+      thumbnailImagePath
+      profileImagePath
       handle
       meta
     }
     textCards {
       __typename
       profileAlt
+      profileImagePath
       name
       quote
     }
@@ -101,10 +101,12 @@ fragment SiteContentParts on SiteContent {
     loadingAnimationLabel
     description
     ctaLabel
+    appImagePath
     appImageAlt
   }
   ourProcessSection {
     __typename
+    imagePath
     imageAlt
     headingLine1
     headingLine2
@@ -160,6 +162,7 @@ fragment SiteContentParts on SiteContent {
     __typename
     headingLine1
     headingLine2
+    cardImagePath
     items {
       __typename
       question
@@ -211,6 +214,7 @@ fragment SiteContentParts on SiteContent {
   footerSection {
     __typename
     logoAlt
+    logoImagePath
     subscriptionText
     emailPlaceholder
     subscribeLabel
@@ -242,6 +246,7 @@ fragment SiteContentParts on SiteContent {
   }
   header {
     __typename
+    logoImagePath
     whatsAppHref
     primaryCtaLabel
     secondaryCtaLabel
