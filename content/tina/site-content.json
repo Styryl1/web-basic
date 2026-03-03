@@ -42,7 +42,7 @@
       },
       {
         "label": "Tap Replacement",
-        "imagePath": "/api/media/file/Nutrient%20Levels.png"
+        "imagePath": "/tap repair emoji.png"
       },
       {
         "label": "Small Leak Fixes",
@@ -50,7 +50,7 @@
       },
       {
         "label": "General Plumbing Handyman",
-        "imagePath": "/api/media/file/Immunity%20Markers.png"
+        "imagePath": "/plumbing emoji.png"
       },
       {
         "label": "Friendly Support",
@@ -62,7 +62,7 @@
       },
       {
         "label": "Dutch + English Help",
-        "imagePath": "/dutch + english emoji.png"
+        "imagePath": "/dutch%20+%20english%20emoji.png"
       }
     ]
   },
