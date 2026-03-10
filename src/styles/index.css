@@ -1044,28 +1044,6 @@ details p {
   font-size: 0.92rem;
 }
 
-.newsletter-form {
-  margin-top: 16px;
-  display: flex;
-  gap: 8px;
-  max-width: 520px;
-}
-
-.newsletter-form input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid #617397;
-  border-radius: 999px;
-  background: transparent;
-  color: #f6f7f9;
-  padding: 0.63rem 0.82rem;
-  font-size: 0.78rem;
-}
-
-.newsletter-form input::placeholder {
-  color: #adb7cc;
-}
-
 .footer-socials {
   margin-top: 30px;
   display: grid;
@@ -1310,11 +1288,6 @@ details p {
 
   .footer-logo {
     max-width: 520px;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-    align-items: stretch;
   }
 
   .footer-links {
