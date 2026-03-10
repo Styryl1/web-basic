@@ -28,7 +28,6 @@ const {
   biomarkerPanel,
   featurePanel,
   trustSection,
-  commandCenterSection,
   ourProcessSection,
   choosePathSection,
   faqSection,
@@ -61,7 +60,6 @@ const imageMap = {
   card1: '/images/service-card-1.svg',
   card2: '/images/service-card-2.svg',
   card3: '/images/service-card-3.svg',
-  command: '/images/command-center.svg',
   process: '/images/process.svg',
   faq: '/images/faq-card.svg',
   mission: '/images/mission.svg',
@@ -111,7 +109,6 @@ const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
 const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
 const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
 const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
-const commandImage = resolveContentImage(commandCenterSection.appImagePath, imageMap.command);
 const processImage = resolveContentImage(ourProcessSection.imagePath, imageMap.process);
 const faqImage = resolveContentImage(faqSection.cardImagePath, imageMap.faq);
 const missionImage = resolveContentImage(missionSection.mission.imagePath, imageMap.mission);
@@ -598,35 +595,6 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
 
           <div class="trust-footer-link">
             <a href={header.whatsAppHref} target="_blank" rel="noopener noreferrer">{trustSection.readMoreLabel}</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-command" data-tina-field={tinaField(siteContent, 'commandCenterSection')}>
-        <div class="container command-layout">
-          <div>
-            <h2>
-              <span>{commandCenterSection.headingLine1}</span>
-              <span class="script-line">{commandCenterSection.headingLine2}</span>
-            </h2>
-            <p>{commandCenterSection.description}</p>
-            <div class="ep-soft-liquid">
-              <div class="ep-soft-liquid__frame">
-                <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
-                <a href="#pricing" class="btn btn-soft ep-soft-liquid__link">{commandCenterSection.ctaLabel}</a>
-              </div>
-            </div>
-          </div>
-          <div class="command-image-wrap">
-            <img
-              src={commandImage}
-              alt={commandCenterSection.appImageAlt}
-              width="660"
-              height="760"
-              loading="lazy"
-              data-tina-field={tinaField(commandCenterSection, 'appImagePath')}
-            />
-            <p class="loading-copy">{commandCenterSection.loadingAnimationLabel}</p>
           </div>
         </div>
       </section>

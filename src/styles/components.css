@@ -369,6 +369,8 @@
   transition-duration: 0.15s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   background: transparent;
+  color: rgb(17, 57, 101);
+  z-index: 3;
 }
 
 .btn.ep-soft-liquid__link:hover,
@@ -414,6 +416,7 @@
   width: 100%;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   background: transparent;
+  color: rgb(140, 214, 254);
   z-index: 3;
 }
 

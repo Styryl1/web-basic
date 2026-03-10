@@ -627,42 +627,6 @@ h2 {
   }
 }
 
-.command-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr);
-  align-items: center;
-  gap: 52px;
-}
-
-.command-layout p {
-  margin-top: 20px;
-  margin-bottom: 28px;
-  color: var(--muted);
-  max-width: 640px;
-  font-size: 1.08rem;
-}
-
-.command-image-wrap {
-  position: relative;
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  padding: 14px;
-}
-
-.command-image-wrap img {
-  border-radius: 14px;
-  width: 100%;
-  height: auto;
-}
-
-.loading-copy {
-  font-size: 0.78rem;
-  color: #5f6e8e;
-  margin-top: 12px;
-}
-
 .section-process {
   background: #eef6ff;
 }
@@ -1306,7 +1270,6 @@ details p {
   }
 
   .two-col,
-  .command-layout,
   .process-layout,
   .faq-layout,
   .feature-cards-grid {
