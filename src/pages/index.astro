@@ -16,6 +16,8 @@ const siteContent = (siteContentResponse as { siteContent: Record<string, unknow
 
 const {
   mediaOrigin,
+  baseCity,
+  whatsappNumber,
   heroImagePath,
   seoTitle,
   seoDescription,
@@ -119,6 +121,78 @@ const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImag
 const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
 const serviceAreaMapEmbedUrl = serviceAreaSection.mapEmbedUrl || 'https://www.google.com/maps?q=Medemblik,+Netherlands&output=embed';
 
+const resolveAbsoluteUrl = (value?: string) => {
+  if (!value) return undefined;
+  try {
+    return new URL(value).toString();
+  } catch {
+    // Resolve relative paths against canonical/home URL.
+  }
+
+  const base = canonicalOrigin || homepageUrl || 'https://englishplumber.nl/';
+
+  try {
+    return new URL(value, base).toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const canonicalUrlForSchema = resolveAbsoluteUrl(canonicalOrigin || homepageUrl) || 'https://englishplumber.nl/';
+const businessImageUrlForSchema = resolveAbsoluteUrl(ogImage || heroImagePath);
+const businessLogoUrlForSchema = resolveAbsoluteUrl(header.logoImagePath);
+const businessMapUrlForSchema = resolveAbsoluteUrl(serviceAreaSection.mapEmbedUrl);
+const businessPhoneForSchema = typeof whatsappNumber === 'string' ? whatsappNumber.replace(/\s+/g, ' ').trim() : '';
+const businessAreaServedForSchema = Array.isArray(serviceAreaSection.areas)
+  ? serviceAreaSection.areas
+      .filter((area) => typeof area === 'string' && area.trim().length > 0)
+      .map((area) => ({ '@type': 'City', name: area.trim() }))
+  : [];
+
+const localBusinessStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Plumber',
+  '@id': `${canonicalUrlForSchema}#localbusiness`,
+  name: businessName,
+  url: canonicalUrlForSchema,
+  ...(businessPhoneForSchema ? { telephone: businessPhoneForSchema } : {}),
+  ...(businessImageUrlForSchema ? { image: businessImageUrlForSchema } : {}),
+  ...(businessLogoUrlForSchema ? { logo: businessLogoUrlForSchema } : {}),
+  ...(businessMapUrlForSchema ? { hasMap: businessMapUrlForSchema } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: baseCity,
+    addressRegion: 'North Holland',
+    addressCountry: 'NL',
+  },
+  areaServed: [{ '@type': 'AdministrativeArea', name: 'North Holland' }, ...businessAreaServedForSchema],
+  sameAs: [homepageUrl, header?.whatsAppHref].filter(Boolean),
+  description: seoDescription,
+};
+
+const faqMainEntitiesForSchema = Array.isArray(faqSection.items)
+  ? faqSection.items
+      .filter((item) => item && typeof item.question === 'string' && typeof item.answer === 'string')
+      .map((item) => ({
+        '@type': 'Question',
+        name: item.question.trim(),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer.trim(),
+        },
+      }))
+      .filter((entity) => entity.name.length > 0 && entity.acceptedAnswer.text.length > 0)
+  : [];
+
+const faqPageStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqMainEntitiesForSchema,
+};
+
+const localBusinessStructuredDataJson = JSON.stringify(localBusinessStructuredData);
+const faqPageStructuredDataJson = faqMainEntitiesForSchema.length > 0 ? JSON.stringify(faqPageStructuredData) : null;
+
 const getTrustThumbnailImage = (videoCard: Record<string, unknown>, index: number) =>
   resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]);
 
@@ -130,6 +204,10 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription} canonical={canonicalOrigin} ogImage={ogImage} siteName={businessName}>
+    <Fragment slot="head">
+      <script is:inline type="application/ld+json" set:html={localBusinessStructuredDataJson}></script>
+      {faqPageStructuredDataJson && <script is:inline type="application/ld+json" set:html={faqPageStructuredDataJson}></script>}
+    </Fragment>
     {
       tinaBridgeProps && (
         <>
