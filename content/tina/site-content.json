@@ -176,7 +176,7 @@
     ]
   },
   "commandCenterSection": {
-    "headingLine1": "Your Plumbing Command Center,",
+    "headingLine1": "So ",
     "headingLine2": "all in one chat.",
     "loadingAnimationLabel": "WhatsApp workflow preview...",
     "description": "Share photos, explain the issue, and get practical advice, pricing guidance, and booking confirmation in one WhatsApp conversation.",
@@ -224,7 +224,7 @@
           "recurringLabel": "One-off",
           "discountPercentage": "Clear",
           "twiceAnnuallyBillingText": "Minimum 1 hour. Parts extra.",
-          "annuallyBillingText": "No subscription."
+          "annuallyBillingText": "Travel costs calculated."
         },
         "feature": [
           {
@@ -355,7 +355,7 @@
             "categoryName": "Service area",
             "features": [
               {
-                "name": "Medemblik + nearby towns"
+                "name": "North-Holland"
               },
               {
                 "name": "Not based in Amsterdam or Almere"
