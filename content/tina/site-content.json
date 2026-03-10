@@ -13,7 +13,7 @@
   "hero": {
     "titleLine1": "One-man Plumbing",
     "titleLine2": "For Expats & Locals",
-    "description": "Boiler servicing, radiator work, tap repairs, and general plumbing handyman jobs serving North-Holland from Medemblik",
+    "description": "Boiler servicing, radiator work, tap repairs, and general plumbing handyman jobs serving all North-Holland from Medemblik. ",
     "primaryCtaLabel": "Contact Me"
   },
   "biomarkerPanel": {
@@ -71,18 +71,18 @@
         "titleLine1": "Boiler",
         "titleLine2": "Servicing",
         "href": "https://wa.me/31642869931",
-        "imagePath": "/api/media/file/Longevity%20Rx%20for%20home%20page.webp"
+        "imagePath": ""
       },
       {
         "alt": "Radiator services",
         "titleLine1": "Radiator",
         "titleLine2": "Services",
         "href": "https://wa.me/31642869931",
-        "imagePath": "/api/media/file/Care%20team%20for%20home%20page.webp"
+        "imagePath": "/Radiator Services Avatar.png"
       }
     ],
-    "headingLine1": "Hello",
-    "headingLine2": "No Guesswork",
+    "headingLine1": "Clear",
+    "headingLine2": "Quotes",
     "description": "Send photos and a short description on WhatsApp. I will review the issue and give a clear next step with pricing guidance before we book.",
     "stat1": {
       "value": "€95",
@@ -90,16 +90,16 @@
       "line2": "General Work"
     },
     "stat2": {
-      "value": "€145",
-      "line1": "Boiler Service",
-      "line2": "From"
+      "value": "From",
+      "line1": "€145",
+      "line2": "Boiler Servicing"
     },
     "prescriptionCard": {
       "alt": "Tap repairs",
       "titleLine1": "Tap",
       "titleLine2": "Repairs",
       "href": "https://wa.me/31642869931",
-      "imagePath": "/api/media/file/Longevity%20Rx%20for%20home%20page.webp",
+      "imagePath": "/Tap Repairs Avatar.png",
       "ctaLabel": "Ask on WhatsApp"
     },
     "careHeadingLine1": "Bye home stress,",
