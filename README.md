@@ -28,10 +28,10 @@ Astro site with TinaCMS wired for Git-backed content editing.
 | :-- | :-- |
 | `pnpm install` | Install dependencies |
 | `pnpm dev` | Start Astro + Tina local editing mode (`tinacms dev`) |
-| `pnpm dev:cloud` | Build TinaCloud client then run Astro dev (for cloud-content preview) |
+| `pnpm dev:cloud` | Build TinaCloud client (no local cache) then run Astro dev (for cloud-content preview) |
 | `pnpm dev:local` | Start Astro + Tina local file-based editing mode |
 | `pnpm dev:astro` | Start plain Astro dev server |
-| `pnpm build` | Tina Cloud build + Astro build (requires Tina env vars) |
+| `pnpm build` | Tina Cloud build (no local cache) + Astro build (requires Tina env vars) |
 | `pnpm build:local` | Local Tina build + Astro build (no Tina Cloud credentials required) |
 | `pnpm preview` | Preview `dist/` |
 
@@ -54,6 +54,8 @@ For TinaCloud-backed preview/deploy, create a local `.env` file (not committed) 
 
 - `pnpm dev:cloud` (preview cloud-backed content in Astro dev)
 - `pnpm build` (production build path)
+
+Note: `dev:cloud` reads from Tina Cloud. If content in Tina Cloud was just changed, wait for branch indexing to finish in Tina Cloud, then refresh the page.
 
 Also set the Tina Cloud project Site URL / Allowed Origins to include:
 

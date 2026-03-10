@@ -5,10 +5,10 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
-    "dev:cloud": "pnpm tina:cloud:check && tinacms build && astro dev",
+    "dev:cloud": "pnpm tina:cloud:check && tinacms build --no-client-build-cache && astro dev",
     "dev:local": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"astro dev\"",
     "dev:astro": "astro dev",
-    "build": "pnpm tina:cloud:check && tinacms build && astro build",
+    "build": "pnpm tina:cloud:check && tinacms build --no-client-build-cache && astro build",
     "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && TINA_PUBLIC_IS_LOCAL=true astro build",
     "tina:cloud:check": "node scripts/check-tina-cloud-env.mjs",
     "check": "astro check",
