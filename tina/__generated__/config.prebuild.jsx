@@ -15,15 +15,15 @@ var site_content_default = {
   seoDescription: "Friendly local plumber for expats and Dutch homeowners in Medemblik and nearby towns. Boiler servicing from \u20AC145, general plumbing at \u20AC95/hour. Send photos on WhatsApp +31 6 428 699 31.",
   ogImage: "/family%20photo.PNG",
   hero: {
-    titleLine1: "Friendly Local Plumber",
+    titleLine1: "One-man Plumbing",
     titleLine2: "For Expats & Locals",
-    description: "Boiler servicing, radiator work, tap repairs, and general plumbing handyman jobs in Medemblik and nearby towns.",
-    primaryCtaLabel: "View Services"
+    description: "Boiler servicing, radiator work, tap repairs, and general plumbing handyman jobs serving all North-Holland from Medemblik. ",
+    primaryCtaLabel: "Contact Me"
   },
   biomarkerPanel: {
     titleLine1: "One Plumber",
     titleLine2: "Core Services Covered",
-    primaryCtaLabel: "Get a Quote",
+    primaryCtaLabel: "View All Services",
     items: [
       {
         label: "Boiler Servicing",
@@ -75,18 +75,18 @@ var site_content_default = {
         titleLine1: "Boiler",
         titleLine2: "Servicing",
         href: "https://wa.me/31642869931",
-        imagePath: "/api/media/file/Longevity%20Rx%20for%20home%20page.webp"
+        imagePath: ""
       },
       {
         alt: "Radiator services",
         titleLine1: "Radiator",
         titleLine2: "Services",
         href: "https://wa.me/31642869931",
-        imagePath: "/api/media/file/Care%20team%20for%20home%20page.webp"
+        imagePath: "/Radiator Services Avatar.png"
       }
     ],
-    headingLine1: "Clear Advice,",
-    headingLine2: "No Guesswork",
+    headingLine1: "Clear",
+    headingLine2: "Quotes",
     description: "Send photos and a short description on WhatsApp. I will review the issue and give a clear next step with pricing guidance before we book.",
     stat1: {
       value: "\u20AC95",
@@ -94,16 +94,16 @@ var site_content_default = {
       line2: "General Work"
     },
     stat2: {
-      value: "\u20AC145",
-      line1: "Boiler Service",
-      line2: "From"
+      value: "From",
+      line1: "\u20AC145",
+      line2: "Boiler Servicing"
     },
     prescriptionCard: {
       alt: "Tap repairs",
       titleLine1: "Tap",
       titleLine2: "Repairs",
       href: "https://wa.me/31642869931",
-      imagePath: "/api/media/file/Longevity%20Rx%20for%20home%20page.webp",
+      imagePath: "/Tap Repairs Avatar.png",
       ctaLabel: "Ask on WhatsApp"
     },
     careHeadingLine1: "Bye home stress,",
@@ -439,12 +439,30 @@ var site_content_default = {
     ctaLabel: "WhatsApp Now",
     ctaHref: "https://wa.me/31642869931"
   },
+  serviceAreaSection: {
+    headingLine1: "North-Holland",
+    headingLine2: "Service Area",
+    description: "Based in Medemblik, I serve homeowners across North-Holland within practical travel range. Send your postcode and photos on WhatsApp to confirm availability.",
+    areas: [
+      "Medemblik",
+      "Hoorn",
+      "Heerhugowaard",
+      "Purmerend",
+      "Alkmaar",
+      "Enkhuizen",
+      "Bovenkarspel",
+      "Opmeer"
+    ],
+    excludedNote: "Service area is North-Holland, excluding Amsterdam and Almere.",
+    mapEmbedUrl: "https://www.google.com/maps?q=North+Holland,+Netherlands&output=embed",
+    mapTitle: "English Plumber service area map",
+    ctaLabel: "Check Availability on WhatsApp",
+    ctaHref: "https://wa.me/31642869931"
+  },
   footerSection: {
     logoAlt: "English Plumber logo",
     logoImagePath: "/images/logo-big.svg",
     subscriptionText: "Need help fast? Send photos and your postcode on WhatsApp for a clear first response.",
-    emailPlaceholder: "Email (optional)",
-    subscribeLabel: "Get Updates",
     followUsLabel: "Follow us",
     supportTitle: "Help & Support",
     supportLinks: [

@@ -211,13 +211,23 @@ fragment SiteContentParts on SiteContent {
     ctaLabel
     ctaHref
   }
+  serviceAreaSection {
+    __typename
+    headingLine1
+    headingLine2
+    description
+    areas
+    excludedNote
+    mapEmbedUrl
+    mapTitle
+    ctaLabel
+    ctaHref
+  }
   footerSection {
     __typename
     logoAlt
     logoImagePath
     subscriptionText
-    emailPlaceholder
-    subscribeLabel
     followUsLabel
     supportTitle
     supportLinks {

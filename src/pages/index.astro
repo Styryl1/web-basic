@@ -33,6 +33,7 @@ const {
   faqSection,
   missionSection,
   newsletterSection,
+  serviceAreaSection,
   footerSection,
 } = siteContent;
 
@@ -116,6 +117,7 @@ const newsletterImage = resolveContentImage(newsletterSection.backgroundImagePat
 const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-big.svg');
 const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
 const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
+const serviceAreaMapEmbedUrl = serviceAreaSection.mapEmbedUrl || 'https://www.google.com/maps?q=Medemblik,+Netherlands&output=embed';
 
 const getTrustThumbnailImage = (videoCard: Record<string, unknown>, index: number) =>
   resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]);
@@ -599,7 +601,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
         </div>
       </section>
 
-      <section class="section section-process" id="service-area" data-tina-field={tinaField(siteContent, 'ourProcessSection')}>
+      <section class="section section-process" id="how-it-works" data-tina-field={tinaField(siteContent, 'ourProcessSection')}>
         <div class="container process-layout">
           <img
             src={processImage}
@@ -790,6 +792,55 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section section-service-area" id="service-area" data-tina-field={tinaField(siteContent, 'serviceAreaSection')}>
+        <div class="container service-area-layout">
+          <article class="service-area-copy">
+            <h2>
+              <span data-tina-field={tinaField(serviceAreaSection, 'headingLine1')}>{serviceAreaSection.headingLine1}</span>
+              <span class="script-line" data-tina-field={tinaField(serviceAreaSection, 'headingLine2')}>
+                {serviceAreaSection.headingLine2}
+              </span>
+            </h2>
+            <p data-tina-field={tinaField(serviceAreaSection, 'description')}>{serviceAreaSection.description}</p>
+
+            <ul class="service-area-list" data-tina-field={tinaField(serviceAreaSection, 'areas')}>
+              {serviceAreaSection.areas.map((area, index) => (
+                <li data-tina-field={tinaField(serviceAreaSection, 'areas', index)}>{area}</li>
+              ))}
+            </ul>
+
+            <p class="service-area-excluded" data-tina-field={tinaField(serviceAreaSection, 'excludedNote')}>
+              {serviceAreaSection.excludedNote}
+            </p>
+
+            <div class="ep-soft-liquid">
+              <div class="ep-soft-liquid__frame">
+                <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                <a
+                  href={serviceAreaSection.ctaHref}
+                  class="btn btn-soft ep-soft-liquid__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-tina-field={tinaField(serviceAreaSection, 'ctaLabel')}
+                >
+                  {serviceAreaSection.ctaLabel}
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="service-area-map-wrap">
+            <iframe
+              src={serviceAreaMapEmbedUrl}
+              title={serviceAreaSection.mapTitle}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              data-tina-field={tinaField(serviceAreaSection, 'mapEmbedUrl')}
+            ></iframe>
+          </aside>
         </div>
       </section>
     </main>

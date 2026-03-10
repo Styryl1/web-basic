@@ -306,6 +306,18 @@ type SiteContentNewsletterSection {
   ctaHref: String
 }
 
+type SiteContentServiceAreaSection {
+  headingLine1: String
+  headingLine2: String
+  description: String
+  areas: [String]
+  excludedNote: String
+  mapEmbedUrl: String
+  mapTitle: String
+  ctaLabel: String
+  ctaHref: String
+}
+
 type SiteContentFooterSectionSupportLinks {
   label: String
   href: String
@@ -320,8 +332,6 @@ type SiteContentFooterSection {
   logoAlt: String
   logoImagePath: String
   subscriptionText: String
-  emailPlaceholder: String
-  subscribeLabel: String
   followUsLabel: String
   supportTitle: String
   supportLinks: [SiteContentFooterSectionSupportLinks]
@@ -377,6 +387,7 @@ type SiteContent implements Node & Document {
   faqSection: SiteContentFaqSection
   missionSection: SiteContentMissionSection
   newsletterSection: SiteContentNewsletterSection
+  serviceAreaSection: SiteContentServiceAreaSection
   footerSection: SiteContentFooterSection
   header: SiteContentHeader
   promoNeedles: [String]
@@ -626,6 +637,18 @@ input SiteContentNewsletterSectionFilter {
   ctaHref: StringFilter
 }
 
+input SiteContentServiceAreaSectionFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  description: StringFilter
+  areas: StringFilter
+  excludedNote: StringFilter
+  mapEmbedUrl: StringFilter
+  mapTitle: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
 input SiteContentFooterSectionSupportLinksFilter {
   label: StringFilter
   href: StringFilter
@@ -640,8 +663,6 @@ input SiteContentFooterSectionFilter {
   logoAlt: StringFilter
   logoImagePath: ImageFilter
   subscriptionText: StringFilter
-  emailPlaceholder: StringFilter
-  subscribeLabel: StringFilter
   followUsLabel: StringFilter
   supportTitle: StringFilter
   supportLinks: SiteContentFooterSectionSupportLinksFilter
@@ -697,6 +718,7 @@ input SiteContentFilter {
   faqSection: SiteContentFaqSectionFilter
   missionSection: SiteContentMissionSectionFilter
   newsletterSection: SiteContentNewsletterSectionFilter
+  serviceAreaSection: SiteContentServiceAreaSectionFilter
   footerSection: SiteContentFooterSectionFilter
   header: SiteContentHeaderFilter
   promoNeedles: StringFilter
@@ -954,6 +976,18 @@ input SiteContentNewsletterSectionMutation {
   ctaHref: String
 }
 
+input SiteContentServiceAreaSectionMutation {
+  headingLine1: String
+  headingLine2: String
+  description: String
+  areas: [String]
+  excludedNote: String
+  mapEmbedUrl: String
+  mapTitle: String
+  ctaLabel: String
+  ctaHref: String
+}
+
 input SiteContentFooterSectionSupportLinksMutation {
   label: String
   href: String
@@ -968,8 +1002,6 @@ input SiteContentFooterSectionMutation {
   logoAlt: String
   logoImagePath: String
   subscriptionText: String
-  emailPlaceholder: String
-  subscribeLabel: String
   followUsLabel: String
   supportTitle: String
   supportLinks: [SiteContentFooterSectionSupportLinksMutation]
@@ -1025,6 +1057,7 @@ input SiteContentMutation {
   faqSection: SiteContentFaqSectionMutation
   missionSection: SiteContentMissionSectionMutation
   newsletterSection: SiteContentNewsletterSectionMutation
+  serviceAreaSection: SiteContentServiceAreaSectionMutation
   footerSection: SiteContentFooterSectionMutation
   header: SiteContentHeaderMutation
   promoNeedles: [String]

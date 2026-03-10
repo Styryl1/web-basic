@@ -435,12 +435,30 @@
     "ctaLabel": "WhatsApp Now",
     "ctaHref": "https://wa.me/31642869931"
   },
+  "serviceAreaSection": {
+    "headingLine1": "North-Holland",
+    "headingLine2": "Service Area",
+    "description": "Based in Medemblik, I serve homeowners across North-Holland within practical travel range. Send your postcode and photos on WhatsApp to confirm availability.",
+    "areas": [
+      "Medemblik",
+      "Hoorn",
+      "Heerhugowaard",
+      "Purmerend",
+      "Alkmaar",
+      "Enkhuizen",
+      "Bovenkarspel",
+      "Opmeer"
+    ],
+    "excludedNote": "Service area is North-Holland, excluding Amsterdam and Almere.",
+    "mapEmbedUrl": "https://www.google.com/maps?q=North+Holland,+Netherlands&output=embed",
+    "mapTitle": "English Plumber service area map",
+    "ctaLabel": "Check Availability on WhatsApp",
+    "ctaHref": "https://wa.me/31642869931"
+  },
   "footerSection": {
     "logoAlt": "English Plumber logo",
     "logoImagePath": "/images/logo-big.svg",
     "subscriptionText": "Need help fast? Send photos and your postcode on WhatsApp for a clear first response.",
-    "emailPlaceholder": "Email (optional)",
-    "subscribeLabel": "Get Updates",
     "followUsLabel": "Follow us",
     "supportTitle": "Help & Support",
     "supportLinks": [
