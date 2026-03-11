@@ -20,6 +20,15 @@
   "images": {
     "binding": "IMAGES"
   },
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": [
+        "**/*.js",
+        "**/*.mjs"
+      ]
+    }
+  ],
   "no_bundle": true,
   "env": {
     "preview": {
