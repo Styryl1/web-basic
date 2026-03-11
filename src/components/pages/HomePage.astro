@@ -17,8 +17,60 @@ interface Props {
   currentPath?: string;
 }
 
+const optimizedImageMap = new Map<string, string>([
+  ['family photo.png', '/optimized/family-photo-hero.webp'],
+  ['boiler emoji.png', '/optimized/boiler-emoji.webp'],
+  ['radiator emoji.png', '/optimized/radiator-emoji.webp'],
+  ['pipe repair emoji.png', '/optimized/pipe-repair-emoji.webp'],
+  ['tap emoji.png', '/optimized/tap-emoji.webp'],
+  ['tap repair emoji.png', '/optimized/tap-repair-emoji.webp'],
+  ['pipe emoji.png', '/optimized/pipe-emoji.webp'],
+  ['plumbing emoji.png', '/optimized/plumbing-emoji.webp'],
+  ['friendly emoji.png', '/optimized/friendly-emoji.webp'],
+  ['gas saving emojio.png', '/optimized/gas-saving-emoji.webp'],
+  ['dutch english emoji.png', '/optimized/dutch-english-emoji.webp'],
+  ['boiler servicing avatar.png', '/optimized/boiler-servicing-avatar.webp'],
+  ['radiator services avatar.png', '/optimized/radiator-services-avatar.webp'],
+  ['tap repairs avatar.png', '/optimized/tap-repairs-avatar.webp'],
+]);
+
+const responsiveImageMap = new Map<string, Array<{ src: string; width: number }>>([
+  [
+    'family photo.png',
+    [
+      { src: '/optimized/family-photo-hero-mobile.webp', width: 900 },
+      { src: '/optimized/family-photo-hero.webp', width: 1179 },
+    ],
+  ],
+]);
+
+const getAssetBasename = (value: string | undefined): string | null => {
+  if (!value) return null;
+
+  try {
+    const url = /^https?:\/\//i.test(value) ? new URL(value) : new URL(value, 'https://englishplumber.nl');
+    const basename = decodeURIComponent(url.pathname.split('/').pop() ?? '').trim().toLowerCase();
+    return basename || null;
+  } catch {
+    return value.trim().toLowerCase();
+  }
+};
+
+const isSameOriginAdminRequest = (request: Request, url: URL): boolean => {
+  const referer = request.headers.get('referer');
+  if (!referer) return false;
+
+  try {
+    const refererUrl = new URL(referer);
+    return refererUrl.origin === url.origin && refererUrl.pathname.startsWith('/admin');
+  } catch {
+    return false;
+  }
+};
+
 const { locale = DEFAULT_LOCALE, currentPath = '/' } = Astro.props as Props;
-const { siteContent, tinaBridgeProps } = await loadSiteDocument();
+const tinaPreviewEnabled = isSameOriginAdminRequest(Astro.request, Astro.url);
+const { siteContent, tinaBridgeProps } = await loadSiteDocument({ enableTinaPreview: tinaPreviewEnabled });
 const siteSettings = siteContent.siteSettings as any;
 const pageContent = getHomeTranslation(siteContent, locale) as any;
 const localeSettings = getLocaleSettings(siteContent, locale) as any;
@@ -146,6 +198,8 @@ const isExternalHref = (value: string | undefined): boolean => /^(https?:\/\/|ma
 
 const resolveContentImage = (imagePath: string | undefined, fallbackPath: string) => {
   if (!imagePath) return fallbackPath;
+  const optimizedImage = optimizedImageMap.get(getAssetBasename(imagePath) ?? '');
+  if (optimizedImage) return optimizedImage;
   if (/^https?:\/\//i.test(imagePath)) return imagePath;
   if (imagePath.startsWith('/api/media/file/')) {
     try {
@@ -157,8 +211,16 @@ const resolveContentImage = (imagePath: string | undefined, fallbackPath: string
   return imagePath;
 };
 
+const getResponsiveImageSrcSet = (imagePath: string | undefined): string | undefined => {
+  const variants = responsiveImageMap.get(getAssetBasename(imagePath) ?? '');
+  if (!variants?.length) return undefined;
+
+  return variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ');
+};
+
 const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
 const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
+const heroBackgroundImageSrcSet = getResponsiveImageSrcSet(heroImagePath);
 const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
 const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
 const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
@@ -272,6 +334,12 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
     <Fragment slot="head">
       <script is:inline type="application/ld+json" set:html={localBusinessStructuredDataJson}></script>
       {faqPageStructuredDataJson && <script is:inline type="application/ld+json" set:html={faqPageStructuredDataJson}></script>}
+      <link
+        rel="preload"
+        as="image"
+        href={heroBackgroundImage}
+        {...(heroBackgroundImageSrcSet ? { imagesrcset: heroBackgroundImageSrcSet, imagesizes: '100vw' } : {})}
+      />
     </Fragment>
     {
       tinaBridgeProps && (
@@ -477,9 +545,15 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
       <section class="hero" data-tina-field={tinaField(pageContent, 'hero')}>
         <img
           src={heroBackgroundImage}
+          srcset={heroBackgroundImageSrcSet}
+          sizes={heroBackgroundImageSrcSet ? '100vw' : undefined}
           alt={hero.imageAlt}
           class="hero-bg"
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="1179"
+          height="2556"
           data-tina-field={tinaField(pageContent, 'heroImagePath')}
         />
         <div class="hero-overlay"></div>
@@ -566,7 +640,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                           <img
                             src={resolveBiomarkerImage(item.imagePath)}
                             alt={item.label}
-                            loading={itemIndex < row.length ? 'eager' : 'lazy'}
+                            loading="lazy"
                             width="40"
                             height="40"
                             decoding="async"

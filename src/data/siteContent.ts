@@ -16,14 +16,19 @@ export type SiteDocumentResult = {
   tinaBridgeProps: TinaBridgeProps | null;
 };
 
+type LoadSiteDocumentOptions = {
+  enableTinaPreview?: boolean;
+};
+
 type SiteContentQueryResult = Awaited<ReturnType<typeof client.queries.siteContent>>;
 
 const isLocalStaticBuild = import.meta.env.PROD && process.env.TINA_PUBLIC_IS_LOCAL === 'true';
 
-export const loadSiteDocument = async (): Promise<SiteDocumentResult> => {
+export const loadSiteDocument = async (options: LoadSiteDocumentOptions = {}): Promise<SiteDocumentResult> => {
+  const { enableTinaPreview = false } = options;
   let tinaPayload: SiteContentQueryResult | null = null;
 
-  if (!isLocalStaticBuild) {
+  if (enableTinaPreview && !isLocalStaticBuild) {
     try {
       tinaPayload = await client.queries.siteContent({ relativePath: 'site-content.json' });
     } catch {
