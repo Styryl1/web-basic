@@ -1,5 +1,5 @@
 {
-  "main": "@astrojs/cloudflare/entrypoints/server",
+  "main": "dist/server/entry.mjs",
   "name": "web-basic",
   "compatibility_date": "2026-02-28",
   "workers_dev": true,
@@ -8,6 +8,19 @@
     "global_fetch_strictly_public",
     "nodejs_compat"
   ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "dist/client"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  },
+  "no_bundle": true,
   "env": {
     "preview": {
       "name": "web-basic-preview",

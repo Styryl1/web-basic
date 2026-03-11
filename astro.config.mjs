@@ -8,7 +8,9 @@ import tinaDirective from './astro-tina-directive/register.js';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://englishplumber.nl',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    configPath: 'wrangler.dev.jsonc',
+  }),
   integrations: [react(), sitemap(), tinaDirective()],
   i18n: {
     locales: ['en', 'nl'],
