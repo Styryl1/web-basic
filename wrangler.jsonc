@@ -14,7 +14,9 @@
   },
   "kv_namespaces": [
     {
-      "binding": "SESSION"
+      "binding": "SESSION",
+      "id": "363a85590e0f445c8ad926ce965eceb9",
+      "preview_id": "363a85590e0f445c8ad926ce965eceb9"
     }
   ],
   "images": {
@@ -34,7 +36,14 @@
     "preview": {
       "name": "web-basic-preview",
       "workers_dev": true,
-      "preview_urls": true
+      "preview_urls": true,
+      "kv_namespaces": [
+        {
+          "binding": "SESSION",
+          "id": "363a85590e0f445c8ad926ce965eceb9",
+          "preview_id": "363a85590e0f445c8ad926ce965eceb9"
+        }
+      ]
     }
   },
   "observability": {
