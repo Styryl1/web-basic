@@ -100,7 +100,7 @@ var site_content_default = {
                 titleLine1: "Boiler",
                 titleLine2: "Servicing",
                 href: "https://wa.me/31642869931",
-                imagePath: ""
+                imagePath: "/Boiler%20Servicing%20Avatar.png"
               },
               {
                 alt: "Radiator services",
@@ -432,10 +432,10 @@ var site_content_default = {
               imagePath: "/api/media/file/nate%20%2B%20fam.png",
               name: "English Plumber",
               role: "Friendly local plumber in Medemblik",
-              headingLine1: "We Are On A",
-              headingLine2: "Local Mission",
-              description: "English Plumber exists to make plumbing help straightforward for expats and Dutch homeowners: clear communication, fair pricing, and dependable work.",
-              ctaLabel: "Start on WhatsApp",
+              headingLine1: "I am on",
+              headingLine2: "Mission",
+              description: "I started this business to look after my family and my clients, to learn as much as possible and to grow into something meaningful and impactful!",
+              ctaLabel: "Chat on WhatsApp",
               ctaHref: "https://wa.me/31642869931"
             },
             gallery: {
@@ -534,8 +534,8 @@ var site_content_default = {
             ],
             legalDisclaimer: "NO 24/7 EMERGENCY CALLOUT SERVICE. STANDARD RATE IS \u20AC95 PER HOUR FOR GENERAL PLUMBING WORK. BOILER SERVICING STARTS FROM \u20AC145. PARTS AND MATERIALS ARE CHARGED SEPARATELY. FINAL PRICE MAY VARY BY JOB CONDITION. MAIN SERVICE AREA: MEDEMBLIK, HOORN, HEERHUGOWAARD, PURMEREND, AND ALKMAAR. ENGLISH PLUMBER IS NOT BASED IN AMSTERDAM OR ALMERE. CO-VAKMANSCHAP AND VCA STANDARDS ARE FOLLOWED WHERE APPLICABLE. BASIC WORKMANSHIP GUARANTEE: 30 DAYS ON THE SPECIFIC REPAIR LABOUR.",
             cardImageAlt: "English Plumber service card",
-            cardDesktopImagePath: "/footer/footer-dekstop.webp",
-            cardMobileImagePath: "/footer/footer-mobile.webp",
+            cardDesktopImagePath: "/images/footer-card.svg",
+            cardMobileImagePath: "/images/footer-card.svg",
             appPrompt: "Best way to reach me: WhatsApp with photos.",
             appStoreAlt: "WhatsApp contact",
             appStoreHref: "https://wa.me/31642869931",
@@ -668,7 +668,7 @@ var site_content_default = {
                 titleLine1: "CV",
                 titleLine2: "Onderhoud",
                 href: "https://wa.me/31642869931",
-                imagePath: ""
+                imagePath: "/Boiler%20Servicing%20Avatar.png"
               },
               {
                 alt: "Radiatorservice",
@@ -1000,10 +1000,10 @@ var site_content_default = {
               imagePath: "/api/media/file/nate%20%2B%20fam.png",
               name: "English Plumber",
               role: "Vriendelijke lokale loodgieter in Medemblik",
-              headingLine1: "Op een",
-              headingLine2: "lokale missie",
-              description: "English Plumber bestaat om loodgietershulp eenvoudig te maken voor expats en Nederlandse huiseigenaren: duidelijke communicatie, eerlijke prijzen en betrouwbaar werk.",
-              ctaLabel: "Start op WhatsApp",
+              headingLine1: "Ik ben op",
+              headingLine2: "missie",
+              description: "Ik ben dit bedrijf begonnen om voor mijn familie en mijn klanten te zorgen, zoveel mogelijk te leren en uit te groeien tot iets betekenisvols en impactvols!",
+              ctaLabel: "Chat via WhatsApp",
               ctaHref: "https://wa.me/31642869931"
             },
             gallery: {
@@ -1054,7 +1054,7 @@ var site_content_default = {
             regionName: "Noord-Holland"
           },
           footerSection: {
-            logoAlt: "English Plumber logo",
+            logoAlt: "Engels loodgieterslogo",
             logoImagePath: "/images/logo-big.svg",
             subscriptionText: "Snel hulp nodig? Stuur foto's en je postcode via WhatsApp voor een duidelijke eerste reactie.",
             followUsLabel: "Volg ons",
@@ -1102,8 +1102,8 @@ var site_content_default = {
             ],
             legalDisclaimer: "GEEN 24/7 SPOEDSERVICE. STANDAARDTARIEF IS \u20AC95 PER UUR VOOR ALGEMEEN LOODGIETERSWERK. CV-ONDERHOUD START VANAF \u20AC145. ONDERDELEN EN MATERIALEN WORDEN APART BEREKEND. EINDPRIJS KAN VARIEREN OP BASIS VAN DE STAAT VAN DE KLUS. HOOFDSERVICEGEBIED: MEDEMBLIK, HOORN, HEERHUGOWAARD, PURMEREND EN ALKMAAR. ENGLISH PLUMBER IS NIET GEVESTIGD IN AMSTERDAM OF ALMERE. CO-VAKMANSCHAP- EN VCA-NORMEN WORDEN GEVOLGD WAAR VAN TOEPASSING. BASISGARANTIE OP VAKWERK: 30 DAGEN OP HET SPECIFIEKE REPARATIEWERK.",
             cardImageAlt: "English Plumber servicekaart",
-            cardDesktopImagePath: "/footer/footer-dekstop.webp",
-            cardMobileImagePath: "/footer/footer-mobile.webp",
+            cardDesktopImagePath: "/images/footer-card.svg",
+            cardMobileImagePath: "/images/footer-card.svg",
             appPrompt: "Beste manier om mij te bereiken: WhatsApp met foto's.",
             appStoreAlt: "WhatsApp-contact",
             appStoreHref: "https://wa.me/31642869931",
@@ -1159,7 +1159,7 @@ var site_content_default = {
                 href: "https://wa.me/31642869931"
               }
             ],
-            logoAlt: "English Plumber logo",
+            logoAlt: "Engels loodgieterslogo",
             homeAriaLabel: "English Plumber startpagina",
             mainNavAriaLabel: "Hoofdnavigatie",
             openMenuAriaLabel: "Menu openen",

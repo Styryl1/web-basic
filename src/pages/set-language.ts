@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { DEFAULT_LOCALE, LOCALE_COOKIE_MAX_AGE, LOCALE_COOKIE_NAME, getLocalizedPath, isLocale } from '../i18n/config';
 
+export const prerender = false;
+
 const resolveRedirectPath = (redirectTo: string | null, locale: string): string => {
   if (!redirectTo || !redirectTo.startsWith('/') || redirectTo.startsWith('//')) {
     return getLocalizedPath('/', isLocale(locale) ? locale : DEFAULT_LOCALE);

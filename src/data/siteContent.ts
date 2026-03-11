@@ -16,10 +16,12 @@ export type SiteDocumentResult = {
   tinaBridgeProps: TinaBridgeProps | null;
 };
 
+type SiteContentQueryResult = Awaited<ReturnType<typeof client.queries.siteContent>>;
+
 const isLocalStaticBuild = import.meta.env.PROD && process.env.TINA_PUBLIC_IS_LOCAL === 'true';
 
 export const loadSiteDocument = async (): Promise<SiteDocumentResult> => {
-  let tinaPayload = null;
+  let tinaPayload: SiteContentQueryResult | null = null;
 
   if (!isLocalStaticBuild) {
     try {
