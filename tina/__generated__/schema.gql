@@ -87,26 +87,47 @@ type Collection {
 
 union DocumentNode = SiteContent | Folder
 
-type SiteContentHero {
+type SiteContentSiteSettingsLocales {
+  code: String
+  label: String
+  nativeLabel: String
+  shortLabel: String
+  htmlLang: String
+  ogLocale: String
+}
+
+type SiteContentSiteSettings {
+  mediaOrigin: String
+  businessName: String
+  baseCity: String
+  whatsappNumber: String
+  canonicalOrigin: String
+  homepageUrl: String
+  ogImage: String
+  locales: [SiteContentSiteSettingsLocales]
+}
+
+type SiteContentPagesHomeTranslationsEnHero {
   titleLine1: String
   titleLine2: String
   description: String
   primaryCtaLabel: String
+  imageAlt: String
 }
 
-type SiteContentBiomarkerPanelItems {
+type SiteContentPagesHomeTranslationsEnBiomarkerPanelItems {
   label: String
   imagePath: String
 }
 
-type SiteContentBiomarkerPanel {
+type SiteContentPagesHomeTranslationsEnBiomarkerPanel {
   titleLine1: String
   titleLine2: String
   primaryCtaLabel: String
-  items: [SiteContentBiomarkerPanelItems]
+  items: [SiteContentPagesHomeTranslationsEnBiomarkerPanelItems]
 }
 
-type SiteContentFeaturePanelCards {
+type SiteContentPagesHomeTranslationsEnFeaturePanelCards {
   alt: String
   titleLine1: String
   titleLine2: String
@@ -114,19 +135,19 @@ type SiteContentFeaturePanelCards {
   imagePath: String
 }
 
-type SiteContentFeaturePanelStat1 {
+type SiteContentPagesHomeTranslationsEnFeaturePanelStat1 {
   value: String
   line1: String
   line2: String
 }
 
-type SiteContentFeaturePanelStat2 {
+type SiteContentPagesHomeTranslationsEnFeaturePanelStat2 {
   value: String
   line1: String
   line2: String
 }
 
-type SiteContentFeaturePanelPrescriptionCard {
+type SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard {
   alt: String
   titleLine1: String
   titleLine2: String
@@ -135,15 +156,15 @@ type SiteContentFeaturePanelPrescriptionCard {
   ctaLabel: String
 }
 
-type SiteContentFeaturePanel {
+type SiteContentPagesHomeTranslationsEnFeaturePanel {
   cardCtaLabel: String
-  cards: [SiteContentFeaturePanelCards]
+  cards: [SiteContentPagesHomeTranslationsEnFeaturePanelCards]
   headingLine1: String
   headingLine2: String
   description: String
-  stat1: SiteContentFeaturePanelStat1
-  stat2: SiteContentFeaturePanelStat2
-  prescriptionCard: SiteContentFeaturePanelPrescriptionCard
+  stat1: SiteContentPagesHomeTranslationsEnFeaturePanelStat1
+  stat2: SiteContentPagesHomeTranslationsEnFeaturePanelStat2
+  prescriptionCard: SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard
   careHeadingLine1: String
   careHeadingLine2: String
   careDescription: String
@@ -152,7 +173,7 @@ type SiteContentFeaturePanel {
   badgeStatus: String
 }
 
-type SiteContentTrustSectionVideoCards {
+type SiteContentPagesHomeTranslationsEnTrustSectionVideoCards {
   thumbnailAlt: String
   profileAlt: String
   thumbnailImagePath: String
@@ -161,23 +182,23 @@ type SiteContentTrustSectionVideoCards {
   meta: String
 }
 
-type SiteContentTrustSectionTextCards {
+type SiteContentPagesHomeTranslationsEnTrustSectionTextCards {
   profileAlt: String
   profileImagePath: String
   name: String
   quote: String
 }
 
-type SiteContentTrustSection {
+type SiteContentPagesHomeTranslationsEnTrustSection {
   headingLine1: String
   headingLine2: String
   memberLabel: String
   readMoreLabel: String
-  videoCards: [SiteContentTrustSectionVideoCards]
-  textCards: [SiteContentTrustSectionTextCards]
+  videoCards: [SiteContentPagesHomeTranslationsEnTrustSectionVideoCards]
+  textCards: [SiteContentPagesHomeTranslationsEnTrustSectionTextCards]
 }
 
-type SiteContentCommandCenterSection {
+type SiteContentPagesHomeTranslationsEnCommandCenterSection {
   headingLine1: String
   headingLine2: String
   loadingAnimationLabel: String
@@ -187,20 +208,20 @@ type SiteContentCommandCenterSection {
   appImageAlt: String
 }
 
-type SiteContentOurProcessSectionSteps {
+type SiteContentPagesHomeTranslationsEnOurProcessSectionSteps {
   title: String
   description: String
 }
 
-type SiteContentOurProcessSection {
+type SiteContentPagesHomeTranslationsEnOurProcessSection {
   imagePath: String
   imageAlt: String
   headingLine1: String
   headingLine2: String
-  steps: [SiteContentOurProcessSectionSteps]
+  steps: [SiteContentPagesHomeTranslationsEnOurProcessSectionSteps]
 }
 
-type SiteContentChoosePathSectionPlansPricing {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing {
   oneTimePrice: String
   recurringPrice: String
   oneTimeLabel: String
@@ -210,55 +231,55 @@ type SiteContentChoosePathSectionPlansPricing {
   annuallyBillingText: String
 }
 
-type SiteContentChoosePathSectionPlansFeatureFeatures {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures {
   name: String
 }
 
-type SiteContentChoosePathSectionPlansFeature {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature {
   categoryName: String
-  features: [SiteContentChoosePathSectionPlansFeatureFeatures]
+  features: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures]
 }
 
-type SiteContentChoosePathSectionPlansRestrictionFeatures {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures {
   name: String
 }
 
-type SiteContentChoosePathSectionPlansRestriction {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction {
   categoryName: String
-  features: [SiteContentChoosePathSectionPlansRestrictionFeatures]
+  features: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures]
 }
 
-type SiteContentChoosePathSectionPlansLink {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink {
   label: String
 }
 
-type SiteContentChoosePathSectionPlans {
+type SiteContentPagesHomeTranslationsEnChoosePathSectionPlans {
   name: String
   nameStyle: String
   tagline: String
   isPopular: Boolean
-  pricing: SiteContentChoosePathSectionPlansPricing
-  feature: [SiteContentChoosePathSectionPlansFeature]
-  restriction: [SiteContentChoosePathSectionPlansRestriction]
-  link: SiteContentChoosePathSectionPlansLink
+  pricing: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing
+  feature: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature]
+  restriction: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction]
+  link: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink
 }
 
-type SiteContentChoosePathSection {
+type SiteContentPagesHomeTranslationsEnChoosePathSection {
   title: String
   subtitle: String
-  plans: [SiteContentChoosePathSectionPlans]
+  plans: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlans]
 }
 
-type SiteContentFaqSectionItems {
+type SiteContentPagesHomeTranslationsEnFaqSectionItems {
   question: String
   answer: String
 }
 
-type SiteContentFaqSection {
+type SiteContentPagesHomeTranslationsEnFaqSection {
   headingLine1: String
   headingLine2: String
   cardImagePath: String
-  items: [SiteContentFaqSectionItems]
+  items: [SiteContentPagesHomeTranslationsEnFaqSectionItems]
   cardImageAlt: String
   supportTitle: String
   supportDescription: String
@@ -266,7 +287,7 @@ type SiteContentFaqSection {
   supportCtaHref: String
 }
 
-type SiteContentMissionSectionMission {
+type SiteContentPagesHomeTranslationsEnMissionSectionMission {
   imageAlt: String
   imagePath: String
   name: String
@@ -278,25 +299,25 @@ type SiteContentMissionSectionMission {
   ctaHref: String
 }
 
-type SiteContentMissionSectionGalleryImages {
+type SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages {
   alt: String
   imagePath: String
 }
 
-type SiteContentMissionSectionGallery {
+type SiteContentPagesHomeTranslationsEnMissionSectionGallery {
   headingLine1: String
   headingLine2: String
   ctaLabel: String
   ctaHref: String
-  images: [SiteContentMissionSectionGalleryImages]
+  images: [SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages]
 }
 
-type SiteContentMissionSection {
-  mission: SiteContentMissionSectionMission
-  gallery: SiteContentMissionSectionGallery
+type SiteContentPagesHomeTranslationsEnMissionSection {
+  mission: SiteContentPagesHomeTranslationsEnMissionSectionMission
+  gallery: SiteContentPagesHomeTranslationsEnMissionSectionGallery
 }
 
-type SiteContentNewsletterSection {
+type SiteContentPagesHomeTranslationsEnNewsletterSection {
   backgroundImagePath: String
   backgroundImageAlt: String
   headingLine1: String
@@ -306,7 +327,7 @@ type SiteContentNewsletterSection {
   ctaHref: String
 }
 
-type SiteContentServiceAreaSection {
+type SiteContentPagesHomeTranslationsEnServiceAreaSection {
   headingLine1: String
   headingLine2: String
   description: String
@@ -316,27 +337,33 @@ type SiteContentServiceAreaSection {
   mapTitle: String
   ctaLabel: String
   ctaHref: String
+  regionName: String
 }
 
-type SiteContentFooterSectionSupportLinks {
+type SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks {
   label: String
   href: String
 }
 
-type SiteContentFooterSectionAboutLinks {
+type SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks {
   label: String
   href: String
 }
 
-type SiteContentFooterSection {
+type SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks {
+  label: String
+  href: String
+}
+
+type SiteContentPagesHomeTranslationsEnFooterSection {
   logoAlt: String
   logoImagePath: String
   subscriptionText: String
   followUsLabel: String
   supportTitle: String
-  supportLinks: [SiteContentFooterSectionSupportLinks]
+  supportLinks: [SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks]
   aboutTitle: String
-  aboutLinks: [SiteContentFooterSectionAboutLinks]
+  aboutLinks: [SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks]
   legalDisclaimer: String
   cardImageAlt: String
   cardDesktopImagePath: String
@@ -349,51 +376,393 @@ type SiteContentFooterSection {
   googlePlayHref: String
   googlePlayImagePath: String
   copyrightText: String
+  socialLinks: [SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks]
 }
 
-type SiteContentHeaderNavItems {
+type SiteContentPagesHomeTranslationsEnHeaderNavItems {
   label: String
   href: String
 }
 
-type SiteContentHeader {
+type SiteContentPagesHomeTranslationsEnHeader {
   logoImagePath: String
   whatsAppHref: String
   primaryCtaLabel: String
   secondaryCtaLabel: String
   secondaryCtaHref: String
-  navItems: [SiteContentHeaderNavItems]
+  navItems: [SiteContentPagesHomeTranslationsEnHeaderNavItems]
+  logoAlt: String
+  homeAriaLabel: String
+  mainNavAriaLabel: String
+  openMenuAriaLabel: String
+  closeMenuAriaLabel: String
+  mobileNavAriaLabel: String
+  mobileMenuTitle: String
+  languageSwitcherAriaLabel: String
 }
 
-type SiteContent implements Node & Document {
-  mediaOrigin: String
-  businessName: String
-  baseCity: String
-  whatsappNumber: String
+type SiteContentPagesHomeTranslationsEn {
   primaryArea: String
   heroImagePath: String
-  canonicalOrigin: String
-  homepageUrl: String
   seoTitle: String
   seoDescription: String
-  ogImage: String
-  hero: SiteContentHero
-  biomarkerPanel: SiteContentBiomarkerPanel
-  featurePanel: SiteContentFeaturePanel
-  trustSection: SiteContentTrustSection
-  commandCenterSection: SiteContentCommandCenterSection
-  ourProcessSection: SiteContentOurProcessSection
-  choosePathSection: SiteContentChoosePathSection
-  faqSection: SiteContentFaqSection
-  missionSection: SiteContentMissionSection
-  newsletterSection: SiteContentNewsletterSection
-  serviceAreaSection: SiteContentServiceAreaSection
-  footerSection: SiteContentFooterSection
-  header: SiteContentHeader
+  hero: SiteContentPagesHomeTranslationsEnHero
+  biomarkerPanel: SiteContentPagesHomeTranslationsEnBiomarkerPanel
+  featurePanel: SiteContentPagesHomeTranslationsEnFeaturePanel
+  trustSection: SiteContentPagesHomeTranslationsEnTrustSection
+  commandCenterSection: SiteContentPagesHomeTranslationsEnCommandCenterSection
+  ourProcessSection: SiteContentPagesHomeTranslationsEnOurProcessSection
+  choosePathSection: SiteContentPagesHomeTranslationsEnChoosePathSection
+  faqSection: SiteContentPagesHomeTranslationsEnFaqSection
+  missionSection: SiteContentPagesHomeTranslationsEnMissionSection
+  newsletterSection: SiteContentPagesHomeTranslationsEnNewsletterSection
+  serviceAreaSection: SiteContentPagesHomeTranslationsEnServiceAreaSection
+  footerSection: SiteContentPagesHomeTranslationsEnFooterSection
+  header: SiteContentPagesHomeTranslationsEnHeader
+}
+
+type SiteContentPagesHomeTranslationsNlHero {
+  titleLine1: String
+  titleLine2: String
+  description: String
+  primaryCtaLabel: String
+  imageAlt: String
+}
+
+type SiteContentPagesHomeTranslationsNlBiomarkerPanelItems {
+  label: String
+  imagePath: String
+}
+
+type SiteContentPagesHomeTranslationsNlBiomarkerPanel {
+  titleLine1: String
+  titleLine2: String
+  primaryCtaLabel: String
+  items: [SiteContentPagesHomeTranslationsNlBiomarkerPanelItems]
+}
+
+type SiteContentPagesHomeTranslationsNlFeaturePanelCards {
+  alt: String
+  titleLine1: String
+  titleLine2: String
+  href: String
+  imagePath: String
+}
+
+type SiteContentPagesHomeTranslationsNlFeaturePanelStat1 {
+  value: String
+  line1: String
+  line2: String
+}
+
+type SiteContentPagesHomeTranslationsNlFeaturePanelStat2 {
+  value: String
+  line1: String
+  line2: String
+}
+
+type SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard {
+  alt: String
+  titleLine1: String
+  titleLine2: String
+  href: String
+  imagePath: String
+  ctaLabel: String
+}
+
+type SiteContentPagesHomeTranslationsNlFeaturePanel {
+  cardCtaLabel: String
+  cards: [SiteContentPagesHomeTranslationsNlFeaturePanelCards]
+  headingLine1: String
+  headingLine2: String
+  description: String
+  stat1: SiteContentPagesHomeTranslationsNlFeaturePanelStat1
+  stat2: SiteContentPagesHomeTranslationsNlFeaturePanelStat2
+  prescriptionCard: SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard
+  careHeadingLine1: String
+  careHeadingLine2: String
+  careDescription: String
+  testimonialAlt: String
+  badgeTitle: String
+  badgeStatus: String
+}
+
+type SiteContentPagesHomeTranslationsNlTrustSectionVideoCards {
+  thumbnailAlt: String
+  profileAlt: String
+  thumbnailImagePath: String
+  profileImagePath: String
+  handle: String
+  meta: String
+}
+
+type SiteContentPagesHomeTranslationsNlTrustSectionTextCards {
+  profileAlt: String
+  profileImagePath: String
+  name: String
+  quote: String
+}
+
+type SiteContentPagesHomeTranslationsNlTrustSection {
+  headingLine1: String
+  headingLine2: String
+  memberLabel: String
+  readMoreLabel: String
+  videoCards: [SiteContentPagesHomeTranslationsNlTrustSectionVideoCards]
+  textCards: [SiteContentPagesHomeTranslationsNlTrustSectionTextCards]
+}
+
+type SiteContentPagesHomeTranslationsNlCommandCenterSection {
+  headingLine1: String
+  headingLine2: String
+  loadingAnimationLabel: String
+  description: String
+  ctaLabel: String
+  appImagePath: String
+  appImageAlt: String
+}
+
+type SiteContentPagesHomeTranslationsNlOurProcessSectionSteps {
+  title: String
+  description: String
+}
+
+type SiteContentPagesHomeTranslationsNlOurProcessSection {
+  imagePath: String
+  imageAlt: String
+  headingLine1: String
+  headingLine2: String
+  steps: [SiteContentPagesHomeTranslationsNlOurProcessSectionSteps]
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing {
+  oneTimePrice: String
+  recurringPrice: String
+  oneTimeLabel: String
+  recurringLabel: String
+  discountPercentage: String
+  twiceAnnuallyBillingText: String
+  annuallyBillingText: String
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures {
+  name: String
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature {
+  categoryName: String
+  features: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures]
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures {
+  name: String
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction {
+  categoryName: String
+  features: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures]
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink {
+  label: String
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSectionPlans {
+  name: String
+  nameStyle: String
+  tagline: String
+  isPopular: Boolean
+  pricing: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing
+  feature: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature]
+  restriction: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction]
+  link: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink
+}
+
+type SiteContentPagesHomeTranslationsNlChoosePathSection {
+  title: String
+  subtitle: String
+  plans: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlans]
+}
+
+type SiteContentPagesHomeTranslationsNlFaqSectionItems {
+  question: String
+  answer: String
+}
+
+type SiteContentPagesHomeTranslationsNlFaqSection {
+  headingLine1: String
+  headingLine2: String
+  cardImagePath: String
+  items: [SiteContentPagesHomeTranslationsNlFaqSectionItems]
+  cardImageAlt: String
+  supportTitle: String
+  supportDescription: String
+  supportCtaLabel: String
+  supportCtaHref: String
+}
+
+type SiteContentPagesHomeTranslationsNlMissionSectionMission {
+  imageAlt: String
+  imagePath: String
+  name: String
+  role: String
+  headingLine1: String
+  headingLine2: String
+  description: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages {
+  alt: String
+  imagePath: String
+}
+
+type SiteContentPagesHomeTranslationsNlMissionSectionGallery {
+  headingLine1: String
+  headingLine2: String
+  ctaLabel: String
+  ctaHref: String
+  images: [SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages]
+}
+
+type SiteContentPagesHomeTranslationsNlMissionSection {
+  mission: SiteContentPagesHomeTranslationsNlMissionSectionMission
+  gallery: SiteContentPagesHomeTranslationsNlMissionSectionGallery
+}
+
+type SiteContentPagesHomeTranslationsNlNewsletterSection {
+  backgroundImagePath: String
+  backgroundImageAlt: String
+  headingLine1: String
+  headingLine2: String
+  description: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type SiteContentPagesHomeTranslationsNlServiceAreaSection {
+  headingLine1: String
+  headingLine2: String
+  description: String
+  areas: [String]
+  excludedNote: String
+  mapEmbedUrl: String
+  mapTitle: String
+  ctaLabel: String
+  ctaHref: String
+  regionName: String
+}
+
+type SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks {
+  label: String
+  href: String
+}
+
+type SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks {
+  label: String
+  href: String
+}
+
+type SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks {
+  label: String
+  href: String
+}
+
+type SiteContentPagesHomeTranslationsNlFooterSection {
+  logoAlt: String
+  logoImagePath: String
+  subscriptionText: String
+  followUsLabel: String
+  supportTitle: String
+  supportLinks: [SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks]
+  aboutTitle: String
+  aboutLinks: [SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks]
+  legalDisclaimer: String
+  cardImageAlt: String
+  cardDesktopImagePath: String
+  cardMobileImagePath: String
+  appPrompt: String
+  appStoreAlt: String
+  appStoreHref: String
+  appStoreImagePath: String
+  googlePlayAlt: String
+  googlePlayHref: String
+  googlePlayImagePath: String
+  copyrightText: String
+  socialLinks: [SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks]
+}
+
+type SiteContentPagesHomeTranslationsNlHeaderNavItems {
+  label: String
+  href: String
+}
+
+type SiteContentPagesHomeTranslationsNlHeader {
+  logoImagePath: String
+  whatsAppHref: String
+  primaryCtaLabel: String
+  secondaryCtaLabel: String
+  secondaryCtaHref: String
+  navItems: [SiteContentPagesHomeTranslationsNlHeaderNavItems]
+  logoAlt: String
+  homeAriaLabel: String
+  mainNavAriaLabel: String
+  openMenuAriaLabel: String
+  closeMenuAriaLabel: String
+  mobileNavAriaLabel: String
+  mobileMenuTitle: String
+  languageSwitcherAriaLabel: String
+}
+
+type SiteContentPagesHomeTranslationsNl {
+  primaryArea: String
+  heroImagePath: String
+  seoTitle: String
+  seoDescription: String
+  hero: SiteContentPagesHomeTranslationsNlHero
+  biomarkerPanel: SiteContentPagesHomeTranslationsNlBiomarkerPanel
+  featurePanel: SiteContentPagesHomeTranslationsNlFeaturePanel
+  trustSection: SiteContentPagesHomeTranslationsNlTrustSection
+  commandCenterSection: SiteContentPagesHomeTranslationsNlCommandCenterSection
+  ourProcessSection: SiteContentPagesHomeTranslationsNlOurProcessSection
+  choosePathSection: SiteContentPagesHomeTranslationsNlChoosePathSection
+  faqSection: SiteContentPagesHomeTranslationsNlFaqSection
+  missionSection: SiteContentPagesHomeTranslationsNlMissionSection
+  newsletterSection: SiteContentPagesHomeTranslationsNlNewsletterSection
+  serviceAreaSection: SiteContentPagesHomeTranslationsNlServiceAreaSection
+  footerSection: SiteContentPagesHomeTranslationsNlFooterSection
+  header: SiteContentPagesHomeTranslationsNlHeader
+}
+
+type SiteContentPagesHomeTranslations {
+  en: SiteContentPagesHomeTranslationsEn
+  nl: SiteContentPagesHomeTranslationsNl
+}
+
+type SiteContentPagesHome {
+  translations: SiteContentPagesHomeTranslations
+}
+
+type SiteContentPages {
+  home: SiteContentPagesHome
+}
+
+type SiteContentTranslationAutomation {
+  provider: String
+  sourceLocale: String
+  targetLocales: [String]
+  deeplBaseUrl: String
   promoNeedles: [String]
   mediaPathPrefixes: [String]
   exactTextReplacements: [String]
   regexTextReplacements: [String]
+}
+
+type SiteContent implements Node & Document {
+  siteSettings: SiteContentSiteSettings
+  pages: SiteContentPages
+  translationAutomation: SiteContentTranslationAutomation
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -413,26 +782,47 @@ input ImageFilter {
   in: [String]
 }
 
-input SiteContentHeroFilter {
+input SiteContentSiteSettingsLocalesFilter {
+  code: StringFilter
+  label: StringFilter
+  nativeLabel: StringFilter
+  shortLabel: StringFilter
+  htmlLang: StringFilter
+  ogLocale: StringFilter
+}
+
+input SiteContentSiteSettingsFilter {
+  mediaOrigin: StringFilter
+  businessName: StringFilter
+  baseCity: StringFilter
+  whatsappNumber: StringFilter
+  canonicalOrigin: StringFilter
+  homepageUrl: StringFilter
+  ogImage: ImageFilter
+  locales: SiteContentSiteSettingsLocalesFilter
+}
+
+input SiteContentPagesHomeTranslationsEnHeroFilter {
   titleLine1: StringFilter
   titleLine2: StringFilter
   description: StringFilter
   primaryCtaLabel: StringFilter
+  imageAlt: StringFilter
 }
 
-input SiteContentBiomarkerPanelItemsFilter {
+input SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsFilter {
   label: StringFilter
   imagePath: ImageFilter
 }
 
-input SiteContentBiomarkerPanelFilter {
+input SiteContentPagesHomeTranslationsEnBiomarkerPanelFilter {
   titleLine1: StringFilter
   titleLine2: StringFilter
   primaryCtaLabel: StringFilter
-  items: SiteContentBiomarkerPanelItemsFilter
+  items: SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsFilter
 }
 
-input SiteContentFeaturePanelCardsFilter {
+input SiteContentPagesHomeTranslationsEnFeaturePanelCardsFilter {
   alt: StringFilter
   titleLine1: StringFilter
   titleLine2: StringFilter
@@ -440,19 +830,19 @@ input SiteContentFeaturePanelCardsFilter {
   imagePath: ImageFilter
 }
 
-input SiteContentFeaturePanelStat1Filter {
+input SiteContentPagesHomeTranslationsEnFeaturePanelStat1Filter {
   value: StringFilter
   line1: StringFilter
   line2: StringFilter
 }
 
-input SiteContentFeaturePanelStat2Filter {
+input SiteContentPagesHomeTranslationsEnFeaturePanelStat2Filter {
   value: StringFilter
   line1: StringFilter
   line2: StringFilter
 }
 
-input SiteContentFeaturePanelPrescriptionCardFilter {
+input SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardFilter {
   alt: StringFilter
   titleLine1: StringFilter
   titleLine2: StringFilter
@@ -461,15 +851,15 @@ input SiteContentFeaturePanelPrescriptionCardFilter {
   ctaLabel: StringFilter
 }
 
-input SiteContentFeaturePanelFilter {
+input SiteContentPagesHomeTranslationsEnFeaturePanelFilter {
   cardCtaLabel: StringFilter
-  cards: SiteContentFeaturePanelCardsFilter
+  cards: SiteContentPagesHomeTranslationsEnFeaturePanelCardsFilter
   headingLine1: StringFilter
   headingLine2: StringFilter
   description: StringFilter
-  stat1: SiteContentFeaturePanelStat1Filter
-  stat2: SiteContentFeaturePanelStat2Filter
-  prescriptionCard: SiteContentFeaturePanelPrescriptionCardFilter
+  stat1: SiteContentPagesHomeTranslationsEnFeaturePanelStat1Filter
+  stat2: SiteContentPagesHomeTranslationsEnFeaturePanelStat2Filter
+  prescriptionCard: SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardFilter
   careHeadingLine1: StringFilter
   careHeadingLine2: StringFilter
   careDescription: StringFilter
@@ -478,7 +868,7 @@ input SiteContentFeaturePanelFilter {
   badgeStatus: StringFilter
 }
 
-input SiteContentTrustSectionVideoCardsFilter {
+input SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsFilter {
   thumbnailAlt: StringFilter
   profileAlt: StringFilter
   thumbnailImagePath: ImageFilter
@@ -487,23 +877,23 @@ input SiteContentTrustSectionVideoCardsFilter {
   meta: StringFilter
 }
 
-input SiteContentTrustSectionTextCardsFilter {
+input SiteContentPagesHomeTranslationsEnTrustSectionTextCardsFilter {
   profileAlt: StringFilter
   profileImagePath: ImageFilter
   name: StringFilter
   quote: StringFilter
 }
 
-input SiteContentTrustSectionFilter {
+input SiteContentPagesHomeTranslationsEnTrustSectionFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
   memberLabel: StringFilter
   readMoreLabel: StringFilter
-  videoCards: SiteContentTrustSectionVideoCardsFilter
-  textCards: SiteContentTrustSectionTextCardsFilter
+  videoCards: SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsFilter
+  textCards: SiteContentPagesHomeTranslationsEnTrustSectionTextCardsFilter
 }
 
-input SiteContentCommandCenterSectionFilter {
+input SiteContentPagesHomeTranslationsEnCommandCenterSectionFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
   loadingAnimationLabel: StringFilter
@@ -513,17 +903,17 @@ input SiteContentCommandCenterSectionFilter {
   appImageAlt: StringFilter
 }
 
-input SiteContentOurProcessSectionStepsFilter {
+input SiteContentPagesHomeTranslationsEnOurProcessSectionStepsFilter {
   title: StringFilter
   description: StringFilter
 }
 
-input SiteContentOurProcessSectionFilter {
+input SiteContentPagesHomeTranslationsEnOurProcessSectionFilter {
   imagePath: ImageFilter
   imageAlt: StringFilter
   headingLine1: StringFilter
   headingLine2: StringFilter
-  steps: SiteContentOurProcessSectionStepsFilter
+  steps: SiteContentPagesHomeTranslationsEnOurProcessSectionStepsFilter
 }
 
 input BooleanFilter {
@@ -531,7 +921,7 @@ input BooleanFilter {
   exists: Boolean
 }
 
-input SiteContentChoosePathSectionPlansPricingFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingFilter {
   oneTimePrice: StringFilter
   recurringPrice: StringFilter
   oneTimeLabel: StringFilter
@@ -541,55 +931,55 @@ input SiteContentChoosePathSectionPlansPricingFilter {
   annuallyBillingText: StringFilter
 }
 
-input SiteContentChoosePathSectionPlansFeatureFeaturesFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesFilter {
   name: StringFilter
 }
 
-input SiteContentChoosePathSectionPlansFeatureFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFilter {
   categoryName: StringFilter
-  features: SiteContentChoosePathSectionPlansFeatureFeaturesFilter
+  features: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesFilter
 }
 
-input SiteContentChoosePathSectionPlansRestrictionFeaturesFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesFilter {
   name: StringFilter
 }
 
-input SiteContentChoosePathSectionPlansRestrictionFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFilter {
   categoryName: StringFilter
-  features: SiteContentChoosePathSectionPlansRestrictionFeaturesFilter
+  features: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesFilter
 }
 
-input SiteContentChoosePathSectionPlansLinkFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkFilter {
   label: StringFilter
 }
 
-input SiteContentChoosePathSectionPlansFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFilter {
   name: StringFilter
   nameStyle: StringFilter
   tagline: StringFilter
   isPopular: BooleanFilter
-  pricing: SiteContentChoosePathSectionPlansPricingFilter
-  feature: SiteContentChoosePathSectionPlansFeatureFilter
-  restriction: SiteContentChoosePathSectionPlansRestrictionFilter
-  link: SiteContentChoosePathSectionPlansLinkFilter
+  pricing: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingFilter
+  feature: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFilter
+  restriction: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFilter
+  link: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkFilter
 }
 
-input SiteContentChoosePathSectionFilter {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionFilter {
   title: StringFilter
   subtitle: StringFilter
-  plans: SiteContentChoosePathSectionPlansFilter
+  plans: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFilter
 }
 
-input SiteContentFaqSectionItemsFilter {
+input SiteContentPagesHomeTranslationsEnFaqSectionItemsFilter {
   question: StringFilter
   answer: StringFilter
 }
 
-input SiteContentFaqSectionFilter {
+input SiteContentPagesHomeTranslationsEnFaqSectionFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
   cardImagePath: ImageFilter
-  items: SiteContentFaqSectionItemsFilter
+  items: SiteContentPagesHomeTranslationsEnFaqSectionItemsFilter
   cardImageAlt: StringFilter
   supportTitle: StringFilter
   supportDescription: StringFilter
@@ -597,7 +987,7 @@ input SiteContentFaqSectionFilter {
   supportCtaHref: StringFilter
 }
 
-input SiteContentMissionSectionMissionFilter {
+input SiteContentPagesHomeTranslationsEnMissionSectionMissionFilter {
   imageAlt: StringFilter
   imagePath: ImageFilter
   name: StringFilter
@@ -609,25 +999,25 @@ input SiteContentMissionSectionMissionFilter {
   ctaHref: StringFilter
 }
 
-input SiteContentMissionSectionGalleryImagesFilter {
+input SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesFilter {
   alt: StringFilter
   imagePath: ImageFilter
 }
 
-input SiteContentMissionSectionGalleryFilter {
+input SiteContentPagesHomeTranslationsEnMissionSectionGalleryFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
   ctaLabel: StringFilter
   ctaHref: StringFilter
-  images: SiteContentMissionSectionGalleryImagesFilter
+  images: SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesFilter
 }
 
-input SiteContentMissionSectionFilter {
-  mission: SiteContentMissionSectionMissionFilter
-  gallery: SiteContentMissionSectionGalleryFilter
+input SiteContentPagesHomeTranslationsEnMissionSectionFilter {
+  mission: SiteContentPagesHomeTranslationsEnMissionSectionMissionFilter
+  gallery: SiteContentPagesHomeTranslationsEnMissionSectionGalleryFilter
 }
 
-input SiteContentNewsletterSectionFilter {
+input SiteContentPagesHomeTranslationsEnNewsletterSectionFilter {
   backgroundImagePath: ImageFilter
   backgroundImageAlt: StringFilter
   headingLine1: StringFilter
@@ -637,7 +1027,7 @@ input SiteContentNewsletterSectionFilter {
   ctaHref: StringFilter
 }
 
-input SiteContentServiceAreaSectionFilter {
+input SiteContentPagesHomeTranslationsEnServiceAreaSectionFilter {
   headingLine1: StringFilter
   headingLine2: StringFilter
   description: StringFilter
@@ -647,27 +1037,33 @@ input SiteContentServiceAreaSectionFilter {
   mapTitle: StringFilter
   ctaLabel: StringFilter
   ctaHref: StringFilter
+  regionName: StringFilter
 }
 
-input SiteContentFooterSectionSupportLinksFilter {
+input SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksFilter {
   label: StringFilter
   href: StringFilter
 }
 
-input SiteContentFooterSectionAboutLinksFilter {
+input SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksFilter {
   label: StringFilter
   href: StringFilter
 }
 
-input SiteContentFooterSectionFilter {
+input SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsEnFooterSectionFilter {
   logoAlt: StringFilter
   logoImagePath: ImageFilter
   subscriptionText: StringFilter
   followUsLabel: StringFilter
   supportTitle: StringFilter
-  supportLinks: SiteContentFooterSectionSupportLinksFilter
+  supportLinks: SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksFilter
   aboutTitle: StringFilter
-  aboutLinks: SiteContentFooterSectionAboutLinksFilter
+  aboutLinks: SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksFilter
   legalDisclaimer: StringFilter
   cardImageAlt: StringFilter
   cardDesktopImagePath: ImageFilter
@@ -680,51 +1076,393 @@ input SiteContentFooterSectionFilter {
   googlePlayHref: StringFilter
   googlePlayImagePath: ImageFilter
   copyrightText: StringFilter
+  socialLinks: SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksFilter
 }
 
-input SiteContentHeaderNavItemsFilter {
+input SiteContentPagesHomeTranslationsEnHeaderNavItemsFilter {
   label: StringFilter
   href: StringFilter
 }
 
-input SiteContentHeaderFilter {
+input SiteContentPagesHomeTranslationsEnHeaderFilter {
   logoImagePath: ImageFilter
   whatsAppHref: StringFilter
   primaryCtaLabel: StringFilter
   secondaryCtaLabel: StringFilter
   secondaryCtaHref: StringFilter
-  navItems: SiteContentHeaderNavItemsFilter
+  navItems: SiteContentPagesHomeTranslationsEnHeaderNavItemsFilter
+  logoAlt: StringFilter
+  homeAriaLabel: StringFilter
+  mainNavAriaLabel: StringFilter
+  openMenuAriaLabel: StringFilter
+  closeMenuAriaLabel: StringFilter
+  mobileNavAriaLabel: StringFilter
+  mobileMenuTitle: StringFilter
+  languageSwitcherAriaLabel: StringFilter
 }
 
-input SiteContentFilter {
-  mediaOrigin: StringFilter
-  businessName: StringFilter
-  baseCity: StringFilter
-  whatsappNumber: StringFilter
+input SiteContentPagesHomeTranslationsEnFilter {
   primaryArea: StringFilter
   heroImagePath: ImageFilter
-  canonicalOrigin: StringFilter
-  homepageUrl: StringFilter
   seoTitle: StringFilter
   seoDescription: StringFilter
-  ogImage: ImageFilter
-  hero: SiteContentHeroFilter
-  biomarkerPanel: SiteContentBiomarkerPanelFilter
-  featurePanel: SiteContentFeaturePanelFilter
-  trustSection: SiteContentTrustSectionFilter
-  commandCenterSection: SiteContentCommandCenterSectionFilter
-  ourProcessSection: SiteContentOurProcessSectionFilter
-  choosePathSection: SiteContentChoosePathSectionFilter
-  faqSection: SiteContentFaqSectionFilter
-  missionSection: SiteContentMissionSectionFilter
-  newsletterSection: SiteContentNewsletterSectionFilter
-  serviceAreaSection: SiteContentServiceAreaSectionFilter
-  footerSection: SiteContentFooterSectionFilter
-  header: SiteContentHeaderFilter
+  hero: SiteContentPagesHomeTranslationsEnHeroFilter
+  biomarkerPanel: SiteContentPagesHomeTranslationsEnBiomarkerPanelFilter
+  featurePanel: SiteContentPagesHomeTranslationsEnFeaturePanelFilter
+  trustSection: SiteContentPagesHomeTranslationsEnTrustSectionFilter
+  commandCenterSection: SiteContentPagesHomeTranslationsEnCommandCenterSectionFilter
+  ourProcessSection: SiteContentPagesHomeTranslationsEnOurProcessSectionFilter
+  choosePathSection: SiteContentPagesHomeTranslationsEnChoosePathSectionFilter
+  faqSection: SiteContentPagesHomeTranslationsEnFaqSectionFilter
+  missionSection: SiteContentPagesHomeTranslationsEnMissionSectionFilter
+  newsletterSection: SiteContentPagesHomeTranslationsEnNewsletterSectionFilter
+  serviceAreaSection: SiteContentPagesHomeTranslationsEnServiceAreaSectionFilter
+  footerSection: SiteContentPagesHomeTranslationsEnFooterSectionFilter
+  header: SiteContentPagesHomeTranslationsEnHeaderFilter
+}
+
+input SiteContentPagesHomeTranslationsNlHeroFilter {
+  titleLine1: StringFilter
+  titleLine2: StringFilter
+  description: StringFilter
+  primaryCtaLabel: StringFilter
+  imageAlt: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsFilter {
+  label: StringFilter
+  imagePath: ImageFilter
+}
+
+input SiteContentPagesHomeTranslationsNlBiomarkerPanelFilter {
+  titleLine1: StringFilter
+  titleLine2: StringFilter
+  primaryCtaLabel: StringFilter
+  items: SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelCardsFilter {
+  alt: StringFilter
+  titleLine1: StringFilter
+  titleLine2: StringFilter
+  href: StringFilter
+  imagePath: ImageFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelStat1Filter {
+  value: StringFilter
+  line1: StringFilter
+  line2: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelStat2Filter {
+  value: StringFilter
+  line1: StringFilter
+  line2: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardFilter {
+  alt: StringFilter
+  titleLine1: StringFilter
+  titleLine2: StringFilter
+  href: StringFilter
+  imagePath: ImageFilter
+  ctaLabel: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelFilter {
+  cardCtaLabel: StringFilter
+  cards: SiteContentPagesHomeTranslationsNlFeaturePanelCardsFilter
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  description: StringFilter
+  stat1: SiteContentPagesHomeTranslationsNlFeaturePanelStat1Filter
+  stat2: SiteContentPagesHomeTranslationsNlFeaturePanelStat2Filter
+  prescriptionCard: SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardFilter
+  careHeadingLine1: StringFilter
+  careHeadingLine2: StringFilter
+  careDescription: StringFilter
+  testimonialAlt: StringFilter
+  badgeTitle: StringFilter
+  badgeStatus: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsFilter {
+  thumbnailAlt: StringFilter
+  profileAlt: StringFilter
+  thumbnailImagePath: ImageFilter
+  profileImagePath: ImageFilter
+  handle: StringFilter
+  meta: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionTextCardsFilter {
+  profileAlt: StringFilter
+  profileImagePath: ImageFilter
+  name: StringFilter
+  quote: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  memberLabel: StringFilter
+  readMoreLabel: StringFilter
+  videoCards: SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsFilter
+  textCards: SiteContentPagesHomeTranslationsNlTrustSectionTextCardsFilter
+}
+
+input SiteContentPagesHomeTranslationsNlCommandCenterSectionFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  loadingAnimationLabel: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+  appImagePath: ImageFilter
+  appImageAlt: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlOurProcessSectionStepsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlOurProcessSectionFilter {
+  imagePath: ImageFilter
+  imageAlt: StringFilter
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  steps: SiteContentPagesHomeTranslationsNlOurProcessSectionStepsFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingFilter {
+  oneTimePrice: StringFilter
+  recurringPrice: StringFilter
+  oneTimeLabel: StringFilter
+  recurringLabel: StringFilter
+  discountPercentage: StringFilter
+  twiceAnnuallyBillingText: StringFilter
+  annuallyBillingText: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesFilter {
+  name: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFilter {
+  categoryName: StringFilter
+  features: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesFilter {
+  name: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFilter {
+  categoryName: StringFilter
+  features: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkFilter {
+  label: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFilter {
+  name: StringFilter
+  nameStyle: StringFilter
+  tagline: StringFilter
+  isPopular: BooleanFilter
+  pricing: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingFilter
+  feature: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFilter
+  restriction: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFilter
+  link: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkFilter
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionFilter {
+  title: StringFilter
+  subtitle: StringFilter
+  plans: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFaqSectionItemsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFaqSectionFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  cardImagePath: ImageFilter
+  items: SiteContentPagesHomeTranslationsNlFaqSectionItemsFilter
+  cardImageAlt: StringFilter
+  supportTitle: StringFilter
+  supportDescription: StringFilter
+  supportCtaLabel: StringFilter
+  supportCtaHref: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionMissionFilter {
+  imageAlt: StringFilter
+  imagePath: ImageFilter
+  name: StringFilter
+  role: StringFilter
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesFilter {
+  alt: StringFilter
+  imagePath: ImageFilter
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionGalleryFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+  images: SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesFilter
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionFilter {
+  mission: SiteContentPagesHomeTranslationsNlMissionSectionMissionFilter
+  gallery: SiteContentPagesHomeTranslationsNlMissionSectionGalleryFilter
+}
+
+input SiteContentPagesHomeTranslationsNlNewsletterSectionFilter {
+  backgroundImagePath: ImageFilter
+  backgroundImageAlt: StringFilter
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlServiceAreaSectionFilter {
+  headingLine1: StringFilter
+  headingLine2: StringFilter
+  description: StringFilter
+  areas: StringFilter
+  excludedNote: StringFilter
+  mapEmbedUrl: StringFilter
+  mapTitle: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+  regionName: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionFilter {
+  logoAlt: StringFilter
+  logoImagePath: ImageFilter
+  subscriptionText: StringFilter
+  followUsLabel: StringFilter
+  supportTitle: StringFilter
+  supportLinks: SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksFilter
+  aboutTitle: StringFilter
+  aboutLinks: SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksFilter
+  legalDisclaimer: StringFilter
+  cardImageAlt: StringFilter
+  cardDesktopImagePath: ImageFilter
+  cardMobileImagePath: ImageFilter
+  appPrompt: StringFilter
+  appStoreAlt: StringFilter
+  appStoreHref: StringFilter
+  appStoreImagePath: ImageFilter
+  googlePlayAlt: StringFilter
+  googlePlayHref: StringFilter
+  googlePlayImagePath: ImageFilter
+  copyrightText: StringFilter
+  socialLinks: SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksFilter
+}
+
+input SiteContentPagesHomeTranslationsNlHeaderNavItemsFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlHeaderFilter {
+  logoImagePath: ImageFilter
+  whatsAppHref: StringFilter
+  primaryCtaLabel: StringFilter
+  secondaryCtaLabel: StringFilter
+  secondaryCtaHref: StringFilter
+  navItems: SiteContentPagesHomeTranslationsNlHeaderNavItemsFilter
+  logoAlt: StringFilter
+  homeAriaLabel: StringFilter
+  mainNavAriaLabel: StringFilter
+  openMenuAriaLabel: StringFilter
+  closeMenuAriaLabel: StringFilter
+  mobileNavAriaLabel: StringFilter
+  mobileMenuTitle: StringFilter
+  languageSwitcherAriaLabel: StringFilter
+}
+
+input SiteContentPagesHomeTranslationsNlFilter {
+  primaryArea: StringFilter
+  heroImagePath: ImageFilter
+  seoTitle: StringFilter
+  seoDescription: StringFilter
+  hero: SiteContentPagesHomeTranslationsNlHeroFilter
+  biomarkerPanel: SiteContentPagesHomeTranslationsNlBiomarkerPanelFilter
+  featurePanel: SiteContentPagesHomeTranslationsNlFeaturePanelFilter
+  trustSection: SiteContentPagesHomeTranslationsNlTrustSectionFilter
+  commandCenterSection: SiteContentPagesHomeTranslationsNlCommandCenterSectionFilter
+  ourProcessSection: SiteContentPagesHomeTranslationsNlOurProcessSectionFilter
+  choosePathSection: SiteContentPagesHomeTranslationsNlChoosePathSectionFilter
+  faqSection: SiteContentPagesHomeTranslationsNlFaqSectionFilter
+  missionSection: SiteContentPagesHomeTranslationsNlMissionSectionFilter
+  newsletterSection: SiteContentPagesHomeTranslationsNlNewsletterSectionFilter
+  serviceAreaSection: SiteContentPagesHomeTranslationsNlServiceAreaSectionFilter
+  footerSection: SiteContentPagesHomeTranslationsNlFooterSectionFilter
+  header: SiteContentPagesHomeTranslationsNlHeaderFilter
+}
+
+input SiteContentPagesHomeTranslationsFilter {
+  en: SiteContentPagesHomeTranslationsEnFilter
+  nl: SiteContentPagesHomeTranslationsNlFilter
+}
+
+input SiteContentPagesHomeFilter {
+  translations: SiteContentPagesHomeTranslationsFilter
+}
+
+input SiteContentPagesFilter {
+  home: SiteContentPagesHomeFilter
+}
+
+input SiteContentTranslationAutomationFilter {
+  provider: StringFilter
+  sourceLocale: StringFilter
+  targetLocales: StringFilter
+  deeplBaseUrl: StringFilter
   promoNeedles: StringFilter
   mediaPathPrefixes: StringFilter
   exactTextReplacements: StringFilter
   regexTextReplacements: StringFilter
+}
+
+input SiteContentFilter {
+  siteSettings: SiteContentSiteSettingsFilter
+  pages: SiteContentPagesFilter
+  translationAutomation: SiteContentTranslationAutomationFilter
 }
 
 type SiteContentConnectionEdges {
@@ -757,26 +1495,47 @@ input DocumentMutation {
   siteContent: SiteContentMutation
 }
 
-input SiteContentHeroMutation {
+input SiteContentSiteSettingsLocalesMutation {
+  code: String
+  label: String
+  nativeLabel: String
+  shortLabel: String
+  htmlLang: String
+  ogLocale: String
+}
+
+input SiteContentSiteSettingsMutation {
+  mediaOrigin: String
+  businessName: String
+  baseCity: String
+  whatsappNumber: String
+  canonicalOrigin: String
+  homepageUrl: String
+  ogImage: String
+  locales: [SiteContentSiteSettingsLocalesMutation]
+}
+
+input SiteContentPagesHomeTranslationsEnHeroMutation {
   titleLine1: String
   titleLine2: String
   description: String
   primaryCtaLabel: String
+  imageAlt: String
 }
 
-input SiteContentBiomarkerPanelItemsMutation {
+input SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsMutation {
   label: String
   imagePath: String
 }
 
-input SiteContentBiomarkerPanelMutation {
+input SiteContentPagesHomeTranslationsEnBiomarkerPanelMutation {
   titleLine1: String
   titleLine2: String
   primaryCtaLabel: String
-  items: [SiteContentBiomarkerPanelItemsMutation]
+  items: [SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsMutation]
 }
 
-input SiteContentFeaturePanelCardsMutation {
+input SiteContentPagesHomeTranslationsEnFeaturePanelCardsMutation {
   alt: String
   titleLine1: String
   titleLine2: String
@@ -784,19 +1543,19 @@ input SiteContentFeaturePanelCardsMutation {
   imagePath: String
 }
 
-input SiteContentFeaturePanelStat1Mutation {
+input SiteContentPagesHomeTranslationsEnFeaturePanelStat1Mutation {
   value: String
   line1: String
   line2: String
 }
 
-input SiteContentFeaturePanelStat2Mutation {
+input SiteContentPagesHomeTranslationsEnFeaturePanelStat2Mutation {
   value: String
   line1: String
   line2: String
 }
 
-input SiteContentFeaturePanelPrescriptionCardMutation {
+input SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardMutation {
   alt: String
   titleLine1: String
   titleLine2: String
@@ -805,15 +1564,15 @@ input SiteContentFeaturePanelPrescriptionCardMutation {
   ctaLabel: String
 }
 
-input SiteContentFeaturePanelMutation {
+input SiteContentPagesHomeTranslationsEnFeaturePanelMutation {
   cardCtaLabel: String
-  cards: [SiteContentFeaturePanelCardsMutation]
+  cards: [SiteContentPagesHomeTranslationsEnFeaturePanelCardsMutation]
   headingLine1: String
   headingLine2: String
   description: String
-  stat1: SiteContentFeaturePanelStat1Mutation
-  stat2: SiteContentFeaturePanelStat2Mutation
-  prescriptionCard: SiteContentFeaturePanelPrescriptionCardMutation
+  stat1: SiteContentPagesHomeTranslationsEnFeaturePanelStat1Mutation
+  stat2: SiteContentPagesHomeTranslationsEnFeaturePanelStat2Mutation
+  prescriptionCard: SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardMutation
   careHeadingLine1: String
   careHeadingLine2: String
   careDescription: String
@@ -822,7 +1581,7 @@ input SiteContentFeaturePanelMutation {
   badgeStatus: String
 }
 
-input SiteContentTrustSectionVideoCardsMutation {
+input SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsMutation {
   thumbnailAlt: String
   profileAlt: String
   thumbnailImagePath: String
@@ -831,23 +1590,23 @@ input SiteContentTrustSectionVideoCardsMutation {
   meta: String
 }
 
-input SiteContentTrustSectionTextCardsMutation {
+input SiteContentPagesHomeTranslationsEnTrustSectionTextCardsMutation {
   profileAlt: String
   profileImagePath: String
   name: String
   quote: String
 }
 
-input SiteContentTrustSectionMutation {
+input SiteContentPagesHomeTranslationsEnTrustSectionMutation {
   headingLine1: String
   headingLine2: String
   memberLabel: String
   readMoreLabel: String
-  videoCards: [SiteContentTrustSectionVideoCardsMutation]
-  textCards: [SiteContentTrustSectionTextCardsMutation]
+  videoCards: [SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsMutation]
+  textCards: [SiteContentPagesHomeTranslationsEnTrustSectionTextCardsMutation]
 }
 
-input SiteContentCommandCenterSectionMutation {
+input SiteContentPagesHomeTranslationsEnCommandCenterSectionMutation {
   headingLine1: String
   headingLine2: String
   loadingAnimationLabel: String
@@ -857,20 +1616,20 @@ input SiteContentCommandCenterSectionMutation {
   appImageAlt: String
 }
 
-input SiteContentOurProcessSectionStepsMutation {
+input SiteContentPagesHomeTranslationsEnOurProcessSectionStepsMutation {
   title: String
   description: String
 }
 
-input SiteContentOurProcessSectionMutation {
+input SiteContentPagesHomeTranslationsEnOurProcessSectionMutation {
   imagePath: String
   imageAlt: String
   headingLine1: String
   headingLine2: String
-  steps: [SiteContentOurProcessSectionStepsMutation]
+  steps: [SiteContentPagesHomeTranslationsEnOurProcessSectionStepsMutation]
 }
 
-input SiteContentChoosePathSectionPlansPricingMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingMutation {
   oneTimePrice: String
   recurringPrice: String
   oneTimeLabel: String
@@ -880,55 +1639,55 @@ input SiteContentChoosePathSectionPlansPricingMutation {
   annuallyBillingText: String
 }
 
-input SiteContentChoosePathSectionPlansFeatureFeaturesMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesMutation {
   name: String
 }
 
-input SiteContentChoosePathSectionPlansFeatureMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureMutation {
   categoryName: String
-  features: [SiteContentChoosePathSectionPlansFeatureFeaturesMutation]
+  features: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesMutation]
 }
 
-input SiteContentChoosePathSectionPlansRestrictionFeaturesMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesMutation {
   name: String
 }
 
-input SiteContentChoosePathSectionPlansRestrictionMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionMutation {
   categoryName: String
-  features: [SiteContentChoosePathSectionPlansRestrictionFeaturesMutation]
+  features: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesMutation]
 }
 
-input SiteContentChoosePathSectionPlansLinkMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkMutation {
   label: String
 }
 
-input SiteContentChoosePathSectionPlansMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionPlansMutation {
   name: String
   nameStyle: String
   tagline: String
   isPopular: Boolean
-  pricing: SiteContentChoosePathSectionPlansPricingMutation
-  feature: [SiteContentChoosePathSectionPlansFeatureMutation]
-  restriction: [SiteContentChoosePathSectionPlansRestrictionMutation]
-  link: SiteContentChoosePathSectionPlansLinkMutation
+  pricing: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingMutation
+  feature: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureMutation]
+  restriction: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionMutation]
+  link: SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkMutation
 }
 
-input SiteContentChoosePathSectionMutation {
+input SiteContentPagesHomeTranslationsEnChoosePathSectionMutation {
   title: String
   subtitle: String
-  plans: [SiteContentChoosePathSectionPlansMutation]
+  plans: [SiteContentPagesHomeTranslationsEnChoosePathSectionPlansMutation]
 }
 
-input SiteContentFaqSectionItemsMutation {
+input SiteContentPagesHomeTranslationsEnFaqSectionItemsMutation {
   question: String
   answer: String
 }
 
-input SiteContentFaqSectionMutation {
+input SiteContentPagesHomeTranslationsEnFaqSectionMutation {
   headingLine1: String
   headingLine2: String
   cardImagePath: String
-  items: [SiteContentFaqSectionItemsMutation]
+  items: [SiteContentPagesHomeTranslationsEnFaqSectionItemsMutation]
   cardImageAlt: String
   supportTitle: String
   supportDescription: String
@@ -936,7 +1695,7 @@ input SiteContentFaqSectionMutation {
   supportCtaHref: String
 }
 
-input SiteContentMissionSectionMissionMutation {
+input SiteContentPagesHomeTranslationsEnMissionSectionMissionMutation {
   imageAlt: String
   imagePath: String
   name: String
@@ -948,25 +1707,25 @@ input SiteContentMissionSectionMissionMutation {
   ctaHref: String
 }
 
-input SiteContentMissionSectionGalleryImagesMutation {
+input SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesMutation {
   alt: String
   imagePath: String
 }
 
-input SiteContentMissionSectionGalleryMutation {
+input SiteContentPagesHomeTranslationsEnMissionSectionGalleryMutation {
   headingLine1: String
   headingLine2: String
   ctaLabel: String
   ctaHref: String
-  images: [SiteContentMissionSectionGalleryImagesMutation]
+  images: [SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesMutation]
 }
 
-input SiteContentMissionSectionMutation {
-  mission: SiteContentMissionSectionMissionMutation
-  gallery: SiteContentMissionSectionGalleryMutation
+input SiteContentPagesHomeTranslationsEnMissionSectionMutation {
+  mission: SiteContentPagesHomeTranslationsEnMissionSectionMissionMutation
+  gallery: SiteContentPagesHomeTranslationsEnMissionSectionGalleryMutation
 }
 
-input SiteContentNewsletterSectionMutation {
+input SiteContentPagesHomeTranslationsEnNewsletterSectionMutation {
   backgroundImagePath: String
   backgroundImageAlt: String
   headingLine1: String
@@ -976,7 +1735,7 @@ input SiteContentNewsletterSectionMutation {
   ctaHref: String
 }
 
-input SiteContentServiceAreaSectionMutation {
+input SiteContentPagesHomeTranslationsEnServiceAreaSectionMutation {
   headingLine1: String
   headingLine2: String
   description: String
@@ -986,27 +1745,33 @@ input SiteContentServiceAreaSectionMutation {
   mapTitle: String
   ctaLabel: String
   ctaHref: String
+  regionName: String
 }
 
-input SiteContentFooterSectionSupportLinksMutation {
+input SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksMutation {
   label: String
   href: String
 }
 
-input SiteContentFooterSectionAboutLinksMutation {
+input SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksMutation {
   label: String
   href: String
 }
 
-input SiteContentFooterSectionMutation {
+input SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksMutation {
+  label: String
+  href: String
+}
+
+input SiteContentPagesHomeTranslationsEnFooterSectionMutation {
   logoAlt: String
   logoImagePath: String
   subscriptionText: String
   followUsLabel: String
   supportTitle: String
-  supportLinks: [SiteContentFooterSectionSupportLinksMutation]
+  supportLinks: [SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksMutation]
   aboutTitle: String
-  aboutLinks: [SiteContentFooterSectionAboutLinksMutation]
+  aboutLinks: [SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksMutation]
   legalDisclaimer: String
   cardImageAlt: String
   cardDesktopImagePath: String
@@ -1019,51 +1784,393 @@ input SiteContentFooterSectionMutation {
   googlePlayHref: String
   googlePlayImagePath: String
   copyrightText: String
+  socialLinks: [SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksMutation]
 }
 
-input SiteContentHeaderNavItemsMutation {
+input SiteContentPagesHomeTranslationsEnHeaderNavItemsMutation {
   label: String
   href: String
 }
 
-input SiteContentHeaderMutation {
+input SiteContentPagesHomeTranslationsEnHeaderMutation {
   logoImagePath: String
   whatsAppHref: String
   primaryCtaLabel: String
   secondaryCtaLabel: String
   secondaryCtaHref: String
-  navItems: [SiteContentHeaderNavItemsMutation]
+  navItems: [SiteContentPagesHomeTranslationsEnHeaderNavItemsMutation]
+  logoAlt: String
+  homeAriaLabel: String
+  mainNavAriaLabel: String
+  openMenuAriaLabel: String
+  closeMenuAriaLabel: String
+  mobileNavAriaLabel: String
+  mobileMenuTitle: String
+  languageSwitcherAriaLabel: String
 }
 
-input SiteContentMutation {
-  mediaOrigin: String
-  businessName: String
-  baseCity: String
-  whatsappNumber: String
+input SiteContentPagesHomeTranslationsEnMutation {
   primaryArea: String
   heroImagePath: String
-  canonicalOrigin: String
-  homepageUrl: String
   seoTitle: String
   seoDescription: String
-  ogImage: String
-  hero: SiteContentHeroMutation
-  biomarkerPanel: SiteContentBiomarkerPanelMutation
-  featurePanel: SiteContentFeaturePanelMutation
-  trustSection: SiteContentTrustSectionMutation
-  commandCenterSection: SiteContentCommandCenterSectionMutation
-  ourProcessSection: SiteContentOurProcessSectionMutation
-  choosePathSection: SiteContentChoosePathSectionMutation
-  faqSection: SiteContentFaqSectionMutation
-  missionSection: SiteContentMissionSectionMutation
-  newsletterSection: SiteContentNewsletterSectionMutation
-  serviceAreaSection: SiteContentServiceAreaSectionMutation
-  footerSection: SiteContentFooterSectionMutation
-  header: SiteContentHeaderMutation
+  hero: SiteContentPagesHomeTranslationsEnHeroMutation
+  biomarkerPanel: SiteContentPagesHomeTranslationsEnBiomarkerPanelMutation
+  featurePanel: SiteContentPagesHomeTranslationsEnFeaturePanelMutation
+  trustSection: SiteContentPagesHomeTranslationsEnTrustSectionMutation
+  commandCenterSection: SiteContentPagesHomeTranslationsEnCommandCenterSectionMutation
+  ourProcessSection: SiteContentPagesHomeTranslationsEnOurProcessSectionMutation
+  choosePathSection: SiteContentPagesHomeTranslationsEnChoosePathSectionMutation
+  faqSection: SiteContentPagesHomeTranslationsEnFaqSectionMutation
+  missionSection: SiteContentPagesHomeTranslationsEnMissionSectionMutation
+  newsletterSection: SiteContentPagesHomeTranslationsEnNewsletterSectionMutation
+  serviceAreaSection: SiteContentPagesHomeTranslationsEnServiceAreaSectionMutation
+  footerSection: SiteContentPagesHomeTranslationsEnFooterSectionMutation
+  header: SiteContentPagesHomeTranslationsEnHeaderMutation
+}
+
+input SiteContentPagesHomeTranslationsNlHeroMutation {
+  titleLine1: String
+  titleLine2: String
+  description: String
+  primaryCtaLabel: String
+  imageAlt: String
+}
+
+input SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsMutation {
+  label: String
+  imagePath: String
+}
+
+input SiteContentPagesHomeTranslationsNlBiomarkerPanelMutation {
+  titleLine1: String
+  titleLine2: String
+  primaryCtaLabel: String
+  items: [SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelCardsMutation {
+  alt: String
+  titleLine1: String
+  titleLine2: String
+  href: String
+  imagePath: String
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelStat1Mutation {
+  value: String
+  line1: String
+  line2: String
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelStat2Mutation {
+  value: String
+  line1: String
+  line2: String
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardMutation {
+  alt: String
+  titleLine1: String
+  titleLine2: String
+  href: String
+  imagePath: String
+  ctaLabel: String
+}
+
+input SiteContentPagesHomeTranslationsNlFeaturePanelMutation {
+  cardCtaLabel: String
+  cards: [SiteContentPagesHomeTranslationsNlFeaturePanelCardsMutation]
+  headingLine1: String
+  headingLine2: String
+  description: String
+  stat1: SiteContentPagesHomeTranslationsNlFeaturePanelStat1Mutation
+  stat2: SiteContentPagesHomeTranslationsNlFeaturePanelStat2Mutation
+  prescriptionCard: SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardMutation
+  careHeadingLine1: String
+  careHeadingLine2: String
+  careDescription: String
+  testimonialAlt: String
+  badgeTitle: String
+  badgeStatus: String
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsMutation {
+  thumbnailAlt: String
+  profileAlt: String
+  thumbnailImagePath: String
+  profileImagePath: String
+  handle: String
+  meta: String
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionTextCardsMutation {
+  profileAlt: String
+  profileImagePath: String
+  name: String
+  quote: String
+}
+
+input SiteContentPagesHomeTranslationsNlTrustSectionMutation {
+  headingLine1: String
+  headingLine2: String
+  memberLabel: String
+  readMoreLabel: String
+  videoCards: [SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsMutation]
+  textCards: [SiteContentPagesHomeTranslationsNlTrustSectionTextCardsMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlCommandCenterSectionMutation {
+  headingLine1: String
+  headingLine2: String
+  loadingAnimationLabel: String
+  description: String
+  ctaLabel: String
+  appImagePath: String
+  appImageAlt: String
+}
+
+input SiteContentPagesHomeTranslationsNlOurProcessSectionStepsMutation {
+  title: String
+  description: String
+}
+
+input SiteContentPagesHomeTranslationsNlOurProcessSectionMutation {
+  imagePath: String
+  imageAlt: String
+  headingLine1: String
+  headingLine2: String
+  steps: [SiteContentPagesHomeTranslationsNlOurProcessSectionStepsMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingMutation {
+  oneTimePrice: String
+  recurringPrice: String
+  oneTimeLabel: String
+  recurringLabel: String
+  discountPercentage: String
+  twiceAnnuallyBillingText: String
+  annuallyBillingText: String
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesMutation {
+  name: String
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureMutation {
+  categoryName: String
+  features: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesMutation {
+  name: String
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionMutation {
+  categoryName: String
+  features: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkMutation {
+  label: String
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionPlansMutation {
+  name: String
+  nameStyle: String
+  tagline: String
+  isPopular: Boolean
+  pricing: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingMutation
+  feature: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureMutation]
+  restriction: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionMutation]
+  link: SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkMutation
+}
+
+input SiteContentPagesHomeTranslationsNlChoosePathSectionMutation {
+  title: String
+  subtitle: String
+  plans: [SiteContentPagesHomeTranslationsNlChoosePathSectionPlansMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlFaqSectionItemsMutation {
+  question: String
+  answer: String
+}
+
+input SiteContentPagesHomeTranslationsNlFaqSectionMutation {
+  headingLine1: String
+  headingLine2: String
+  cardImagePath: String
+  items: [SiteContentPagesHomeTranslationsNlFaqSectionItemsMutation]
+  cardImageAlt: String
+  supportTitle: String
+  supportDescription: String
+  supportCtaLabel: String
+  supportCtaHref: String
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionMissionMutation {
+  imageAlt: String
+  imagePath: String
+  name: String
+  role: String
+  headingLine1: String
+  headingLine2: String
+  description: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesMutation {
+  alt: String
+  imagePath: String
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionGalleryMutation {
+  headingLine1: String
+  headingLine2: String
+  ctaLabel: String
+  ctaHref: String
+  images: [SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlMissionSectionMutation {
+  mission: SiteContentPagesHomeTranslationsNlMissionSectionMissionMutation
+  gallery: SiteContentPagesHomeTranslationsNlMissionSectionGalleryMutation
+}
+
+input SiteContentPagesHomeTranslationsNlNewsletterSectionMutation {
+  backgroundImagePath: String
+  backgroundImageAlt: String
+  headingLine1: String
+  headingLine2: String
+  description: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input SiteContentPagesHomeTranslationsNlServiceAreaSectionMutation {
+  headingLine1: String
+  headingLine2: String
+  description: String
+  areas: [String]
+  excludedNote: String
+  mapEmbedUrl: String
+  mapTitle: String
+  ctaLabel: String
+  ctaHref: String
+  regionName: String
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksMutation {
+  label: String
+  href: String
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksMutation {
+  label: String
+  href: String
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksMutation {
+  label: String
+  href: String
+}
+
+input SiteContentPagesHomeTranslationsNlFooterSectionMutation {
+  logoAlt: String
+  logoImagePath: String
+  subscriptionText: String
+  followUsLabel: String
+  supportTitle: String
+  supportLinks: [SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksMutation]
+  aboutTitle: String
+  aboutLinks: [SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksMutation]
+  legalDisclaimer: String
+  cardImageAlt: String
+  cardDesktopImagePath: String
+  cardMobileImagePath: String
+  appPrompt: String
+  appStoreAlt: String
+  appStoreHref: String
+  appStoreImagePath: String
+  googlePlayAlt: String
+  googlePlayHref: String
+  googlePlayImagePath: String
+  copyrightText: String
+  socialLinks: [SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksMutation]
+}
+
+input SiteContentPagesHomeTranslationsNlHeaderNavItemsMutation {
+  label: String
+  href: String
+}
+
+input SiteContentPagesHomeTranslationsNlHeaderMutation {
+  logoImagePath: String
+  whatsAppHref: String
+  primaryCtaLabel: String
+  secondaryCtaLabel: String
+  secondaryCtaHref: String
+  navItems: [SiteContentPagesHomeTranslationsNlHeaderNavItemsMutation]
+  logoAlt: String
+  homeAriaLabel: String
+  mainNavAriaLabel: String
+  openMenuAriaLabel: String
+  closeMenuAriaLabel: String
+  mobileNavAriaLabel: String
+  mobileMenuTitle: String
+  languageSwitcherAriaLabel: String
+}
+
+input SiteContentPagesHomeTranslationsNlMutation {
+  primaryArea: String
+  heroImagePath: String
+  seoTitle: String
+  seoDescription: String
+  hero: SiteContentPagesHomeTranslationsNlHeroMutation
+  biomarkerPanel: SiteContentPagesHomeTranslationsNlBiomarkerPanelMutation
+  featurePanel: SiteContentPagesHomeTranslationsNlFeaturePanelMutation
+  trustSection: SiteContentPagesHomeTranslationsNlTrustSectionMutation
+  commandCenterSection: SiteContentPagesHomeTranslationsNlCommandCenterSectionMutation
+  ourProcessSection: SiteContentPagesHomeTranslationsNlOurProcessSectionMutation
+  choosePathSection: SiteContentPagesHomeTranslationsNlChoosePathSectionMutation
+  faqSection: SiteContentPagesHomeTranslationsNlFaqSectionMutation
+  missionSection: SiteContentPagesHomeTranslationsNlMissionSectionMutation
+  newsletterSection: SiteContentPagesHomeTranslationsNlNewsletterSectionMutation
+  serviceAreaSection: SiteContentPagesHomeTranslationsNlServiceAreaSectionMutation
+  footerSection: SiteContentPagesHomeTranslationsNlFooterSectionMutation
+  header: SiteContentPagesHomeTranslationsNlHeaderMutation
+}
+
+input SiteContentPagesHomeTranslationsMutation {
+  en: SiteContentPagesHomeTranslationsEnMutation
+  nl: SiteContentPagesHomeTranslationsNlMutation
+}
+
+input SiteContentPagesHomeMutation {
+  translations: SiteContentPagesHomeTranslationsMutation
+}
+
+input SiteContentPagesMutation {
+  home: SiteContentPagesHomeMutation
+}
+
+input SiteContentTranslationAutomationMutation {
+  provider: String
+  sourceLocale: String
+  targetLocales: [String]
+  deeplBaseUrl: String
   promoNeedles: [String]
   mediaPathPrefixes: [String]
   exactTextReplacements: [String]
   regexTextReplacements: [String]
+}
+
+input SiteContentMutation {
+  siteSettings: SiteContentSiteSettingsMutation
+  pages: SiteContentPagesMutation
+  translationAutomation: SiteContentTranslationAutomationMutation
 }
 
 schema {

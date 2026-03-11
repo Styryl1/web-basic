@@ -1,0 +1,1158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TinaInlineBridge from '../react/TinaInlineBridge.tsx';
+import { getHomeTranslation, getLocaleSettings, loadSiteDocument } from '../../data/siteContent';
+import {
+  DEFAULT_LOCALE,
+  getLanguageSwitcherHref,
+  getLocalizedPath,
+  isLocale,
+  type Locale,
+} from '../../i18n/config';
+import { tinaField } from 'tinacms/dist/react';
+import '../../styles/index.css';
+
+interface Props {
+  locale?: Locale;
+  currentPath?: string;
+}
+
+const { locale = DEFAULT_LOCALE, currentPath = '/' } = Astro.props as Props;
+const { siteContent, tinaBridgeProps } = await loadSiteDocument();
+const siteSettings = siteContent.siteSettings as any;
+const pageContent = getHomeTranslation(siteContent, locale) as any;
+const localeSettings = getLocaleSettings(siteContent, locale) as any;
+
+const {
+  mediaOrigin,
+  baseCity,
+  whatsappNumber,
+  canonicalOrigin,
+  ogImage,
+  businessName,
+  homepageUrl,
+} = siteSettings;
+
+const {
+  heroImagePath,
+  seoTitle,
+  seoDescription,
+  header,
+  hero,
+  biomarkerPanel,
+  featurePanel,
+  trustSection,
+  ourProcessSection,
+  choosePathSection,
+  faqSection,
+  missionSection,
+  newsletterSection,
+  serviceAreaSection,
+  footerSection,
+} = pageContent;
+
+const serviceCards = [
+  ...featurePanel.cards,
+  {
+    alt: featurePanel.prescriptionCard.alt,
+    titleLine1: featurePanel.prescriptionCard.titleLine1,
+    titleLine2: featurePanel.prescriptionCard.titleLine2,
+    href: featurePanel.prescriptionCard.href,
+    imagePath: featurePanel.prescriptionCard.imagePath,
+  },
+];
+
+const imageMap = {
+  hero: '/images/hero.svg',
+  card1: '/images/service-card-1.svg',
+  card2: '/images/service-card-2.svg',
+  card3: '/images/service-card-3.svg',
+  process: '/images/process.svg',
+  faq: '/images/faq-card.svg',
+  mission: '/images/mission.svg',
+  gallery1: '/images/gallery-1.svg',
+  gallery2: '/images/gallery-2.svg',
+  newsletter: '/images/newsletter-bg.svg',
+  footer: '/images/footer-card.svg',
+};
+const trustThumbnailFallbacks = [imageMap.gallery1, imageMap.gallery2, imageMap.gallery1, imageMap.gallery2];
+const trustAvatarFallbacks = ['/images/avatar-1.svg', '/images/avatar-2.svg', '/images/avatar-3.svg', '/images/avatar-4.svg'];
+const localeOptions = (siteSettings.locales ?? []).filter((entry: any) => isLocale(entry?.code));
+const siteOrigin = canonicalOrigin || homepageUrl || 'https://englishplumber.nl/';
+const siteHost = new URL(siteOrigin).host;
+const alternateLinks = [
+  ...localeOptions.map((entry: any) => ({
+    hrefLang: entry.htmlLang ?? entry.code,
+    href: getLocalizedPath(currentPath, entry.code),
+  })),
+  {
+    hrefLang: 'x-default',
+    href: getLocalizedPath(currentPath, DEFAULT_LOCALE),
+  },
+];
+const alternateOgLocales = localeOptions
+  .filter((entry: any) => entry.code !== locale)
+  .map((entry: any) => entry.ogLocale)
+  .filter(Boolean);
+const languageSwitcherOptions = localeOptions.map((entry: any) => ({
+  ...entry,
+  href: getLanguageSwitcherHref(currentPath, entry.code),
+  isCurrent: entry.code === locale,
+}));
+
+const trustReviews = (trustSection.videoCards ?? [])
+  .slice(0, 4)
+  .map((videoCard, index) => ({
+    videoCard,
+    textCard: trustSection.textCards?.[index],
+    index,
+  }))
+  .filter((entry) => Boolean(entry.videoCard && entry.textCard));
+
+const biomarkerItems = (biomarkerPanel.items ?? []).filter((item) => Boolean(item));
+const biomarkerRows = [biomarkerItems.slice(0, 3), biomarkerItems.slice(3, 7), biomarkerItems.slice(7, 10)];
+const biomarkerRowStarts = [0, 3, 7];
+const biomarkerMobileSpeeds = [34, 41, 37];
+const biomarkerMobileOffsets = [102.083, 728.5, 652.667];
+
+const resolveLocalizedHref = (value: string | undefined): string => {
+  if (!value) return '#';
+  if (value.startsWith('#')) return value;
+  if (/^(mailto:|tel:)/i.test(value)) return value;
+
+  if (/^https?:\/\//i.test(value)) {
+    try {
+      const url = new URL(value);
+      if (url.host !== siteHost) return value;
+      return `${getLocalizedPath(url.pathname, locale)}${url.search}${url.hash}`;
+    } catch {
+      return value;
+    }
+  }
+
+  try {
+    const url = new URL(value, 'https://englishplumber.nl');
+    if (value.startsWith('/')) {
+      return `${getLocalizedPath(url.pathname, locale)}${url.search}${url.hash}`;
+    }
+  } catch {
+    // Fall through to return the original value.
+  }
+
+  return value;
+};
+
+const isExternalHref = (value: string | undefined): boolean => /^(https?:\/\/|mailto:|tel:)/i.test(value ?? '');
+
+const resolveContentImage = (imagePath: string | undefined, fallbackPath: string) => {
+  if (!imagePath) return fallbackPath;
+  if (/^https?:\/\//i.test(imagePath)) return imagePath;
+  if (imagePath.startsWith('/api/media/file/')) {
+    try {
+      return new URL(imagePath, mediaOrigin).toString();
+    } catch {
+      return imagePath;
+    }
+  }
+  return imagePath;
+};
+
+const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
+const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
+const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
+const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
+const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
+const processImage = resolveContentImage(ourProcessSection.imagePath, imageMap.process);
+const faqImage = resolveContentImage(faqSection.cardImagePath, imageMap.faq);
+const missionImage = resolveContentImage(missionSection.mission.imagePath, imageMap.mission);
+const newsletterImage = resolveContentImage(newsletterSection.backgroundImagePath, imageMap.newsletter);
+const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-big.svg');
+const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
+const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
+const serviceAreaMapEmbedUrl = serviceAreaSection.mapEmbedUrl || 'https://www.google.com/maps?q=Medemblik,+Netherlands&output=embed';
+const homeAnchorHref = '#top';
+
+const resolveAbsoluteUrl = (value?: string) => {
+  if (!value) return undefined;
+  try {
+    return new URL(value).toString();
+  } catch {
+    // Resolve relative paths against canonical/home URL.
+  }
+
+  const base = canonicalOrigin || homepageUrl || 'https://englishplumber.nl/';
+
+  try {
+    return new URL(value, base).toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const canonicalUrl = resolveAbsoluteUrl(getLocalizedPath(currentPath, locale)) || resolveAbsoluteUrl(canonicalOrigin || homepageUrl) || 'https://englishplumber.nl/';
+const canonicalUrlForSchema = canonicalUrl;
+const businessImageUrlForSchema = resolveAbsoluteUrl(ogImage || heroImagePath);
+const businessLogoUrlForSchema = resolveAbsoluteUrl(header.logoImagePath);
+const businessMapUrlForSchema = resolveAbsoluteUrl(serviceAreaSection.mapEmbedUrl);
+const businessPhoneForSchema = typeof whatsappNumber === 'string' ? whatsappNumber.replace(/\s+/g, ' ').trim() : '';
+const businessAreaServedForSchema = Array.isArray(serviceAreaSection.areas)
+  ? serviceAreaSection.areas
+      .filter((area) => typeof area === 'string' && area.trim().length > 0)
+      .map((area) => ({ '@type': 'City', name: area.trim() }))
+  : [];
+
+const localBusinessStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Plumber',
+  '@id': `${canonicalUrlForSchema}#localbusiness`,
+  name: businessName,
+  url: canonicalUrlForSchema,
+  ...(businessPhoneForSchema ? { telephone: businessPhoneForSchema } : {}),
+  ...(businessImageUrlForSchema ? { image: businessImageUrlForSchema } : {}),
+  ...(businessLogoUrlForSchema ? { logo: businessLogoUrlForSchema } : {}),
+  ...(businessMapUrlForSchema ? { hasMap: businessMapUrlForSchema } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: baseCity,
+    addressRegion: serviceAreaSection.regionName ?? baseCity,
+    addressCountry: 'NL',
+  },
+  areaServed: [{ '@type': 'AdministrativeArea', name: serviceAreaSection.regionName ?? baseCity }, ...businessAreaServedForSchema],
+  sameAs: [homepageUrl, header?.whatsAppHref].filter(Boolean),
+  description: seoDescription,
+  inLanguage: localeSettings.htmlLang,
+  availableLanguage: localeOptions.map((entry: any) => entry.nativeLabel ?? entry.label ?? entry.code),
+};
+
+const faqMainEntitiesForSchema = Array.isArray(faqSection.items)
+  ? faqSection.items
+      .filter((item) => item && typeof item.question === 'string' && typeof item.answer === 'string')
+      .map((item) => ({
+        '@type': 'Question',
+        name: item.question.trim(),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer.trim(),
+        },
+      }))
+      .filter((entity) => entity.name.length > 0 && entity.acceptedAnswer.text.length > 0)
+  : [];
+
+const faqPageStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: localeSettings.htmlLang,
+  mainEntity: faqMainEntitiesForSchema,
+};
+
+const localBusinessStructuredDataJson = JSON.stringify(localBusinessStructuredData);
+const faqPageStructuredDataJson = faqMainEntitiesForSchema.length > 0 ? JSON.stringify(faqPageStructuredData) : null;
+
+const getTrustThumbnailImage = (videoCard: Record<string, unknown>, index: number) =>
+  resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]);
+
+const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Record<string, unknown>, index: number) =>
+  resolveContentImage(
+    (textCard.profileImagePath as string | undefined) ?? (videoCard.profileImagePath as string | undefined),
+    trustAvatarFallbacks[index % trustAvatarFallbacks.length],
+  );
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  siteName={businessName}
+  lang={localeSettings.htmlLang}
+  ogLocale={localeSettings.ogLocale}
+  alternateLocales={alternateOgLocales}
+  alternates={alternateLinks}
+>
+    <Fragment slot="head">
+      <script is:inline type="application/ld+json" set:html={localBusinessStructuredDataJson}></script>
+      {faqPageStructuredDataJson && <script is:inline type="application/ld+json" set:html={faqPageStructuredDataJson}></script>}
+    </Fragment>
+    {
+      tinaBridgeProps && (
+        <>
+          {/* @ts-expect-error custom Astro client directive */}
+          <TinaInlineBridge {...tinaBridgeProps} client:tina />
+        </>
+      )
+    }
+
+    <header
+      class="ep-header"
+      data-ep-header
+      data-ep-menu-open-label={header.openMenuAriaLabel}
+      data-ep-menu-close-label={header.closeMenuAriaLabel}
+      data-tina-field={tinaField(pageContent, 'header')}
+    >
+      <div class="container ep-header__container">
+        <div class="ep-header__shell">
+          <div class="ep-header__ring ep-header__ring--outer" aria-hidden="true"></div>
+          <div class="ep-header__ring ep-header__ring--inner" aria-hidden="true"></div>
+
+          <div class="ep-header__inner">
+            <a href={homeAnchorHref} class="ep-header__logo-link" aria-label={header.homeAriaLabel}>
+              <img
+                src={headerLogoImage}
+                alt={header.logoAlt}
+                width="85"
+                height="22"
+                class="ep-header__logo"
+                data-tina-field={tinaField(header, 'logoImagePath')}
+              />
+            </a>
+
+            <nav class="ep-header__nav" aria-label={header.mainNavAriaLabel}>
+              <ul class="ep-header__nav-list">
+                {header.navItems.map((item, index) => (
+                  <li>
+                    <a href={resolveLocalizedHref(item.href)} class="ep-header__nav-link" data-tina-field={tinaField(header, 'navItems', index)}>
+                      <span>{item.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="ep-header__cta-group">
+                <div class="ep-language-switcher" aria-label={header.languageSwitcherAriaLabel}>
+                  {languageSwitcherOptions.map((option, index) =>
+                    option.isCurrent ? (
+                      <span
+                        class="ep-language-switcher__option is-current"
+                        aria-current="page"
+                        aria-label={option.nativeLabel}
+                        title={option.nativeLabel}
+                        data-tina-field={tinaField(siteSettings, 'locales', index)}
+                      >
+                        {option.shortLabel}
+                      </span>
+                    ) : (
+                      <a
+                        href={option.href}
+                        class="ep-language-switcher__option"
+                        aria-label={option.nativeLabel}
+                        title={option.nativeLabel}
+                        data-tina-field={tinaField(siteSettings, 'locales', index)}
+                      >
+                        {option.shortLabel}
+                      </a>
+                    ),
+                  )}
+                </div>
+                <div class="ep-btn-shell ep-btn-shell--soft">
+                  <div class="ep-soft-liquid">
+                    <div class="ep-soft-liquid__frame">
+                      <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                      <a
+                        href={resolveLocalizedHref(header.whatsAppHref)}
+                        class="ep-btn ep-btn--soft ep-soft-liquid__link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>{header.primaryCtaLabel}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ep-btn-shell">
+                  <div class="ep-dark-liquid">
+                    <div class="ep-dark-liquid__frame">
+                      <div class="ep-dark-liquid__overlay" aria-hidden="true"></div>
+                      <a href={resolveLocalizedHref(header.secondaryCtaHref)} class="ep-btn ep-btn--dark ep-dark-liquid__link">
+                        <span class="ep-btn-label">{header.secondaryCtaLabel}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <button
+              class="ep-header__menu-btn"
+              type="button"
+              aria-label={header.openMenuAriaLabel}
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              data-ep-menu-btn
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ep-mobile-panel" id="mobile-nav" role="dialog" aria-modal="true" aria-label={header.mobileNavAriaLabel} hidden>
+          <div class="ep-mobile-panel__head">
+            <a href={homeAnchorHref} class="ep-mobile-panel__logo-link" aria-label={header.homeAriaLabel}>
+              <img
+                src={headerLogoImage}
+                alt={header.logoAlt}
+                width="85"
+                height="22"
+                class="ep-mobile-panel__logo"
+                data-tina-field={tinaField(header, 'logoImagePath')}
+              />
+            </a>
+
+            <button
+              class="ep-mobile-panel__close-btn"
+              type="button"
+              aria-label={header.closeMenuAriaLabel}
+              aria-expanded="true"
+              aria-controls="mobile-nav"
+              data-ep-menu-close
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="ep-mobile-panel__body">
+            <div class="ep-mobile-panel__title-row">
+              <h2 class="ep-mobile-panel__title">{header.mobileMenuTitle}</h2>
+              <div class="ep-language-switcher ep-language-switcher--mobile" aria-label={header.languageSwitcherAriaLabel}>
+                {languageSwitcherOptions.map((option, index) =>
+                  option.isCurrent ? (
+                    <span
+                      class="ep-language-switcher__option is-current"
+                      aria-current="page"
+                      aria-label={option.nativeLabel}
+                      title={option.nativeLabel}
+                      data-tina-field={tinaField(siteSettings, 'locales', index)}
+                    >
+                      {option.shortLabel}
+                    </span>
+                  ) : (
+                    <a
+                      href={option.href}
+                      class="ep-language-switcher__option"
+                      aria-label={option.nativeLabel}
+                      title={option.nativeLabel}
+                      data-tina-field={tinaField(siteSettings, 'locales', index)}
+                    >
+                      {option.shortLabel}
+                    </a>
+                  ),
+                )}
+              </div>
+            </div>
+
+            <div class="ep-mobile-panel__list-wrap">
+              <ul class="ep-mobile-panel__list">
+                {header.navItems.map((item, index) => (
+                  <li class:list={['ep-mobile-panel__item', { 'is-first': index === 0 }]}>
+                    <a
+                      href={resolveLocalizedHref(item.href)}
+                      class="ep-mobile-panel__link"
+                      data-ep-menu-link
+                      data-tina-field={tinaField(header, 'navItems', index)}
+                    >
+                      <span>{item.label.replace('\n', ' ')}</span>
+                    </a>
+                  </li>
+                ))}
+
+                <li class="ep-mobile-panel__item ep-mobile-panel__item--ctas">
+                  <div class="ep-btn-shell ep-btn-shell--soft ep-mobile-cta-shell">
+                    <div class="ep-soft-liquid">
+                      <div class="ep-soft-liquid__frame">
+                        <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                        <a
+                          href={resolveLocalizedHref(header.whatsAppHref)}
+                          class="ep-btn ep-btn--soft ep-soft-liquid__link ep-mobile-cta-btn"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-ep-menu-link
+                        >
+                          <span>{header.primaryCtaLabel}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ep-btn-shell ep-mobile-cta-shell">
+                    <div class="ep-dark-liquid ep-dark-liquid--full">
+                      <div class="ep-dark-liquid__frame">
+                        <div class="ep-dark-liquid__overlay" aria-hidden="true"></div>
+                        <a
+                          href={resolveLocalizedHref(header.secondaryCtaHref)}
+                          class="ep-btn ep-btn--dark ep-dark-liquid__link ep-mobile-cta-btn"
+                          data-ep-menu-link
+                        >
+                          <span class="ep-btn-label">{header.secondaryCtaLabel}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" data-tina-field={tinaField(pageContent, 'hero')}>
+        <img
+          src={heroBackgroundImage}
+          alt={hero.imageAlt}
+          class="hero-bg"
+          loading="eager"
+          data-tina-field={tinaField(pageContent, 'heroImagePath')}
+        />
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <h1>
+            <span>{hero.titleLine1}</span>
+            <span class="script-line">{hero.titleLine2}</span>
+          </h1>
+          <p>{hero.description}</p>
+          <div class="ep-soft-liquid">
+            <div class="ep-soft-liquid__frame">
+              <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+              <a href="#pricing" class="btn btn-soft ep-soft-liquid__link">{hero.primaryCtaLabel}</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <span id="boiler-servicing" class="anchor-offset" aria-hidden="true"></span>
+      <span id="radiator-services" class="anchor-offset" aria-hidden="true"></span>
+      <span id="tap-repairs" class="anchor-offset" aria-hidden="true"></span>
+      <span id="plumbing-handyman" class="anchor-offset" aria-hidden="true"></span>
+
+      <section class="section section-services" data-tina-field={tinaField(pageContent, 'biomarkerPanel')}>
+        <div class="container biomarker-section-shell">
+          <div class="biomarker-layout">
+            <div class="biomarker-copy">
+              <div class="biomarker-copy-stack">
+                <h2 class="biomarker-heading">
+                  <span>{biomarkerPanel.titleLine1}</span><br />
+                  <em>{biomarkerPanel.titleLine2}</em>
+                </h2>
+              </div>
+
+              <div class="biomarker-cta biomarker-cta--desktop">
+                <div class="ep-soft-liquid">
+                  <div class="ep-soft-liquid__frame">
+                    <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                    <a
+                      href={resolveLocalizedHref(header.secondaryCtaHref)}
+                      class="btn btn-soft ep-soft-liquid__link ep-soft-liquid__link--xl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {biomarkerPanel.primaryCtaLabel}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="biomarker-pills-wrap">
+              <div class="biomarker-pills-desktop">
+                {biomarkerRows.map((row, rowIndex) => (
+                  <div class="biomarker-pill-row">
+                    {row.map((item, itemIndex) => (
+                      <article class="biomarker-pill" data-tina-field={tinaField(biomarkerPanel, 'items', biomarkerRowStarts[rowIndex] + itemIndex)}>
+                        <img src={resolveBiomarkerImage(item.imagePath)} alt={item.label} loading="lazy" width="40" height="40" decoding="async" />
+                        <span>{item.label}</span>
+                      </article>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <div class="biomarker-pills-mobile">
+                {biomarkerRows.map((row, rowIndex) => (
+                  <div class="biomarker-marquee">
+                    <div
+                      class="biomarker-marquee-track"
+                      data-biomarker-marquee
+                      data-marquee-speed={String(biomarkerMobileSpeeds[rowIndex] ?? 36)}
+                      data-marquee-offset={String(biomarkerMobileOffsets[rowIndex] ?? 0)}
+                    >
+                      {[...row, ...row].map((item, itemIndex) => (
+                        <article
+                          class="biomarker-pill biomarker-pill--mobile"
+                          data-tina-field={tinaField(
+                            biomarkerPanel,
+                            'items',
+                            biomarkerRowStarts[rowIndex] + (itemIndex % row.length),
+                          )}
+                        >
+                          <img
+                            src={resolveBiomarkerImage(item.imagePath)}
+                            alt={item.label}
+                            loading={itemIndex < row.length ? 'eager' : 'lazy'}
+                            width="40"
+                            height="40"
+                            decoding="async"
+                          />
+                          <span>{item.label}</span>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="biomarker-cta biomarker-cta--mobile">
+              <div class="ep-soft-liquid ep-soft-liquid--full">
+                <div class="ep-soft-liquid__frame">
+                  <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                  <a
+                    href={resolveLocalizedHref(header.secondaryCtaHref)}
+                    class="btn btn-soft ep-soft-liquid__link ep-soft-liquid__link--xl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {biomarkerPanel.primaryCtaLabel}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-feature" data-tina-field={tinaField(pageContent, 'featurePanel')}>
+        <div class="container">
+          <div class="feature-cards-grid">
+            <article class="image-card">
+              <img
+                src={featureCardImages[0]}
+                alt={serviceCards[0].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'cards', 0)}
+              />
+              <div class="card-caption">
+                <h3>
+                  <span>{serviceCards[0].titleLine1}</span>
+                  <span class="script-line small">{serviceCards[0].titleLine2}</span>
+                </h3>
+                <div class="ep-soft-liquid">
+                  <div class="ep-soft-liquid__frame">
+                    <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                    <a href={resolveLocalizedHref(serviceCards[0].href)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                      {featurePanel.cardCtaLabel}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature-text-card">
+              <h3>
+                <span>{featurePanel.headingLine1}</span>
+                <span class="script-line small">{featurePanel.headingLine2}</span>
+              </h3>
+              <p>{featurePanel.description}</p>
+              <div class="stats">
+                <div>
+                  <strong>{featurePanel.stat1.value}</strong>
+                  <span>{featurePanel.stat1.line1}</span>
+                  <span>{featurePanel.stat1.line2}</span>
+                </div>
+                <div>
+                  <strong>{featurePanel.stat2.value}</strong>
+                  <span>{featurePanel.stat2.line1}</span>
+                  <span>{featurePanel.stat2.line2}</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src={featureCardImages[1]}
+                alt={serviceCards[1].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'cards', 1)}
+              />
+              <div class="card-caption">
+                <h3>
+                  <span>{serviceCards[1].titleLine1}</span>
+                  <span class="script-line small">{serviceCards[1].titleLine2}</span>
+                </h3>
+                <div class="ep-soft-liquid">
+                  <div class="ep-soft-liquid__frame">
+                    <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                    <a href={resolveLocalizedHref(serviceCards[1].href)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                      {featurePanel.cardCtaLabel}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="image-card">
+              <img
+                src={featureCardImages[2]}
+                alt={serviceCards[2].alt}
+                width="620"
+                height="420"
+                loading="lazy"
+                data-tina-field={tinaField(featurePanel, 'prescriptionCard')}
+              />
+              <div class="card-caption">
+                <h3>
+                  <span>{serviceCards[2].titleLine1}</span>
+                  <span class="script-line small">{serviceCards[2].titleLine2}</span>
+                </h3>
+                <div class="ep-soft-liquid">
+                  <div class="ep-soft-liquid__frame">
+                    <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                    <a href={resolveLocalizedHref(serviceCards[2].href)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                      {featurePanel.prescriptionCard.ctaLabel}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature-text-card">
+              <h3>
+                <span>{featurePanel.careHeadingLine1}</span>
+                <span class="script-line small">{featurePanel.careHeadingLine2}</span>
+              </h3>
+              <p>{featurePanel.careDescription}</p>
+              <div class="cert-pill" id="certifications">
+                <strong>{featurePanel.badgeTitle}</strong>
+                <span>{featurePanel.badgeStatus}</span>
+              </div>
+              <span id="language" class="anchor-offset" aria-hidden="true"></span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-trust" data-tina-field={tinaField(pageContent, 'trustSection')}>
+        <div class="container">
+          <h2>
+            <span>{trustSection.headingLine1}</span>
+            <span class="script-line">{trustSection.headingLine2}</span>
+          </h2>
+
+          <div class="trust-grid">
+            {trustReviews.map(({ videoCard, textCard, index }) => {
+              const isTextFirst = index % 2 === 1;
+
+              return (
+              <article class:list={['trust-review', { 'trust-review--text-first': isTextFirst }]}>
+                <div class="trust-review__media" data-tina-field={tinaField(trustSection, 'videoCards', index)}>
+                  <img
+                    src={getTrustThumbnailImage(videoCard, index)}
+                    alt={videoCard.thumbnailAlt}
+                    class="trust-review__image"
+                    width="460"
+                    height="620"
+                    loading="lazy"
+                  />
+                  <div class="trust-review__media-gradient" aria-hidden="true"></div>
+                  <div class="trust-review__media-head">
+                    <img
+                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      alt={textCard.profileAlt}
+                      class="trust-review__avatar"
+                      width="44"
+                      height="44"
+                      loading="lazy"
+                    />
+                    <div>
+                      <strong class="trust-review__media-handle">{videoCard.handle}</strong>
+                      <span class="trust-review__media-meta">{videoCard.meta}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="trust-review__body" data-tina-field={tinaField(trustSection, 'textCards', index)}>
+                  <div class="trust-review__body-head">
+                    <img
+                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      alt={textCard.profileAlt}
+                      class="trust-review__avatar trust-review__avatar--body"
+                      width="40"
+                      height="40"
+                      loading="lazy"
+                    />
+                    <div class="trust-review__body-meta">
+                      <p class="trust-review__name">{textCard.name}</p>
+                      <p class="trust-review__member">{trustSection.memberLabel}</p>
+                    </div>
+                  </div>
+                  <p class="trust-review__quote">{textCard.quote}</p>
+                </div>
+              </article>
+              );
+            })}
+          </div>
+
+          <div class="trust-footer-link">
+            <a href={resolveLocalizedHref(header.whatsAppHref)} target="_blank" rel="noopener noreferrer">{trustSection.readMoreLabel}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-process" id="how-it-works" data-tina-field={tinaField(pageContent, 'ourProcessSection')}>
+        <div class="container process-layout">
+          <img
+            src={processImage}
+            alt={ourProcessSection.imageAlt}
+            width="580"
+            height="600"
+            loading="lazy"
+            data-tina-field={tinaField(ourProcessSection, 'imagePath')}
+          />
+          <div>
+            <h2>
+              <span>{ourProcessSection.headingLine1}</span>
+              <span class="script-line">{ourProcessSection.headingLine2}</span>
+            </h2>
+            <ol class="step-list">
+              {ourProcessSection.steps.map((step) => (
+                <li>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-pricing" id="pricing" data-tina-field={tinaField(pageContent, 'choosePathSection')}>
+        <div class="container">
+          <h2>{choosePathSection.title}</h2>
+          <p class="section-subtitle">{choosePathSection.subtitle}</p>
+
+          <div class="plan-grid">
+            {choosePathSection.plans.map((plan) => (
+              <article class={`plan-card ${plan.isPopular ? 'popular' : ''}`}>
+                <div class="plan-top">
+                  <p class="plan-name">{plan.name}</p>
+                  <h3>{plan.nameStyle}</h3>
+                  <p class="tagline">{plan.tagline}</p>
+                  <div class="price-row">
+                    <strong>{plan.pricing.oneTimePrice}</strong>
+                    <span>{plan.pricing.discountPercentage}</span>
+                  </div>
+                  <p class="price-note">{plan.pricing.twiceAnnuallyBillingText}</p>
+                  <p class="price-note">{plan.pricing.annuallyBillingText}</p>
+                </div>
+
+                <div class="plan-body">
+                  {plan.feature.map((group) => (
+                    <section>
+                      <h4>{group.categoryName}</h4>
+                      <ul>
+                        {group.features.map((feature) => (
+                          <li>{feature.name}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
+
+                  {plan.restriction.map((group) => (
+                    <section class="restriction">
+                      <h4>{group.categoryName}</h4>
+                      <ul>
+                        {group.features.map((feature) => (
+                          <li>{feature.name}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
+                </div>
+
+                <div class="ep-dark-liquid ep-dark-liquid--full">
+                  <div class="ep-dark-liquid__frame">
+                    <div class="ep-dark-liquid__overlay" aria-hidden="true"></div>
+                    <a href={resolveLocalizedHref(header.whatsAppHref)} class="btn btn-dark ep-dark-liquid__link" target="_blank" rel="noopener noreferrer">
+                      <span class="ep-btn-label">{plan.link.label}</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-faq" data-tina-field={tinaField(pageContent, 'faqSection')}>
+        <div class="container faq-layout">
+          <div>
+            <h2>
+              <span>{faqSection.headingLine1}</span>
+              <span class="script-line">{faqSection.headingLine2}</span>
+            </h2>
+
+            <div class="faq-list">
+              {faqSection.items.map((item) => (
+                <details>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+
+            <div class="faq-support">
+              <h3>{faqSection.supportTitle}</h3>
+              <p>{faqSection.supportDescription}</p>
+              <div class="ep-soft-liquid">
+                <div class="ep-soft-liquid__frame">
+                  <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                  <a href={resolveLocalizedHref(faqSection.supportCtaHref)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                    {faqSection.supportCtaLabel}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img
+            src={faqImage}
+            alt={faqSection.cardImageAlt}
+            width="520"
+            height="540"
+            loading="lazy"
+            data-tina-field={tinaField(faqSection, 'cardImagePath')}
+          />
+        </div>
+      </section>
+
+      <section class="section section-mission" data-tina-field={tinaField(pageContent, 'missionSection')}>
+        <div class="container mission-layout">
+          <figure class="mission-media" data-tina-field={tinaField(missionSection, 'mission')}>
+            <div class="mission-media-frame">
+              <div class="mission-media-inner">
+                <img
+                  src={missionImage}
+                  alt={missionSection.mission.imageAlt}
+                  class="mission-media-image"
+                  width="519"
+                  height="544"
+                  loading="lazy"
+                  data-tina-field={tinaField(missionSection.mission, 'imagePath')}
+                />
+              </div>
+            </div>
+            <figcaption class="mission-caption">
+              <p class="mission-name" data-tina-field={tinaField(missionSection.mission, 'name')}>{missionSection.mission.name}</p>
+              <p class="mission-role" data-tina-field={tinaField(missionSection.mission, 'role')}>{missionSection.mission.role}</p>
+            </figcaption>
+          </figure>
+
+          <article class="mission-content" data-tina-field={tinaField(missionSection, 'mission')}>
+            <h2>
+              <span data-tina-field={tinaField(missionSection.mission, 'headingLine1')}>{missionSection.mission.headingLine1}</span>
+              <span class="script-line" data-tina-field={tinaField(missionSection.mission, 'headingLine2')}>
+                {missionSection.mission.headingLine2}
+              </span>
+            </h2>
+            <p class="mission-description" data-tina-field={tinaField(missionSection.mission, 'description')}>{missionSection.mission.description}</p>
+            <div class="ep-soft-liquid">
+              <div class="ep-soft-liquid__frame">
+                <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                <a href={resolveLocalizedHref(missionSection.mission.ctaHref)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                  {missionSection.mission.ctaLabel}
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-newsletter" data-tina-field={tinaField(pageContent, 'newsletterSection')}>
+        <img
+          src={newsletterImage}
+          alt={newsletterSection.backgroundImageAlt}
+          class="newsletter-bg"
+          loading="lazy"
+          data-tina-field={tinaField(newsletterSection, 'backgroundImagePath')}
+        />
+        <div class="newsletter-overlay"></div>
+        <div class="container newsletter-content">
+          <h2>
+            <span>{newsletterSection.headingLine1}</span>
+            <span class="script-line">{newsletterSection.headingLine2}</span>
+          </h2>
+          <p>{newsletterSection.description}</p>
+          <div class="ep-soft-liquid">
+            <div class="ep-soft-liquid__frame">
+              <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+              <a href={resolveLocalizedHref(newsletterSection.ctaHref)} class="btn btn-soft ep-soft-liquid__link" target="_blank" rel="noopener noreferrer">
+                {newsletterSection.ctaLabel}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-service-area" id="service-area" data-tina-field={tinaField(pageContent, 'serviceAreaSection')}>
+        <div class="container service-area-layout">
+          <article class="service-area-copy">
+            <h2>
+              <span data-tina-field={tinaField(serviceAreaSection, 'headingLine1')}>{serviceAreaSection.headingLine1}</span>
+              <span class="script-line" data-tina-field={tinaField(serviceAreaSection, 'headingLine2')}>
+                {serviceAreaSection.headingLine2}
+              </span>
+            </h2>
+            <p data-tina-field={tinaField(serviceAreaSection, 'description')}>{serviceAreaSection.description}</p>
+
+            <ul class="service-area-list" data-tina-field={tinaField(serviceAreaSection, 'areas')}>
+              {serviceAreaSection.areas.map((area, index) => (
+                <li data-tina-field={tinaField(serviceAreaSection, 'areas', index)}>{area}</li>
+              ))}
+            </ul>
+
+            <p class="service-area-excluded" data-tina-field={tinaField(serviceAreaSection, 'excludedNote')}>
+              {serviceAreaSection.excludedNote}
+            </p>
+
+            <div class="ep-soft-liquid">
+              <div class="ep-soft-liquid__frame">
+                <div class="ep-soft-liquid__overlay" aria-hidden="true"></div>
+                <a
+                  href={resolveLocalizedHref(serviceAreaSection.ctaHref)}
+                  class="btn btn-soft ep-soft-liquid__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-tina-field={tinaField(serviceAreaSection, 'ctaLabel')}
+                >
+                  {serviceAreaSection.ctaLabel}
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="service-area-map-wrap">
+            <iframe
+              src={serviceAreaMapEmbedUrl}
+              title={serviceAreaSection.mapTitle}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              data-tina-field={tinaField(serviceAreaSection, 'mapEmbedUrl')}
+            ></iframe>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" data-tina-field={tinaField(pageContent, 'footerSection')}>
+      <div class="container footer-shell">
+        <div class="footer-main">
+          <section class="footer-left">
+            <img
+              src={footerLogoImage}
+              alt={footerSection.logoAlt}
+              class="footer-logo"
+              width="900"
+              height="220"
+              loading="lazy"
+              data-tina-field={tinaField(footerSection, 'logoImagePath')}
+            />
+
+            <p class="subscription-text">{footerSection.subscriptionText}</p>
+
+            <div class="footer-socials">
+              <p>{footerSection.followUsLabel}</p>
+              <div>
+                {footerSection.socialLinks.map((item, index) => {
+                  const href = resolveLocalizedHref(item.href);
+                  const external = isExternalHref(href);
+
+                  return (
+                    <a
+                      href={href}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                      data-tina-field={tinaField(footerSection, 'socialLinks', index)}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div class="footer-links">
+              <section>
+                <h3>{footerSection.supportTitle}</h3>
+                <ul>
+                  {footerSection.supportLinks.map((link, index) => (
+                    <li><a href={resolveLocalizedHref(link.href)} data-tina-field={tinaField(footerSection, 'supportLinks', index)}>{link.label}</a></li>
+                  ))}
+                </ul>
+              </section>
+              <section>
+                <h3>{footerSection.aboutTitle}</h3>
+                <ul>
+                  {footerSection.aboutLinks.map((link, index) => (
+                    <li><a href={resolveLocalizedHref(link.href)} data-tina-field={tinaField(footerSection, 'aboutLinks', index)}>{link.label}</a></li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+
+            <p class="disclaimer">{footerSection.legalDisclaimer}</p>
+          </section>
+
+          <section class="footer-card-col">
+            <picture>
+              <source media="(max-width: 860px)" srcset={footerMobileCardImage} data-tina-field={tinaField(footerSection, 'cardMobileImagePath')} />
+              <img
+                src={footerDesktopCardImage}
+                alt={footerSection.cardImageAlt}
+                class="footer-card-image"
+                width="382"
+                height="467"
+                loading="lazy"
+                data-tina-field={tinaField(footerSection, 'cardDesktopImagePath')}
+              />
+            </picture>
+            <p>{footerSection.appPrompt}</p>
+            <div class="store-links">
+              <a href={resolveLocalizedHref(footerSection.appStoreHref)} target="_blank" rel="noopener noreferrer">{footerSection.appStoreAlt}</a>
+              <a href={resolveLocalizedHref(footerSection.googlePlayHref)} target="_blank" rel="noopener noreferrer">{footerSection.googlePlayAlt}</a>
+            </div>
+          </section>
+        </div>
+
+        <div class="footer-bottom">
+          <p>{footerSection.copyrightText}</p>
+          <div class="footer-bottom-socials">
+            {footerSection.socialLinks.map((item, index) => {
+              const href = resolveLocalizedHref(item.href);
+              const external = isExternalHref(href);
+
+              return (
+                <a
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  data-tina-field={tinaField(footerSection, 'socialLinks', index)}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      import { initHeaderBehavior } from '../../scripts/header';
+
+      initHeaderBehavior();
+    </script>
+</BaseLayout>

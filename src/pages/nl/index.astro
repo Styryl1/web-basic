@@ -1,0 +1,7 @@
+---
+import HomePage from '../../components/pages/HomePage.astro';
+
+export const prerender = false;
+---
+
+<HomePage locale="nl" currentPath={Astro.url.pathname} />

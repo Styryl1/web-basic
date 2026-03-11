@@ -165,30 +165,53 @@ export type CollectionDocumentsArgs = {
 
 export type DocumentNode = SiteContent | Folder;
 
-export type SiteContentHero = {
-  __typename?: 'SiteContentHero';
+export type SiteContentSiteSettingsLocales = {
+  __typename?: 'SiteContentSiteSettingsLocales';
+  code?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  nativeLabel?: Maybe<Scalars['String']['output']>;
+  shortLabel?: Maybe<Scalars['String']['output']>;
+  htmlLang?: Maybe<Scalars['String']['output']>;
+  ogLocale?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentSiteSettings = {
+  __typename?: 'SiteContentSiteSettings';
+  mediaOrigin?: Maybe<Scalars['String']['output']>;
+  businessName?: Maybe<Scalars['String']['output']>;
+  baseCity?: Maybe<Scalars['String']['output']>;
+  whatsappNumber?: Maybe<Scalars['String']['output']>;
+  canonicalOrigin?: Maybe<Scalars['String']['output']>;
+  homepageUrl?: Maybe<Scalars['String']['output']>;
+  ogImage?: Maybe<Scalars['String']['output']>;
+  locales?: Maybe<Array<Maybe<SiteContentSiteSettingsLocales>>>;
+};
+
+export type SiteContentPagesHomeTranslationsEnHero = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnHero';
   titleLine1?: Maybe<Scalars['String']['output']>;
   titleLine2?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   primaryCtaLabel?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentBiomarkerPanelItems = {
-  __typename?: 'SiteContentBiomarkerPanelItems';
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanelItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnBiomarkerPanelItems';
   label?: Maybe<Scalars['String']['output']>;
   imagePath?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentBiomarkerPanel = {
-  __typename?: 'SiteContentBiomarkerPanel';
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanel = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnBiomarkerPanel';
   titleLine1?: Maybe<Scalars['String']['output']>;
   titleLine2?: Maybe<Scalars['String']['output']>;
   primaryCtaLabel?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<SiteContentBiomarkerPanelItems>>>;
+  items?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnBiomarkerPanelItems>>>;
 };
 
-export type SiteContentFeaturePanelCards = {
-  __typename?: 'SiteContentFeaturePanelCards';
+export type SiteContentPagesHomeTranslationsEnFeaturePanelCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFeaturePanelCards';
   alt?: Maybe<Scalars['String']['output']>;
   titleLine1?: Maybe<Scalars['String']['output']>;
   titleLine2?: Maybe<Scalars['String']['output']>;
@@ -196,22 +219,22 @@ export type SiteContentFeaturePanelCards = {
   imagePath?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFeaturePanelStat1 = {
-  __typename?: 'SiteContentFeaturePanelStat1';
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat1 = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat1';
   value?: Maybe<Scalars['String']['output']>;
   line1?: Maybe<Scalars['String']['output']>;
   line2?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFeaturePanelStat2 = {
-  __typename?: 'SiteContentFeaturePanelStat2';
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat2 = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat2';
   value?: Maybe<Scalars['String']['output']>;
   line1?: Maybe<Scalars['String']['output']>;
   line2?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFeaturePanelPrescriptionCard = {
-  __typename?: 'SiteContentFeaturePanelPrescriptionCard';
+export type SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard';
   alt?: Maybe<Scalars['String']['output']>;
   titleLine1?: Maybe<Scalars['String']['output']>;
   titleLine2?: Maybe<Scalars['String']['output']>;
@@ -220,16 +243,16 @@ export type SiteContentFeaturePanelPrescriptionCard = {
   ctaLabel?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFeaturePanel = {
-  __typename?: 'SiteContentFeaturePanel';
+export type SiteContentPagesHomeTranslationsEnFeaturePanel = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFeaturePanel';
   cardCtaLabel?: Maybe<Scalars['String']['output']>;
-  cards?: Maybe<Array<Maybe<SiteContentFeaturePanelCards>>>;
+  cards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnFeaturePanelCards>>>;
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
-  stat1?: Maybe<SiteContentFeaturePanelStat1>;
-  stat2?: Maybe<SiteContentFeaturePanelStat2>;
-  prescriptionCard?: Maybe<SiteContentFeaturePanelPrescriptionCard>;
+  stat1?: Maybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat1>;
+  stat2?: Maybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat2>;
+  prescriptionCard?: Maybe<SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard>;
   careHeadingLine1?: Maybe<Scalars['String']['output']>;
   careHeadingLine2?: Maybe<Scalars['String']['output']>;
   careDescription?: Maybe<Scalars['String']['output']>;
@@ -238,8 +261,8 @@ export type SiteContentFeaturePanel = {
   badgeStatus?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentTrustSectionVideoCards = {
-  __typename?: 'SiteContentTrustSectionVideoCards';
+export type SiteContentPagesHomeTranslationsEnTrustSectionVideoCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnTrustSectionVideoCards';
   thumbnailAlt?: Maybe<Scalars['String']['output']>;
   profileAlt?: Maybe<Scalars['String']['output']>;
   thumbnailImagePath?: Maybe<Scalars['String']['output']>;
@@ -248,26 +271,26 @@ export type SiteContentTrustSectionVideoCards = {
   meta?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentTrustSectionTextCards = {
-  __typename?: 'SiteContentTrustSectionTextCards';
+export type SiteContentPagesHomeTranslationsEnTrustSectionTextCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnTrustSectionTextCards';
   profileAlt?: Maybe<Scalars['String']['output']>;
   profileImagePath?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   quote?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentTrustSection = {
-  __typename?: 'SiteContentTrustSection';
+export type SiteContentPagesHomeTranslationsEnTrustSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnTrustSection';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   memberLabel?: Maybe<Scalars['String']['output']>;
   readMoreLabel?: Maybe<Scalars['String']['output']>;
-  videoCards?: Maybe<Array<Maybe<SiteContentTrustSectionVideoCards>>>;
-  textCards?: Maybe<Array<Maybe<SiteContentTrustSectionTextCards>>>;
+  videoCards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnTrustSectionVideoCards>>>;
+  textCards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnTrustSectionTextCards>>>;
 };
 
-export type SiteContentCommandCenterSection = {
-  __typename?: 'SiteContentCommandCenterSection';
+export type SiteContentPagesHomeTranslationsEnCommandCenterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnCommandCenterSection';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   loadingAnimationLabel?: Maybe<Scalars['String']['output']>;
@@ -277,23 +300,23 @@ export type SiteContentCommandCenterSection = {
   appImageAlt?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentOurProcessSectionSteps = {
-  __typename?: 'SiteContentOurProcessSectionSteps';
+export type SiteContentPagesHomeTranslationsEnOurProcessSectionSteps = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnOurProcessSectionSteps';
   title?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentOurProcessSection = {
-  __typename?: 'SiteContentOurProcessSection';
+export type SiteContentPagesHomeTranslationsEnOurProcessSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnOurProcessSection';
   imagePath?: Maybe<Scalars['String']['output']>;
   imageAlt?: Maybe<Scalars['String']['output']>;
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
-  steps?: Maybe<Array<Maybe<SiteContentOurProcessSectionSteps>>>;
+  steps?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnOurProcessSectionSteps>>>;
 };
 
-export type SiteContentChoosePathSectionPlansPricing = {
-  __typename?: 'SiteContentChoosePathSectionPlansPricing';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing';
   oneTimePrice?: Maybe<Scalars['String']['output']>;
   recurringPrice?: Maybe<Scalars['String']['output']>;
   oneTimeLabel?: Maybe<Scalars['String']['output']>;
@@ -303,64 +326,64 @@ export type SiteContentChoosePathSectionPlansPricing = {
   annuallyBillingText?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentChoosePathSectionPlansFeatureFeatures = {
-  __typename?: 'SiteContentChoosePathSectionPlansFeatureFeatures';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures';
   name?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentChoosePathSectionPlansFeature = {
-  __typename?: 'SiteContentChoosePathSectionPlansFeature';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature';
   categoryName?: Maybe<Scalars['String']['output']>;
-  features?: Maybe<Array<Maybe<SiteContentChoosePathSectionPlansFeatureFeatures>>>;
+  features?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures>>>;
 };
 
-export type SiteContentChoosePathSectionPlansRestrictionFeatures = {
-  __typename?: 'SiteContentChoosePathSectionPlansRestrictionFeatures';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures';
   name?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentChoosePathSectionPlansRestriction = {
-  __typename?: 'SiteContentChoosePathSectionPlansRestriction';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction';
   categoryName?: Maybe<Scalars['String']['output']>;
-  features?: Maybe<Array<Maybe<SiteContentChoosePathSectionPlansRestrictionFeatures>>>;
+  features?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures>>>;
 };
 
-export type SiteContentChoosePathSectionPlansLink = {
-  __typename?: 'SiteContentChoosePathSectionPlansLink';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink';
   label?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentChoosePathSectionPlans = {
-  __typename?: 'SiteContentChoosePathSectionPlans';
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlans = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlans';
   name?: Maybe<Scalars['String']['output']>;
   nameStyle?: Maybe<Scalars['String']['output']>;
   tagline?: Maybe<Scalars['String']['output']>;
   isPopular?: Maybe<Scalars['Boolean']['output']>;
-  pricing?: Maybe<SiteContentChoosePathSectionPlansPricing>;
-  feature?: Maybe<Array<Maybe<SiteContentChoosePathSectionPlansFeature>>>;
-  restriction?: Maybe<Array<Maybe<SiteContentChoosePathSectionPlansRestriction>>>;
-  link?: Maybe<SiteContentChoosePathSectionPlansLink>;
+  pricing?: Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing>;
+  feature?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature>>>;
+  restriction?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction>>>;
+  link?: Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink>;
 };
 
-export type SiteContentChoosePathSection = {
-  __typename?: 'SiteContentChoosePathSection';
+export type SiteContentPagesHomeTranslationsEnChoosePathSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnChoosePathSection';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
-  plans?: Maybe<Array<Maybe<SiteContentChoosePathSectionPlans>>>;
+  plans?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlans>>>;
 };
 
-export type SiteContentFaqSectionItems = {
-  __typename?: 'SiteContentFaqSectionItems';
+export type SiteContentPagesHomeTranslationsEnFaqSectionItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFaqSectionItems';
   question?: Maybe<Scalars['String']['output']>;
   answer?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFaqSection = {
-  __typename?: 'SiteContentFaqSection';
+export type SiteContentPagesHomeTranslationsEnFaqSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFaqSection';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   cardImagePath?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<SiteContentFaqSectionItems>>>;
+  items?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnFaqSectionItems>>>;
   cardImageAlt?: Maybe<Scalars['String']['output']>;
   supportTitle?: Maybe<Scalars['String']['output']>;
   supportDescription?: Maybe<Scalars['String']['output']>;
@@ -368,8 +391,8 @@ export type SiteContentFaqSection = {
   supportCtaHref?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentMissionSectionMission = {
-  __typename?: 'SiteContentMissionSectionMission';
+export type SiteContentPagesHomeTranslationsEnMissionSectionMission = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnMissionSectionMission';
   imageAlt?: Maybe<Scalars['String']['output']>;
   imagePath?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
@@ -381,29 +404,29 @@ export type SiteContentMissionSectionMission = {
   ctaHref?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentMissionSectionGalleryImages = {
-  __typename?: 'SiteContentMissionSectionGalleryImages';
+export type SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages';
   alt?: Maybe<Scalars['String']['output']>;
   imagePath?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentMissionSectionGallery = {
-  __typename?: 'SiteContentMissionSectionGallery';
+export type SiteContentPagesHomeTranslationsEnMissionSectionGallery = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnMissionSectionGallery';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaHref?: Maybe<Scalars['String']['output']>;
-  images?: Maybe<Array<Maybe<SiteContentMissionSectionGalleryImages>>>;
+  images?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages>>>;
 };
 
-export type SiteContentMissionSection = {
-  __typename?: 'SiteContentMissionSection';
-  mission?: Maybe<SiteContentMissionSectionMission>;
-  gallery?: Maybe<SiteContentMissionSectionGallery>;
+export type SiteContentPagesHomeTranslationsEnMissionSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnMissionSection';
+  mission?: Maybe<SiteContentPagesHomeTranslationsEnMissionSectionMission>;
+  gallery?: Maybe<SiteContentPagesHomeTranslationsEnMissionSectionGallery>;
 };
 
-export type SiteContentNewsletterSection = {
-  __typename?: 'SiteContentNewsletterSection';
+export type SiteContentPagesHomeTranslationsEnNewsletterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnNewsletterSection';
   backgroundImagePath?: Maybe<Scalars['String']['output']>;
   backgroundImageAlt?: Maybe<Scalars['String']['output']>;
   headingLine1?: Maybe<Scalars['String']['output']>;
@@ -413,8 +436,8 @@ export type SiteContentNewsletterSection = {
   ctaHref?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentServiceAreaSection = {
-  __typename?: 'SiteContentServiceAreaSection';
+export type SiteContentPagesHomeTranslationsEnServiceAreaSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnServiceAreaSection';
   headingLine1?: Maybe<Scalars['String']['output']>;
   headingLine2?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
@@ -424,30 +447,37 @@ export type SiteContentServiceAreaSection = {
   mapTitle?: Maybe<Scalars['String']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaHref?: Maybe<Scalars['String']['output']>;
+  regionName?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFooterSectionSupportLinks = {
-  __typename?: 'SiteContentFooterSectionSupportLinks';
+export type SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFooterSectionAboutLinks = {
-  __typename?: 'SiteContentFooterSectionAboutLinks';
+export type SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentFooterSection = {
-  __typename?: 'SiteContentFooterSection';
+export type SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsEnFooterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnFooterSection';
   logoAlt?: Maybe<Scalars['String']['output']>;
   logoImagePath?: Maybe<Scalars['String']['output']>;
   subscriptionText?: Maybe<Scalars['String']['output']>;
   followUsLabel?: Maybe<Scalars['String']['output']>;
   supportTitle?: Maybe<Scalars['String']['output']>;
-  supportLinks?: Maybe<Array<Maybe<SiteContentFooterSectionSupportLinks>>>;
+  supportLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks>>>;
   aboutTitle?: Maybe<Scalars['String']['output']>;
-  aboutLinks?: Maybe<Array<Maybe<SiteContentFooterSectionAboutLinks>>>;
+  aboutLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks>>>;
   legalDisclaimer?: Maybe<Scalars['String']['output']>;
   cardImageAlt?: Maybe<Scalars['String']['output']>;
   cardDesktopImagePath?: Maybe<Scalars['String']['output']>;
@@ -460,54 +490,438 @@ export type SiteContentFooterSection = {
   googlePlayHref?: Maybe<Scalars['String']['output']>;
   googlePlayImagePath?: Maybe<Scalars['String']['output']>;
   copyrightText?: Maybe<Scalars['String']['output']>;
+  socialLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks>>>;
 };
 
-export type SiteContentHeaderNavItems = {
-  __typename?: 'SiteContentHeaderNavItems';
+export type SiteContentPagesHomeTranslationsEnHeaderNavItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnHeaderNavItems';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContentHeader = {
-  __typename?: 'SiteContentHeader';
+export type SiteContentPagesHomeTranslationsEnHeader = {
+  __typename?: 'SiteContentPagesHomeTranslationsEnHeader';
   logoImagePath?: Maybe<Scalars['String']['output']>;
   whatsAppHref?: Maybe<Scalars['String']['output']>;
   primaryCtaLabel?: Maybe<Scalars['String']['output']>;
   secondaryCtaLabel?: Maybe<Scalars['String']['output']>;
   secondaryCtaHref?: Maybe<Scalars['String']['output']>;
-  navItems?: Maybe<Array<Maybe<SiteContentHeaderNavItems>>>;
+  navItems?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsEnHeaderNavItems>>>;
+  logoAlt?: Maybe<Scalars['String']['output']>;
+  homeAriaLabel?: Maybe<Scalars['String']['output']>;
+  mainNavAriaLabel?: Maybe<Scalars['String']['output']>;
+  openMenuAriaLabel?: Maybe<Scalars['String']['output']>;
+  closeMenuAriaLabel?: Maybe<Scalars['String']['output']>;
+  mobileNavAriaLabel?: Maybe<Scalars['String']['output']>;
+  mobileMenuTitle?: Maybe<Scalars['String']['output']>;
+  languageSwitcherAriaLabel?: Maybe<Scalars['String']['output']>;
 };
 
-export type SiteContent = Node & Document & {
-  __typename?: 'SiteContent';
-  mediaOrigin?: Maybe<Scalars['String']['output']>;
-  businessName?: Maybe<Scalars['String']['output']>;
-  baseCity?: Maybe<Scalars['String']['output']>;
-  whatsappNumber?: Maybe<Scalars['String']['output']>;
+export type SiteContentPagesHomeTranslationsEn = {
+  __typename?: 'SiteContentPagesHomeTranslationsEn';
   primaryArea?: Maybe<Scalars['String']['output']>;
   heroImagePath?: Maybe<Scalars['String']['output']>;
-  canonicalOrigin?: Maybe<Scalars['String']['output']>;
-  homepageUrl?: Maybe<Scalars['String']['output']>;
   seoTitle?: Maybe<Scalars['String']['output']>;
   seoDescription?: Maybe<Scalars['String']['output']>;
-  ogImage?: Maybe<Scalars['String']['output']>;
-  hero?: Maybe<SiteContentHero>;
-  biomarkerPanel?: Maybe<SiteContentBiomarkerPanel>;
-  featurePanel?: Maybe<SiteContentFeaturePanel>;
-  trustSection?: Maybe<SiteContentTrustSection>;
-  commandCenterSection?: Maybe<SiteContentCommandCenterSection>;
-  ourProcessSection?: Maybe<SiteContentOurProcessSection>;
-  choosePathSection?: Maybe<SiteContentChoosePathSection>;
-  faqSection?: Maybe<SiteContentFaqSection>;
-  missionSection?: Maybe<SiteContentMissionSection>;
-  newsletterSection?: Maybe<SiteContentNewsletterSection>;
-  serviceAreaSection?: Maybe<SiteContentServiceAreaSection>;
-  footerSection?: Maybe<SiteContentFooterSection>;
-  header?: Maybe<SiteContentHeader>;
+  hero?: Maybe<SiteContentPagesHomeTranslationsEnHero>;
+  biomarkerPanel?: Maybe<SiteContentPagesHomeTranslationsEnBiomarkerPanel>;
+  featurePanel?: Maybe<SiteContentPagesHomeTranslationsEnFeaturePanel>;
+  trustSection?: Maybe<SiteContentPagesHomeTranslationsEnTrustSection>;
+  commandCenterSection?: Maybe<SiteContentPagesHomeTranslationsEnCommandCenterSection>;
+  ourProcessSection?: Maybe<SiteContentPagesHomeTranslationsEnOurProcessSection>;
+  choosePathSection?: Maybe<SiteContentPagesHomeTranslationsEnChoosePathSection>;
+  faqSection?: Maybe<SiteContentPagesHomeTranslationsEnFaqSection>;
+  missionSection?: Maybe<SiteContentPagesHomeTranslationsEnMissionSection>;
+  newsletterSection?: Maybe<SiteContentPagesHomeTranslationsEnNewsletterSection>;
+  serviceAreaSection?: Maybe<SiteContentPagesHomeTranslationsEnServiceAreaSection>;
+  footerSection?: Maybe<SiteContentPagesHomeTranslationsEnFooterSection>;
+  header?: Maybe<SiteContentPagesHomeTranslationsEnHeader>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHero = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlHero';
+  titleLine1?: Maybe<Scalars['String']['output']>;
+  titleLine2?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  primaryCtaLabel?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanelItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlBiomarkerPanelItems';
+  label?: Maybe<Scalars['String']['output']>;
+  imagePath?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanel = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlBiomarkerPanel';
+  titleLine1?: Maybe<Scalars['String']['output']>;
+  titleLine2?: Maybe<Scalars['String']['output']>;
+  primaryCtaLabel?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlBiomarkerPanelItems>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFeaturePanelCards';
+  alt?: Maybe<Scalars['String']['output']>;
+  titleLine1?: Maybe<Scalars['String']['output']>;
+  titleLine2?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  imagePath?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat1 = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat1';
+  value?: Maybe<Scalars['String']['output']>;
+  line1?: Maybe<Scalars['String']['output']>;
+  line2?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat2 = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat2';
+  value?: Maybe<Scalars['String']['output']>;
+  line1?: Maybe<Scalars['String']['output']>;
+  line2?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard';
+  alt?: Maybe<Scalars['String']['output']>;
+  titleLine1?: Maybe<Scalars['String']['output']>;
+  titleLine2?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  imagePath?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanel = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFeaturePanel';
+  cardCtaLabel?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlFeaturePanelCards>>>;
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  stat1?: Maybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat1>;
+  stat2?: Maybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat2>;
+  prescriptionCard?: Maybe<SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard>;
+  careHeadingLine1?: Maybe<Scalars['String']['output']>;
+  careHeadingLine2?: Maybe<Scalars['String']['output']>;
+  careDescription?: Maybe<Scalars['String']['output']>;
+  testimonialAlt?: Maybe<Scalars['String']['output']>;
+  badgeTitle?: Maybe<Scalars['String']['output']>;
+  badgeStatus?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionVideoCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlTrustSectionVideoCards';
+  thumbnailAlt?: Maybe<Scalars['String']['output']>;
+  profileAlt?: Maybe<Scalars['String']['output']>;
+  thumbnailImagePath?: Maybe<Scalars['String']['output']>;
+  profileImagePath?: Maybe<Scalars['String']['output']>;
+  handle?: Maybe<Scalars['String']['output']>;
+  meta?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionTextCards = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlTrustSectionTextCards';
+  profileAlt?: Maybe<Scalars['String']['output']>;
+  profileImagePath?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  quote?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlTrustSection';
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  memberLabel?: Maybe<Scalars['String']['output']>;
+  readMoreLabel?: Maybe<Scalars['String']['output']>;
+  videoCards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlTrustSectionVideoCards>>>;
+  textCards?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlTrustSectionTextCards>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlCommandCenterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlCommandCenterSection';
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  loadingAnimationLabel?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  appImagePath?: Maybe<Scalars['String']['output']>;
+  appImageAlt?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSectionSteps = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlOurProcessSectionSteps';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlOurProcessSection';
+  imagePath?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  steps?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlOurProcessSectionSteps>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing';
+  oneTimePrice?: Maybe<Scalars['String']['output']>;
+  recurringPrice?: Maybe<Scalars['String']['output']>;
+  oneTimeLabel?: Maybe<Scalars['String']['output']>;
+  recurringLabel?: Maybe<Scalars['String']['output']>;
+  discountPercentage?: Maybe<Scalars['String']['output']>;
+  twiceAnnuallyBillingText?: Maybe<Scalars['String']['output']>;
+  annuallyBillingText?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures';
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature';
+  categoryName?: Maybe<Scalars['String']['output']>;
+  features?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures';
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction';
+  categoryName?: Maybe<Scalars['String']['output']>;
+  features?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink';
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlans = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlans';
+  name?: Maybe<Scalars['String']['output']>;
+  nameStyle?: Maybe<Scalars['String']['output']>;
+  tagline?: Maybe<Scalars['String']['output']>;
+  isPopular?: Maybe<Scalars['Boolean']['output']>;
+  pricing?: Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing>;
+  feature?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature>>>;
+  restriction?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction>>>;
+  link?: Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlChoosePathSection';
+  title?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  plans?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlans>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSectionItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFaqSectionItems';
+  question?: Maybe<Scalars['String']['output']>;
+  answer?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFaqSection';
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  cardImagePath?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlFaqSectionItems>>>;
+  cardImageAlt?: Maybe<Scalars['String']['output']>;
+  supportTitle?: Maybe<Scalars['String']['output']>;
+  supportDescription?: Maybe<Scalars['String']['output']>;
+  supportCtaLabel?: Maybe<Scalars['String']['output']>;
+  supportCtaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionMission = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlMissionSectionMission';
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imagePath?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages';
+  alt?: Maybe<Scalars['String']['output']>;
+  imagePath?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGallery = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlMissionSectionGallery';
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlMissionSection';
+  mission?: Maybe<SiteContentPagesHomeTranslationsNlMissionSectionMission>;
+  gallery?: Maybe<SiteContentPagesHomeTranslationsNlMissionSectionGallery>;
+};
+
+export type SiteContentPagesHomeTranslationsNlNewsletterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlNewsletterSection';
+  backgroundImagePath?: Maybe<Scalars['String']['output']>;
+  backgroundImageAlt?: Maybe<Scalars['String']['output']>;
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlServiceAreaSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlServiceAreaSection';
+  headingLine1?: Maybe<Scalars['String']['output']>;
+  headingLine2?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  areas?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  excludedNote?: Maybe<Scalars['String']['output']>;
+  mapEmbedUrl?: Maybe<Scalars['String']['output']>;
+  mapTitle?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+  regionName?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSection = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlFooterSection';
+  logoAlt?: Maybe<Scalars['String']['output']>;
+  logoImagePath?: Maybe<Scalars['String']['output']>;
+  subscriptionText?: Maybe<Scalars['String']['output']>;
+  followUsLabel?: Maybe<Scalars['String']['output']>;
+  supportTitle?: Maybe<Scalars['String']['output']>;
+  supportLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks>>>;
+  aboutTitle?: Maybe<Scalars['String']['output']>;
+  aboutLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks>>>;
+  legalDisclaimer?: Maybe<Scalars['String']['output']>;
+  cardImageAlt?: Maybe<Scalars['String']['output']>;
+  cardDesktopImagePath?: Maybe<Scalars['String']['output']>;
+  cardMobileImagePath?: Maybe<Scalars['String']['output']>;
+  appPrompt?: Maybe<Scalars['String']['output']>;
+  appStoreAlt?: Maybe<Scalars['String']['output']>;
+  appStoreHref?: Maybe<Scalars['String']['output']>;
+  appStoreImagePath?: Maybe<Scalars['String']['output']>;
+  googlePlayAlt?: Maybe<Scalars['String']['output']>;
+  googlePlayHref?: Maybe<Scalars['String']['output']>;
+  googlePlayImagePath?: Maybe<Scalars['String']['output']>;
+  copyrightText?: Maybe<Scalars['String']['output']>;
+  socialLinks?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeaderNavItems = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlHeaderNavItems';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeader = {
+  __typename?: 'SiteContentPagesHomeTranslationsNlHeader';
+  logoImagePath?: Maybe<Scalars['String']['output']>;
+  whatsAppHref?: Maybe<Scalars['String']['output']>;
+  primaryCtaLabel?: Maybe<Scalars['String']['output']>;
+  secondaryCtaLabel?: Maybe<Scalars['String']['output']>;
+  secondaryCtaHref?: Maybe<Scalars['String']['output']>;
+  navItems?: Maybe<Array<Maybe<SiteContentPagesHomeTranslationsNlHeaderNavItems>>>;
+  logoAlt?: Maybe<Scalars['String']['output']>;
+  homeAriaLabel?: Maybe<Scalars['String']['output']>;
+  mainNavAriaLabel?: Maybe<Scalars['String']['output']>;
+  openMenuAriaLabel?: Maybe<Scalars['String']['output']>;
+  closeMenuAriaLabel?: Maybe<Scalars['String']['output']>;
+  mobileNavAriaLabel?: Maybe<Scalars['String']['output']>;
+  mobileMenuTitle?: Maybe<Scalars['String']['output']>;
+  languageSwitcherAriaLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteContentPagesHomeTranslationsNl = {
+  __typename?: 'SiteContentPagesHomeTranslationsNl';
+  primaryArea?: Maybe<Scalars['String']['output']>;
+  heroImagePath?: Maybe<Scalars['String']['output']>;
+  seoTitle?: Maybe<Scalars['String']['output']>;
+  seoDescription?: Maybe<Scalars['String']['output']>;
+  hero?: Maybe<SiteContentPagesHomeTranslationsNlHero>;
+  biomarkerPanel?: Maybe<SiteContentPagesHomeTranslationsNlBiomarkerPanel>;
+  featurePanel?: Maybe<SiteContentPagesHomeTranslationsNlFeaturePanel>;
+  trustSection?: Maybe<SiteContentPagesHomeTranslationsNlTrustSection>;
+  commandCenterSection?: Maybe<SiteContentPagesHomeTranslationsNlCommandCenterSection>;
+  ourProcessSection?: Maybe<SiteContentPagesHomeTranslationsNlOurProcessSection>;
+  choosePathSection?: Maybe<SiteContentPagesHomeTranslationsNlChoosePathSection>;
+  faqSection?: Maybe<SiteContentPagesHomeTranslationsNlFaqSection>;
+  missionSection?: Maybe<SiteContentPagesHomeTranslationsNlMissionSection>;
+  newsletterSection?: Maybe<SiteContentPagesHomeTranslationsNlNewsletterSection>;
+  serviceAreaSection?: Maybe<SiteContentPagesHomeTranslationsNlServiceAreaSection>;
+  footerSection?: Maybe<SiteContentPagesHomeTranslationsNlFooterSection>;
+  header?: Maybe<SiteContentPagesHomeTranslationsNlHeader>;
+};
+
+export type SiteContentPagesHomeTranslations = {
+  __typename?: 'SiteContentPagesHomeTranslations';
+  en?: Maybe<SiteContentPagesHomeTranslationsEn>;
+  nl?: Maybe<SiteContentPagesHomeTranslationsNl>;
+};
+
+export type SiteContentPagesHome = {
+  __typename?: 'SiteContentPagesHome';
+  translations?: Maybe<SiteContentPagesHomeTranslations>;
+};
+
+export type SiteContentPages = {
+  __typename?: 'SiteContentPages';
+  home?: Maybe<SiteContentPagesHome>;
+};
+
+export type SiteContentTranslationAutomation = {
+  __typename?: 'SiteContentTranslationAutomation';
+  provider?: Maybe<Scalars['String']['output']>;
+  sourceLocale?: Maybe<Scalars['String']['output']>;
+  targetLocales?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  deeplBaseUrl?: Maybe<Scalars['String']['output']>;
   promoNeedles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   mediaPathPrefixes?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   exactTextReplacements?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   regexTextReplacements?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type SiteContent = Node & Document & {
+  __typename?: 'SiteContent';
+  siteSettings?: Maybe<SiteContentSiteSettings>;
+  pages?: Maybe<SiteContentPages>;
+  translationAutomation?: Maybe<SiteContentTranslationAutomation>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -527,26 +941,47 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type SiteContentHeroFilter = {
+export type SiteContentSiteSettingsLocalesFilter = {
+  code?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  nativeLabel?: InputMaybe<StringFilter>;
+  shortLabel?: InputMaybe<StringFilter>;
+  htmlLang?: InputMaybe<StringFilter>;
+  ogLocale?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentSiteSettingsFilter = {
+  mediaOrigin?: InputMaybe<StringFilter>;
+  businessName?: InputMaybe<StringFilter>;
+  baseCity?: InputMaybe<StringFilter>;
+  whatsappNumber?: InputMaybe<StringFilter>;
+  canonicalOrigin?: InputMaybe<StringFilter>;
+  homepageUrl?: InputMaybe<StringFilter>;
+  ogImage?: InputMaybe<ImageFilter>;
+  locales?: InputMaybe<SiteContentSiteSettingsLocalesFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsEnHeroFilter = {
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   primaryCtaLabel?: InputMaybe<StringFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentBiomarkerPanelItemsFilter = {
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsFilter = {
   label?: InputMaybe<StringFilter>;
   imagePath?: InputMaybe<ImageFilter>;
 };
 
-export type SiteContentBiomarkerPanelFilter = {
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanelFilter = {
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
   primaryCtaLabel?: InputMaybe<StringFilter>;
-  items?: InputMaybe<SiteContentBiomarkerPanelItemsFilter>;
+  items?: InputMaybe<SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsFilter>;
 };
 
-export type SiteContentFeaturePanelCardsFilter = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelCardsFilter = {
   alt?: InputMaybe<StringFilter>;
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
@@ -554,19 +989,19 @@ export type SiteContentFeaturePanelCardsFilter = {
   imagePath?: InputMaybe<ImageFilter>;
 };
 
-export type SiteContentFeaturePanelStat1Filter = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat1Filter = {
   value?: InputMaybe<StringFilter>;
   line1?: InputMaybe<StringFilter>;
   line2?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFeaturePanelStat2Filter = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat2Filter = {
   value?: InputMaybe<StringFilter>;
   line1?: InputMaybe<StringFilter>;
   line2?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFeaturePanelPrescriptionCardFilter = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardFilter = {
   alt?: InputMaybe<StringFilter>;
   titleLine1?: InputMaybe<StringFilter>;
   titleLine2?: InputMaybe<StringFilter>;
@@ -575,15 +1010,15 @@ export type SiteContentFeaturePanelPrescriptionCardFilter = {
   ctaLabel?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFeaturePanelFilter = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelFilter = {
   cardCtaLabel?: InputMaybe<StringFilter>;
-  cards?: InputMaybe<SiteContentFeaturePanelCardsFilter>;
+  cards?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelCardsFilter>;
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  stat1?: InputMaybe<SiteContentFeaturePanelStat1Filter>;
-  stat2?: InputMaybe<SiteContentFeaturePanelStat2Filter>;
-  prescriptionCard?: InputMaybe<SiteContentFeaturePanelPrescriptionCardFilter>;
+  stat1?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat1Filter>;
+  stat2?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat2Filter>;
+  prescriptionCard?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardFilter>;
   careHeadingLine1?: InputMaybe<StringFilter>;
   careHeadingLine2?: InputMaybe<StringFilter>;
   careDescription?: InputMaybe<StringFilter>;
@@ -592,7 +1027,7 @@ export type SiteContentFeaturePanelFilter = {
   badgeStatus?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentTrustSectionVideoCardsFilter = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsFilter = {
   thumbnailAlt?: InputMaybe<StringFilter>;
   profileAlt?: InputMaybe<StringFilter>;
   thumbnailImagePath?: InputMaybe<ImageFilter>;
@@ -601,23 +1036,23 @@ export type SiteContentTrustSectionVideoCardsFilter = {
   meta?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentTrustSectionTextCardsFilter = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionTextCardsFilter = {
   profileAlt?: InputMaybe<StringFilter>;
   profileImagePath?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   quote?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentTrustSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   memberLabel?: InputMaybe<StringFilter>;
   readMoreLabel?: InputMaybe<StringFilter>;
-  videoCards?: InputMaybe<SiteContentTrustSectionVideoCardsFilter>;
-  textCards?: InputMaybe<SiteContentTrustSectionTextCardsFilter>;
+  videoCards?: InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsFilter>;
+  textCards?: InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionTextCardsFilter>;
 };
 
-export type SiteContentCommandCenterSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnCommandCenterSectionFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   loadingAnimationLabel?: InputMaybe<StringFilter>;
@@ -627,17 +1062,17 @@ export type SiteContentCommandCenterSectionFilter = {
   appImageAlt?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentOurProcessSectionStepsFilter = {
+export type SiteContentPagesHomeTranslationsEnOurProcessSectionStepsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentOurProcessSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnOurProcessSectionFilter = {
   imagePath?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
-  steps?: InputMaybe<SiteContentOurProcessSectionStepsFilter>;
+  steps?: InputMaybe<SiteContentPagesHomeTranslationsEnOurProcessSectionStepsFilter>;
 };
 
 export type BooleanFilter = {
@@ -645,7 +1080,7 @@ export type BooleanFilter = {
   exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type SiteContentChoosePathSectionPlansPricingFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingFilter = {
   oneTimePrice?: InputMaybe<StringFilter>;
   recurringPrice?: InputMaybe<StringFilter>;
   oneTimeLabel?: InputMaybe<StringFilter>;
@@ -655,55 +1090,55 @@ export type SiteContentChoosePathSectionPlansPricingFilter = {
   annuallyBillingText?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansFeatureFeaturesFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesFilter = {
   name?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansFeatureFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFilter = {
   categoryName?: InputMaybe<StringFilter>;
-  features?: InputMaybe<SiteContentChoosePathSectionPlansFeatureFeaturesFilter>;
+  features?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansRestrictionFeaturesFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesFilter = {
   name?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansRestrictionFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFilter = {
   categoryName?: InputMaybe<StringFilter>;
-  features?: InputMaybe<SiteContentChoosePathSectionPlansRestrictionFeaturesFilter>;
+  features?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansLinkFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkFilter = {
   label?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentChoosePathSectionPlansFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFilter = {
   name?: InputMaybe<StringFilter>;
   nameStyle?: InputMaybe<StringFilter>;
   tagline?: InputMaybe<StringFilter>;
   isPopular?: InputMaybe<BooleanFilter>;
-  pricing?: InputMaybe<SiteContentChoosePathSectionPlansPricingFilter>;
-  feature?: InputMaybe<SiteContentChoosePathSectionPlansFeatureFilter>;
-  restriction?: InputMaybe<SiteContentChoosePathSectionPlansRestrictionFilter>;
-  link?: InputMaybe<SiteContentChoosePathSectionPlansLinkFilter>;
+  pricing?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingFilter>;
+  feature?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFilter>;
+  restriction?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFilter>;
+  link?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkFilter>;
 };
 
-export type SiteContentChoosePathSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
-  plans?: InputMaybe<SiteContentChoosePathSectionPlansFilter>;
+  plans?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFilter>;
 };
 
-export type SiteContentFaqSectionItemsFilter = {
+export type SiteContentPagesHomeTranslationsEnFaqSectionItemsFilter = {
   question?: InputMaybe<StringFilter>;
   answer?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFaqSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnFaqSectionFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   cardImagePath?: InputMaybe<ImageFilter>;
-  items?: InputMaybe<SiteContentFaqSectionItemsFilter>;
+  items?: InputMaybe<SiteContentPagesHomeTranslationsEnFaqSectionItemsFilter>;
   cardImageAlt?: InputMaybe<StringFilter>;
   supportTitle?: InputMaybe<StringFilter>;
   supportDescription?: InputMaybe<StringFilter>;
@@ -711,7 +1146,7 @@ export type SiteContentFaqSectionFilter = {
   supportCtaHref?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentMissionSectionMissionFilter = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionMissionFilter = {
   imageAlt?: InputMaybe<StringFilter>;
   imagePath?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
@@ -723,25 +1158,25 @@ export type SiteContentMissionSectionMissionFilter = {
   ctaHref?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentMissionSectionGalleryImagesFilter = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesFilter = {
   alt?: InputMaybe<StringFilter>;
   imagePath?: InputMaybe<ImageFilter>;
 };
 
-export type SiteContentMissionSectionGalleryFilter = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionGalleryFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaHref?: InputMaybe<StringFilter>;
-  images?: InputMaybe<SiteContentMissionSectionGalleryImagesFilter>;
+  images?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesFilter>;
 };
 
-export type SiteContentMissionSectionFilter = {
-  mission?: InputMaybe<SiteContentMissionSectionMissionFilter>;
-  gallery?: InputMaybe<SiteContentMissionSectionGalleryFilter>;
+export type SiteContentPagesHomeTranslationsEnMissionSectionFilter = {
+  mission?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionMissionFilter>;
+  gallery?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionGalleryFilter>;
 };
 
-export type SiteContentNewsletterSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnNewsletterSectionFilter = {
   backgroundImagePath?: InputMaybe<ImageFilter>;
   backgroundImageAlt?: InputMaybe<StringFilter>;
   headingLine1?: InputMaybe<StringFilter>;
@@ -751,7 +1186,7 @@ export type SiteContentNewsletterSectionFilter = {
   ctaHref?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentServiceAreaSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnServiceAreaSectionFilter = {
   headingLine1?: InputMaybe<StringFilter>;
   headingLine2?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
@@ -761,27 +1196,33 @@ export type SiteContentServiceAreaSectionFilter = {
   mapTitle?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaHref?: InputMaybe<StringFilter>;
+  regionName?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFooterSectionSupportLinksFilter = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFooterSectionAboutLinksFilter = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFooterSectionFilter = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsEnFooterSectionFilter = {
   logoAlt?: InputMaybe<StringFilter>;
   logoImagePath?: InputMaybe<ImageFilter>;
   subscriptionText?: InputMaybe<StringFilter>;
   followUsLabel?: InputMaybe<StringFilter>;
   supportTitle?: InputMaybe<StringFilter>;
-  supportLinks?: InputMaybe<SiteContentFooterSectionSupportLinksFilter>;
+  supportLinks?: InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksFilter>;
   aboutTitle?: InputMaybe<StringFilter>;
-  aboutLinks?: InputMaybe<SiteContentFooterSectionAboutLinksFilter>;
+  aboutLinks?: InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksFilter>;
   legalDisclaimer?: InputMaybe<StringFilter>;
   cardImageAlt?: InputMaybe<StringFilter>;
   cardDesktopImagePath?: InputMaybe<ImageFilter>;
@@ -794,51 +1235,393 @@ export type SiteContentFooterSectionFilter = {
   googlePlayHref?: InputMaybe<StringFilter>;
   googlePlayImagePath?: InputMaybe<ImageFilter>;
   copyrightText?: InputMaybe<StringFilter>;
+  socialLinks?: InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksFilter>;
 };
 
-export type SiteContentHeaderNavItemsFilter = {
+export type SiteContentPagesHomeTranslationsEnHeaderNavItemsFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentHeaderFilter = {
+export type SiteContentPagesHomeTranslationsEnHeaderFilter = {
   logoImagePath?: InputMaybe<ImageFilter>;
   whatsAppHref?: InputMaybe<StringFilter>;
   primaryCtaLabel?: InputMaybe<StringFilter>;
   secondaryCtaLabel?: InputMaybe<StringFilter>;
   secondaryCtaHref?: InputMaybe<StringFilter>;
-  navItems?: InputMaybe<SiteContentHeaderNavItemsFilter>;
+  navItems?: InputMaybe<SiteContentPagesHomeTranslationsEnHeaderNavItemsFilter>;
+  logoAlt?: InputMaybe<StringFilter>;
+  homeAriaLabel?: InputMaybe<StringFilter>;
+  mainNavAriaLabel?: InputMaybe<StringFilter>;
+  openMenuAriaLabel?: InputMaybe<StringFilter>;
+  closeMenuAriaLabel?: InputMaybe<StringFilter>;
+  mobileNavAriaLabel?: InputMaybe<StringFilter>;
+  mobileMenuTitle?: InputMaybe<StringFilter>;
+  languageSwitcherAriaLabel?: InputMaybe<StringFilter>;
 };
 
-export type SiteContentFilter = {
-  mediaOrigin?: InputMaybe<StringFilter>;
-  businessName?: InputMaybe<StringFilter>;
-  baseCity?: InputMaybe<StringFilter>;
-  whatsappNumber?: InputMaybe<StringFilter>;
+export type SiteContentPagesHomeTranslationsEnFilter = {
   primaryArea?: InputMaybe<StringFilter>;
   heroImagePath?: InputMaybe<ImageFilter>;
-  canonicalOrigin?: InputMaybe<StringFilter>;
-  homepageUrl?: InputMaybe<StringFilter>;
   seoTitle?: InputMaybe<StringFilter>;
   seoDescription?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<ImageFilter>;
-  hero?: InputMaybe<SiteContentHeroFilter>;
-  biomarkerPanel?: InputMaybe<SiteContentBiomarkerPanelFilter>;
-  featurePanel?: InputMaybe<SiteContentFeaturePanelFilter>;
-  trustSection?: InputMaybe<SiteContentTrustSectionFilter>;
-  commandCenterSection?: InputMaybe<SiteContentCommandCenterSectionFilter>;
-  ourProcessSection?: InputMaybe<SiteContentOurProcessSectionFilter>;
-  choosePathSection?: InputMaybe<SiteContentChoosePathSectionFilter>;
-  faqSection?: InputMaybe<SiteContentFaqSectionFilter>;
-  missionSection?: InputMaybe<SiteContentMissionSectionFilter>;
-  newsletterSection?: InputMaybe<SiteContentNewsletterSectionFilter>;
-  serviceAreaSection?: InputMaybe<SiteContentServiceAreaSectionFilter>;
-  footerSection?: InputMaybe<SiteContentFooterSectionFilter>;
-  header?: InputMaybe<SiteContentHeaderFilter>;
+  hero?: InputMaybe<SiteContentPagesHomeTranslationsEnHeroFilter>;
+  biomarkerPanel?: InputMaybe<SiteContentPagesHomeTranslationsEnBiomarkerPanelFilter>;
+  featurePanel?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelFilter>;
+  trustSection?: InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionFilter>;
+  commandCenterSection?: InputMaybe<SiteContentPagesHomeTranslationsEnCommandCenterSectionFilter>;
+  ourProcessSection?: InputMaybe<SiteContentPagesHomeTranslationsEnOurProcessSectionFilter>;
+  choosePathSection?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionFilter>;
+  faqSection?: InputMaybe<SiteContentPagesHomeTranslationsEnFaqSectionFilter>;
+  missionSection?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionFilter>;
+  newsletterSection?: InputMaybe<SiteContentPagesHomeTranslationsEnNewsletterSectionFilter>;
+  serviceAreaSection?: InputMaybe<SiteContentPagesHomeTranslationsEnServiceAreaSectionFilter>;
+  footerSection?: InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionFilter>;
+  header?: InputMaybe<SiteContentPagesHomeTranslationsEnHeaderFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeroFilter = {
+  titleLine1?: InputMaybe<StringFilter>;
+  titleLine2?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  primaryCtaLabel?: InputMaybe<StringFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsFilter = {
+  label?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanelFilter = {
+  titleLine1?: InputMaybe<StringFilter>;
+  titleLine2?: InputMaybe<StringFilter>;
+  primaryCtaLabel?: InputMaybe<StringFilter>;
+  items?: InputMaybe<SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelCardsFilter = {
+  alt?: InputMaybe<StringFilter>;
+  titleLine1?: InputMaybe<StringFilter>;
+  titleLine2?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat1Filter = {
+  value?: InputMaybe<StringFilter>;
+  line1?: InputMaybe<StringFilter>;
+  line2?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat2Filter = {
+  value?: InputMaybe<StringFilter>;
+  line1?: InputMaybe<StringFilter>;
+  line2?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardFilter = {
+  alt?: InputMaybe<StringFilter>;
+  titleLine1?: InputMaybe<StringFilter>;
+  titleLine2?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelFilter = {
+  cardCtaLabel?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelCardsFilter>;
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  stat1?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat1Filter>;
+  stat2?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat2Filter>;
+  prescriptionCard?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardFilter>;
+  careHeadingLine1?: InputMaybe<StringFilter>;
+  careHeadingLine2?: InputMaybe<StringFilter>;
+  careDescription?: InputMaybe<StringFilter>;
+  testimonialAlt?: InputMaybe<StringFilter>;
+  badgeTitle?: InputMaybe<StringFilter>;
+  badgeStatus?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsFilter = {
+  thumbnailAlt?: InputMaybe<StringFilter>;
+  profileAlt?: InputMaybe<StringFilter>;
+  thumbnailImagePath?: InputMaybe<ImageFilter>;
+  profileImagePath?: InputMaybe<ImageFilter>;
+  handle?: InputMaybe<StringFilter>;
+  meta?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionTextCardsFilter = {
+  profileAlt?: InputMaybe<StringFilter>;
+  profileImagePath?: InputMaybe<ImageFilter>;
+  name?: InputMaybe<StringFilter>;
+  quote?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionFilter = {
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  memberLabel?: InputMaybe<StringFilter>;
+  readMoreLabel?: InputMaybe<StringFilter>;
+  videoCards?: InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsFilter>;
+  textCards?: InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionTextCardsFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlCommandCenterSectionFilter = {
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  loadingAnimationLabel?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  appImagePath?: InputMaybe<ImageFilter>;
+  appImageAlt?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSectionStepsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSectionFilter = {
+  imagePath?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  steps?: InputMaybe<SiteContentPagesHomeTranslationsNlOurProcessSectionStepsFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingFilter = {
+  oneTimePrice?: InputMaybe<StringFilter>;
+  recurringPrice?: InputMaybe<StringFilter>;
+  oneTimeLabel?: InputMaybe<StringFilter>;
+  recurringLabel?: InputMaybe<StringFilter>;
+  discountPercentage?: InputMaybe<StringFilter>;
+  twiceAnnuallyBillingText?: InputMaybe<StringFilter>;
+  annuallyBillingText?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesFilter = {
+  name?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFilter = {
+  categoryName?: InputMaybe<StringFilter>;
+  features?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesFilter = {
+  name?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFilter = {
+  categoryName?: InputMaybe<StringFilter>;
+  features?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkFilter = {
+  label?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFilter = {
+  name?: InputMaybe<StringFilter>;
+  nameStyle?: InputMaybe<StringFilter>;
+  tagline?: InputMaybe<StringFilter>;
+  isPopular?: InputMaybe<BooleanFilter>;
+  pricing?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingFilter>;
+  feature?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFilter>;
+  restriction?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFilter>;
+  link?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionFilter = {
+  title?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  plans?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSectionItemsFilter = {
+  question?: InputMaybe<StringFilter>;
+  answer?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSectionFilter = {
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  cardImagePath?: InputMaybe<ImageFilter>;
+  items?: InputMaybe<SiteContentPagesHomeTranslationsNlFaqSectionItemsFilter>;
+  cardImageAlt?: InputMaybe<StringFilter>;
+  supportTitle?: InputMaybe<StringFilter>;
+  supportDescription?: InputMaybe<StringFilter>;
+  supportCtaLabel?: InputMaybe<StringFilter>;
+  supportCtaHref?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionMissionFilter = {
+  imageAlt?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
+  name?: InputMaybe<StringFilter>;
+  role?: InputMaybe<StringFilter>;
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesFilter = {
+  alt?: InputMaybe<StringFilter>;
+  imagePath?: InputMaybe<ImageFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGalleryFilter = {
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+  images?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionFilter = {
+  mission?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionMissionFilter>;
+  gallery?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionGalleryFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlNewsletterSectionFilter = {
+  backgroundImagePath?: InputMaybe<ImageFilter>;
+  backgroundImageAlt?: InputMaybe<StringFilter>;
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlServiceAreaSectionFilter = {
+  headingLine1?: InputMaybe<StringFilter>;
+  headingLine2?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  areas?: InputMaybe<StringFilter>;
+  excludedNote?: InputMaybe<StringFilter>;
+  mapEmbedUrl?: InputMaybe<StringFilter>;
+  mapTitle?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+  regionName?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionFilter = {
+  logoAlt?: InputMaybe<StringFilter>;
+  logoImagePath?: InputMaybe<ImageFilter>;
+  subscriptionText?: InputMaybe<StringFilter>;
+  followUsLabel?: InputMaybe<StringFilter>;
+  supportTitle?: InputMaybe<StringFilter>;
+  supportLinks?: InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksFilter>;
+  aboutTitle?: InputMaybe<StringFilter>;
+  aboutLinks?: InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksFilter>;
+  legalDisclaimer?: InputMaybe<StringFilter>;
+  cardImageAlt?: InputMaybe<StringFilter>;
+  cardDesktopImagePath?: InputMaybe<ImageFilter>;
+  cardMobileImagePath?: InputMaybe<ImageFilter>;
+  appPrompt?: InputMaybe<StringFilter>;
+  appStoreAlt?: InputMaybe<StringFilter>;
+  appStoreHref?: InputMaybe<StringFilter>;
+  appStoreImagePath?: InputMaybe<ImageFilter>;
+  googlePlayAlt?: InputMaybe<StringFilter>;
+  googlePlayHref?: InputMaybe<StringFilter>;
+  googlePlayImagePath?: InputMaybe<ImageFilter>;
+  copyrightText?: InputMaybe<StringFilter>;
+  socialLinks?: InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeaderNavItemsFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeaderFilter = {
+  logoImagePath?: InputMaybe<ImageFilter>;
+  whatsAppHref?: InputMaybe<StringFilter>;
+  primaryCtaLabel?: InputMaybe<StringFilter>;
+  secondaryCtaLabel?: InputMaybe<StringFilter>;
+  secondaryCtaHref?: InputMaybe<StringFilter>;
+  navItems?: InputMaybe<SiteContentPagesHomeTranslationsNlHeaderNavItemsFilter>;
+  logoAlt?: InputMaybe<StringFilter>;
+  homeAriaLabel?: InputMaybe<StringFilter>;
+  mainNavAriaLabel?: InputMaybe<StringFilter>;
+  openMenuAriaLabel?: InputMaybe<StringFilter>;
+  closeMenuAriaLabel?: InputMaybe<StringFilter>;
+  mobileNavAriaLabel?: InputMaybe<StringFilter>;
+  mobileMenuTitle?: InputMaybe<StringFilter>;
+  languageSwitcherAriaLabel?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFilter = {
+  primaryArea?: InputMaybe<StringFilter>;
+  heroImagePath?: InputMaybe<ImageFilter>;
+  seoTitle?: InputMaybe<StringFilter>;
+  seoDescription?: InputMaybe<StringFilter>;
+  hero?: InputMaybe<SiteContentPagesHomeTranslationsNlHeroFilter>;
+  biomarkerPanel?: InputMaybe<SiteContentPagesHomeTranslationsNlBiomarkerPanelFilter>;
+  featurePanel?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelFilter>;
+  trustSection?: InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionFilter>;
+  commandCenterSection?: InputMaybe<SiteContentPagesHomeTranslationsNlCommandCenterSectionFilter>;
+  ourProcessSection?: InputMaybe<SiteContentPagesHomeTranslationsNlOurProcessSectionFilter>;
+  choosePathSection?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionFilter>;
+  faqSection?: InputMaybe<SiteContentPagesHomeTranslationsNlFaqSectionFilter>;
+  missionSection?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionFilter>;
+  newsletterSection?: InputMaybe<SiteContentPagesHomeTranslationsNlNewsletterSectionFilter>;
+  serviceAreaSection?: InputMaybe<SiteContentPagesHomeTranslationsNlServiceAreaSectionFilter>;
+  footerSection?: InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionFilter>;
+  header?: InputMaybe<SiteContentPagesHomeTranslationsNlHeaderFilter>;
+};
+
+export type SiteContentPagesHomeTranslationsFilter = {
+  en?: InputMaybe<SiteContentPagesHomeTranslationsEnFilter>;
+  nl?: InputMaybe<SiteContentPagesHomeTranslationsNlFilter>;
+};
+
+export type SiteContentPagesHomeFilter = {
+  translations?: InputMaybe<SiteContentPagesHomeTranslationsFilter>;
+};
+
+export type SiteContentPagesFilter = {
+  home?: InputMaybe<SiteContentPagesHomeFilter>;
+};
+
+export type SiteContentTranslationAutomationFilter = {
+  provider?: InputMaybe<StringFilter>;
+  sourceLocale?: InputMaybe<StringFilter>;
+  targetLocales?: InputMaybe<StringFilter>;
+  deeplBaseUrl?: InputMaybe<StringFilter>;
   promoNeedles?: InputMaybe<StringFilter>;
   mediaPathPrefixes?: InputMaybe<StringFilter>;
   exactTextReplacements?: InputMaybe<StringFilter>;
   regexTextReplacements?: InputMaybe<StringFilter>;
+};
+
+export type SiteContentFilter = {
+  siteSettings?: InputMaybe<SiteContentSiteSettingsFilter>;
+  pages?: InputMaybe<SiteContentPagesFilter>;
+  translationAutomation?: InputMaybe<SiteContentTranslationAutomationFilter>;
 };
 
 export type SiteContentConnectionEdges = {
@@ -919,26 +1702,47 @@ export type DocumentMutation = {
   siteContent?: InputMaybe<SiteContentMutation>;
 };
 
-export type SiteContentHeroMutation = {
+export type SiteContentSiteSettingsLocalesMutation = {
+  code?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  nativeLabel?: InputMaybe<Scalars['String']['input']>;
+  shortLabel?: InputMaybe<Scalars['String']['input']>;
+  htmlLang?: InputMaybe<Scalars['String']['input']>;
+  ogLocale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentSiteSettingsMutation = {
+  mediaOrigin?: InputMaybe<Scalars['String']['input']>;
+  businessName?: InputMaybe<Scalars['String']['input']>;
+  baseCity?: InputMaybe<Scalars['String']['input']>;
+  whatsappNumber?: InputMaybe<Scalars['String']['input']>;
+  canonicalOrigin?: InputMaybe<Scalars['String']['input']>;
+  homepageUrl?: InputMaybe<Scalars['String']['input']>;
+  ogImage?: InputMaybe<Scalars['String']['input']>;
+  locales?: InputMaybe<Array<InputMaybe<SiteContentSiteSettingsLocalesMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsEnHeroMutation = {
   titleLine1?: InputMaybe<Scalars['String']['input']>;
   titleLine2?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentBiomarkerPanelItemsMutation = {
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   imagePath?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentBiomarkerPanelMutation = {
+export type SiteContentPagesHomeTranslationsEnBiomarkerPanelMutation = {
   titleLine1?: InputMaybe<Scalars['String']['input']>;
   titleLine2?: InputMaybe<Scalars['String']['input']>;
   primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<SiteContentBiomarkerPanelItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnBiomarkerPanelItemsMutation>>>;
 };
 
-export type SiteContentFeaturePanelCardsMutation = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelCardsMutation = {
   alt?: InputMaybe<Scalars['String']['input']>;
   titleLine1?: InputMaybe<Scalars['String']['input']>;
   titleLine2?: InputMaybe<Scalars['String']['input']>;
@@ -946,19 +1750,19 @@ export type SiteContentFeaturePanelCardsMutation = {
   imagePath?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFeaturePanelStat1Mutation = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat1Mutation = {
   value?: InputMaybe<Scalars['String']['input']>;
   line1?: InputMaybe<Scalars['String']['input']>;
   line2?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFeaturePanelStat2Mutation = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelStat2Mutation = {
   value?: InputMaybe<Scalars['String']['input']>;
   line1?: InputMaybe<Scalars['String']['input']>;
   line2?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFeaturePanelPrescriptionCardMutation = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardMutation = {
   alt?: InputMaybe<Scalars['String']['input']>;
   titleLine1?: InputMaybe<Scalars['String']['input']>;
   titleLine2?: InputMaybe<Scalars['String']['input']>;
@@ -967,15 +1771,15 @@ export type SiteContentFeaturePanelPrescriptionCardMutation = {
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFeaturePanelMutation = {
+export type SiteContentPagesHomeTranslationsEnFeaturePanelMutation = {
   cardCtaLabel?: InputMaybe<Scalars['String']['input']>;
-  cards?: InputMaybe<Array<InputMaybe<SiteContentFeaturePanelCardsMutation>>>;
+  cards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelCardsMutation>>>;
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
-  stat1?: InputMaybe<SiteContentFeaturePanelStat1Mutation>;
-  stat2?: InputMaybe<SiteContentFeaturePanelStat2Mutation>;
-  prescriptionCard?: InputMaybe<SiteContentFeaturePanelPrescriptionCardMutation>;
+  stat1?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat1Mutation>;
+  stat2?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelStat2Mutation>;
+  prescriptionCard?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCardMutation>;
   careHeadingLine1?: InputMaybe<Scalars['String']['input']>;
   careHeadingLine2?: InputMaybe<Scalars['String']['input']>;
   careDescription?: InputMaybe<Scalars['String']['input']>;
@@ -984,7 +1788,7 @@ export type SiteContentFeaturePanelMutation = {
   badgeStatus?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentTrustSectionVideoCardsMutation = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsMutation = {
   thumbnailAlt?: InputMaybe<Scalars['String']['input']>;
   profileAlt?: InputMaybe<Scalars['String']['input']>;
   thumbnailImagePath?: InputMaybe<Scalars['String']['input']>;
@@ -993,23 +1797,23 @@ export type SiteContentTrustSectionVideoCardsMutation = {
   meta?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentTrustSectionTextCardsMutation = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionTextCardsMutation = {
   profileAlt?: InputMaybe<Scalars['String']['input']>;
   profileImagePath?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   quote?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentTrustSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnTrustSectionMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   memberLabel?: InputMaybe<Scalars['String']['input']>;
   readMoreLabel?: InputMaybe<Scalars['String']['input']>;
-  videoCards?: InputMaybe<Array<InputMaybe<SiteContentTrustSectionVideoCardsMutation>>>;
-  textCards?: InputMaybe<Array<InputMaybe<SiteContentTrustSectionTextCardsMutation>>>;
+  videoCards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionVideoCardsMutation>>>;
+  textCards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionTextCardsMutation>>>;
 };
 
-export type SiteContentCommandCenterSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnCommandCenterSectionMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   loadingAnimationLabel?: InputMaybe<Scalars['String']['input']>;
@@ -1019,20 +1823,20 @@ export type SiteContentCommandCenterSectionMutation = {
   appImageAlt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentOurProcessSectionStepsMutation = {
+export type SiteContentPagesHomeTranslationsEnOurProcessSectionStepsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentOurProcessSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnOurProcessSectionMutation = {
   imagePath?: InputMaybe<Scalars['String']['input']>;
   imageAlt?: InputMaybe<Scalars['String']['input']>;
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
-  steps?: InputMaybe<Array<InputMaybe<SiteContentOurProcessSectionStepsMutation>>>;
+  steps?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnOurProcessSectionStepsMutation>>>;
 };
 
-export type SiteContentChoosePathSectionPlansPricingMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingMutation = {
   oneTimePrice?: InputMaybe<Scalars['String']['input']>;
   recurringPrice?: InputMaybe<Scalars['String']['input']>;
   oneTimeLabel?: InputMaybe<Scalars['String']['input']>;
@@ -1042,55 +1846,55 @@ export type SiteContentChoosePathSectionPlansPricingMutation = {
   annuallyBillingText?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentChoosePathSectionPlansFeatureFeaturesMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentChoosePathSectionPlansFeatureMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureMutation = {
   categoryName?: InputMaybe<Scalars['String']['input']>;
-  features?: InputMaybe<Array<InputMaybe<SiteContentChoosePathSectionPlansFeatureFeaturesMutation>>>;
+  features?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeaturesMutation>>>;
 };
 
-export type SiteContentChoosePathSectionPlansRestrictionFeaturesMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentChoosePathSectionPlansRestrictionMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionMutation = {
   categoryName?: InputMaybe<Scalars['String']['input']>;
-  features?: InputMaybe<Array<InputMaybe<SiteContentChoosePathSectionPlansRestrictionFeaturesMutation>>>;
+  features?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeaturesMutation>>>;
 };
 
-export type SiteContentChoosePathSectionPlansLinkMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentChoosePathSectionPlansMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionPlansMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   nameStyle?: InputMaybe<Scalars['String']['input']>;
   tagline?: InputMaybe<Scalars['String']['input']>;
   isPopular?: InputMaybe<Scalars['Boolean']['input']>;
-  pricing?: InputMaybe<SiteContentChoosePathSectionPlansPricingMutation>;
-  feature?: InputMaybe<Array<InputMaybe<SiteContentChoosePathSectionPlansFeatureMutation>>>;
-  restriction?: InputMaybe<Array<InputMaybe<SiteContentChoosePathSectionPlansRestrictionMutation>>>;
-  link?: InputMaybe<SiteContentChoosePathSectionPlansLinkMutation>;
+  pricing?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricingMutation>;
+  feature?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureMutation>>>;
+  restriction?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionMutation>>>;
+  link?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLinkMutation>;
 };
 
-export type SiteContentChoosePathSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnChoosePathSectionMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
-  plans?: InputMaybe<Array<InputMaybe<SiteContentChoosePathSectionPlansMutation>>>;
+  plans?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionPlansMutation>>>;
 };
 
-export type SiteContentFaqSectionItemsMutation = {
+export type SiteContentPagesHomeTranslationsEnFaqSectionItemsMutation = {
   question?: InputMaybe<Scalars['String']['input']>;
   answer?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFaqSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnFaqSectionMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   cardImagePath?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<SiteContentFaqSectionItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnFaqSectionItemsMutation>>>;
   cardImageAlt?: InputMaybe<Scalars['String']['input']>;
   supportTitle?: InputMaybe<Scalars['String']['input']>;
   supportDescription?: InputMaybe<Scalars['String']['input']>;
@@ -1098,7 +1902,7 @@ export type SiteContentFaqSectionMutation = {
   supportCtaHref?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentMissionSectionMissionMutation = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionMissionMutation = {
   imageAlt?: InputMaybe<Scalars['String']['input']>;
   imagePath?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -1110,25 +1914,25 @@ export type SiteContentMissionSectionMissionMutation = {
   ctaHref?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentMissionSectionGalleryImagesMutation = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesMutation = {
   alt?: InputMaybe<Scalars['String']['input']>;
   imagePath?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentMissionSectionGalleryMutation = {
+export type SiteContentPagesHomeTranslationsEnMissionSectionGalleryMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaHref?: InputMaybe<Scalars['String']['input']>;
-  images?: InputMaybe<Array<InputMaybe<SiteContentMissionSectionGalleryImagesMutation>>>;
+  images?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionGalleryImagesMutation>>>;
 };
 
-export type SiteContentMissionSectionMutation = {
-  mission?: InputMaybe<SiteContentMissionSectionMissionMutation>;
-  gallery?: InputMaybe<SiteContentMissionSectionGalleryMutation>;
+export type SiteContentPagesHomeTranslationsEnMissionSectionMutation = {
+  mission?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionMissionMutation>;
+  gallery?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionGalleryMutation>;
 };
 
-export type SiteContentNewsletterSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnNewsletterSectionMutation = {
   backgroundImagePath?: InputMaybe<Scalars['String']['input']>;
   backgroundImageAlt?: InputMaybe<Scalars['String']['input']>;
   headingLine1?: InputMaybe<Scalars['String']['input']>;
@@ -1138,7 +1942,7 @@ export type SiteContentNewsletterSectionMutation = {
   ctaHref?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentServiceAreaSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnServiceAreaSectionMutation = {
   headingLine1?: InputMaybe<Scalars['String']['input']>;
   headingLine2?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -1148,27 +1952,33 @@ export type SiteContentServiceAreaSectionMutation = {
   mapTitle?: InputMaybe<Scalars['String']['input']>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaHref?: InputMaybe<Scalars['String']['input']>;
+  regionName?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFooterSectionSupportLinksMutation = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFooterSectionAboutLinksMutation = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentFooterSectionMutation = {
+export type SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsEnFooterSectionMutation = {
   logoAlt?: InputMaybe<Scalars['String']['input']>;
   logoImagePath?: InputMaybe<Scalars['String']['input']>;
   subscriptionText?: InputMaybe<Scalars['String']['input']>;
   followUsLabel?: InputMaybe<Scalars['String']['input']>;
   supportTitle?: InputMaybe<Scalars['String']['input']>;
-  supportLinks?: InputMaybe<Array<InputMaybe<SiteContentFooterSectionSupportLinksMutation>>>;
+  supportLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionSupportLinksMutation>>>;
   aboutTitle?: InputMaybe<Scalars['String']['input']>;
-  aboutLinks?: InputMaybe<Array<InputMaybe<SiteContentFooterSectionAboutLinksMutation>>>;
+  aboutLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionAboutLinksMutation>>>;
   legalDisclaimer?: InputMaybe<Scalars['String']['input']>;
   cardImageAlt?: InputMaybe<Scalars['String']['input']>;
   cardDesktopImagePath?: InputMaybe<Scalars['String']['input']>;
@@ -1181,61 +1991,403 @@ export type SiteContentFooterSectionMutation = {
   googlePlayHref?: InputMaybe<Scalars['String']['input']>;
   googlePlayImagePath?: InputMaybe<Scalars['String']['input']>;
   copyrightText?: InputMaybe<Scalars['String']['input']>;
+  socialLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionSocialLinksMutation>>>;
 };
 
-export type SiteContentHeaderNavItemsMutation = {
+export type SiteContentPagesHomeTranslationsEnHeaderNavItemsMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentHeaderMutation = {
+export type SiteContentPagesHomeTranslationsEnHeaderMutation = {
   logoImagePath?: InputMaybe<Scalars['String']['input']>;
   whatsAppHref?: InputMaybe<Scalars['String']['input']>;
   primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
   secondaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
   secondaryCtaHref?: InputMaybe<Scalars['String']['input']>;
-  navItems?: InputMaybe<Array<InputMaybe<SiteContentHeaderNavItemsMutation>>>;
+  navItems?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsEnHeaderNavItemsMutation>>>;
+  logoAlt?: InputMaybe<Scalars['String']['input']>;
+  homeAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mainNavAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  openMenuAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  closeMenuAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mobileNavAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mobileMenuTitle?: InputMaybe<Scalars['String']['input']>;
+  languageSwitcherAriaLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteContentMutation = {
-  mediaOrigin?: InputMaybe<Scalars['String']['input']>;
-  businessName?: InputMaybe<Scalars['String']['input']>;
-  baseCity?: InputMaybe<Scalars['String']['input']>;
-  whatsappNumber?: InputMaybe<Scalars['String']['input']>;
+export type SiteContentPagesHomeTranslationsEnMutation = {
   primaryArea?: InputMaybe<Scalars['String']['input']>;
   heroImagePath?: InputMaybe<Scalars['String']['input']>;
-  canonicalOrigin?: InputMaybe<Scalars['String']['input']>;
-  homepageUrl?: InputMaybe<Scalars['String']['input']>;
   seoTitle?: InputMaybe<Scalars['String']['input']>;
   seoDescription?: InputMaybe<Scalars['String']['input']>;
-  ogImage?: InputMaybe<Scalars['String']['input']>;
-  hero?: InputMaybe<SiteContentHeroMutation>;
-  biomarkerPanel?: InputMaybe<SiteContentBiomarkerPanelMutation>;
-  featurePanel?: InputMaybe<SiteContentFeaturePanelMutation>;
-  trustSection?: InputMaybe<SiteContentTrustSectionMutation>;
-  commandCenterSection?: InputMaybe<SiteContentCommandCenterSectionMutation>;
-  ourProcessSection?: InputMaybe<SiteContentOurProcessSectionMutation>;
-  choosePathSection?: InputMaybe<SiteContentChoosePathSectionMutation>;
-  faqSection?: InputMaybe<SiteContentFaqSectionMutation>;
-  missionSection?: InputMaybe<SiteContentMissionSectionMutation>;
-  newsletterSection?: InputMaybe<SiteContentNewsletterSectionMutation>;
-  serviceAreaSection?: InputMaybe<SiteContentServiceAreaSectionMutation>;
-  footerSection?: InputMaybe<SiteContentFooterSectionMutation>;
-  header?: InputMaybe<SiteContentHeaderMutation>;
+  hero?: InputMaybe<SiteContentPagesHomeTranslationsEnHeroMutation>;
+  biomarkerPanel?: InputMaybe<SiteContentPagesHomeTranslationsEnBiomarkerPanelMutation>;
+  featurePanel?: InputMaybe<SiteContentPagesHomeTranslationsEnFeaturePanelMutation>;
+  trustSection?: InputMaybe<SiteContentPagesHomeTranslationsEnTrustSectionMutation>;
+  commandCenterSection?: InputMaybe<SiteContentPagesHomeTranslationsEnCommandCenterSectionMutation>;
+  ourProcessSection?: InputMaybe<SiteContentPagesHomeTranslationsEnOurProcessSectionMutation>;
+  choosePathSection?: InputMaybe<SiteContentPagesHomeTranslationsEnChoosePathSectionMutation>;
+  faqSection?: InputMaybe<SiteContentPagesHomeTranslationsEnFaqSectionMutation>;
+  missionSection?: InputMaybe<SiteContentPagesHomeTranslationsEnMissionSectionMutation>;
+  newsletterSection?: InputMaybe<SiteContentPagesHomeTranslationsEnNewsletterSectionMutation>;
+  serviceAreaSection?: InputMaybe<SiteContentPagesHomeTranslationsEnServiceAreaSectionMutation>;
+  footerSection?: InputMaybe<SiteContentPagesHomeTranslationsEnFooterSectionMutation>;
+  header?: InputMaybe<SiteContentPagesHomeTranslationsEnHeaderMutation>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeroMutation = {
+  titleLine1?: InputMaybe<Scalars['String']['input']>;
+  titleLine2?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlBiomarkerPanelMutation = {
+  titleLine1?: InputMaybe<Scalars['String']['input']>;
+  titleLine2?: InputMaybe<Scalars['String']['input']>;
+  primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlBiomarkerPanelItemsMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelCardsMutation = {
+  alt?: InputMaybe<Scalars['String']['input']>;
+  titleLine1?: InputMaybe<Scalars['String']['input']>;
+  titleLine2?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat1Mutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  line1?: InputMaybe<Scalars['String']['input']>;
+  line2?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelStat2Mutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  line1?: InputMaybe<Scalars['String']['input']>;
+  line2?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardMutation = {
+  alt?: InputMaybe<Scalars['String']['input']>;
+  titleLine1?: InputMaybe<Scalars['String']['input']>;
+  titleLine2?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFeaturePanelMutation = {
+  cardCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelCardsMutation>>>;
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  stat1?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat1Mutation>;
+  stat2?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelStat2Mutation>;
+  prescriptionCard?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCardMutation>;
+  careHeadingLine1?: InputMaybe<Scalars['String']['input']>;
+  careHeadingLine2?: InputMaybe<Scalars['String']['input']>;
+  careDescription?: InputMaybe<Scalars['String']['input']>;
+  testimonialAlt?: InputMaybe<Scalars['String']['input']>;
+  badgeTitle?: InputMaybe<Scalars['String']['input']>;
+  badgeStatus?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsMutation = {
+  thumbnailAlt?: InputMaybe<Scalars['String']['input']>;
+  profileAlt?: InputMaybe<Scalars['String']['input']>;
+  thumbnailImagePath?: InputMaybe<Scalars['String']['input']>;
+  profileImagePath?: InputMaybe<Scalars['String']['input']>;
+  handle?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionTextCardsMutation = {
+  profileAlt?: InputMaybe<Scalars['String']['input']>;
+  profileImagePath?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  quote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlTrustSectionMutation = {
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  memberLabel?: InputMaybe<Scalars['String']['input']>;
+  readMoreLabel?: InputMaybe<Scalars['String']['input']>;
+  videoCards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionVideoCardsMutation>>>;
+  textCards?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionTextCardsMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlCommandCenterSectionMutation = {
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  loadingAnimationLabel?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  appImagePath?: InputMaybe<Scalars['String']['input']>;
+  appImageAlt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSectionStepsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlOurProcessSectionMutation = {
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  steps?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlOurProcessSectionStepsMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingMutation = {
+  oneTimePrice?: InputMaybe<Scalars['String']['input']>;
+  recurringPrice?: InputMaybe<Scalars['String']['input']>;
+  oneTimeLabel?: InputMaybe<Scalars['String']['input']>;
+  recurringLabel?: InputMaybe<Scalars['String']['input']>;
+  discountPercentage?: InputMaybe<Scalars['String']['input']>;
+  twiceAnnuallyBillingText?: InputMaybe<Scalars['String']['input']>;
+  annuallyBillingText?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureMutation = {
+  categoryName?: InputMaybe<Scalars['String']['input']>;
+  features?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeaturesMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionMutation = {
+  categoryName?: InputMaybe<Scalars['String']['input']>;
+  features?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeaturesMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionPlansMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  nameStyle?: InputMaybe<Scalars['String']['input']>;
+  tagline?: InputMaybe<Scalars['String']['input']>;
+  isPopular?: InputMaybe<Scalars['Boolean']['input']>;
+  pricing?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricingMutation>;
+  feature?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureMutation>>>;
+  restriction?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionMutation>>>;
+  link?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLinkMutation>;
+};
+
+export type SiteContentPagesHomeTranslationsNlChoosePathSectionMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  plans?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionPlansMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSectionItemsMutation = {
+  question?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFaqSectionMutation = {
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  cardImagePath?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlFaqSectionItemsMutation>>>;
+  cardImageAlt?: InputMaybe<Scalars['String']['input']>;
+  supportTitle?: InputMaybe<Scalars['String']['input']>;
+  supportDescription?: InputMaybe<Scalars['String']['input']>;
+  supportCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  supportCtaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionMissionMutation = {
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesMutation = {
+  alt?: InputMaybe<Scalars['String']['input']>;
+  imagePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionGalleryMutation = {
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionGalleryImagesMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMissionSectionMutation = {
+  mission?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionMissionMutation>;
+  gallery?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionGalleryMutation>;
+};
+
+export type SiteContentPagesHomeTranslationsNlNewsletterSectionMutation = {
+  backgroundImagePath?: InputMaybe<Scalars['String']['input']>;
+  backgroundImageAlt?: InputMaybe<Scalars['String']['input']>;
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlServiceAreaSectionMutation = {
+  headingLine1?: InputMaybe<Scalars['String']['input']>;
+  headingLine2?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  areas?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  excludedNote?: InputMaybe<Scalars['String']['input']>;
+  mapEmbedUrl?: InputMaybe<Scalars['String']['input']>;
+  mapTitle?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+  regionName?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlFooterSectionMutation = {
+  logoAlt?: InputMaybe<Scalars['String']['input']>;
+  logoImagePath?: InputMaybe<Scalars['String']['input']>;
+  subscriptionText?: InputMaybe<Scalars['String']['input']>;
+  followUsLabel?: InputMaybe<Scalars['String']['input']>;
+  supportTitle?: InputMaybe<Scalars['String']['input']>;
+  supportLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionSupportLinksMutation>>>;
+  aboutTitle?: InputMaybe<Scalars['String']['input']>;
+  aboutLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionAboutLinksMutation>>>;
+  legalDisclaimer?: InputMaybe<Scalars['String']['input']>;
+  cardImageAlt?: InputMaybe<Scalars['String']['input']>;
+  cardDesktopImagePath?: InputMaybe<Scalars['String']['input']>;
+  cardMobileImagePath?: InputMaybe<Scalars['String']['input']>;
+  appPrompt?: InputMaybe<Scalars['String']['input']>;
+  appStoreAlt?: InputMaybe<Scalars['String']['input']>;
+  appStoreHref?: InputMaybe<Scalars['String']['input']>;
+  appStoreImagePath?: InputMaybe<Scalars['String']['input']>;
+  googlePlayAlt?: InputMaybe<Scalars['String']['input']>;
+  googlePlayHref?: InputMaybe<Scalars['String']['input']>;
+  googlePlayImagePath?: InputMaybe<Scalars['String']['input']>;
+  copyrightText?: InputMaybe<Scalars['String']['input']>;
+  socialLinks?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionSocialLinksMutation>>>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeaderNavItemsMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlHeaderMutation = {
+  logoImagePath?: InputMaybe<Scalars['String']['input']>;
+  whatsAppHref?: InputMaybe<Scalars['String']['input']>;
+  primaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryCtaLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryCtaHref?: InputMaybe<Scalars['String']['input']>;
+  navItems?: InputMaybe<Array<InputMaybe<SiteContentPagesHomeTranslationsNlHeaderNavItemsMutation>>>;
+  logoAlt?: InputMaybe<Scalars['String']['input']>;
+  homeAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mainNavAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  openMenuAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  closeMenuAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mobileNavAriaLabel?: InputMaybe<Scalars['String']['input']>;
+  mobileMenuTitle?: InputMaybe<Scalars['String']['input']>;
+  languageSwitcherAriaLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteContentPagesHomeTranslationsNlMutation = {
+  primaryArea?: InputMaybe<Scalars['String']['input']>;
+  heroImagePath?: InputMaybe<Scalars['String']['input']>;
+  seoTitle?: InputMaybe<Scalars['String']['input']>;
+  seoDescription?: InputMaybe<Scalars['String']['input']>;
+  hero?: InputMaybe<SiteContentPagesHomeTranslationsNlHeroMutation>;
+  biomarkerPanel?: InputMaybe<SiteContentPagesHomeTranslationsNlBiomarkerPanelMutation>;
+  featurePanel?: InputMaybe<SiteContentPagesHomeTranslationsNlFeaturePanelMutation>;
+  trustSection?: InputMaybe<SiteContentPagesHomeTranslationsNlTrustSectionMutation>;
+  commandCenterSection?: InputMaybe<SiteContentPagesHomeTranslationsNlCommandCenterSectionMutation>;
+  ourProcessSection?: InputMaybe<SiteContentPagesHomeTranslationsNlOurProcessSectionMutation>;
+  choosePathSection?: InputMaybe<SiteContentPagesHomeTranslationsNlChoosePathSectionMutation>;
+  faqSection?: InputMaybe<SiteContentPagesHomeTranslationsNlFaqSectionMutation>;
+  missionSection?: InputMaybe<SiteContentPagesHomeTranslationsNlMissionSectionMutation>;
+  newsletterSection?: InputMaybe<SiteContentPagesHomeTranslationsNlNewsletterSectionMutation>;
+  serviceAreaSection?: InputMaybe<SiteContentPagesHomeTranslationsNlServiceAreaSectionMutation>;
+  footerSection?: InputMaybe<SiteContentPagesHomeTranslationsNlFooterSectionMutation>;
+  header?: InputMaybe<SiteContentPagesHomeTranslationsNlHeaderMutation>;
+};
+
+export type SiteContentPagesHomeTranslationsMutation = {
+  en?: InputMaybe<SiteContentPagesHomeTranslationsEnMutation>;
+  nl?: InputMaybe<SiteContentPagesHomeTranslationsNlMutation>;
+};
+
+export type SiteContentPagesHomeMutation = {
+  translations?: InputMaybe<SiteContentPagesHomeTranslationsMutation>;
+};
+
+export type SiteContentPagesMutation = {
+  home?: InputMaybe<SiteContentPagesHomeMutation>;
+};
+
+export type SiteContentTranslationAutomationMutation = {
+  provider?: InputMaybe<Scalars['String']['input']>;
+  sourceLocale?: InputMaybe<Scalars['String']['input']>;
+  targetLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  deeplBaseUrl?: InputMaybe<Scalars['String']['input']>;
   promoNeedles?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   mediaPathPrefixes?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   exactTextReplacements?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   regexTextReplacements?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type SiteContentPartsFragment = { __typename: 'SiteContent', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null };
+export type SiteContentMutation = {
+  siteSettings?: InputMaybe<SiteContentSiteSettingsMutation>;
+  pages?: InputMaybe<SiteContentPagesMutation>;
+  translationAutomation?: InputMaybe<SiteContentTranslationAutomationMutation>;
+};
+
+export type SiteContentPartsFragment = { __typename: 'SiteContent', siteSettings?: { __typename: 'SiteContentSiteSettings', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, ogImage?: string | null, locales?: Array<{ __typename: 'SiteContentSiteSettingsLocales', code?: string | null, label?: string | null, nativeLabel?: string | null, shortLabel?: string | null, htmlLang?: string | null, ogLocale?: string | null } | null> | null } | null, pages?: { __typename: 'SiteContentPages', home?: { __typename: 'SiteContentPagesHome', translations?: { __typename: 'SiteContentPagesHomeTranslations', en?: { __typename: 'SiteContentPagesHomeTranslationsEn', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsEnHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsEnTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsEnServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsEnHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null, nl?: { __typename: 'SiteContentPagesHomeTranslationsNl', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsNlHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsNlTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsNlServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsNlHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null } | null } | null, translationAutomation?: { __typename: 'SiteContentTranslationAutomation', provider?: string | null, sourceLocale?: string | null, targetLocales?: Array<string | null> | null, deeplBaseUrl?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null } | null };
 
 export type SiteContentQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type SiteContentQuery = { __typename?: 'Query', siteContent: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } };
+export type SiteContentQuery = { __typename?: 'Query', siteContent: { __typename: 'SiteContent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteSettings?: { __typename: 'SiteContentSiteSettings', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, ogImage?: string | null, locales?: Array<{ __typename: 'SiteContentSiteSettingsLocales', code?: string | null, label?: string | null, nativeLabel?: string | null, shortLabel?: string | null, htmlLang?: string | null, ogLocale?: string | null } | null> | null } | null, pages?: { __typename: 'SiteContentPages', home?: { __typename: 'SiteContentPagesHome', translations?: { __typename: 'SiteContentPagesHomeTranslations', en?: { __typename: 'SiteContentPagesHomeTranslationsEn', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsEnHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsEnTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsEnServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsEnHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null, nl?: { __typename: 'SiteContentPagesHomeTranslationsNl', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsNlHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsNlTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsNlServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsNlHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null } | null } | null, translationAutomation?: { __typename: 'SiteContentTranslationAutomation', provider?: string | null, sourceLocale?: string | null, targetLocales?: Array<string | null> | null, deeplBaseUrl?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null } | null } };
 
 export type SiteContentConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1247,282 +2399,606 @@ export type SiteContentConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteContentConnectionQuery = { __typename?: 'Query', siteContentConnection: { __typename?: 'SiteContentConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteContentConnectionEdges', cursor: string, node?: { __typename: 'SiteContent', id: string, mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, primaryArea?: string | null, heroImagePath?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, seoTitle?: string | null, seoDescription?: string | null, ogImage?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'SiteContentHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentMissionSection', mission?: { __typename: 'SiteContentMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, footerSection?: { __typename: 'SiteContentFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, navItems?: Array<{ __typename: 'SiteContentHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null> | null } };
+export type SiteContentConnectionQuery = { __typename?: 'Query', siteContentConnection: { __typename?: 'SiteContentConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteContentConnectionEdges', cursor: string, node?: { __typename: 'SiteContent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteSettings?: { __typename: 'SiteContentSiteSettings', mediaOrigin?: string | null, businessName?: string | null, baseCity?: string | null, whatsappNumber?: string | null, canonicalOrigin?: string | null, homepageUrl?: string | null, ogImage?: string | null, locales?: Array<{ __typename: 'SiteContentSiteSettingsLocales', code?: string | null, label?: string | null, nativeLabel?: string | null, shortLabel?: string | null, htmlLang?: string | null, ogLocale?: string | null } | null> | null } | null, pages?: { __typename: 'SiteContentPages', home?: { __typename: 'SiteContentPagesHome', translations?: { __typename: 'SiteContentPagesHomeTranslations', en?: { __typename: 'SiteContentPagesHomeTranslationsEn', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsEnHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsEnFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsEnTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsEnChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsEnNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsEnServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsEnFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsEnHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsEnHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null, nl?: { __typename: 'SiteContentPagesHomeTranslationsNl', primaryArea?: string | null, heroImagePath?: string | null, seoTitle?: string | null, seoDescription?: string | null, hero?: { __typename: 'SiteContentPagesHomeTranslationsNlHero', titleLine1?: string | null, titleLine2?: string | null, description?: string | null, primaryCtaLabel?: string | null, imageAlt?: string | null } | null, biomarkerPanel?: { __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanel', titleLine1?: string | null, titleLine2?: string | null, primaryCtaLabel?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlBiomarkerPanelItems', label?: string | null, imagePath?: string | null } | null> | null } | null, featurePanel?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanel', cardCtaLabel?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, careHeadingLine1?: string | null, careHeadingLine2?: string | null, careDescription?: string | null, testimonialAlt?: string | null, badgeTitle?: string | null, badgeStatus?: string | null, cards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelCards', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null } | null> | null, stat1?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat1', value?: string | null, line1?: string | null, line2?: string | null } | null, stat2?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelStat2', value?: string | null, line1?: string | null, line2?: string | null } | null, prescriptionCard?: { __typename: 'SiteContentPagesHomeTranslationsNlFeaturePanelPrescriptionCard', alt?: string | null, titleLine1?: string | null, titleLine2?: string | null, href?: string | null, imagePath?: string | null, ctaLabel?: string | null } | null } | null, trustSection?: { __typename: 'SiteContentPagesHomeTranslationsNlTrustSection', headingLine1?: string | null, headingLine2?: string | null, memberLabel?: string | null, readMoreLabel?: string | null, videoCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionVideoCards', thumbnailAlt?: string | null, profileAlt?: string | null, thumbnailImagePath?: string | null, profileImagePath?: string | null, handle?: string | null, meta?: string | null } | null> | null, textCards?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlTrustSectionTextCards', profileAlt?: string | null, profileImagePath?: string | null, name?: string | null, quote?: string | null } | null> | null } | null, commandCenterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlCommandCenterSection', headingLine1?: string | null, headingLine2?: string | null, loadingAnimationLabel?: string | null, description?: string | null, ctaLabel?: string | null, appImagePath?: string | null, appImageAlt?: string | null } | null, ourProcessSection?: { __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSection', imagePath?: string | null, imageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, steps?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlOurProcessSectionSteps', title?: string | null, description?: string | null } | null> | null } | null, choosePathSection?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSection', title?: string | null, subtitle?: string | null, plans?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlans', name?: string | null, nameStyle?: string | null, tagline?: string | null, isPopular?: boolean | null, pricing?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansPricing', oneTimePrice?: string | null, recurringPrice?: string | null, oneTimeLabel?: string | null, recurringLabel?: string | null, discountPercentage?: string | null, twiceAnnuallyBillingText?: string | null, annuallyBillingText?: string | null } | null, feature?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeature', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansFeatureFeatures', name?: string | null } | null> | null } | null> | null, restriction?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestriction', categoryName?: string | null, features?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansRestrictionFeatures', name?: string | null } | null> | null } | null> | null, link?: { __typename: 'SiteContentPagesHomeTranslationsNlChoosePathSectionPlansLink', label?: string | null } | null } | null> | null } | null, faqSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFaqSection', headingLine1?: string | null, headingLine2?: string | null, cardImagePath?: string | null, cardImageAlt?: string | null, supportTitle?: string | null, supportDescription?: string | null, supportCtaLabel?: string | null, supportCtaHref?: string | null, items?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFaqSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, missionSection?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSection', mission?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionMission', imageAlt?: string | null, imagePath?: string | null, name?: string | null, role?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, gallery?: { __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGallery', headingLine1?: string | null, headingLine2?: string | null, ctaLabel?: string | null, ctaHref?: string | null, images?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlMissionSectionGalleryImages', alt?: string | null, imagePath?: string | null } | null> | null } | null } | null, newsletterSection?: { __typename: 'SiteContentPagesHomeTranslationsNlNewsletterSection', backgroundImagePath?: string | null, backgroundImageAlt?: string | null, headingLine1?: string | null, headingLine2?: string | null, description?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, serviceAreaSection?: { __typename: 'SiteContentPagesHomeTranslationsNlServiceAreaSection', headingLine1?: string | null, headingLine2?: string | null, description?: string | null, areas?: Array<string | null> | null, excludedNote?: string | null, mapEmbedUrl?: string | null, mapTitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, regionName?: string | null } | null, footerSection?: { __typename: 'SiteContentPagesHomeTranslationsNlFooterSection', logoAlt?: string | null, logoImagePath?: string | null, subscriptionText?: string | null, followUsLabel?: string | null, supportTitle?: string | null, aboutTitle?: string | null, legalDisclaimer?: string | null, cardImageAlt?: string | null, cardDesktopImagePath?: string | null, cardMobileImagePath?: string | null, appPrompt?: string | null, appStoreAlt?: string | null, appStoreHref?: string | null, appStoreImagePath?: string | null, googlePlayAlt?: string | null, googlePlayHref?: string | null, googlePlayImagePath?: string | null, copyrightText?: string | null, supportLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSupportLinks', label?: string | null, href?: string | null } | null> | null, aboutLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionAboutLinks', label?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlFooterSectionSocialLinks', label?: string | null, href?: string | null } | null> | null } | null, header?: { __typename: 'SiteContentPagesHomeTranslationsNlHeader', logoImagePath?: string | null, whatsAppHref?: string | null, primaryCtaLabel?: string | null, secondaryCtaLabel?: string | null, secondaryCtaHref?: string | null, logoAlt?: string | null, homeAriaLabel?: string | null, mainNavAriaLabel?: string | null, openMenuAriaLabel?: string | null, closeMenuAriaLabel?: string | null, mobileNavAriaLabel?: string | null, mobileMenuTitle?: string | null, languageSwitcherAriaLabel?: string | null, navItems?: Array<{ __typename: 'SiteContentPagesHomeTranslationsNlHeaderNavItems', label?: string | null, href?: string | null } | null> | null } | null } | null } | null } | null } | null, translationAutomation?: { __typename: 'SiteContentTranslationAutomation', provider?: string | null, sourceLocale?: string | null, targetLocales?: Array<string | null> | null, deeplBaseUrl?: string | null, promoNeedles?: Array<string | null> | null, mediaPathPrefixes?: Array<string | null> | null, exactTextReplacements?: Array<string | null> | null, regexTextReplacements?: Array<string | null> | null } | null } | null } | null> | null } };
 
 export const SiteContentPartsFragmentDoc = gql`
     fragment SiteContentParts on SiteContent {
   __typename
-  mediaOrigin
-  businessName
-  baseCity
-  whatsappNumber
-  primaryArea
-  heroImagePath
-  canonicalOrigin
-  homepageUrl
-  seoTitle
-  seoDescription
-  ogImage
-  hero {
+  siteSettings {
     __typename
-    titleLine1
-    titleLine2
-    description
-    primaryCtaLabel
-  }
-  biomarkerPanel {
-    __typename
-    titleLine1
-    titleLine2
-    primaryCtaLabel
-    items {
+    mediaOrigin
+    businessName
+    baseCity
+    whatsappNumber
+    canonicalOrigin
+    homepageUrl
+    ogImage
+    locales {
       __typename
+      code
       label
-      imagePath
+      nativeLabel
+      shortLabel
+      htmlLang
+      ogLocale
     }
   }
-  featurePanel {
+  pages {
     __typename
-    cardCtaLabel
-    cards {
+    home {
       __typename
-      alt
-      titleLine1
-      titleLine2
-      href
-      imagePath
-    }
-    headingLine1
-    headingLine2
-    description
-    stat1 {
-      __typename
-      value
-      line1
-      line2
-    }
-    stat2 {
-      __typename
-      value
-      line1
-      line2
-    }
-    prescriptionCard {
-      __typename
-      alt
-      titleLine1
-      titleLine2
-      href
-      imagePath
-      ctaLabel
-    }
-    careHeadingLine1
-    careHeadingLine2
-    careDescription
-    testimonialAlt
-    badgeTitle
-    badgeStatus
-  }
-  trustSection {
-    __typename
-    headingLine1
-    headingLine2
-    memberLabel
-    readMoreLabel
-    videoCards {
-      __typename
-      thumbnailAlt
-      profileAlt
-      thumbnailImagePath
-      profileImagePath
-      handle
-      meta
-    }
-    textCards {
-      __typename
-      profileAlt
-      profileImagePath
-      name
-      quote
-    }
-  }
-  commandCenterSection {
-    __typename
-    headingLine1
-    headingLine2
-    loadingAnimationLabel
-    description
-    ctaLabel
-    appImagePath
-    appImageAlt
-  }
-  ourProcessSection {
-    __typename
-    imagePath
-    imageAlt
-    headingLine1
-    headingLine2
-    steps {
-      __typename
-      title
-      description
-    }
-  }
-  choosePathSection {
-    __typename
-    title
-    subtitle
-    plans {
-      __typename
-      name
-      nameStyle
-      tagline
-      isPopular
-      pricing {
+      translations {
         __typename
-        oneTimePrice
-        recurringPrice
-        oneTimeLabel
-        recurringLabel
-        discountPercentage
-        twiceAnnuallyBillingText
-        annuallyBillingText
-      }
-      feature {
-        __typename
-        categoryName
-        features {
+        en {
           __typename
-          name
+          primaryArea
+          heroImagePath
+          seoTitle
+          seoDescription
+          hero {
+            __typename
+            titleLine1
+            titleLine2
+            description
+            primaryCtaLabel
+            imageAlt
+          }
+          biomarkerPanel {
+            __typename
+            titleLine1
+            titleLine2
+            primaryCtaLabel
+            items {
+              __typename
+              label
+              imagePath
+            }
+          }
+          featurePanel {
+            __typename
+            cardCtaLabel
+            cards {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+            }
+            headingLine1
+            headingLine2
+            description
+            stat1 {
+              __typename
+              value
+              line1
+              line2
+            }
+            stat2 {
+              __typename
+              value
+              line1
+              line2
+            }
+            prescriptionCard {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+              ctaLabel
+            }
+            careHeadingLine1
+            careHeadingLine2
+            careDescription
+            testimonialAlt
+            badgeTitle
+            badgeStatus
+          }
+          trustSection {
+            __typename
+            headingLine1
+            headingLine2
+            memberLabel
+            readMoreLabel
+            videoCards {
+              __typename
+              thumbnailAlt
+              profileAlt
+              thumbnailImagePath
+              profileImagePath
+              handle
+              meta
+            }
+            textCards {
+              __typename
+              profileAlt
+              profileImagePath
+              name
+              quote
+            }
+          }
+          commandCenterSection {
+            __typename
+            headingLine1
+            headingLine2
+            loadingAnimationLabel
+            description
+            ctaLabel
+            appImagePath
+            appImageAlt
+          }
+          ourProcessSection {
+            __typename
+            imagePath
+            imageAlt
+            headingLine1
+            headingLine2
+            steps {
+              __typename
+              title
+              description
+            }
+          }
+          choosePathSection {
+            __typename
+            title
+            subtitle
+            plans {
+              __typename
+              name
+              nameStyle
+              tagline
+              isPopular
+              pricing {
+                __typename
+                oneTimePrice
+                recurringPrice
+                oneTimeLabel
+                recurringLabel
+                discountPercentage
+                twiceAnnuallyBillingText
+                annuallyBillingText
+              }
+              feature {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              restriction {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              link {
+                __typename
+                label
+              }
+            }
+          }
+          faqSection {
+            __typename
+            headingLine1
+            headingLine2
+            cardImagePath
+            items {
+              __typename
+              question
+              answer
+            }
+            cardImageAlt
+            supportTitle
+            supportDescription
+            supportCtaLabel
+            supportCtaHref
+          }
+          missionSection {
+            __typename
+            mission {
+              __typename
+              imageAlt
+              imagePath
+              name
+              role
+              headingLine1
+              headingLine2
+              description
+              ctaLabel
+              ctaHref
+            }
+            gallery {
+              __typename
+              headingLine1
+              headingLine2
+              ctaLabel
+              ctaHref
+              images {
+                __typename
+                alt
+                imagePath
+              }
+            }
+          }
+          newsletterSection {
+            __typename
+            backgroundImagePath
+            backgroundImageAlt
+            headingLine1
+            headingLine2
+            description
+            ctaLabel
+            ctaHref
+          }
+          serviceAreaSection {
+            __typename
+            headingLine1
+            headingLine2
+            description
+            areas
+            excludedNote
+            mapEmbedUrl
+            mapTitle
+            ctaLabel
+            ctaHref
+            regionName
+          }
+          footerSection {
+            __typename
+            logoAlt
+            logoImagePath
+            subscriptionText
+            followUsLabel
+            supportTitle
+            supportLinks {
+              __typename
+              label
+              href
+            }
+            aboutTitle
+            aboutLinks {
+              __typename
+              label
+              href
+            }
+            legalDisclaimer
+            cardImageAlt
+            cardDesktopImagePath
+            cardMobileImagePath
+            appPrompt
+            appStoreAlt
+            appStoreHref
+            appStoreImagePath
+            googlePlayAlt
+            googlePlayHref
+            googlePlayImagePath
+            copyrightText
+            socialLinks {
+              __typename
+              label
+              href
+            }
+          }
+          header {
+            __typename
+            logoImagePath
+            whatsAppHref
+            primaryCtaLabel
+            secondaryCtaLabel
+            secondaryCtaHref
+            navItems {
+              __typename
+              label
+              href
+            }
+            logoAlt
+            homeAriaLabel
+            mainNavAriaLabel
+            openMenuAriaLabel
+            closeMenuAriaLabel
+            mobileNavAriaLabel
+            mobileMenuTitle
+            languageSwitcherAriaLabel
+          }
+        }
+        nl {
+          __typename
+          primaryArea
+          heroImagePath
+          seoTitle
+          seoDescription
+          hero {
+            __typename
+            titleLine1
+            titleLine2
+            description
+            primaryCtaLabel
+            imageAlt
+          }
+          biomarkerPanel {
+            __typename
+            titleLine1
+            titleLine2
+            primaryCtaLabel
+            items {
+              __typename
+              label
+              imagePath
+            }
+          }
+          featurePanel {
+            __typename
+            cardCtaLabel
+            cards {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+            }
+            headingLine1
+            headingLine2
+            description
+            stat1 {
+              __typename
+              value
+              line1
+              line2
+            }
+            stat2 {
+              __typename
+              value
+              line1
+              line2
+            }
+            prescriptionCard {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+              ctaLabel
+            }
+            careHeadingLine1
+            careHeadingLine2
+            careDescription
+            testimonialAlt
+            badgeTitle
+            badgeStatus
+          }
+          trustSection {
+            __typename
+            headingLine1
+            headingLine2
+            memberLabel
+            readMoreLabel
+            videoCards {
+              __typename
+              thumbnailAlt
+              profileAlt
+              thumbnailImagePath
+              profileImagePath
+              handle
+              meta
+            }
+            textCards {
+              __typename
+              profileAlt
+              profileImagePath
+              name
+              quote
+            }
+          }
+          commandCenterSection {
+            __typename
+            headingLine1
+            headingLine2
+            loadingAnimationLabel
+            description
+            ctaLabel
+            appImagePath
+            appImageAlt
+          }
+          ourProcessSection {
+            __typename
+            imagePath
+            imageAlt
+            headingLine1
+            headingLine2
+            steps {
+              __typename
+              title
+              description
+            }
+          }
+          choosePathSection {
+            __typename
+            title
+            subtitle
+            plans {
+              __typename
+              name
+              nameStyle
+              tagline
+              isPopular
+              pricing {
+                __typename
+                oneTimePrice
+                recurringPrice
+                oneTimeLabel
+                recurringLabel
+                discountPercentage
+                twiceAnnuallyBillingText
+                annuallyBillingText
+              }
+              feature {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              restriction {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              link {
+                __typename
+                label
+              }
+            }
+          }
+          faqSection {
+            __typename
+            headingLine1
+            headingLine2
+            cardImagePath
+            items {
+              __typename
+              question
+              answer
+            }
+            cardImageAlt
+            supportTitle
+            supportDescription
+            supportCtaLabel
+            supportCtaHref
+          }
+          missionSection {
+            __typename
+            mission {
+              __typename
+              imageAlt
+              imagePath
+              name
+              role
+              headingLine1
+              headingLine2
+              description
+              ctaLabel
+              ctaHref
+            }
+            gallery {
+              __typename
+              headingLine1
+              headingLine2
+              ctaLabel
+              ctaHref
+              images {
+                __typename
+                alt
+                imagePath
+              }
+            }
+          }
+          newsletterSection {
+            __typename
+            backgroundImagePath
+            backgroundImageAlt
+            headingLine1
+            headingLine2
+            description
+            ctaLabel
+            ctaHref
+          }
+          serviceAreaSection {
+            __typename
+            headingLine1
+            headingLine2
+            description
+            areas
+            excludedNote
+            mapEmbedUrl
+            mapTitle
+            ctaLabel
+            ctaHref
+            regionName
+          }
+          footerSection {
+            __typename
+            logoAlt
+            logoImagePath
+            subscriptionText
+            followUsLabel
+            supportTitle
+            supportLinks {
+              __typename
+              label
+              href
+            }
+            aboutTitle
+            aboutLinks {
+              __typename
+              label
+              href
+            }
+            legalDisclaimer
+            cardImageAlt
+            cardDesktopImagePath
+            cardMobileImagePath
+            appPrompt
+            appStoreAlt
+            appStoreHref
+            appStoreImagePath
+            googlePlayAlt
+            googlePlayHref
+            googlePlayImagePath
+            copyrightText
+            socialLinks {
+              __typename
+              label
+              href
+            }
+          }
+          header {
+            __typename
+            logoImagePath
+            whatsAppHref
+            primaryCtaLabel
+            secondaryCtaLabel
+            secondaryCtaHref
+            navItems {
+              __typename
+              label
+              href
+            }
+            logoAlt
+            homeAriaLabel
+            mainNavAriaLabel
+            openMenuAriaLabel
+            closeMenuAriaLabel
+            mobileNavAriaLabel
+            mobileMenuTitle
+            languageSwitcherAriaLabel
+          }
         }
       }
-      restriction {
-        __typename
-        categoryName
-        features {
-          __typename
-          name
-        }
-      }
-      link {
-        __typename
-        label
-      }
     }
   }
-  faqSection {
+  translationAutomation {
     __typename
-    headingLine1
-    headingLine2
-    cardImagePath
-    items {
-      __typename
-      question
-      answer
-    }
-    cardImageAlt
-    supportTitle
-    supportDescription
-    supportCtaLabel
-    supportCtaHref
+    provider
+    sourceLocale
+    targetLocales
+    deeplBaseUrl
+    promoNeedles
+    mediaPathPrefixes
+    exactTextReplacements
+    regexTextReplacements
   }
-  missionSection {
-    __typename
-    mission {
-      __typename
-      imageAlt
-      imagePath
-      name
-      role
-      headingLine1
-      headingLine2
-      description
-      ctaLabel
-      ctaHref
-    }
-    gallery {
-      __typename
-      headingLine1
-      headingLine2
-      ctaLabel
-      ctaHref
-      images {
-        __typename
-        alt
-        imagePath
-      }
-    }
-  }
-  newsletterSection {
-    __typename
-    backgroundImagePath
-    backgroundImageAlt
-    headingLine1
-    headingLine2
-    description
-    ctaLabel
-    ctaHref
-  }
-  serviceAreaSection {
-    __typename
-    headingLine1
-    headingLine2
-    description
-    areas
-    excludedNote
-    mapEmbedUrl
-    mapTitle
-    ctaLabel
-    ctaHref
-  }
-  footerSection {
-    __typename
-    logoAlt
-    logoImagePath
-    subscriptionText
-    followUsLabel
-    supportTitle
-    supportLinks {
-      __typename
-      label
-      href
-    }
-    aboutTitle
-    aboutLinks {
-      __typename
-      label
-      href
-    }
-    legalDisclaimer
-    cardImageAlt
-    cardDesktopImagePath
-    cardMobileImagePath
-    appPrompt
-    appStoreAlt
-    appStoreHref
-    appStoreImagePath
-    googlePlayAlt
-    googlePlayHref
-    googlePlayImagePath
-    copyrightText
-  }
-  header {
-    __typename
-    logoImagePath
-    whatsAppHref
-    primaryCtaLabel
-    secondaryCtaLabel
-    secondaryCtaHref
-    navItems {
-      __typename
-      label
-      href
-    }
-  }
-  promoNeedles
-  mediaPathPrefixes
-  exactTextReplacements
-  regexTextReplacements
 }
     `;
 export const SiteContentDocument = gql`
@@ -1638,7 +3114,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/2.1/content/d3fcc863-4050-40d4-bbc7-cbf9d7c54646/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )

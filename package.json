@@ -2,7 +2,7 @@
   "name": "bob6",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "dev:cloud": "pnpm tina:cloud:check && tinacms build --no-client-build-cache && astro dev",
@@ -11,6 +11,7 @@
     "build": "pnpm tina:cloud:check && tinacms build --no-client-build-cache && astro build",
     "build:local": "TINA_PUBLIC_IS_LOCAL=true tinacms build --local --skip-cloud-checks && TINA_PUBLIC_IS_LOCAL=true astro build",
     "tina:cloud:check": "node scripts/check-tina-cloud-env.mjs",
+    "translations:sync": "node --env-file-if-exists=.env scripts/sync-translations.mjs",
     "check": "astro check",
     "preview": "wrangler dev",
     "astro": "astro",

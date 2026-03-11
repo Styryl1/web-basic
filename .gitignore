@@ -28,3 +28,10 @@ pnpm-debug.log*
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# local OS/editor artifacts
+*.Zone.Identifier
+*:Zone.Identifier
+
+# Tina generated cache
+tina/__generated__/.cache/

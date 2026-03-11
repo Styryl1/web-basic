@@ -5,6 +5,12 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   siteName?: string;
+  ogLocale?: string;
+  alternateLocales?: string[];
+  alternates?: Array<{
+    hrefLang: string;
+    href: string;
+  }>;
   type?: 'website' | 'article';
   noIndex?: boolean;
 }
@@ -15,6 +21,9 @@ const {
   canonical,
   ogImage,
   siteName,
+  ogLocale,
+  alternateLocales = [],
+  alternates = [],
   type = 'website',
   noIndex = false,
 } = Astro.props as Props;
@@ -39,11 +48,20 @@ const resolveUrl = (value?: string): string | undefined => {
 
 const canonicalUrl = resolveUrl(canonical ?? Astro.url.pathname);
 const ogImageUrl = resolveUrl(ogImage);
+const resolvedAlternates = alternates
+  .map((alternate) => ({
+    hrefLang: alternate.hrefLang,
+    href: resolveUrl(alternate.href),
+  }))
+  .filter((alternate): alternate is { hrefLang: string; href: string } => Boolean(alternate.href));
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+{resolvedAlternates.map((alternate) => (
+  <link rel="alternate" hreflang={alternate.hrefLang} href={alternate.href} />
+))}
 
 <meta property="og:type" content={type} />
 <meta property="og:title" content={title} />
@@ -51,6 +69,10 @@ const ogImageUrl = resolveUrl(ogImage);
 {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 {siteName && <meta property="og:site_name" content={siteName} />}
 {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+{ogLocale && <meta property="og:locale" content={ogLocale} />}
+{alternateLocales.map((locale) => (
+  <meta property="og:locale:alternate" content={locale} />
+))}
 
 <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
 <meta name="twitter:title" content={title} />

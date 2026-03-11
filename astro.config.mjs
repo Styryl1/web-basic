@@ -10,4 +10,11 @@ export default defineConfig({
   site: 'https://englishplumber.nl',
   adapter: cloudflare(),
   integrations: [react(), sitemap(), tinaDirective()],
+  i18n: {
+    locales: ['en', 'nl'],
+    defaultLocale: 'en',
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

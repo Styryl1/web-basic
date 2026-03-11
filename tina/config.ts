@@ -31,8 +31,15 @@ const previewOriginEnv =
 const previewOrigin = isLocalTina ? 'http://localhost:4321' : previewOriginEnv;
 
 const siteContent = siteContentJson as Record<string, JsonValue>;
+const explicitLabels: Record<string, string> = {
+  en: 'English',
+  nl: 'Dutch',
+  siteSettings: 'Site Settings',
+  deeplBaseUrl: 'DeepL Base URL',
+};
 
 const toLabel = (name: string) =>
+  explicitLabels[name] ??
   name
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
     .replace(/[-_]/g, ' ')

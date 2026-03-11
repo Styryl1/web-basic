@@ -10,6 +10,12 @@ interface Props {
   ogImage?: string;
   siteName?: string;
   lang?: string;
+  ogLocale?: string;
+  alternateLocales?: string[];
+  alternates?: Array<{
+    hrefLang: string;
+    href: string;
+  }>;
   type?: 'website' | 'article';
   noIndex?: boolean;
 }
@@ -21,6 +27,9 @@ const {
   ogImage,
   siteName,
   lang = 'en',
+  ogLocale,
+  alternateLocales = [],
+  alternates = [],
   type = 'website',
   noIndex = false,
 } = Astro.props as Props;
@@ -40,6 +49,9 @@ const {
       canonical={canonical}
       ogImage={ogImage}
       siteName={siteName}
+      ogLocale={ogLocale}
+      alternateLocales={alternateLocales}
+      alternates={alternates}
       type={type}
       noIndex={noIndex}
     />

@@ -9,6 +9,8 @@ export const initHeaderBehavior = (): void => {
   const panelCloseButton = header.querySelector('[data-ep-menu-close]');
   const closeTargets = header.querySelectorAll('[data-ep-menu-link], [data-ep-menu-close]');
   const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const openMenuLabel = header.dataset.epMenuOpenLabel || 'Open menu';
+  const closeMenuLabel = header.dataset.epMenuCloseLabel || 'Close menu';
 
   let menuOpen = false;
   let closeTimer: number | undefined;
@@ -50,9 +52,10 @@ export const initHeaderBehavior = (): void => {
     if (!menuOpen) return;
     menuOpen = false;
     menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Open menu');
+    menuButton.setAttribute('aria-label', openMenuLabel);
     if (panelCloseButton instanceof HTMLButtonElement) {
       panelCloseButton.setAttribute('aria-expanded', 'false');
+      panelCloseButton.setAttribute('aria-label', closeMenuLabel);
     }
     mobilePanel.style.opacity = '0';
     mobilePanel.style.transform = 'translateY(-8px)';
@@ -72,9 +75,10 @@ export const initHeaderBehavior = (): void => {
     header.classList.add('is-menu-open');
     header.classList.remove('is-hidden');
     menuButton.setAttribute('aria-expanded', 'true');
-    menuButton.setAttribute('aria-label', 'Close menu');
+    menuButton.setAttribute('aria-label', closeMenuLabel);
     if (panelCloseButton instanceof HTMLButtonElement) {
       panelCloseButton.setAttribute('aria-expanded', 'true');
+      panelCloseButton.setAttribute('aria-label', closeMenuLabel);
     }
     mobilePanel.hidden = false;
     document.body.style.overflow = 'hidden';

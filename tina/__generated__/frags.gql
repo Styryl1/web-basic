@@ -1,274 +1,598 @@
 fragment SiteContentParts on SiteContent {
   __typename
-  mediaOrigin
-  businessName
-  baseCity
-  whatsappNumber
-  primaryArea
-  heroImagePath
-  canonicalOrigin
-  homepageUrl
-  seoTitle
-  seoDescription
-  ogImage
-  hero {
+  siteSettings {
     __typename
-    titleLine1
-    titleLine2
-    description
-    primaryCtaLabel
-  }
-  biomarkerPanel {
-    __typename
-    titleLine1
-    titleLine2
-    primaryCtaLabel
-    items {
+    mediaOrigin
+    businessName
+    baseCity
+    whatsappNumber
+    canonicalOrigin
+    homepageUrl
+    ogImage
+    locales {
       __typename
+      code
       label
-      imagePath
+      nativeLabel
+      shortLabel
+      htmlLang
+      ogLocale
     }
   }
-  featurePanel {
+  pages {
     __typename
-    cardCtaLabel
-    cards {
+    home {
       __typename
-      alt
-      titleLine1
-      titleLine2
-      href
-      imagePath
-    }
-    headingLine1
-    headingLine2
-    description
-    stat1 {
-      __typename
-      value
-      line1
-      line2
-    }
-    stat2 {
-      __typename
-      value
-      line1
-      line2
-    }
-    prescriptionCard {
-      __typename
-      alt
-      titleLine1
-      titleLine2
-      href
-      imagePath
-      ctaLabel
-    }
-    careHeadingLine1
-    careHeadingLine2
-    careDescription
-    testimonialAlt
-    badgeTitle
-    badgeStatus
-  }
-  trustSection {
-    __typename
-    headingLine1
-    headingLine2
-    memberLabel
-    readMoreLabel
-    videoCards {
-      __typename
-      thumbnailAlt
-      profileAlt
-      thumbnailImagePath
-      profileImagePath
-      handle
-      meta
-    }
-    textCards {
-      __typename
-      profileAlt
-      profileImagePath
-      name
-      quote
-    }
-  }
-  commandCenterSection {
-    __typename
-    headingLine1
-    headingLine2
-    loadingAnimationLabel
-    description
-    ctaLabel
-    appImagePath
-    appImageAlt
-  }
-  ourProcessSection {
-    __typename
-    imagePath
-    imageAlt
-    headingLine1
-    headingLine2
-    steps {
-      __typename
-      title
-      description
-    }
-  }
-  choosePathSection {
-    __typename
-    title
-    subtitle
-    plans {
-      __typename
-      name
-      nameStyle
-      tagline
-      isPopular
-      pricing {
+      translations {
         __typename
-        oneTimePrice
-        recurringPrice
-        oneTimeLabel
-        recurringLabel
-        discountPercentage
-        twiceAnnuallyBillingText
-        annuallyBillingText
-      }
-      feature {
-        __typename
-        categoryName
-        features {
+        en {
           __typename
-          name
+          primaryArea
+          heroImagePath
+          seoTitle
+          seoDescription
+          hero {
+            __typename
+            titleLine1
+            titleLine2
+            description
+            primaryCtaLabel
+            imageAlt
+          }
+          biomarkerPanel {
+            __typename
+            titleLine1
+            titleLine2
+            primaryCtaLabel
+            items {
+              __typename
+              label
+              imagePath
+            }
+          }
+          featurePanel {
+            __typename
+            cardCtaLabel
+            cards {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+            }
+            headingLine1
+            headingLine2
+            description
+            stat1 {
+              __typename
+              value
+              line1
+              line2
+            }
+            stat2 {
+              __typename
+              value
+              line1
+              line2
+            }
+            prescriptionCard {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+              ctaLabel
+            }
+            careHeadingLine1
+            careHeadingLine2
+            careDescription
+            testimonialAlt
+            badgeTitle
+            badgeStatus
+          }
+          trustSection {
+            __typename
+            headingLine1
+            headingLine2
+            memberLabel
+            readMoreLabel
+            videoCards {
+              __typename
+              thumbnailAlt
+              profileAlt
+              thumbnailImagePath
+              profileImagePath
+              handle
+              meta
+            }
+            textCards {
+              __typename
+              profileAlt
+              profileImagePath
+              name
+              quote
+            }
+          }
+          commandCenterSection {
+            __typename
+            headingLine1
+            headingLine2
+            loadingAnimationLabel
+            description
+            ctaLabel
+            appImagePath
+            appImageAlt
+          }
+          ourProcessSection {
+            __typename
+            imagePath
+            imageAlt
+            headingLine1
+            headingLine2
+            steps {
+              __typename
+              title
+              description
+            }
+          }
+          choosePathSection {
+            __typename
+            title
+            subtitle
+            plans {
+              __typename
+              name
+              nameStyle
+              tagline
+              isPopular
+              pricing {
+                __typename
+                oneTimePrice
+                recurringPrice
+                oneTimeLabel
+                recurringLabel
+                discountPercentage
+                twiceAnnuallyBillingText
+                annuallyBillingText
+              }
+              feature {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              restriction {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              link {
+                __typename
+                label
+              }
+            }
+          }
+          faqSection {
+            __typename
+            headingLine1
+            headingLine2
+            cardImagePath
+            items {
+              __typename
+              question
+              answer
+            }
+            cardImageAlt
+            supportTitle
+            supportDescription
+            supportCtaLabel
+            supportCtaHref
+          }
+          missionSection {
+            __typename
+            mission {
+              __typename
+              imageAlt
+              imagePath
+              name
+              role
+              headingLine1
+              headingLine2
+              description
+              ctaLabel
+              ctaHref
+            }
+            gallery {
+              __typename
+              headingLine1
+              headingLine2
+              ctaLabel
+              ctaHref
+              images {
+                __typename
+                alt
+                imagePath
+              }
+            }
+          }
+          newsletterSection {
+            __typename
+            backgroundImagePath
+            backgroundImageAlt
+            headingLine1
+            headingLine2
+            description
+            ctaLabel
+            ctaHref
+          }
+          serviceAreaSection {
+            __typename
+            headingLine1
+            headingLine2
+            description
+            areas
+            excludedNote
+            mapEmbedUrl
+            mapTitle
+            ctaLabel
+            ctaHref
+            regionName
+          }
+          footerSection {
+            __typename
+            logoAlt
+            logoImagePath
+            subscriptionText
+            followUsLabel
+            supportTitle
+            supportLinks {
+              __typename
+              label
+              href
+            }
+            aboutTitle
+            aboutLinks {
+              __typename
+              label
+              href
+            }
+            legalDisclaimer
+            cardImageAlt
+            cardDesktopImagePath
+            cardMobileImagePath
+            appPrompt
+            appStoreAlt
+            appStoreHref
+            appStoreImagePath
+            googlePlayAlt
+            googlePlayHref
+            googlePlayImagePath
+            copyrightText
+            socialLinks {
+              __typename
+              label
+              href
+            }
+          }
+          header {
+            __typename
+            logoImagePath
+            whatsAppHref
+            primaryCtaLabel
+            secondaryCtaLabel
+            secondaryCtaHref
+            navItems {
+              __typename
+              label
+              href
+            }
+            logoAlt
+            homeAriaLabel
+            mainNavAriaLabel
+            openMenuAriaLabel
+            closeMenuAriaLabel
+            mobileNavAriaLabel
+            mobileMenuTitle
+            languageSwitcherAriaLabel
+          }
+        }
+        nl {
+          __typename
+          primaryArea
+          heroImagePath
+          seoTitle
+          seoDescription
+          hero {
+            __typename
+            titleLine1
+            titleLine2
+            description
+            primaryCtaLabel
+            imageAlt
+          }
+          biomarkerPanel {
+            __typename
+            titleLine1
+            titleLine2
+            primaryCtaLabel
+            items {
+              __typename
+              label
+              imagePath
+            }
+          }
+          featurePanel {
+            __typename
+            cardCtaLabel
+            cards {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+            }
+            headingLine1
+            headingLine2
+            description
+            stat1 {
+              __typename
+              value
+              line1
+              line2
+            }
+            stat2 {
+              __typename
+              value
+              line1
+              line2
+            }
+            prescriptionCard {
+              __typename
+              alt
+              titleLine1
+              titleLine2
+              href
+              imagePath
+              ctaLabel
+            }
+            careHeadingLine1
+            careHeadingLine2
+            careDescription
+            testimonialAlt
+            badgeTitle
+            badgeStatus
+          }
+          trustSection {
+            __typename
+            headingLine1
+            headingLine2
+            memberLabel
+            readMoreLabel
+            videoCards {
+              __typename
+              thumbnailAlt
+              profileAlt
+              thumbnailImagePath
+              profileImagePath
+              handle
+              meta
+            }
+            textCards {
+              __typename
+              profileAlt
+              profileImagePath
+              name
+              quote
+            }
+          }
+          commandCenterSection {
+            __typename
+            headingLine1
+            headingLine2
+            loadingAnimationLabel
+            description
+            ctaLabel
+            appImagePath
+            appImageAlt
+          }
+          ourProcessSection {
+            __typename
+            imagePath
+            imageAlt
+            headingLine1
+            headingLine2
+            steps {
+              __typename
+              title
+              description
+            }
+          }
+          choosePathSection {
+            __typename
+            title
+            subtitle
+            plans {
+              __typename
+              name
+              nameStyle
+              tagline
+              isPopular
+              pricing {
+                __typename
+                oneTimePrice
+                recurringPrice
+                oneTimeLabel
+                recurringLabel
+                discountPercentage
+                twiceAnnuallyBillingText
+                annuallyBillingText
+              }
+              feature {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              restriction {
+                __typename
+                categoryName
+                features {
+                  __typename
+                  name
+                }
+              }
+              link {
+                __typename
+                label
+              }
+            }
+          }
+          faqSection {
+            __typename
+            headingLine1
+            headingLine2
+            cardImagePath
+            items {
+              __typename
+              question
+              answer
+            }
+            cardImageAlt
+            supportTitle
+            supportDescription
+            supportCtaLabel
+            supportCtaHref
+          }
+          missionSection {
+            __typename
+            mission {
+              __typename
+              imageAlt
+              imagePath
+              name
+              role
+              headingLine1
+              headingLine2
+              description
+              ctaLabel
+              ctaHref
+            }
+            gallery {
+              __typename
+              headingLine1
+              headingLine2
+              ctaLabel
+              ctaHref
+              images {
+                __typename
+                alt
+                imagePath
+              }
+            }
+          }
+          newsletterSection {
+            __typename
+            backgroundImagePath
+            backgroundImageAlt
+            headingLine1
+            headingLine2
+            description
+            ctaLabel
+            ctaHref
+          }
+          serviceAreaSection {
+            __typename
+            headingLine1
+            headingLine2
+            description
+            areas
+            excludedNote
+            mapEmbedUrl
+            mapTitle
+            ctaLabel
+            ctaHref
+            regionName
+          }
+          footerSection {
+            __typename
+            logoAlt
+            logoImagePath
+            subscriptionText
+            followUsLabel
+            supportTitle
+            supportLinks {
+              __typename
+              label
+              href
+            }
+            aboutTitle
+            aboutLinks {
+              __typename
+              label
+              href
+            }
+            legalDisclaimer
+            cardImageAlt
+            cardDesktopImagePath
+            cardMobileImagePath
+            appPrompt
+            appStoreAlt
+            appStoreHref
+            appStoreImagePath
+            googlePlayAlt
+            googlePlayHref
+            googlePlayImagePath
+            copyrightText
+            socialLinks {
+              __typename
+              label
+              href
+            }
+          }
+          header {
+            __typename
+            logoImagePath
+            whatsAppHref
+            primaryCtaLabel
+            secondaryCtaLabel
+            secondaryCtaHref
+            navItems {
+              __typename
+              label
+              href
+            }
+            logoAlt
+            homeAriaLabel
+            mainNavAriaLabel
+            openMenuAriaLabel
+            closeMenuAriaLabel
+            mobileNavAriaLabel
+            mobileMenuTitle
+            languageSwitcherAriaLabel
+          }
         }
       }
-      restriction {
-        __typename
-        categoryName
-        features {
-          __typename
-          name
-        }
-      }
-      link {
-        __typename
-        label
-      }
     }
   }
-  faqSection {
+  translationAutomation {
     __typename
-    headingLine1
-    headingLine2
-    cardImagePath
-    items {
-      __typename
-      question
-      answer
-    }
-    cardImageAlt
-    supportTitle
-    supportDescription
-    supportCtaLabel
-    supportCtaHref
+    provider
+    sourceLocale
+    targetLocales
+    deeplBaseUrl
+    promoNeedles
+    mediaPathPrefixes
+    exactTextReplacements
+    regexTextReplacements
   }
-  missionSection {
-    __typename
-    mission {
-      __typename
-      imageAlt
-      imagePath
-      name
-      role
-      headingLine1
-      headingLine2
-      description
-      ctaLabel
-      ctaHref
-    }
-    gallery {
-      __typename
-      headingLine1
-      headingLine2
-      ctaLabel
-      ctaHref
-      images {
-        __typename
-        alt
-        imagePath
-      }
-    }
-  }
-  newsletterSection {
-    __typename
-    backgroundImagePath
-    backgroundImageAlt
-    headingLine1
-    headingLine2
-    description
-    ctaLabel
-    ctaHref
-  }
-  serviceAreaSection {
-    __typename
-    headingLine1
-    headingLine2
-    description
-    areas
-    excludedNote
-    mapEmbedUrl
-    mapTitle
-    ctaLabel
-    ctaHref
-  }
-  footerSection {
-    __typename
-    logoAlt
-    logoImagePath
-    subscriptionText
-    followUsLabel
-    supportTitle
-    supportLinks {
-      __typename
-      label
-      href
-    }
-    aboutTitle
-    aboutLinks {
-      __typename
-      label
-      href
-    }
-    legalDisclaimer
-    cardImageAlt
-    cardDesktopImagePath
-    cardMobileImagePath
-    appPrompt
-    appStoreAlt
-    appStoreHref
-    appStoreImagePath
-    googlePlayAlt
-    googlePlayHref
-    googlePlayImagePath
-    copyrightText
-  }
-  header {
-    __typename
-    logoImagePath
-    whatsAppHref
-    primaryCtaLabel
-    secondaryCtaLabel
-    secondaryCtaHref
-    navItems {
-      __typename
-      label
-      href
-    }
-  }
-  promoNeedles
-  mediaPathPrefixes
-  exactTextReplacements
-  regexTextReplacements
 }
