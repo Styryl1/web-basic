@@ -147,32 +147,32 @@ var site_content_default = {
               {
                 thumbnailAlt: "Boiler service in Medemblik",
                 profileAlt: "Client in Medemblik",
-                thumbnailImagePath: "/images/gallery-1.svg",
-                profileImagePath: "/images/avatar-1.svg",
+                thumbnailImagePath: "/boiler install.JPG",
+                profileImagePath: "/werkspot logo.png",
                 handle: "@medemblikhome",
                 meta: "Boiler service completed"
               },
               {
                 thumbnailAlt: "Radiator work in Hoorn",
                 profileAlt: "Client in Hoorn",
-                thumbnailImagePath: "/images/gallery-2.svg",
-                profileImagePath: "/images/avatar-2.svg",
+                thumbnailImagePath: "/boiler service.JPG",
+                profileImagePath: "/werkspot logo.png",
                 handle: "@hoornhome",
                 meta: "Radiator upgrade completed"
               },
               {
                 thumbnailAlt: "Tap repair in Purmerend",
                 profileAlt: "Client in Purmerend",
-                thumbnailImagePath: "/images/gallery-1.svg",
-                profileImagePath: "/images/avatar-3.svg",
+                thumbnailImagePath: "/tap and sink install.JPG",
+                profileImagePath: "/werkspot logo.png",
                 handle: "@purmerendhome",
                 meta: "Tap repair completed"
               },
               {
                 thumbnailAlt: "Plumbing handyman in Alkmaar",
                 profileAlt: "Client in Alkmaar",
-                thumbnailImagePath: "/images/gallery-2.svg",
-                profileImagePath: "/images/avatar-4.svg",
+                thumbnailImagePath: "/pipe repair.JPG",
+                profileImagePath: "/werkspot logo.png",
                 handle: "@alkmaarhome",
                 meta: "Small plumbing job completed"
               }
@@ -180,25 +180,25 @@ var site_content_default = {
             textCards: [
               {
                 profileAlt: "Profile Local Homeowner",
-                profileImagePath: "/images/avatar-1.svg",
+                profileImagePath: "/werkspot logo.png",
                 name: "Local Homeowner",
                 quote: "Review section is being updated with real customer feedback. For now, send photos on WhatsApp and I will reply with clear next steps."
               },
               {
                 profileAlt: "Profile Expat Client",
-                profileImagePath: "/images/avatar-2.svg",
+                profileImagePath: "/werkspot logo.png",
                 name: "Expat Client",
                 quote: "I work photo-first on WhatsApp, so you can explain the problem quickly in English and get a straightforward quote."
               },
               {
                 profileAlt: "Profile Dutch Homeowner",
-                profileImagePath: "/images/avatar-3.svg",
+                profileImagePath: "/werkspot logo.png",
                 name: "Dutch Homeowner",
                 quote: "Rates are transparent: \u20AC95 per hour for general work, boiler servicing from \u20AC145."
               },
               {
                 profileAlt: "Profile Service Area Client",
-                profileImagePath: "/images/avatar-4.svg",
+                profileImagePath: "/werkspot logo.png",
                 name: "Service Area Client",
                 quote: "Main area is Medemblik and nearby towns including Hoorn, Heerhugowaard, Purmerend, and Alkmaar."
               }
@@ -214,7 +214,7 @@ var site_content_default = {
             appImageAlt: "English Plumber WhatsApp workflow"
           },
           ourProcessSection: {
-            imagePath: "/images/process.svg",
+            imagePath: "/whatsapp conversation.png",
             imageAlt: "English Plumber process",
             headingLine1: "How It",
             headingLine2: "Works",
@@ -401,7 +401,7 @@ var site_content_default = {
           faqSection: {
             headingLine1: "Frequently Asked",
             headingLine2: "Questions",
-            cardImagePath: "/images/faq-card.svg",
+            cardImagePath: "/FAQ.png",
             items: [
               {
                 question: "Do you offer 24/7 emergency callouts?",
@@ -429,7 +429,7 @@ var site_content_default = {
           missionSection: {
             mission: {
               imageAlt: "English Plumber on site",
-              imagePath: "/api/media/file/nate%20%2B%20fam.png",
+              imagePath: "/photo of family.PNG",
               name: "English Plumber",
               role: "Friendly local plumber in Medemblik",
               headingLine1: "I am on",
@@ -456,7 +456,7 @@ var site_content_default = {
             }
           },
           newsletterSection: {
-            backgroundImagePath: "/api/media/file/woman%20newsletter.jpg",
+            backgroundImagePath: "/nice house.jpg",
             backgroundImageAlt: "English Plumber background",
             headingLine1: "Ready for a",
             headingLine2: "warm, worry-free home?",
@@ -534,7 +534,7 @@ var site_content_default = {
             ],
             legalDisclaimer: "NO 24/7 EMERGENCY CALLOUT SERVICE. STANDARD RATE IS \u20AC95 PER HOUR FOR GENERAL PLUMBING WORK. BOILER SERVICING STARTS FROM \u20AC145. PARTS AND MATERIALS ARE CHARGED SEPARATELY. FINAL PRICE MAY VARY BY JOB CONDITION. MAIN SERVICE AREA: MEDEMBLIK, HOORN, HEERHUGOWAARD, PURMEREND, AND ALKMAAR. ENGLISH PLUMBER IS NOT BASED IN AMSTERDAM OR ALMERE. CO-VAKMANSCHAP AND VCA STANDARDS ARE FOLLOWED WHERE APPLICABLE. BASIC WORKMANSHIP GUARANTEE: 30 DAYS ON THE SPECIFIC REPAIR LABOUR.",
             cardImageAlt: "English Plumber service card",
-            cardDesktopImagePath: "/images/footer-card.svg",
+            cardDesktopImagePath: "/whatsapp conversation.png",
             cardMobileImagePath: "/images/footer-card.svg",
             appPrompt: "Best way to reach me: WhatsApp with photos.",
             appStoreAlt: "WhatsApp contact",

@@ -218,9 +218,14 @@ const getResponsiveImageSrcSet = (imagePath: string | undefined): string | undef
   return variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ');
 };
 
+const getResponsiveImageVariants = (imagePath: string | undefined) =>
+  responsiveImageMap.get(getAssetBasename(imagePath) ?? '');
+
 const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
 const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
 const heroBackgroundImageSrcSet = getResponsiveImageSrcSet(heroImagePath);
+const heroResponsiveVariants = getResponsiveImageVariants(heroImagePath);
+const heroMobileImage = heroResponsiveVariants?.[0]?.src;
 const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
 const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
 const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
@@ -334,12 +339,21 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
     <Fragment slot="head">
       <script is:inline type="application/ld+json" set:html={localBusinessStructuredDataJson}></script>
       {faqPageStructuredDataJson && <script is:inline type="application/ld+json" set:html={faqPageStructuredDataJson}></script>}
-      <link
-        rel="preload"
-        as="image"
-        href={heroBackgroundImage}
-        {...(heroBackgroundImageSrcSet ? { imagesrcset: heroBackgroundImageSrcSet, imagesizes: '100vw' } : {})}
-      />
+      {
+        heroMobileImage ? (
+          <>
+            <link rel="preload" as="image" href={heroMobileImage} media="(max-width: 860px)" />
+            <link rel="preload" as="image" href={heroBackgroundImage} media="(min-width: 861px)" />
+          </>
+        ) : (
+          <link
+            rel="preload"
+            as="image"
+            href={heroBackgroundImage}
+            {...(heroBackgroundImageSrcSet ? { imagesrcset: heroBackgroundImageSrcSet, imagesizes: '100vw' } : {})}
+          />
+        )
+      }
     </Fragment>
     {
       tinaBridgeProps && (
@@ -543,19 +557,21 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
 
     <main id="top">
       <section class="hero" data-tina-field={tinaField(pageContent, 'hero')}>
-        <img
-          src={heroBackgroundImage}
-          srcset={heroBackgroundImageSrcSet}
-          sizes={heroBackgroundImageSrcSet ? '100vw' : undefined}
-          alt={hero.imageAlt}
-          class="hero-bg"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          width="1179"
-          height="788"
-          data-tina-field={tinaField(pageContent, 'heroImagePath')}
-        />
+        <picture class="hero-media" data-tina-field={tinaField(pageContent, 'heroImagePath')}>
+          {heroMobileImage && <source media="(max-width: 860px)" srcset={heroMobileImage} />}
+          <img
+            src={heroBackgroundImage}
+            srcset={heroBackgroundImageSrcSet}
+            sizes={heroBackgroundImageSrcSet ? '100vw' : undefined}
+            alt={hero.imageAlt}
+            class="hero-bg"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="1179"
+            height="788"
+          />
+        </picture>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
           <h1>
@@ -859,6 +875,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
           <img
             src={processImage}
             alt={ourProcessSection.imageAlt}
+            class="process-image"
             width="580"
             height="600"
             loading="lazy"
@@ -972,6 +989,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
           <img
             src={faqImage}
             alt={faqSection.cardImageAlt}
+            class="faq-image"
             width="520"
             height="540"
             loading="lazy"
