@@ -1,32 +1,26 @@
 .hero {
-  --hero-image-position: center 62%;
-  min-height: clamp(42rem, 78svh, 56rem);
+  min-height: 100svh;
   position: relative;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
   color: white;
-  padding-top: clamp(9rem, 16vw, 11rem);
-  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
+  padding-bottom: 88px;
 }
 
-.hero-media,
+.hero-bg,
 .hero-overlay {
   position: absolute;
   inset: 0;
-}
-
-.hero-media {
-  display: block;
-  z-index: 0;
 }
 
 .hero-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: var(--hero-image-position);
-  transform: scale(1.03);
+  object-position: center 24%;
+  transform: scale(1.04);
+  transform-origin: center 24%;
   z-index: 0;
 }
 
@@ -58,6 +52,14 @@
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: rgba(255, 255, 255, 0.95);
   max-width: 700px;
+}
+
+@media (max-width: 767px) {
+  .hero-bg {
+    object-position: center 18%;
+    transform: scale(1.18);
+    transform-origin: center 18%;
+  }
 }
 
 h2 {
@@ -1290,10 +1292,9 @@ details p {
   }
 
   .hero {
-    --hero-image-position: center 58%;
     padding-top: 168px;
     align-items: center;
-    min-height: clamp(40rem, 86svh, 46rem);
+    min-height: 720px;
   }
 
   .plan-grid {
@@ -1359,8 +1360,7 @@ details p {
   }
 
   .hero {
-    --hero-image-position: center 54%;
-    min-height: clamp(36rem, 100svh, 44rem);
+    min-height: 640px;
     padding-bottom: 52px;
     padding-top: 124px;
     align-items: flex-end;
