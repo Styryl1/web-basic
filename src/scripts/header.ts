@@ -17,6 +17,7 @@ export const initHeaderBehavior = (): void => {
   let lastScrollY = Math.max(window.scrollY, 0);
   let ticking = false;
   let refreshMarquees = (): void => {};
+  let isDesktopViewport = window.innerWidth >= 1024;
 
   const setScrolled = () => {
     header.classList.toggle('is-scrolled', window.scrollY > 12);
@@ -117,24 +118,24 @@ export const initHeaderBehavior = (): void => {
   if (marqueeTracks.length > 0 && !motionReduced) {
     let marqueeRaf = 0;
     let lastFrame = performance.now();
+    let resizeObserver: ResizeObserver | undefined;
 
     const recalcWidths = () => {
       marqueeTracks.forEach((track) => {
         track.loopWidth = track.node.scrollWidth / 2;
+        if (track.loopWidth > 0) {
+          track.offset %= track.loopWidth;
+        }
       });
     };
 
     const tickMarquee = (now: number) => {
       const dt = Math.min((now - lastFrame) / 1000, 0.05);
       lastFrame = now;
-      const isDesktop = window.innerWidth >= 1024;
 
       marqueeTracks.forEach((track) => {
-        if (!track.loopWidth) {
-          track.loopWidth = track.node.scrollWidth / 2;
-        }
         if (!track.loopWidth) return;
-        if (isDesktop) {
+        if (isDesktopViewport) {
           track.node.style.transform = 'translateX(0px)';
           return;
         }
@@ -149,8 +150,18 @@ export const initHeaderBehavior = (): void => {
     marqueeRaf = window.requestAnimationFrame(tickMarquee);
     refreshMarquees = recalcWidths;
 
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        recalcWidths();
+      });
+      marqueeTracks.forEach((track) => {
+        resizeObserver?.observe(track.node);
+      });
+    }
+
     window.addEventListener('beforeunload', () => {
       if (marqueeRaf) window.cancelAnimationFrame(marqueeRaf);
+      resizeObserver?.disconnect();
     });
   } else if (marqueeTracks.length > 0) {
     marqueeTracks.forEach((track) => {
@@ -172,6 +183,7 @@ export const initHeaderBehavior = (): void => {
     { passive: true },
   );
   window.addEventListener('resize', () => {
+    isDesktopViewport = window.innerWidth >= 1024;
     refreshMarquees();
     syncHeaderVisibility();
     if (window.innerWidth >= 1024) {

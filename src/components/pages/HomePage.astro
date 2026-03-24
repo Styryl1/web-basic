@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TinaInlineBridge from '../react/TinaInlineBridge.tsx';
+import { transformImageForRequest, transformImageSrcSetForRequest } from '../../data/cloudflareImage';
 import { getHomeTranslation, getLocaleSettings, loadSiteDocument } from '../../data/siteContent';
 import {
   DEFAULT_LOCALE,
@@ -32,6 +33,16 @@ const optimizedImageMap = new Map<string, string>([
   ['boiler servicing avatar.png', '/optimized/boiler-servicing-avatar.webp'],
   ['radiator services avatar.png', '/optimized/radiator-services-avatar.webp'],
   ['tap repairs avatar.png', '/optimized/tap-repairs-avatar.webp'],
+  ['english plumber logo final.png', '/optimized/english-plumber-logo-final.webp'],
+  ['english plumber logo light.png', '/optimized/english-plumber-logo-light.webp'],
+  ['logo-wordmark-transparent.png', '/optimized/logo-wordmark-transparent.webp'],
+  ['logo-wordmark-card.png', '/optimized/logo-wordmark-card.webp'],
+  ['boiler install.jpg', '/optimized/boiler-install-review.webp'],
+  ['boiler service.jpg', '/optimized/boiler-service-review.webp'],
+  ['tap and sink install.jpg', '/optimized/tap-and-sink-install-review.webp'],
+  ['pipe repair.jpg', '/optimized/pipe-repair-review.webp'],
+  ['werkspot logo.png', '/optimized/werkspot-logo.webp'],
+  ['whatsapp conversation.png', '/optimized/whatsapp-conversation.webp'],
 ]);
 
 const responsiveImageMap = new Map<string, Array<{ src: string; width: number }>>([
@@ -42,6 +53,17 @@ const responsiveImageMap = new Map<string, Array<{ src: string; width: number }>
       { src: '/optimized/family-photo-hero.webp', width: 1179 },
     ],
   ],
+]);
+
+const imageDimensionMap = new Map<string, { width: number; height: number }>([
+  ['family-photo-hero.webp', { width: 1179, height: 788 }],
+  ['family-photo-hero-mobile.webp', { width: 900, height: 602 }],
+  ['english-plumber-logo-final.webp', { width: 840, height: 200 }],
+  ['english-plumber-logo-light.webp', { width: 1260, height: 300 }],
+  ['logo-wordmark-transparent.webp', { width: 840, height: 165 }],
+  ['logo-wordmark-card.webp', { width: 1260, height: 355 }],
+  ['whatsapp-conversation.webp', { width: 768, height: 1152 }],
+  ['werkspot-logo.webp', { width: 96, height: 96 }],
 ]);
 
 const getAssetBasename = (value: string | undefined): string | null => {
@@ -132,6 +154,16 @@ const trustAvatarFallbacks = ['/images/avatar-1.svg', '/images/avatar-2.svg', '/
 const localeOptions = (siteSettings.locales ?? []).filter((entry: any) => isLocale(entry?.code));
 const siteOrigin = canonicalOrigin || homepageUrl || 'https://englishplumber.nl/';
 const siteHost = new URL(siteOrigin).host;
+const mediaHost = (() => {
+  if (!mediaOrigin) return undefined;
+
+  try {
+    return new URL(mediaOrigin).host;
+  } catch {
+    return undefined;
+  }
+})();
+const imageTransformHosts = [siteHost, mediaHost].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
 const alternateLinks = [
   ...localeOptions.map((entry: any) => ({
     hrefLang: entry.htmlLang ?? entry.code,
@@ -218,19 +250,55 @@ const getResponsiveImageSrcSet = (imagePath: string | undefined): string | undef
   return variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ');
 };
 
-const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
-const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
-const heroBackgroundImageSrcSet = getResponsiveImageSrcSet(heroImagePath);
-const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-wordmark-transparent.png');
+const getImageDimensions = (imagePath: string | undefined, fallback: { width: number; height: number }) =>
+  imageDimensionMap.get(getAssetBasename(imagePath) ?? '') ?? fallback;
+
+const optimizeImage = (
+  imagePath: string,
+  options: { width?: number; height?: number; quality?: number; fit?: 'contain' | 'cover' | 'crop' | 'pad' | 'scale-down' },
+) => transformImageForRequest(imagePath, Astro.url, options, imageTransformHosts);
+
+const optimizeImageSrcSet = (
+  imagePath: string,
+  variants: Array<{ width?: number; height?: number; quality?: number; fit?: 'contain' | 'cover' | 'crop' | 'pad' | 'scale-down' }>,
+) => transformImageSrcSetForRequest(imagePath, Astro.url, variants, imageTransformHosts);
+
+const resolveBiomarkerImage = (imagePath: string | undefined) =>
+  optimizeImage(resolveContentImage(imagePath, '/images/hero.svg'), { width: 96, quality: 72, fit: 'scale-down' });
+const heroBackgroundImageSource = resolveContentImage(heroImagePath, imageMap.hero);
+const heroBackgroundImage = optimizeImage(heroBackgroundImageSource, { width: 1179, quality: 72, fit: 'cover' });
+const heroBackgroundImageSrcSet =
+  optimizeImageSrcSet(heroBackgroundImageSource, [
+    { width: 900, quality: 68, fit: 'cover' },
+    { width: 1179, quality: 72, fit: 'cover' },
+  ]) ?? getResponsiveImageSrcSet(heroImagePath);
+const heroBackgroundImageDimensions = getImageDimensions(heroBackgroundImageSource, { width: 1179, height: 788 });
+const headerLogoSource = resolveContentImage(header.logoImagePath, '/images/logo-wordmark-transparent.png');
+const headerLogoImage = optimizeImage(headerLogoSource, { width: 640, quality: 80, fit: 'scale-down' });
+const headerLogoDimensions = getImageDimensions(headerLogoSource, { width: 840, height: 200 });
 const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
-const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
-const processImage = resolveContentImage(ourProcessSection.imagePath, imageMap.process);
-const faqImage = resolveContentImage(faqSection.cardImagePath, imageMap.faq);
-const missionImage = resolveContentImage(missionSection.mission.imagePath, imageMap.mission);
-const newsletterImage = resolveContentImage(newsletterSection.backgroundImagePath, imageMap.newsletter);
-const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-wordmark-card.png');
-const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
-const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
+const featureCardImages = serviceCards.map((card, index) =>
+  optimizeImage(resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1), { width: 1240, quality: 74, fit: 'cover' }),
+);
+const processImage = optimizeImage(resolveContentImage(ourProcessSection.imagePath, imageMap.process), { width: 960, quality: 74, fit: 'cover' });
+const faqImage = optimizeImage(resolveContentImage(faqSection.cardImagePath, imageMap.faq), { width: 780, quality: 74, fit: 'cover' });
+const missionImage = optimizeImage(resolveContentImage(missionSection.mission.imagePath, imageMap.mission), { width: 960, quality: 74, fit: 'cover' });
+const newsletterImage = optimizeImage(resolveContentImage(newsletterSection.backgroundImagePath, imageMap.newsletter), {
+  width: 1440,
+  quality: 72,
+  fit: 'cover',
+});
+const footerLogoSource = resolveContentImage(footerSection.logoImagePath, '/images/logo-wordmark-card.png');
+const footerLogoImage = optimizeImage(footerLogoSource, { width: 1260, quality: 80, fit: 'scale-down' });
+const footerLogoDimensions = getImageDimensions(footerLogoSource, { width: 1260, height: 300 });
+const footerDesktopCardSource = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
+const footerDesktopCardImage = optimizeImage(footerDesktopCardSource, { width: 768, quality: 76, fit: 'cover' });
+const footerDesktopCardDimensions = getImageDimensions(footerDesktopCardSource, { width: 382, height: 467 });
+const footerMobileCardImage = optimizeImage(resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardSource), {
+  width: 640,
+  quality: 76,
+  fit: 'cover',
+});
 const serviceAreaMapEmbedUrl = serviceAreaSection.mapEmbedUrl || 'https://www.google.com/maps?q=Medemblik,+Netherlands&output=embed';
 const homeAnchorHref = '#top';
 
@@ -311,12 +379,19 @@ const localBusinessStructuredDataJson = JSON.stringify(localBusinessStructuredDa
 const faqPageStructuredDataJson = faqMainEntitiesForSchema.length > 0 ? JSON.stringify(faqPageStructuredData) : null;
 
 const getTrustThumbnailImage = (videoCard: Record<string, unknown>, index: number) =>
-  resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]);
+  optimizeImage(resolveContentImage(videoCard.thumbnailImagePath as string | undefined, trustThumbnailFallbacks[index % trustThumbnailFallbacks.length]), {
+    width: 920,
+    quality: 74,
+    fit: 'cover',
+  });
 
 const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Record<string, unknown>, index: number) =>
-  resolveContentImage(
-    (textCard.profileImagePath as string | undefined) ?? (videoCard.profileImagePath as string | undefined),
-    trustAvatarFallbacks[index % trustAvatarFallbacks.length],
+  optimizeImage(
+    resolveContentImage(
+      (textCard.profileImagePath as string | undefined) ?? (videoCard.profileImagePath as string | undefined),
+      trustAvatarFallbacks[index % trustAvatarFallbacks.length],
+    ),
+    { width: 96, quality: 82, fit: 'cover' },
   );
 ---
 
@@ -367,9 +442,11 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
               <img
                 src={headerLogoImage}
                 alt={header.logoAlt}
-                width="980"
-                height="240"
+                width={headerLogoDimensions.width}
+                height={headerLogoDimensions.height}
                 class="ep-header__logo"
+                decoding="async"
+                fetchpriority="low"
                 data-tina-field={tinaField(header, 'logoImagePath')}
               />
             </a>
@@ -450,9 +527,11 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
               <img
                 src={headerLogoImage}
                 alt={header.logoAlt}
-                width="85"
-                height="22"
+                width={headerLogoDimensions.width}
+                height={headerLogoDimensions.height}
                 class="ep-mobile-panel__logo"
+                loading="lazy"
+                decoding="async"
                 data-tina-field={tinaField(header, 'logoImagePath')}
               />
             </a>
@@ -552,8 +631,8 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
           loading="eager"
           fetchpriority="high"
           decoding="async"
-          width="1179"
-          height="2556"
+          width={heroBackgroundImageDimensions.width}
+          height={heroBackgroundImageDimensions.height}
           data-tina-field={tinaField(pageContent, 'heroImagePath')}
         />
         <div class="hero-overlay"></div>
@@ -683,6 +762,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                 width="620"
                 height="420"
                 loading="lazy"
+                decoding="async"
                 data-tina-field={tinaField(featurePanel, 'cards', 0)}
               />
               <div class="card-caption">
@@ -728,6 +808,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                 width="620"
                 height="420"
                 loading="lazy"
+                decoding="async"
                 data-tina-field={tinaField(featurePanel, 'cards', 1)}
               />
               <div class="card-caption">
@@ -753,6 +834,7 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                 width="620"
                 height="420"
                 loading="lazy"
+                decoding="async"
                 data-tina-field={tinaField(featurePanel, 'prescriptionCard')}
               />
               <div class="card-caption">
@@ -797,27 +879,31 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
           <div class="trust-grid">
             {trustReviews.map(({ videoCard, textCard, index }) => {
               const isTextFirst = index % 2 === 1;
+              const trustThumbnailImage = getTrustThumbnailImage(videoCard, index);
+              const trustAvatarImage = getTrustAvatarImage(videoCard, textCard, index);
 
               return (
               <article class:list={['trust-review', { 'trust-review--text-first': isTextFirst }]}>
                 <div class="trust-review__media" data-tina-field={tinaField(trustSection, 'videoCards', index)}>
                   <img
-                    src={getTrustThumbnailImage(videoCard, index)}
+                    src={trustThumbnailImage}
                     alt={videoCard.thumbnailAlt}
                     class="trust-review__image"
                     width="460"
                     height="620"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div class="trust-review__media-gradient" aria-hidden="true"></div>
                   <div class="trust-review__media-head">
                     <img
-                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      src={trustAvatarImage}
                       alt={textCard.profileAlt}
                       class="trust-review__avatar"
                       width="44"
                       height="44"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="trust-review__media-handle">{videoCard.handle}</strong>
@@ -829,12 +915,13 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                 <div class="trust-review__body" data-tina-field={tinaField(trustSection, 'textCards', index)}>
                   <div class="trust-review__body-head">
                     <img
-                      src={getTrustAvatarImage(videoCard, textCard, index)}
+                      src={trustAvatarImage}
                       alt={textCard.profileAlt}
                       class="trust-review__avatar trust-review__avatar--body"
                       width="40"
                       height="40"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div class="trust-review__body-meta">
                       <p class="trust-review__name">{textCard.name}</p>
@@ -1108,9 +1195,10 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
               src={footerLogoImage}
               alt={footerSection.logoAlt}
               class="footer-logo"
-              width="1320"
-              height="320"
+              width={footerLogoDimensions.width}
+              height={footerLogoDimensions.height}
               loading="lazy"
+              decoding="async"
               data-tina-field={tinaField(footerSection, 'logoImagePath')}
             />
 
@@ -1166,9 +1254,10 @@ const getTrustAvatarImage = (videoCard: Record<string, unknown>, textCard: Recor
                 src={footerDesktopCardImage}
                 alt={footerSection.cardImageAlt}
                 class="footer-card-image"
-                width="382"
-                height="467"
+                width={footerDesktopCardDimensions.width}
+                height={footerDesktopCardDimensions.height}
                 loading="lazy"
+                decoding="async"
                 data-tina-field={tinaField(footerSection, 'cardDesktopImagePath')}
               />
             </picture>
