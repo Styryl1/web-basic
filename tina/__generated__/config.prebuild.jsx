@@ -487,7 +487,7 @@ var site_content_default = {
           },
           footerSection: {
             logoAlt: "English Plumber logo",
-            logoImagePath: "/images/logo-big.svg",
+            logoImagePath: "/English plumber logo light.png",
             subscriptionText: "Need help fast? Send photos and your postcode on WhatsApp for a clear first response.",
             followUsLabel: "Follow us",
             supportTitle: "Help & Support",
@@ -556,7 +556,7 @@ var site_content_default = {
             ]
           },
           header: {
-            logoImagePath: "/images/logo-blue.svg",
+            logoImagePath: "/English plumber logo final.png",
             whatsAppHref: "https://wa.me/31642869931",
             primaryCtaLabel: "WhatsApp",
             secondaryCtaLabel: "Free Quote",
@@ -1055,7 +1055,7 @@ var site_content_default = {
           },
           footerSection: {
             logoAlt: "Engels loodgieterslogo",
-            logoImagePath: "/images/logo-big.svg",
+            logoImagePath: "/images/logo-wordmark-card.png",
             subscriptionText: "Snel hulp nodig? Stuur foto's en je postcode via WhatsApp voor een duidelijke eerste reactie.",
             followUsLabel: "Volg ons",
             supportTitle: "Hulp & ondersteuning",
@@ -1124,7 +1124,7 @@ var site_content_default = {
             ]
           },
           header: {
-            logoImagePath: "/images/logo-blue.svg",
+            logoImagePath: "/images/logo-wordmark-transparent.png",
             whatsAppHref: "https://wa.me/31642869931",
             primaryCtaLabel: "WhatsApp",
             secondaryCtaLabel: "Gratis offerte",

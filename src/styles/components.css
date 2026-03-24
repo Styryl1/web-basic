@@ -56,23 +56,51 @@
 .ep-header__shell {
   position: relative;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  border: 1.44px solid transparent;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(240, 248, 255, 0.16) 100%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.22) 46%, rgba(171, 222, 255, 0.34) 100%)
+      border-box;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 32px 60px rgba(97, 194, 255, 0.1),
+    0 18px 34px rgba(10, 42, 72, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(22px) saturate(118%);
+  -webkit-backdrop-filter: blur(22px) saturate(118%);
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: background-color, border-color, box-shadow;
+  transition-property: background-color, border-color, box-shadow, transform;
+}
+
+.ep-header__shell::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 14%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 34%, rgba(255, 255, 255, 0.01) 100%);
+  opacity: 0.5;
+  z-index: 0;
 }
 
 .ep-header.is-scrolled .ep-header__shell {
-  background: rgba(255, 255, 255, 0.94);
-  border-color: rgba(223, 228, 234, 0.9);
-  box-shadow: 0 14px 34px rgba(0, 15, 31, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 251, 255, 0.84) 100%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.54) 44%, rgba(163, 217, 252, 0.38) 100%)
+      border-box;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 24px 46px rgba(97, 194, 255, 0.08),
+    0 14px 26px rgba(10, 42, 72, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
 }
 
 .ep-header__ring {
-  display: none;
+  display: block;
   position: absolute;
   pointer-events: none;
   border-radius: 9999px;
@@ -80,20 +108,22 @@
 }
 
 .ep-header__ring--outer {
-  inset: 0;
+  inset: 1px;
   z-index: 1;
   padding: 1.44px;
-  background-image: linear-gradient(0deg, rgba(47, 145, 202, 0) 0%, rgba(47, 145, 202, 0.66) 49%, rgba(47, 145, 202, 0) 100%);
+  opacity: 0.88;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.08) 46%, rgba(140, 214, 254, 0.48) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
 
 .ep-header__ring--inner {
-  inset: 1.44px;
+  inset: 10px;
   z-index: 2;
-  padding: 1.44px;
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 49%, rgba(255, 255, 255, 0.15) 100%);
+  padding: 1px;
+  opacity: 0.58;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 54%, rgba(205, 236, 255, 0.22) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -106,8 +136,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 16px 16px 16px 42px;
+  gap: 14px;
+  padding: 14px 14px 14px 24px;
   font-family: aspekta, 'aspekta Fallback', 'Avenir Next', 'Segoe UI', Tahoma, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -120,7 +150,7 @@
 .ep-header__logo-link {
   cursor: pointer;
   width: 100%;
-  max-width: clamp(220px, 24vw, 340px);
+  max-width: clamp(164px, 17vw, 230px);
   flex-shrink: 0;
 }
 
@@ -143,12 +173,16 @@
   align-items: center;
   flex: 1 1 0%;
   justify-content: space-between;
-  gap: 24px;
+  gap: 12px;
 }
 
 .ep-header__nav-list {
   display: flex;
   align-items: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
 }
 
 .ep-header__nav-list li {
@@ -161,10 +195,10 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 6px 16px;
+  padding: 6px 10px;
   border-radius: 9999px;
   background: transparent;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 20px;
   color: rgb(255, 255, 255);
@@ -199,7 +233,14 @@
 .ep-header__cta-group {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ep-header__cta-group .ep-soft-liquid__link {
+  padding: 10px 18px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .ep-language-switcher {
@@ -508,8 +549,13 @@
   width: 36px;
   height: 36px;
   border-radius: 9999px;
-  border: 1px solid rgb(201, 201, 207);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background:
+    linear-gradient(180deg, rgba(248, 252, 255, 0.34) 0%, rgba(214, 239, 255, 0.18) 100%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.16) 100%) border-box;
+  box-shadow:
+    0 14px 26px rgba(97, 194, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
   position: relative;
   cursor: pointer;
   align-items: center;
@@ -527,7 +573,7 @@
   width: 24px;
   height: 3px;
   border-radius: 9999px;
-  background-color: rgb(203, 242, 255);
+  background-color: rgb(214, 239, 255);
   transition: transform 220ms ease, opacity 180ms ease, background-color 180ms ease;
   transform-origin: center;
 }
@@ -542,6 +588,13 @@
 
 .ep-header.is-scrolled .ep-header__menu-btn span {
   background-color: rgb(17, 57, 101);
+}
+
+.ep-header.is-scrolled .ep-header__menu-btn {
+  border-color: rgba(140, 214, 254, 0.3);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(229, 243, 255, 0.72) 100%) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(140, 214, 254, 0.3) 100%) border-box;
 }
 
 .ep-header.is-menu-open .ep-header__menu-btn span:nth-child(1) {

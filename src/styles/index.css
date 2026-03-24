@@ -1149,8 +1149,10 @@ details p {
 }
 
 .footer-logo {
-  width: 100%;
-  max-width: 760px;
+  display: block;
+  width: min(100%, 620px);
+  max-width: 100%;
+  height: auto;
   border-radius: 20px;
 }
 
@@ -1288,7 +1290,25 @@ details p {
   }
 
   .ep-header__logo-link {
-    max-width: clamp(180px, 24vw, 240px);
+    max-width: clamp(154px, 16vw, 200px);
+  }
+
+  .ep-header__nav {
+    gap: 10px;
+  }
+
+  .ep-header__nav-link {
+    padding: 5px 8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .ep-header__cta-group {
+    gap: 8px;
+  }
+
+  .ep-header__cta-group .ep-soft-liquid__link {
+    padding: 10px 16px;
   }
 
   .hero {
@@ -1425,7 +1445,7 @@ details p {
   }
 
   .footer-logo {
-    max-width: 520px;
+    width: min(100%, 420px);
   }
 
   .footer-links {

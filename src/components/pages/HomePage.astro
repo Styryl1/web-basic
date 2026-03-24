@@ -221,14 +221,14 @@ const getResponsiveImageSrcSet = (imagePath: string | undefined): string | undef
 const resolveBiomarkerImage = (imagePath: string | undefined) => resolveContentImage(imagePath, '/images/hero.svg');
 const heroBackgroundImage = resolveContentImage(heroImagePath, imageMap.hero);
 const heroBackgroundImageSrcSet = getResponsiveImageSrcSet(heroImagePath);
-const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-blue.svg');
+const headerLogoImage = resolveContentImage(header.logoImagePath, '/images/logo-wordmark-transparent.png');
 const featureCardFallbacks = [imageMap.card1, imageMap.card2, imageMap.card3];
 const featureCardImages = serviceCards.map((card, index) => resolveContentImage(card.imagePath, featureCardFallbacks[index] ?? imageMap.card1));
 const processImage = resolveContentImage(ourProcessSection.imagePath, imageMap.process);
 const faqImage = resolveContentImage(faqSection.cardImagePath, imageMap.faq);
 const missionImage = resolveContentImage(missionSection.mission.imagePath, imageMap.mission);
 const newsletterImage = resolveContentImage(newsletterSection.backgroundImagePath, imageMap.newsletter);
-const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-big.svg');
+const footerLogoImage = resolveContentImage(footerSection.logoImagePath, '/images/logo-wordmark-card.png');
 const footerDesktopCardImage = resolveContentImage(footerSection.cardDesktopImagePath, imageMap.footer);
 const footerMobileCardImage = resolveContentImage(footerSection.cardMobileImagePath, footerDesktopCardImage);
 const serviceAreaMapEmbedUrl = serviceAreaSection.mapEmbedUrl || 'https://www.google.com/maps?q=Medemblik,+Netherlands&output=embed';
